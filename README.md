@@ -2,11 +2,10 @@
 
 # Working hours count (the time is an approximation )
 
-| week of | hours  | tasks                                                                                    |
+| date (dd.mm) in 2025 | hours  | tasks                                                                                    |
 | :-----: | :----- | :--------------------------------------------------------------------------------------- |
-|  13.02  |  1     | First meeting with client on teams, figure out is this project legit to                  |
-|         |        | fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with   |
-|         |        | with login and register user etc.                                                        |
-| Total   | 1      |                                                                                          |
+|  13.02  |  1     | First meeting with client on teams, figure out is this project legit to fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with with login and register user etc.                                                        |
+| 13.05   | 0,25   | Meeting about how to read/understand data.
+| Total   | 1,25   |                                                                                          |
 
 
