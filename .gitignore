@@ -1,0 +1,6 @@
+node_modules
+*.local
+.env
+*.rest
+package-lock.json
+210225_VSME ty\303\266kalu perus_ja kattava moduuli.xlsx
