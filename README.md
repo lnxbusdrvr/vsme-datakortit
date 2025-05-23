@@ -8,6 +8,6 @@
 | 13.05   | 0,25   | Meeting about how to read/understand data.                                               |
 | 13.05   | 0.75 | Early considerations: how the architecture of this code project would be structured. |
 | 20.05   | 1   | Add some question-data |
-| Total   | 3   |                                                                                          |
-
+| 22.05   | 1   | Add more question-data |
+| Total   | 4   |                                                                                          |
 
