@@ -7,8 +7,9 @@
 |  13.02  |  1     | First meeting with client on teams, figure out is this project legit to fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with with login and register user etc.                                                        |
 | 13.05   | 0,25   | Meeting about how to read/understand data.                                               |
 | 13.05   | 0.75 | Early considerations: how the architecture of this code project would be structured. |
-| 20.05   | 1   | Add some question-data |
+| 20.05   | 1   | Add some question-data starting to track time on [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376)|
 | 22.05   | 1   | Add more question-data |
 | 31.05   | 1   | Add more basic question-data |
 | Total   | 5   |                                                                                          |
 
+20.05.2025 
