@@ -10,6 +10,6 @@
 | 20.05   | 1   | Add some question-data starting to track time on [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376)|
 | 22.05   | 1   | Add more question-data |
 | 31.05   | 1   | Add more basic question-data |
-| Total   | 5   |                                                                                          |
+| 31.05   | 0.5 | Add minor changes to perusmoduuli |
+| Total   | 5.5 |                                                                                          |
 
-20.05.2025 
