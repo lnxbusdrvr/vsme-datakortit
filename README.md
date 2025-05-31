@@ -9,5 +9,6 @@
 | 13.05   | 0.75 | Early considerations: how the architecture of this code project would be structured. |
 | 20.05   | 1   | Add some question-data |
 | 22.05   | 1   | Add more question-data |
-| Total   | 4   |                                                                                          |
+| 31.05   | 1   | Add more basic question-data |
+| Total   | 5   |                                                                                          |
 
