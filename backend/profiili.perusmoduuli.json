@@ -18,7 +18,94 @@
     { "question": "Käytännöt: Tähän liittyviä käytäntöjä voivat olla esimerkiksi toimet yrityksen veden- ja sähkönkulutuksen vähentämiseksi, kasvihuonekaasupäästöjen vähentämiseksi tai pilaantumisen / saasteiden ehkäisemiseksi, tuoteturvallisuuden parantamiseen tähtäävät aloitteet sekä nykyiset aloitteet työolojen ja yhdenvertaisen kohtelun parantamiseksi työpaikalla, yrityksen työvoiman kestävyyskoulutus ja kestävyyshankkeisiin liittyvät kumppanuudet;" },
     { "question": "Kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;" },
     { "question": "Tavoitteet, joilla seurataan politiikkojen täytäntöönpanoa ja edistymistä näiden tavoitteiden saavuttamisessa. (politiikkojen toteutuksen seurantaan liittyvät tavoitteet ja saavutettu edistys)" },
-    { "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen." }
+    { "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen." },
+    { "question": "Jos yritys raportoi myös kattavasta moduulista, sen on täydennettävä B2 kohdassa annettuja tietoja kohdassa C2 olevilla tietopisteillä." }
+  ],
+  "Ympäristö": [
+    {
+      "question": "Yrityksen vaikutukset ilmastoon ilmoittamalla energiankulutuksen ja kasvihuonekaasupäästöt. Yrityksen on ilmoitettava energian kokonaiskulutuksensa megawattitunteina (MWh) seuraavan taulukon mukaisesti jaoteltuna, jos se voi saada tarvittavat tiedot tällaisen erittelyn tekemiseksi.",
+      "electer": {
+        "category": "Sähkö (näkyy sähkölaskutuksessa)",
+        "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
+        "renewable": "MWh",
+        "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
+        "total_title": "Yhteensä 202(x) Energiankulutus (MWh)"
+      },
+      "fuel": {
+        "category": "Polttoaineet",
+        "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
+        "renewable": "MWh",
+        "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
+        "total_title": "Yhteensä 202(x) Energiankulutus (MWh)"
+      },
+      "total": {
+        "category": "Yhteensä",
+        "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
+        "renewable": "MWh",
+        "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
+        "non_renewable": "MWh",
+        "total_title": "Yhteensä 202(x) Energiankulutus (MWh)",
+        "total": "MWh"
+      }
+    },
+    {
+      "question": "Yrityksen on ilmoitettava arvioidut kasvihuonekaasujen (GHG) bruttopäästönsä CO2  ekvivalenttitonneina (tCO2eq) ottaen huomioon GHG Protocol Corporate Standard (2004 versio) sisältö",
+      "scope1": {
+        "category": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
+        "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
+        "greenhouse_gas_emission1": null
+        "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission2": null
+        "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission3": null
+      },
+      "scope2": {
+        "category": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
+        "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
+        "greenhouse_gas_emission1": null
+        "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission2": null
+        "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission3": null
+      },
+      "total": {
+        "category": "Yhteensä",
+        "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
+        "greenhouse_gas_emission1": null
+        "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission2": null
+        "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission3": null
+      },
+      "gsg": {
+        "category": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
+        "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
+        "greenhouse_gas_emission1": "€",
+        "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission2": "€",
+        "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission3": "€"
+      },
+      "describe_method": {
+        "category": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
+        "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
+        "greenhouse_gas_emission1": "",
+        "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission2": "",
+        "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission3": ""
+      },
+      "describe_uncertainties": {
+        "category": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
+        "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
+        "greenhouse_gas_emission1": "",
+        "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission2": "",
+        "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
+        "greenhouse_gas_emission3": ""
+      }
+    }
+
   ]
 }
 
