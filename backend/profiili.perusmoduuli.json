@@ -104,8 +104,86 @@
         "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
         "greenhouse_gas_emission3": ""
       }
+    },
+    {
+      "question": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
+      "polution": {
+        "category": "Päästöaine / saaste",
+        "emission_kg": "Päästöt (kg)",
+        "emission_release": "Päästöjen vapautuminen (ilma, vesi, maaperä)"
+      },
+      "example_kadium": {
+        "category": "esimerkiksi kadmium ja kadmiumyhdisteet",
+        "emission_kg": "kg",
+        "emission_release": ""
+      },
+      "unclean_type2": {
+        "category": "Epäpuhtauden tyyppi 2",
+        "emission_kg": "kg",
+        "emission_release": ""
+      },
+      "unclean_type3": {
+        "category": "Epäpuhtauden tyyppi 3",
+        "emission_kg": "kg",
+        "emission_release": ""
+      }
+    },
+    {
+      "question": "Sijainti",
+      "locations": [
+        {
+          "category": "Maa- toimipisteen nimi  1",
+        "area": "Alue (Hehtaaria)",
+        "biologial_polymorph": "Biologiselle monimuotoisuudelle herkkä alue",
+        "breakdown": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
+        },
+        {
+          "category": "Maa- toimipisteen nimi 1",
+          "area": "",
+          "biologial_polymorph": "",
+          "breakdown": ""
+        },
+        {
+          "category": "Maa- toimipisteen nimi 1",
+          "area": "",
+          "biologial_polymorph": "",
+          "breakdown": ""
+        }
+      ],
+      "question": "Yritys voi julkaistaa Maankäyttöön liittyviä mittareita Tyyppi",
+      "land_use_metrics": [
+        {
+          "category": "tyyppi",
+          "last_year": "Edellinen vuosi (alue hehtaari m²)", 
+          "raported_year": "Raportointi vuosi (alue hehtaari m²)",
+          "percent_change": "% muutos (alue hehtaari m²)"
+        },
+        {
+          "category": "maankäytön kokonaispinta-ala (hehtaareina);",
+          "last_year": 0, 
+          "raported_year": 0,
+          "percent_change": 0
+        },
+        {
+          "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
+          "last_year": 0, 
+          "raported_year": 0,
+          "percent_change": 0
+        },
+        {
+          "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
+          "last_year": 0, 
+          "raported_year": 0,
+          "percent_change": 0
+        },
+        {
+          "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
+          "last_year": 0, 
+          "raported_year": 0,
+          "percent_change": 0
+        }
+      ]
     }
-
   ]
 }
 
