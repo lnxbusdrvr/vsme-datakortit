@@ -11,5 +11,6 @@
 | 22.05   | 1   | Add more question-data |
 | 31.05   | 1   | Add more basic question-data |
 | 31.05   | 0.5 | Add minor changes to perusmoduuli |
-| Total   | 5.5 |                                                                                          |
+| 06.06   | 1 | Add more questions from perusmoduuli |
+| Total   | 6.5 |                                                                                          |
 
