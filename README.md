@@ -12,5 +12,6 @@
 | 31.05   | 1   | Add more basic question-data |
 | 31.05   | 0.5 | Add minor changes to perusmoduuli |
 | 06.06   | 1 | Add more questions from perusmoduuli |
-| Total   | 6.5 |                                                                                          |
+| 07.06   | 1,5 | perusmoduuli ready, next check if valid JSON|
+| Total   | 8 |                                                                                          |
 
