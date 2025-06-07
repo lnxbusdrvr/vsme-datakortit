@@ -53,29 +53,29 @@
       "scope1": {
         "category": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
         "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
-        "greenhouse_gas_emission1": null
+        "greenhouse_gas_emission1": 0,
         "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
-        "greenhouse_gas_emission2": null
+        "greenhouse_gas_emission2": 0,
         "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
-        "greenhouse_gas_emission3": null
+        "greenhouse_gas_emission3": 0
       },
       "scope2": {
         "category": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
         "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
-        "greenhouse_gas_emission1": null
+        "greenhouse_gas_emission1": 0,
         "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
-        "greenhouse_gas_emission2": null
+        "greenhouse_gas_emission2": 0,
         "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
-        "greenhouse_gas_emission3": null
+        "greenhouse_gas_emission3": 0
       },
       "total": {
         "category": "Yhteensä",
         "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)", 
-        "greenhouse_gas_emission1": null
+        "greenhouse_gas_emission1": 0,
         "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)", 
-        "greenhouse_gas_emission2": null
+        "greenhouse_gas_emission2": 0,
         "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)", 
-        "greenhouse_gas_emission3": null
+        "greenhouse_gas_emission3": 0
       },
       "gsg": {
         "category": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
@@ -181,6 +181,175 @@
           "last_year": 0, 
           "raported_year": 0,
           "percent_change": 0
+        }
+      ]
+    },
+    {
+      "question": "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
+      "water_take": "Vedenotto (esim.. m3)",
+      "water_used": "Vedenkulutus  (esim. m3) (jos sovellettavissa)",
+      "all_offices": {
+        "category": "Kaikki toimipisteet",
+        "water_take": 0,
+        "water_used": 0
+      },
+      "waterstress_offices": {
+        "category": "Kohteet alueilla, joilla on vesistressiä",
+        "water_take": 0,
+        "water_used": 0
+      },
+      "dropsy_production_process": {
+        "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
+        "water_take": 0,
+        "water_used": 0
+      },
+      "question": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+      "answer": "",
+      "question": "Yrityksen on ilmoitetettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
+      "all_waste": "Syntyneen jätteen kokonaismäärä",
+      "resycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+      "resycled_waste_to_energy": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+      "destroyable_waste": "Jätteet ohjataan häviteettäväksi",
+      "undengerous_waste": {
+        "category": "Vaaraton jäte",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      },
+      "waste_type1": {
+        "category": "Jätteen tyyppi 1",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      },
+      "waste_type2": {
+        "category": "Jätteen tyyppi 2",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      },
+      "etc": {
+        "category": "jne.",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      },
+      "dangerous_waste": {
+        "category": "Vaarallinen jäte",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      },
+      "danger_waste_type1": {
+        "category": "Jätteen tyyppi 1",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      },
+      "danger_etc": {
+        "category": "jne.",
+        "all_waste": 0,
+        "resycled_waste": 0,
+        "resycled_waste_to_energy": 0,
+        "destroyable_waste": 0
+      }
+    }
+  ],
+  "Sosiaalinen vastuu": [
+    {
+      "question": "Yrityksen on ilmoitettava työntekijöiden lukumäärä henkilöstömääränä tai kokopäiväiseksi muutettuna seuraavien mittareiden osalta:",
+      "contract_employment_type": {
+        "category": "Työsopimuksen tyyppi",
+        "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+        "fixed_contract": {
+          "category": "Määräaikainen sopimus",
+          "employees_count": 0
+        },
+        "permanent_contract": {
+          "category": "Vakituinen / toistaiseksi voimassa oleva sopimus",
+          "employees_count": 0
+        },
+        "personnel_employees_total": {
+          "category": "Henkilöstö / Työntekijät yhteensä",
+          "employees_count": 0
+        }
+      },
+      "gender": {
+        "category": "Sukupuoli",
+        "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+        "male": {
+          "category": "Mies",
+          "employees_count": 0
+        },
+        "female": {
+          "category": "Nainen",
+          "employees_count": 0
+        },
+        "other": {
+          "category": "Muu sukupuoli",
+          "employees_count": 0
+        },
+        "unraported": {
+          "category": "Ei raportoitu",
+          "employees_count": 0
+        },
+        "personnel_employees_total": {
+          "category": "Henkilöstö / Työntekijät yhteensä",
+          "employees_count": 0
+        }
+      },
+      "country": {
+        "category": "Maa (jos sovelettavissa)",
+        "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+        "country_a": {
+          "category": "Maa A",
+          "employees_count": 0
+        },
+        "country_b": {
+          "category": "Maa B",
+          "employees_count": 0
+        },
+        "personnel_employees_total": {
+          "category": "Henkilöstö / Työntekijät yhteensä",
+          "employees_count": 0
+        }
+      },
+      "minimum_wage": {
+        "question": "saavatko työntekijät  palkkaa, joka on sama tai suurempi  kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa;",
+        "answer": ""
+      },
+      "wage_between_m_f": {
+        "category": "nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
+        "how_many_percent": "%"
+      },
+      "in_w_collective_agreement": {
+        "category": "työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus; ja",
+        "how_many_percent": "%"
+      },
+      "avg_education": {
+        "category": "keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
+        "answer": ""
+      }
+    }
+  ],
+  "Hallinto": [
+    {
+      "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
+      "type": "boolean",
+      "follow_up_if_true": [
+        {
+          "category": "Tuomioiden lukumäärä",
+          "type": "integer"
+        },
+        {
+          "category": "Sakoista aiheutuneet kokonaiskulut ",
+          "type": "€"
         }
       ]
     }
