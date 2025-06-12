@@ -1,5 +1,6 @@
 {
-  "Profiili": [
+  "profile": [
+    {"title": "Profiili"},
     { "question": "Minkä seuraavista vaihtoehdoista on valinnut: a) Perusmoduulin b) perusmoduulin ja kattavan moduulin mukaisesti." },
     { "question": "Jos yritys on jättänyt julkistamatta tietoja, koska niitä pidetään turvallisuusluokiteltuina tai arkaluonteisina tietoina (ks. kappale 19), yrityksen on ilmoitettava julkistamatta jätetyt tiedot." },
     { "question": "Onko kestävyysraportti laadittu yksittäisenä yrityksenä (eli raportti rajoittuu vain yrityksen tietoihin) vai konsolidoidusti (eli raportti sisältää tietoja yrityksestä ja sen tytäryrityksistä);" },
@@ -13,7 +14,8 @@
     { "question": "Omistetun, vuokrattujen tai hallinnoitujen toimipaikkojen maantieteellinen sijainti / koordinaatit;" },
     { "question": "Jos yritys on saanut kestävyyteen liittyvän sertifikaatin tai merkin, sen on annettava niistä lyhyt kuvaus (mukaan lukien tarvittaessa sertifioinnin tai merkin myöntäjät, päivämäärä ja luokituspisteytys)." }
   ],
-  "Vaihe 3 Profiili": [
+  "profile_stage_3": [
+    {"title": "Vaihe 3 Profiili"},
     { "question": "Jos yritys on ottanut käyttöön erityisiä käytäntöjä, politiikkoja tai tulevia aloitteita siirtyäkseen kestävämpään talouteen, sen on ilmoitettava tästä. Yrityksen on ilmoitettava, onko sillä (Tämä ilmoitus ei päde, kun yritys laatii kestävyysraporttinsa Kattavan moduulin mukaisesti)." },
     { "question": "Käytännöt: Tähän liittyviä käytäntöjä voivat olla esimerkiksi toimet yrityksen veden- ja sähkönkulutuksen vähentämiseksi, kasvihuonekaasupäästöjen vähentämiseksi tai pilaantumisen / saasteiden ehkäisemiseksi, tuoteturvallisuuden parantamiseen tähtäävät aloitteet sekä nykyiset aloitteet työolojen ja yhdenvertaisen kohtelun parantamiseksi työpaikalla, yrityksen työvoiman kestävyyskoulutus ja kestävyyshankkeisiin liittyvät kumppanuudet;" },
     { "question": "Kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;" },
@@ -21,7 +23,8 @@
     { "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen." },
     { "question": "Jos yritys raportoi myös kattavasta moduulista, sen on täydennettävä B2 kohdassa annettuja tietoja kohdassa C2 olevilla tietopisteillä." }
   ],
-  "Ympäristö": [
+  "environment": [
+    {"title": "Ympäristö"},
     {
       "question": "Yrityksen vaikutukset ilmastoon ilmoittamalla energiankulutuksen ja kasvihuonekaasupäästöt. Yrityksen on ilmoitettava energian kokonaiskulutuksensa megawattitunteina (MWh) seuraavan taulukon mukaisesti jaoteltuna, jos se voi saada tarvittavat tiedot tällaisen erittelyn tekemiseksi.",
       "electer": {
@@ -127,15 +130,18 @@
         "emission_kg": "kg",
         "emission_release": ""
       }
-    },
+    }
+  ],
+  "location": [
+    {"title": "Sijainti"},
     {
       "question": "Sijainti",
-      "locations": [
+      "location": [
         {
           "category": "Maa- toimipisteen nimi  1",
-        "area": "Alue (Hehtaaria)",
-        "biologial_polymorph": "Biologiselle monimuotoisuudelle herkkä alue",
-        "breakdown": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
+          "area": "Alue (Hehtaaria)",
+          "biologial_polymorph": "Biologiselle monimuotoisuudelle herkkä alue",
+          "breakdown": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
         },
         {
           "category": "Maa- toimipisteen nimi 1",
@@ -150,118 +156,133 @@
           "breakdown": ""
         }
       ],
-      "question": "Yritys voi julkaistaa Maankäyttöön liittyviä mittareita Tyyppi",
-      "land_use_metrics": [
+      "land_use": [
         {
-          "category": "tyyppi",
-          "last_year": "Edellinen vuosi (alue hehtaari m²)", 
-          "raported_year": "Raportointi vuosi (alue hehtaari m²)",
-          "percent_change": "% muutos (alue hehtaari m²)"
-        },
+          "question": "Yritys voi julkaistaa Maankäyttöön liittyviä mittareita Tyyppi",
+          "land_use_metrics": [
+            {
+              "category": "tyyppi",
+              "last_year": "Edellinen vuosi (alue hehtaari m²)",
+              "raported_year": "Raportointi vuosi (alue hehtaari m²)",
+              "percent_change": "% muutos (alue hehtaari m²)"
+            },
+            {
+              "category": "maankäytön kokonaispinta-ala (hehtaareina);",
+              "last_year": 0,
+              "raported_year": 0,
+              "percent_change": 0
+            },
+            {
+              "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
+              "last_year": 0,
+              "raported_year": 0,
+              "percent_change": 0
+            },
+            {
+              "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
+              "last_year": 0,
+              "raported_year": 0,
+              "percent_change": 0
+            },
+            {
+              "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
+              "last_year": 0,
+              "raported_year": 0,
+              "percent_change": 0
+            }
+          ]
+        }
+      ],
+      "water_usage": [
         {
-          "category": "maankäytön kokonaispinta-ala (hehtaareina);",
-          "last_year": 0, 
-          "raported_year": 0,
-          "percent_change": 0
-        },
+          "question": "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
+          "water_take": "Vedenotto (esim.. m3)",
+          "water_used": "Vedenkulutus  (esim. m3) (jos sovellettavissa)",
+          "all_offices": {
+            "category": "Kaikki toimipisteet",
+            "water_take": 0,
+            "water_used": 0
+          },
+          "waterstress_offices": {
+            "category": "Kohteet alueilla, joilla on vesistressiä",
+            "water_take": 0,
+            "water_used": 0
+          },
+          "dropsy_production_process": {
+            "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
+            "water_take": 0,
+            "water_used": 0
+          }
+        }
+      ],
+      "uses_circular_economy": [
         {
-          "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
-          "last_year": 0, 
-          "raported_year": 0,
-          "percent_change": 0
-        },
+          "question": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+          "type": "text"
+        }
+      ],
+      "waste": [
         {
-          "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
-          "last_year": 0, 
-          "raported_year": 0,
-          "percent_change": 0
-        },
-        {
-          "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
-          "last_year": 0, 
-          "raported_year": 0,
-          "percent_change": 0
+          "question": "Yrityksen on ilmoitetettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
+          "all_waste": "Syntyneen jätteen kokonaismäärä",
+          "resycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+          "resycled_waste_to_energy": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+          "destroyable_waste": "Jätteet ohjataan häviteettäväksi",
+          "undengerous_waste": {
+            "category": "Vaaraton jäte",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          },
+          "waste_type1": {
+            "category": "Jätteen tyyppi 1",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          },
+          "waste_type2": {
+            "category": "Jätteen tyyppi 2",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          },
+          "etc": {
+            "category": "jne.",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          },
+          "dangerous_waste": {
+            "category": "Vaarallinen jäte",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          },
+          "danger_waste_type1": {
+            "category": "Jätteen tyyppi 1",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          },
+          "danger_etc": {
+            "category": "jne.",
+            "all_waste": 0,
+            "resycled_waste": 0,
+            "resycled_waste_to_energy": 0,
+            "destroyable_waste": 0
+          }
         }
       ]
-    },
-    {
-      "question": "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
-      "water_take": "Vedenotto (esim.. m3)",
-      "water_used": "Vedenkulutus  (esim. m3) (jos sovellettavissa)",
-      "all_offices": {
-        "category": "Kaikki toimipisteet",
-        "water_take": 0,
-        "water_used": 0
-      },
-      "waterstress_offices": {
-        "category": "Kohteet alueilla, joilla on vesistressiä",
-        "water_take": 0,
-        "water_used": 0
-      },
-      "dropsy_production_process": {
-        "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
-        "water_take": 0,
-        "water_used": 0
-      },
-      "question": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
-      "answer": "",
-      "question": "Yrityksen on ilmoitetettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
-      "all_waste": "Syntyneen jätteen kokonaismäärä",
-      "resycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
-      "resycled_waste_to_energy": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
-      "destroyable_waste": "Jätteet ohjataan häviteettäväksi",
-      "undengerous_waste": {
-        "category": "Vaaraton jäte",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      },
-      "waste_type1": {
-        "category": "Jätteen tyyppi 1",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      },
-      "waste_type2": {
-        "category": "Jätteen tyyppi 2",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      },
-      "etc": {
-        "category": "jne.",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      },
-      "dangerous_waste": {
-        "category": "Vaarallinen jäte",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      },
-      "danger_waste_type1": {
-        "category": "Jätteen tyyppi 1",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      },
-      "danger_etc": {
-        "category": "jne.",
-        "all_waste": 0,
-        "resycled_waste": 0,
-        "resycled_waste_to_energy": 0,
-        "destroyable_waste": 0
-      }
     }
   ],
-  "Sosiaalinen vastuu": [
+  "social_responsibility": [
+    {"title": "Sosiaalinen vastuu"},
     {
       "question": "Yrityksen on ilmoitettava työntekijöiden lukumäärä henkilöstömääränä tai kokopäiväiseksi muutettuna seuraavien mittareiden osalta:",
       "contract_employment_type": {
@@ -279,66 +300,67 @@
           "category": "Henkilöstö / Työntekijät yhteensä",
           "employees_count": 0
         }
+    },
+    "gender": {
+      "category": "Sukupuoli",
+      "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+      "male": {
+        "category": "Mies",
+        "employees_count": 0
       },
-      "gender": {
-        "category": "Sukupuoli",
-        "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
-        "male": {
-          "category": "Mies",
-          "employees_count": 0
-        },
-        "female": {
-          "category": "Nainen",
-          "employees_count": 0
-        },
-        "other": {
-          "category": "Muu sukupuoli",
-          "employees_count": 0
-        },
-        "unraported": {
-          "category": "Ei raportoitu",
-          "employees_count": 0
-        },
-        "personnel_employees_total": {
-          "category": "Henkilöstö / Työntekijät yhteensä",
-          "employees_count": 0
-        }
+      "female": {
+        "category": "Nainen",
+        "employees_count": 0
       },
-      "country": {
-        "category": "Maa (jos sovelettavissa)",
-        "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
-        "country_a": {
-          "category": "Maa A",
-          "employees_count": 0
-        },
-        "country_b": {
-          "category": "Maa B",
-          "employees_count": 0
-        },
-        "personnel_employees_total": {
-          "category": "Henkilöstö / Työntekijät yhteensä",
-          "employees_count": 0
-        }
+      "other": {
+        "category": "Muu sukupuoli",
+        "employees_count": 0
       },
-      "minimum_wage": {
-        "question": "saavatko työntekijät  palkkaa, joka on sama tai suurempi  kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa;",
-        "answer": ""
+      "unraported": {
+        "category": "Ei raportoitu",
+        "employees_count": 0
       },
-      "wage_between_m_f": {
-        "category": "nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
-        "how_many_percent": "%"
-      },
-      "in_w_collective_agreement": {
-        "category": "työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus; ja",
-        "how_many_percent": "%"
-      },
-      "avg_education": {
-        "category": "keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
-        "answer": ""
+      "personnel_employees_total": {
+        "category": "Henkilöstö / Työntekijät yhteensä",
+        "employees_count": 0
       }
+    },
+    "country": {
+      "category": "Maa (jos sovelettavissa)",
+      "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+      "country_a": {
+        "category": "Maa A",
+        "employees_count": 0
+      },
+      "country_b": {
+        "category": "Maa B",
+        "employees_count": 0
+      },
+      "personnel_employees_total": {
+        "category": "Henkilöstö / Työntekijät yhteensä",
+        "employees_count": 0
+      }
+    },
+    "minimum_wage": {
+      "question": "saavatko työntekijät  palkkaa, joka on sama tai suurempi  kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa;",
+      "answer": ""
+    },
+    "wage_between_m_f": {
+      "category": "nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
+      "how_many_percent": "%"
+    },
+    "in_w_collective_agreement": {
+      "category": "työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus; ja",
+      "how_many_percent": "%"
+    },
+    "avg_education": {
+      "category": "keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
+      "answer": ""
+    }
     }
   ],
-  "Hallinto": [
+  "management": [
+    {"title": "Hallinto"},
     {
       "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
       "type": "boolean",
