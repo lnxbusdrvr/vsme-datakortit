@@ -12,6 +12,7 @@
 | 31.05   | 1   | Add more basic question-data |
 | 31.05   | 0.5 | Add minor changes to perusmoduuli |
 | 06.06   | 1 | Add more questions from perusmoduuli |
-| 07.06   | 1,5 | perusmoduuli ready, next check if valid JSON|
-| Total   | 8 |                                                                                          |
+| 07.06   | 1,5 | perusmoduuli ready, next check if valid JSON |
+| 12.06   | 1,5 | validate JSON, it imports in even MongoDB Atlas |
+| Total   | 9,5 |                                                                                          |
 
