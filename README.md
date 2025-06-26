@@ -15,5 +15,6 @@
 | 07.06   | 1,5 | perusmoduuli ready, next check if valid JSON |
 | 12.06   | 1,5 | validate JSON, it imports in even MongoDB Atlas |
 | 20.06   | 1,25 | 1st implementation |
-| Total   | 10,75 |                                                                                          |
+| 26.06   | 1,75 | 1st working implementation |
+| Total   | 12,5 |                                                                                          |
 

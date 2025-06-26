@@ -1,0 +1,49 @@
+{
+  "name": "vsme-backend",
+  "version": "1.0.0",
+  "description": "vsme-datakortit backend",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development node --watch index.js",
+    "lint": "eslint .",
+    "test": "cross-env  NODE_ENV=test node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lnxbusdrvr/vsme-datakortit.git"
+  },
+  "keywords": [
+    "VSME",
+    "Voluntary",
+    "Reporting",
+    "Standard",
+    "for",
+    "SMEs"
+  ],
+  "author": "erkki.pokkinen@iki.fi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lnxbusdrvr/vsme-datakortit/issues"
+  },
+  "homepage": "https://github.com/lnxbusdrvr/vsme-datakortit#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.5.0",
+    "dotnet": "^1.1.4",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-n": "^17.20.0",
+    "supertest": "^7.1.1"
+  }
+}
