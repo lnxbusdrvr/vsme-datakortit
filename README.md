@@ -16,5 +16,6 @@
 | 12.06   | 1,5 | validate JSON, it imports in even MongoDB Atlas |
 | 20.06   | 1,25 | 1st implementation |
 | 26.06   | 1,75 | 1st working implementation |
-| Total   | 12,5 |                                                                                          |
+| 04.07   | 0,5  | Refactor perusmoduuli json-data |
+| Total   | 13   |                                                                                          |
 
