@@ -17,5 +17,6 @@
 | 20.06   | 1,25 | 1st implementation |
 | 26.06   | 1,75 | 1st working implementation |
 | 04.07   | 0,5  | Refactor perusmoduuli json-data |
-| Total   | 13   |                                                                                          |
+| 06.07   | 0,5  | Add some json-data from kattava moduuli |
+| Total   | 13,5 |                                                                                          |
 
