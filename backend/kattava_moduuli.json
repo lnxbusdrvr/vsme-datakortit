@@ -1,0 +1,111 @@
+{
+  "module": "Perusmoduuli",
+  "sections": [
+    {
+      "section_id": "profile",
+      "title": "Profiili",
+      "questions": [
+        {
+          "id": "profile_01",
+          "question": "Minkä seuraavista vaihtoehtoista on valinnut: a) Perusmoduulin b) perusmoduulin ja kattavan moduulin mukaisesti.",
+          "type": "text"
+        },
+        {
+          "id": "profile_02",
+          "question": " Jos yritys on jättänyt julkistamatta tietoja, koska niitä pidetään turvallisuusluokiteltuina tai arkaluonteisina tietoina (ks. kappale 19), yrityksen on ilmoitettava julkistamatta jätetyt tiedot.",
+          "type": "text"
+        },
+        {
+          "id": "profile_03",
+          "question": "onko kestävyysraportti laadittu yksittäisenä yrityksenä (eli raportti rajoittuu vain yrityksen tietoihin) vai konsolidoidusti (eli raportti sisältää tietoja yrityksestä ja sen tytäryrityksistä);",
+          "type": "text"
+        },
+        {
+          "id": "profile_04",
+          "question": "jos kyseessä on konsolidoitu kestävyysraportti, luettelo raportin kattamista tytäryrityksistä, mukaan lukien niiden rekisteröity osoite4; ja",
+          "type": "text"
+        },
+        {
+          "id": "profile_05",
+          "question": "yrityksen oikeudellinen muoto;",
+          "type": "text"
+        },
+        {
+          "id": "profile_06",
+          "question": "NACE:n toimialaluokituskoodi(t);",
+          "type": "text"
+        },
+        {
+          "id": "profile_07",
+          "question": "taseen loppusumma (euroina); ",
+          "type": "number"
+        },
+        {
+          "id": "profile_08",
+          "question": "liikevaihto (euroina); ",
+          "type": "number"
+        },
+        {
+          "id": "profile_09",
+          "question": "työntekijöiden lukumäärä henkilöstömääränä tai kokoaikaiseksi muutettuna;",
+          "type": "number"
+        },
+        {
+          "id": "profile_10",
+          "question": "maa, jossa ensisijainen toiminta tapahtuu ja merkittävän omaisuuserän (merkittävien omaisuuserien) sijaintipaikka; ja",
+          "type": "text"
+        },
+        {
+          "id": "profile_11",
+          "question": "omistetun, vuokrattujen tai hallinnoitujen toimipaikkojen maantieteellinen sijainti / koordinaatit",
+          "type": "text"
+        },
+        {
+          "id": "profile_12",
+          "question": "Jos yritys on saanut kestävyyteen liittyvän sertifikaatin tai merkin, sen on annettava niistä lyhyt kuvaus (mukaan lukien tarvittaessa sertifioinnin tai merkin myöntäjät, päivämäärä ja luokituspisteytys).",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "section_id": "b2",
+      "title": "B2",
+      "questions": [
+        {
+          "id": "b2_01",
+          "question": "Jos yritys on ottanut käyttöön erityisiä käytäntöjä, politiikkoja tai tulevia aloitteita siirtyäkseen kestävämpään talouteen, sen on ilmoitettava tästä. Yrityksen on ilmoitettava, onko sillä (Tämä ilmoitus ei päde, kun yritys laatii kestävyysraporttinsa Kattavan moduulin mukaisesti)",
+          "type": "text"
+        },
+        {
+          "id": "b2_02",
+          "question": "Käytännöt: Tähän liittyviä käytäntöjä voivat olla esimerkiksi toimet yrityksen veden- ja sähkönkulutuksen vähentämiseksi, kasvihuonekaasupäästöjen vähentämiseksi tai pilaantumisen / saasteiden ehkäisemiseksi, tuoteturvallisuuden parantamiseen tähtäävät aloitteet sekä nykyiset aloitteet työolojen ja yhdenvertaisen kohtelun parantamiseksi työpaikalla, yrityksen työvoiman kestävyyskoulutus ja kestävyyshankkeisiin liittyvät kumppanuudet;",
+          "type": "boolean"
+        },
+        {
+          "id": "b2_03",
+          "question": "kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;",
+          "type": "boolean"
+        },
+        {
+          "id": "b2_04",
+          "question": "kaikki tulevat aloitteet tai tulevaisuuteen suuntautuvat suunnitelmat, joita toteutetaan kestävyyskysymyksissä; ja",
+          "type": "boolean"
+        },
+        {
+          "id": "b2_05",
+          "question": "tavoitteet, joilla seurataan politiikkojen täytäntöönpanoa  ja edistymistä näiden tavoitteiden saavuttamisessa. (politiikkojen toteutuksen seurantaan liittyvät tavoitteet ja saavutettu edistys)",
+          "type": "boolean"
+        },
+        {
+          "id": "b2_06",
+          "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen.",
+          "type": "text"
+        },
+        {
+          "id": "b2_07",
+          "question": "Jos yritys raportoi myös kattavasta moduulista, sen on täydennettävä B2 kohdassa annettuja tietoja kohdassa C2 olevilla tietopisteillä.",
+          "type": "text"
+        }
+      ]
+    },
+
