@@ -4,6 +4,7 @@
     {
       "section_id": "profile",
       "title": "Profiili",
+      "header": "Tämä raportti on laadittu VSME 17.12.2024 mukaisesti: https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf",
       "questions": [
         {
           "id": "profile_01",
@@ -108,4 +109,753 @@
         }
       ]
     },
+    {
+      "section_id": "c1",
+      "title": "C1",
+      "header": "Yrityksen on julkistettava liiketoimintamallinsa ja strategiansa keskeiset osatekijät, mukaan lukien seuraavat:",
+      "questions": [
+        {
+          "id": "c1_01",
+          "question": "kuvaus merkittävistä tarjottavien tuotteiden ja/tai palvelujen ryhmistä;",
+          "type": "text"
+        },
+        {
+          "id": "c1_02",
+          "question": "kuvaus merkittävistä markkinoista, joilla yritys toimii (esim. B2B, vähittäiskauppa, tukkukauppa, maat); ",
+          "type": "text"
+        },
+        {
+          "id": "c1_03",
+          "question": "kuvaus tärkeimmistä liikekumppaneista (esim. tärkeimmät toimittajat, asiakkaat, jakelukanavat ja kuluttajat); ja",
+          "type": "text"
+        },
+        {
+          "id": "c1_04",
+          "question": "Jos strategiassa on keskeisiä osatekijöitä, jotka liittyvät kestävyyskysymyksiin tai vaikuttavat niihin, lyhyt kuvaus näistä keskeisistä osatekijöistä.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "section_id": "b2_environmental_initiatives",
+      "title": "B2 – Käytännöt, politiikat ja tulevat aloitteet siirtymiseksi kohti kestävämpää taloutta",
+      "table": {
+        "headers": [
+          "Yrityksen ilmoitus käytännöistä",
+          "Kuvaus nykyisistä käytännöistä/politiikoista",
+          "Tulevat aloitteet ja tavoitteet",
+          "Vastuuhenkilö"
+        ],
+        "rows": [
+          {
+            "topic": "Ilmastonmuutos",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Pilaantuminen",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Vesivarat ja merten luonnovarat",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Biologinen monimuotoisuuus ja ekosysteemit",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Kiertotalous",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Oma työvoima",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Arvoketjun työntekijät",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Vaikutusten kohteena olevat yhteisöt",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Kuluttajat ja loppukäyttäjät",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Liiketoiminnan harjottaminen",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Yritys voi ilmoittaa niiden täytäntöönpanosta vastaavan yrityksen ylimmän tason, jos sellainen on.",
+            "current_practices": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "environment",
+      "title": "Ympäristö",
+      "table": {
+        "headers": [
+          "Yrityksen vaikutukset ilmastoon ilmoittamalla energiankulutuksen ja kasvihuonekaasupäästöt: yrityksen on ilmoitettava energian kokonaiskulutuksensa megawattitunteina (MWh) seuraavan taulukon mukaisesti jaoteltuna, jos se voi saada tarvittavat tiedot tällaisen erittelyn tekemiseksi:",
+          "Uusiutuvan  Energian kulutus (MWh)",
+          "Ei Uusiutuvan Energian kulutus (MWh)",
+          "Yhteensä 202(x) Energiankulutus (MWh)"
+        ],
+        "rows": [
+          {
+            "topic": "Sähkö (näkyy sähkölaskutuksessa)",
+            "renewable_energy_consumption_mwh": {
+              "type": "mwh"
+            },
+            "renewable_energy_consumption_mwh": {
+              "type": "mwh"
+            },
+            "total_energy_consumption_mwh": {
+              "type": "mwh"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section": "env_02",
+      "table": {
+        "headers": [
+          "Yrityksen on ilmoitettava arvioidut kasvihuonekaasujen (GHG) bruttopäästönsä CO2  ekvivalenttitonneina (tCO2eq) ottaen huomioon GHG Protocol Corporate Standard (2004 versio) sisältö",
+          "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
+          "202(x) GHG emissions (tCO2e)",
+          "202(x) GHG emissions (tCO2e)"
+        ],
+        "rows": [
+          {
+            "topic": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Scope 3, jos olennainen",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Yhteensä",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
+            "ghg_emissions_202x_tco2e": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
+            "ghg_emissions_202x_tco2e": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section": "env_03",
+      "title": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
+      "table": {
+        "headers": [
+          "Päästöaine / saaste",
+          "Päästöt (kg)",
+          "Päästöjen vapautuminen (ilma, vesi, maaperä)"
+        ],
+        "rows": [
+          {
+            "topic": "example_cadmium_and_compounds",
+            "emissions_kg": {
+              "type": "number"
+            },
+            "emission_release_air_water_soil": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "impurity_type_2",
+            "emissions_kg": {
+              "type": "number"
+            },
+            "emission_release_air_water_soil": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "impurity_type_3",
+            "emissions_kg": {
+              "type": "number"
+            },
+            "emission_release_air_water_soil": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location",
+      "title": "Yrityksen on julkistettava biologisesti herkällä alueella tai sen läheisyydessä omistamiensa, vuokraamiensa tai hallinnoimiensa alueiden lukumäärä ja pinta-ala (hehtaareina).",
+      "table": {
+        "headers": [
+          "Sijainti",
+          "Alue (Hehtaaria)  ",
+          "Biologiselle monimuotoisuudelle herkkä alue",
+          "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
+        ],
+        "rows": [
+          {
+            "topic": "Maa- toimipisteen nimi 1",
+            "area_ha": {
+              "type": "number"
+            },
+            "biodiversity_sensitive_ha": {
+              "type": "number"
+            },
+            "details_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Maa- toimipisteen nimi 2",
+            "area_ha": {
+              "type": "number"
+            },
+            "biodiversity_sensitive_ha": {
+              "type": "number"
+            },
+            "details_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Maa- toimipisteen nimi 3",
+            "area_ha": {
+              "type": "number"
+            },
+            "biodiversity_sensitive_ha": {
+              "type": "number"
+            },
+            "details_ha": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_02",
+      "title": "Yritys voi julkaistaa Maankäyttöön liittyviä mittareita Tyyppi",
+      "table": {
+        "headers": [
+          "Tyyppi",
+          "Edellinen vuosi alue (ha m2)",
+          "Raportointi vuosi alue (ha m2)",
+          "prosenttimuutos alue (ha m2)"
+        ],
+        "rows": [
+          {
+            "topic": "maankäytön kokonaispinta-ala (hehtaareina);",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "raported_year_area_ha": {
+              "type": "number"
+            },
+            "procent_changearea_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "vettä läpäisemättömän alueen kokonaispinta-ala",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "raported_year_area_ha": {
+              "type": "number"
+            },
+            "procent_changearea_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "raported_year_area_ha": {
+              "type": "number"
+            },
+            "procent_changearea_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "raported_year_area_ha": {
+              "type": "number"
+            },
+            "procent_changearea_ha": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_03",
+      "table": {
+        "headers": [
+          "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
+          "Vedenotto (esim.. m3)",
+          "Vedenkulutus (esim. m3) (jos sovellettavissa)"
+        ],
+        "rows": [
+          {
+            "topic": "Kaikki toimipisteet",
+            "water_withdrawal": {
+              "type": "number"
+            },
+            "water_consumption_if_applicable": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Kohteet alueilla, joilla on vesistressiä",
+            "water_withdrawal": {
+              "type": "number"
+            },
+            "water_consumption_if_applicable": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
+            "water_withdrawal": {
+              "type": "number"
+            },
+            "water_consumption_if_applicable": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_04",
+      "topic": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+      "circular_economy_principles": {
+        "type": "text"
+      },
+      "table": {
+        "headers": [
+          "Yrityksen on ilmoitetettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
+          "Syntyneen jätteen kokonaismäärä",
+          "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+          "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+          "Jätteet ohjataan häviteettäväksi"
+        ],
+        "rows": [
+          {
+            "title": "Vaaraton jätteen tyyppi 1",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "Vaaraton jätteen tyyppi 2",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "Vaaraton jäte jne",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "Vaarallinen jätteen tyyppi 1",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "Vaarallinen jäte jne",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_05",
+      "table": {
+        "headers": [
+          "Jos yritys on asettanut kasvihuonekaasupäästöjen vähennystavoitteita, sen on ilmoitettava tavoitteensa scope 1- ja scope 2 -päästöjen absoluuttisina arvoina. 50–53 kohdan mukaisesti ja jos yritys on asettanut scope 3 -vähennystavoitteita, sen on asetettava tavoitteet myös merkittäville scope 3 -päästöille. Siinä säädetään erityisesti:",
+          "Perusvuosi perusvuoden arvo, mittayksikkö",
+          "Tavoitevuosi ja tavoitevuoden arvo, mittayksikkö",
+          "2030",
+          "2050"
+        ],
+        "rows": [
+          {
+            "title": "scope 1 kasvihuonekaasupäästöt",
+            "base_year_value_unit": {
+              "type": "number"
+            },
+            "target_year_value_unit": {
+              "type": "number"
+            },
+            "year_2030": {
+              "type": "number"
+            },
+            "year_2050": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "scope 2 kasvihuonekaasupäästöt",
+            "base_year_value_unit": {
+              "type": "number"
+            },
+            "target_year_value_unit": {
+              "type": "number"
+            },
+            "year_2030": {
+              "type": "number"
+            },
+            "year_2050": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "scope 3 kasvihuonekaasupäästöt (jos olennainen), jota tavoite koske",
+            "base_year_value_unit": {
+              "type": "number"
+            },
+            "target_year_value_unit": {
+              "type": "number"
+            },
+            "year_2030": {
+              "type": "number"
+            },
+            "year_2050": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "luettelo tärkeimmistä toimista, jotka se aikoo toteuttaa tavoitteidensa saavuttamiseksi.",
+            "base_year_value_unit": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "Jos ilmastovaikutuksiltaan merkittävillä aloilla toimiva yritys6 on hyväksynyt siirtymäsuunnitelman ilmastonmuutoksen hillitsemiseksi, se voi antaa siitä tietoja, mukaan lukien selvityksen siitä, miten se edistää kasvihuonekaasupäästöjen vähentämistä.  6'High climate impact sectors are those listed in NACE Sections A to H and Section L as defined in Annex I to Regulation (EC) No 1893/2006'",
+            "base_year_value_unit": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "Jos yritys toimii aloilla, joilla ilmastovaikutukset ovat huomattavat, eikä sillä ole siirtymäsuunnitelmaa ilmastonmuutoksen hillitsemiseksi, sen on ilmoitettava, hyväksyykö se tällaisen siirtymäsuunnitelman ja jos hyväksyy, milloin.",
+            "base_year_value_unit": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_06",
+      "table": {
+        "headers": [
+          "Jos yritys on havainnut ilmastoon liittyviä uhkia ja siirtymätapahtumia, jotka aiheuttavat merkittäviä ilmastoriskejä yritykselle, sen on",
+          "Lyhyt aikaväli: arvo",
+          "Lyhyt aikaväli: prosenttiosuus",
+          "Keskipitkä aikaväli arvo",
+          "Keskipitkä aikaväli prosenttiosuus",
+          "Pitkä aikaväli arvo",
+          "Pitkä aikaväli prosenttiosuus"
+        ],
+        "rows": [
+          {
+            "title": "kuvattava lyhyesti tällaisia ilmastoon liittyviä uhkia ja ilmastoon liittyviä siirtymätapahtumia;",
+            "short_term_value": {
+              "type": "text"
+            },
+            "short_term_percentage": {
+              "type": "text"
+            },
+            "medium_term_value": {
+              "type": "text"
+            },
+            "medium_term_percentage": {
+              "type": "text"
+            },
+            "long_term_value": {
+              "type": "text"
+            },
+            "long_term_percentage": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "ilmoitettava, miten se on arvioinut omaisuutensa, toimintojensa ja arvoketjunsa altistumisen ja herkkyyden näille uhille ja siirtymätapahtumille;",
+            "short_term_value": {
+              "type": "number"
+            },
+            "short_term_percentage": {
+              "type": "number"
+            },
+            "medium_term_value": {
+              "type": "number"
+            },
+            "medium_term_percentage": {
+              "type": "number"
+            },
+            "long_term_value": {
+              "type": "number"
+            },
+            "long_term_percentage": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "julkistettava tunnistettujen ilmastoon liittyvien uhkien ja siirtymätapahtumien aikahorisontti (lyhyt, keskipitkä, pitkä)",
+            "short_term_value": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "ilmoitettava, onko se toteuttanut  toimia ilmastonmuutokseen sopeutumiseksi ilmastoon liittyvien uhkien ja siirtymätapahtumien varalta.",
+            "short_term_value": {
+              "type": "number"
+            },
+            "short_term_percentage": {
+              "type": "number"
+            },
+            "medium_term_value": {
+              "type": "number"
+            },
+            "medium_term_percentage": {
+              "type": "number"
+            },
+            "long_term_value": {
+              "type": "number"
+            },
+            "long_term_percentage": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "Yritys voi julkistaa ilmastoriskien mahdolliset haitalliset vaikutukset, jotka voivat vaikuttaa sen taloudelliseen tulokseen tai liiketoimintaan lyhyellä, keskipitkällä tai pitkällä aikavälillä, ja ilmoittaa, arvioiko se riskit suuriksi, keskisuuriksi vai alhaisiksi.",
+            "short_term_value": {
+              "type": "text"
+            },
+            "short_term_percentage": {
+              "type": "number"
+            },
+            "medium_term_value": {
+              "type": "number"
+            },
+            "medium_term_percentage": {
+              "type": "number"
+            },
+            "long_term_value": {
+              "type": "number"
+            },
+            "long_term_percentage": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+          
+
+
+
 
