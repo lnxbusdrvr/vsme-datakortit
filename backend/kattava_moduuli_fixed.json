@@ -1,5 +1,5 @@
 {
-  "module": "Perusmoduuli",
+  "module": "perusmoduuli",
   "sections": [
     {
       "section_id": "profile",
@@ -13,22 +13,22 @@
         },
         {
           "id": "profile_02",
-          "question": " Jos yritys on jättänyt julkistamatta tietoja, koska niitä pidetään turvallisuusluokiteltuina tai arkaluonteisina tietoina (ks. kappale 19), yrityksen on ilmoitettava julkistamatta jätetyt tiedot.",
+          "question": "Jos yritys on jättänyt julkistamatta tietoja, koska niitä pidetään turvallisuusluokiteltuina tai arkaluonteisina tietoina (ks. kappale 19), yrityksen on ilmoitettava julkistamatta jätetyt tiedot.",
           "type": "text"
         },
         {
           "id": "profile_03",
-          "question": "onko kestävyysraportti laadittu yksittäisenä yrityksenä (eli raportti rajoittuu vain yrityksen tietoihin) vai konsolidoidusti (eli raportti sisältää tietoja yrityksestä ja sen tytäryrityksistä);",
+          "question": "Onko kestävyysraportti laadittu yksittäisenä yrityksenä (eli raportti rajoittuu vain yrityksen tietoihin) vai konsolidoidusti (eli raportti sisältää tietoja yrityksestä ja sen tytäryrityksistä);",
           "type": "text"
         },
         {
           "id": "profile_04",
-          "question": "jos kyseessä on konsolidoitu kestävyysraportti, luettelo raportin kattamista tytäryrityksistä, mukaan lukien niiden rekisteröity osoite4; ja",
+          "question": "Jos kyseessä on konsolidoitu kestävyysraportti, luettelo raportin kattamista tytäryrityksistä, mukaan lukien niiden rekisteröity osoite4; ja",
           "type": "text"
         },
         {
           "id": "profile_05",
-          "question": "yrityksen oikeudellinen muoto;",
+          "question": "Yrityksen oikeudellinen muoto;",
           "type": "text"
         },
         {
@@ -38,27 +38,27 @@
         },
         {
           "id": "profile_07",
-          "question": "taseen loppusumma (euroina); ",
+          "question": "Taseen loppusumma (euroina);",
           "type": "number"
         },
         {
           "id": "profile_08",
-          "question": "liikevaihto (euroina); ",
+          "question": "Liikevaihto (euroina);",
           "type": "number"
         },
         {
           "id": "profile_09",
-          "question": "työntekijöiden lukumäärä henkilöstömääränä tai kokoaikaiseksi muutettuna;",
+          "question": "Työntekijöiden lukumäärä henkilöstömääränä tai kokoaikaiseksi muutettuna;",
           "type": "number"
         },
         {
           "id": "profile_10",
-          "question": "maa, jossa ensisijainen toiminta tapahtuu ja merkittävän omaisuuserän (merkittävien omaisuuserien) sijaintipaikka; ja",
+          "question": "Maa, jossa ensisijainen toiminta tapahtuu ja merkittävän omaisuuserän (merkittävien omaisuuserien) sijaintipaikka; ja",
           "type": "text"
         },
         {
           "id": "profile_11",
-          "question": "omistetun, vuokrattujen tai hallinnoitujen toimipaikkojen maantieteellinen sijainti / koordinaatit",
+          "question": "Omistetun, vuokrattujen tai hallinnoitujen toimipaikkojen maantieteellinen sijainti / koordinaatit",
           "type": "text"
         },
         {
@@ -84,17 +84,17 @@
         },
         {
           "id": "b2_03",
-          "question": "kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;",
+          "question": "Kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;",
           "type": "boolean"
         },
         {
           "id": "b2_04",
-          "question": "kaikki tulevat aloitteet tai tulevaisuuteen suuntautuvat suunnitelmat, joita toteutetaan kestävyyskysymyksissä; ja",
+          "question": "Kaikki tulevat aloitteet tai tulevaisuuteen suuntautuvat suunnitelmat, joita toteutetaan kestävyyskysymyksissä; ja",
           "type": "boolean"
         },
         {
           "id": "b2_05",
-          "question": "tavoitteet, joilla seurataan politiikkojen täytäntöönpanoa  ja edistymistä näiden tavoitteiden saavuttamisessa. (politiikkojen toteutuksen seurantaan liittyvät tavoitteet ja saavutettu edistys)",
+          "question": "Tavoitteet, joilla seurataan politiikkojen täytäntöönpanoa ja edistymistä näiden tavoitteiden saavuttamisessa. (politiikkojen toteutuksen seurantaan liittyvät tavoitteet ja saavutettu edistys)",
           "type": "boolean"
         },
         {
@@ -116,17 +116,17 @@
       "questions": [
         {
           "id": "c1_01",
-          "question": "kuvaus merkittävistä tarjottavien tuotteiden ja/tai palvelujen ryhmistä;",
+          "question": "Kuvaus merkittävistä tarjottavien tuotteiden ja/tai palvelujen ryhmistä;",
           "type": "text"
         },
         {
           "id": "c1_02",
-          "question": "kuvaus merkittävistä markkinoista, joilla yritys toimii (esim. B2B, vähittäiskauppa, tukkukauppa, maat); ",
+          "question": "Kuvaus merkittävistä markkinoista, joilla yritys toimii (esim. B2B, vähittäiskauppa, tukkukauppa, maat);",
           "type": "text"
         },
         {
           "id": "c1_03",
-          "question": "kuvaus tärkeimmistä liikekumppaneista (esim. tärkeimmät toimittajat, asiakkaat, jakelukanavat ja kuluttajat); ja",
+          "question": "Kuvaus tärkeimmistä liikekumppaneista (esim. tärkeimmät toimittajat, asiakkaat, jakelukanavat ja kuluttajat); ja",
           "type": "text"
         },
         {
@@ -148,7 +148,7 @@
         ],
         "rows": [
           {
-            "topic": "Ilmastonmuutos",
+            "topic": "ilmastonmuutos",
             "current_practices": {
               "type": "text"
             },
@@ -160,7 +160,7 @@
             }
           },
           {
-            "topic": "Pilaantuminen",
+            "topic": "pilaantuminen",
             "current_practices": {
               "type": "text"
             },
@@ -172,7 +172,7 @@
             }
           },
           {
-            "topic": "Vesivarat ja merten luonnovarat",
+            "topic": "vesivarat_ja_merten_luonnovarat",
             "current_practices": {
               "type": "text"
             },
@@ -184,7 +184,7 @@
             }
           },
           {
-            "topic": "Biologinen monimuotoisuuus ja ekosysteemit",
+            "topic": "biologinen_monimuotoisuus_ja_ekosysteemit",
             "current_practices": {
               "type": "text"
             },
@@ -196,7 +196,7 @@
             }
           },
           {
-            "topic": "Kiertotalous",
+            "topic": "kiertotalous",
             "current_practices": {
               "type": "text"
             },
@@ -208,7 +208,7 @@
             }
           },
           {
-            "topic": "Oma työvoima",
+            "topic": "oma_tyovoima",
             "current_practices": {
               "type": "text"
             },
@@ -220,7 +220,7 @@
             }
           },
           {
-            "topic": "Arvoketjun työntekijät",
+            "topic": "arvoketjun_tyontekijat",
             "current_practices": {
               "type": "text"
             },
@@ -232,7 +232,7 @@
             }
           },
           {
-            "topic": "Vaikutusten kohteena olevat yhteisöt",
+            "topic": "vaikutusten_kohteena_olevat_yhteisot",
             "current_practices": {
               "type": "text"
             },
@@ -244,7 +244,7 @@
             }
           },
           {
-            "topic": "Kuluttajat ja loppukäyttäjät",
+            "topic": "kuluttajat_ja_loppukayttajat",
             "current_practices": {
               "type": "text"
             },
@@ -256,7 +256,7 @@
             }
           },
           {
-            "topic": "Liiketoiminnan harjottaminen",
+            "topic": "liiketoiminnan_harjottaminen",
             "current_practices": {
               "type": "text"
             },
@@ -268,7 +268,7 @@
             }
           },
           {
-            "topic": "Yritys voi ilmoittaa niiden täytäntöönpanosta vastaavan yrityksen ylimmän tason, jos sellainen on.",
+            "topic": "yritys_voi_ilmoittaa_niiden_taytantoopan_vastaavan_yrityksen_ylimman_tason_jos_sellainen_on",
             "current_practices": {
               "type": "text"
             }
@@ -282,17 +282,17 @@
       "table": {
         "headers": [
           "Yrityksen vaikutukset ilmastoon ilmoittamalla energiankulutuksen ja kasvihuonekaasupäästöt: yrityksen on ilmoitettava energian kokonaiskulutuksensa megawattitunteina (MWh) seuraavan taulukon mukaisesti jaoteltuna, jos se voi saada tarvittavat tiedot tällaisen erittelyn tekemiseksi:",
-          "Uusiutuvan  Energian kulutus (MWh)",
-          "Ei Uusiutuvan Energian kulutus (MWh)",
+          "Uusiutuvan energian kulutus (MWh)",
+          "Ei uusiutuvan energian kulutus (MWh)",
           "Yhteensä 202(x) Energiankulutus (MWh)"
         ],
         "rows": [
           {
-            "topic": "Sähkö (näkyy sähkölaskutuksessa)",
+            "topic": "sahko_naky_sahkolaskutuksessa",
             "renewable_energy_consumption_mwh": {
               "type": "number"
             },
-            "non-renewable_energy_consumption_mwh": {
+            "non_renewable_energy_consumption_mwh": {
               "type": "number"
             },
             "total_energy_consumption_mwh": {
@@ -303,17 +303,17 @@
       }
     },
     {
-      "section": "env_02",
+      "section_id": "env_02",
       "table": {
         "headers": [
-          "Yrityksen on ilmoitettava arvioidut kasvihuonekaasujen (GHG) bruttopäästönsä CO2  ekvivalenttitonneina (tCO2eq) ottaen huomioon GHG Protocol Corporate Standard (2004 versio) sisältö",
-          "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
+          "Yrityksen on ilmoitettava arvioidut kasvihuonekaasujen (GHG) bruttopäästönsä CO2 ekvivalenttitonneina (tCO2eq) ottaen huomioon GHG Protocol Corporate Standard (2004 versio) sisältö",
+          "202(x) kasvihuonekaasupäästöt (GHG) (tCO2e)",
           "202(x) GHG emissions (tCO2e)",
           "202(x) GHG emissions (tCO2e)"
         ],
         "rows": [
           {
-            "topic": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
+            "topic": "scope_1_suorat_paastot_omista_tai_hallinnoiduista_lahteista_tco2eq",
             "ghg_emissions_202x_tco2e": {
               "type": "number"
             },
@@ -325,7 +325,7 @@
             }
           },
           {
-            "topic": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
+            "topic": "scope_2_sijaintiin_perustuvat_epasuorat_eli_ostetun_energian_tuonnista_johtuvat_paastot_tco2eq",
             "ghg_emissions_202x_tco2e": {
               "type": "number"
             },
@@ -337,7 +337,7 @@
             }
           },
           {
-            "topic": "Scope 3, jos olennainen",
+            "topic": "scope_3_jos_olennaista",
             "ghg_emissions_202x_tco2e": {
               "type": "number"
             },
@@ -349,7 +349,7 @@
             }
           },
           {
-            "topic": "Yhteensä",
+            "topic": "yhteensa",
             "ghg_emissions_202x_tco2e": {
               "type": "number"
             },
@@ -361,7 +361,7 @@
             }
           },
           {
-            "topic": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
+            "topic": "kasvihuonekaasuintensiteetti_kasvihuonekaasujen_bruttomaara_liikevaihto_euroina",
             "ghg_emissions_202x_tco2e": {
               "type": "number"
             },
@@ -373,13 +373,13 @@
             }
           },
           {
-            "topic": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
+            "topic": "kuvaa_menetelmaa_jolla_keratyt_tiedot_haetaan_ja_paastokertoimen_lahteet",
             "ghg_emissions_202x_tco2e": {
               "type": "text"
             }
           },
           {
-            "topic": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
+            "topic": "kuvaa_kerattyihin_tietoihin_liittyvat_mahdolliset_epavarmuustekijat",
             "ghg_emissions_202x_tco2e": {
               "type": "text"
             }
@@ -388,7 +388,7 @@
       }
     },
     {
-      "section": "env_03",
+      "section_id": "env_03",
       "title": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
       "table": {
         "headers": [
@@ -433,13 +433,13 @@
       "table": {
         "headers": [
           "Sijainti",
-          "Alue (Hehtaaria)  ",
+          "Alue (hehtaaria)",
           "Biologiselle monimuotoisuudelle herkkä alue",
-          "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
+          "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)"
         ],
         "rows": [
           {
-            "topic": "Maa- toimipisteen nimi 1",
+            "topic": "maa_toimipisteen_nimi_1",
             "area_ha": {
               "type": "number"
             },
@@ -451,7 +451,7 @@
             }
           },
           {
-            "topic": "Maa- toimipisteen nimi 2",
+            "topic": "maa_toimipisteen_nimi_2",
             "area_ha": {
               "type": "number"
             },
@@ -463,7 +463,7 @@
             }
           },
           {
-            "topic": "Maa- toimipisteen nimi 3",
+            "topic": "maa_toimipisteen_nimi_3",
             "area_ha": {
               "type": "number"
             },
@@ -479,60 +479,60 @@
     },
     {
       "section_id": "location_02",
-      "title": "Yritys voi julkaistaa Maankäyttöön liittyviä mittareita Tyyppi",
+      "title": "Yritys voi julkaistaa maankäyttöön liittyviä mittareita tyyppi",
       "table": {
         "headers": [
           "Tyyppi",
-          "Edellinen vuosi alue (ha m2)",
-          "Raportointi vuosi alue (ha m2)",
-          "prosenttimuutos alue (ha m2)"
+          "Edellinen vuosi alue (ha m2)",
+          "Raportointi vuosi alue (ha m2)",
+          "Prosenttimuutos alue (ha m2)"
         ],
         "rows": [
           {
-            "topic": "maankäytön kokonaispinta-ala (hehtaareina);",
+            "topic": "maankayton_kokonaispinta_ala_hehtaareina",
             "last_year_area_ha": {
               "type": "number"
             },
-            "raported_year_area_ha": {
+            "reported_year_area_ha": {
               "type": "number"
             },
-            "procent_changearea_ha": {
+            "percent_change_area_ha": {
               "type": "number"
             }
           },
           {
-            "topic": "vettä läpäisemättömän alueen kokonaispinta-ala",
+            "topic": "vetta_lapaisemattoman_alueen_kokonaispinta_ala",
             "last_year_area_ha": {
               "type": "number"
             },
-            "raported_year_area_ha": {
+            "reported_year_area_ha": {
               "type": "number"
             },
-            "procent_changearea_ha": {
+            "percent_change_area_ha": {
               "type": "number"
             }
           },
           {
-            "topic": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
+            "topic": "luonnonsuojelunsuuntautuneen_alueen_kokonaispinta_ala_toimipaikassa",
             "last_year_area_ha": {
               "type": "number"
             },
-            "raported_year_area_ha": {
+            "reported_year_area_ha": {
               "type": "number"
             },
-            "procent_changearea_ha": {
+            "percent_change_area_ha": {
               "type": "number"
             }
           },
           {
-            "topic": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
+            "topic": "luonnonsuojelunsuuntautuneen_alueen_kokonaispinta_ala_toimipaikan_ulkopuolella",
             "last_year_area_ha": {
               "type": "number"
             },
-            "raported_year_area_ha": {
+            "reported_year_area_ha": {
               "type": "number"
             },
-            "procent_changearea_ha": {
+            "percent_change_area_ha": {
               "type": "number"
             }
           }
@@ -544,12 +544,12 @@
       "table": {
         "headers": [
           "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
-          "Vedenotto (esim.. m3)",
+          "Vedenotto (esim. m3)",
           "Vedenkulutus (esim. m3) (jos sovellettavissa)"
         ],
         "rows": [
           {
-            "topic": "Kaikki toimipisteet",
+            "topic": "kaikki_toimipisteet",
             "water_withdrawal": {
               "type": "number"
             },
@@ -558,7 +558,7 @@
             }
           },
           {
-            "topic": "Kohteet alueilla, joilla on vesistressiä",
+            "topic": "kohteet_alueilla_joilla_on_vesistressia",
             "water_withdrawal": {
               "type": "number"
             },
@@ -567,7 +567,7 @@
             }
           },
           {
-            "topic": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
+            "topic": "jos_yrityksella_on_kaytossa_tuotantoprosesseja_jotka_kuluttavat_merkittavasti_vetta",
             "water_withdrawal": {
               "type": "number"
             },
@@ -586,15 +586,15 @@
       },
       "table": {
         "headers": [
-          "Yrityksen on ilmoitetettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
+          "Yrityksen on ilmoitettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
           "Syntyneen jätteen kokonaismäärä",
-          "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
-          "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
-          "Jätteet ohjataan häviteettäväksi"
+          "Jätteet toimitetaan kierrätykseen tai uudelleenkäyttöön",
+          "Ei pakollinen: Jätteet toimitetaan energiakäyttöön",
+          "Jätteet ohjataan hävitteettäväksi"
         ],
         "rows": [
           {
-            "title": "Vaaraton jätteen tyyppi 1",
+            "title": "vaaraton_jatteen_tyyppi_1",
             "total_waste_generated": {
               "type": "number"
             },
@@ -609,7 +609,7 @@
             }
           },
           {
-            "title": "Vaaraton jätteen tyyppi 2",
+            "title": "vaaraton_jatteen_tyyppi_2",
             "total_waste_generated": {
               "type": "number"
             },
@@ -624,7 +624,7 @@
             }
           },
           {
-            "title": "Vaaraton jäte jne",
+            "title": "vaaraton_jate_jne",
             "total_waste_generated": {
               "type": "number"
             },
@@ -639,7 +639,7 @@
             }
           },
           {
-            "title": "Vaarallinen jätteen tyyppi 1",
+            "title": "vaarallinen_jatteen_tyyppi_1",
             "total_waste_generated": {
               "type": "number"
             },
@@ -654,7 +654,7 @@
             }
           },
           {
-            "title": "Vaarallinen jäte jne",
+            "title": "vaarallinen_jate_jne",
             "total_waste_generated": {
               "type": "number"
             },
@@ -683,7 +683,7 @@
         ],
         "rows": [
           {
-            "title": "scope 1 kasvihuonekaasupäästöt",
+            "title": "scope_1_kasvihuonekaasupaastot",
             "base_year_value_unit": {
               "type": "number"
             },
@@ -698,7 +698,7 @@
             }
           },
           {
-            "title": "scope 2 kasvihuonekaasupäästöt",
+            "title": "scope_2_kasvihuonekaasupaastot",
             "base_year_value_unit": {
               "type": "number"
             },
@@ -713,7 +713,7 @@
             }
           },
           {
-            "title": "scope 3 kasvihuonekaasupäästöt (jos olennainen), jota tavoite koske",
+            "title": "scope_3_kasvihuonekaasupaastot_jos_olennaista_jota_tavoite_koskee",
             "base_year_value_unit": {
               "type": "number"
             },
@@ -728,13 +728,13 @@
             }
           },
           {
-            "title": "luettelo tärkeimmistä toimista, jotka se aikoo toteuttaa tavoitteidensa saavuttamiseksi.",
+            "title": "luettelo_tarkeimmista_toimista_jotka_se_aikoo_toteuttaa_tavoitteidensa_saavuttamiseksi",
             "base_year_value_unit": {
               "type": "text"
             }
           },
           {
-            "title": "Jos ilmastovaikutuksiltaan merkittävillä aloilla toimiva yritys6 on hyväksynyt siirtymäsuunnitelman ilmastonmuutoksen hillitsemiseksi, se voi antaa siitä tietoja, mukaan lukien selvityksen siitä, miten se edistää kasvihuonekaasupäästöjen vähentämistä.  6'High climate impact sectors are those listed in NACE Sections A to H and Section L as defined in Annex I to Regulation (EC) No 1893/2006'",
+            "title": "Jos ilmastovaikutuksiltaan merkittävillä aloilla toimiva yritys on hyväksynyt siirtymäsuunnitelman ilmastonmuutoksen hillitsemiseksi, se voi antaa siitä tietoja, mukaan lukien selvityksen siitä, miten se edistää kasvihuonekaasupäästöjen vähentämistä.",
             "base_year_value_unit": {
               "type": "text"
             }
@@ -762,7 +762,7 @@
         ],
         "rows": [
           {
-            "title": "kuvattava lyhyesti tällaisia ilmastoon liittyviä uhkia ja ilmastoon liittyviä siirtymätapahtumia;",
+            "title": "kuvattava_lyhyesti_tallaisia_ilmastoon_liittyvia_uhkia_ja_ilmastoon_liittyvia_siirtymatapahtumia",
             "short_term_value": {
               "type": "text"
             },
@@ -783,7 +783,7 @@
             }
           },
           {
-            "title": "ilmoitettava, miten se on arvioinut omaisuutensa, toimintojensa ja arvoketjunsa altistumisen ja herkkyyden näille uhille ja siirtymätapahtumille;",
+            "title": "ilmoitettava_miten_se_on_arvioinut_omaisuutensa_toimintojensa_ja_arvoketjunsa_altistumisen_ja_herkkyyden_naille_uhille_ja_siirtymatapahtumille",
             "short_term_value": {
               "type": "number"
             },
@@ -804,13 +804,13 @@
             }
           },
           {
-            "title": "julkistettava tunnistettujen ilmastoon liittyvien uhkien ja siirtymätapahtumien aikahorisontti (lyhyt, keskipitkä, pitkä)",
+            "title": "julkistettava_tunnistettujen_ilmastoon_liittyvien_uhkien_ja_siirtymatapahtumien_aikahorisontti_lyhyt_keskipitka_pitka",
             "short_term_value": {
               "type": "text"
             }
           },
           {
-            "title": "ilmoitettava, onko se toteuttanut  toimia ilmastonmuutokseen sopeutumiseksi ilmastoon liittyvien uhkien ja siirtymätapahtumien varalta.",
+            "title": "ilmoitettava_onko_se_toteuttanut_toimia_ilmastonmuutokseen_sopeutumiseksi_ilmastoon_liittyvien_uhkien_ja_siirtymatapahtumien_varalta",
             "short_term_value": {
               "type": "number"
             },
@@ -831,7 +831,7 @@
             }
           },
           {
-            "title": "Yritys voi julkistaa ilmastoriskien mahdolliset haitalliset vaikutukset, jotka voivat vaikuttaa sen taloudelliseen tulokseen tai liiketoimintaan lyhyellä, keskipitkällä tai pitkällä aikavälillä, ja ilmoittaa, arvioiko se riskit suuriksi, keskisuuriksi vai alhaisiksi.",
+            "title": "yritys_voi_julkistaa_ilmastoriskien_mahdolliset_haitalliset_vaikutukset_jotka_voivat_vaikuttaa_sen_taloudelliseen_tulokseen_tai_liiketoimintaan_lyhyella_keskipitkalla_tai_pitkalla_aikavalilla_ja_ilmoittaa_arvioiko_se_riskit_suuriksi_keskisuuriksi_vai_alhaisiksi",
             "short_term_value": {
               "type": "text"
             },
@@ -856,29 +856,29 @@
     },
     {
       "section_id": "social_responsibility",
-      "title": "SOSIAALINEN VASTUU",
+      "title": "sosiaalinen_vastuu",
       "header": "Yrityksen on ilmoitettava työntekijöiden lukumäärä henkilöstömääränä tai kokopäiväiseksi muutettuna seuraavien mittareiden osalta:",
       "contract_type": {
         "headers": [
           "Työsopimuksen tyyppi",
-          "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
+          "Työntekijöiden lukumäärä (henkilöstömäärä tai kokoaikaiseksi muutettuna)"
         ],
         "rows": [
           {
-            "title": "Määräaikainen sopimus",
-            "number_of_empolyees": {
+            "title": "maaraikainen_sopimus",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Vakituinen / toistaiseksi voimassa oleva sopimus",
-            "number_of_empolyees": {
+            "title": "vakituinen_toistaiseksi_voimassa_oleva_sopimus",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Henkilöstö / Työntekijät yhteensä",
-            "number_of_empolyees": {
+            "title": "henkilosto_tyontekijat_yhteensa",
+            "number_of_employees": {
               "type": "number"
             }
           }
@@ -887,36 +887,36 @@
       "sex": {
         "headers": [
           "Sukupuoli",
-          "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
+          "Työntekijöiden lukumäärä (henkilöstömäärä tai kokoaikaiseksi muutettuna)"
         ],
         "rows": [
           {
-            "title": "Mies",
-            "number_of_empolyees": {
+            "title": "mies",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Nainen",
-            "number_of_empolyees": {
+            "title": "nainen",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Muu sukupuoli",
-            "number_of_empolyees": {
+            "title": "muu_sukupuoli",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Ei raportoitu",
-            "number_of_empolyees": {
+            "title": "ei_raportoitu",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Henkilöstö / Työntekijät yhteensä",
-            "number_of_empolyees": {
+            "title": "henkilosto_tyontekijat_yhteensa",
+            "number_of_employees": {
               "type": "number"
             }
           }
@@ -925,30 +925,30 @@
       "country": {
         "headers": [
           "Maa (jos sovellettavissa)",
-          "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
+          "Työntekijöiden lukumäärä (henkilöstömäärä tai kokoaikaiseksi muutettuna)"
         ],
         "rows": [
           {
-            "title": "Maa A",
-            "number_of_empolyees": {
+            "title": "maa_a",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Maa B",
-            "number_of_empolyees": {
+            "title": "maa_b",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Henkilöstö / Työntekijät yhteensä",
-            "number_of_empolyees": {
+            "title": "henkilosto_tyontekijat_yhteensa",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, sen on ilmoitettava työntekijöiden vaihtuvuus raportointikaudelta.",
-            "number_of_empolyees": {
+            "title": "jos_yrityksen_palveluksessa_on_vahintaan_50_tyontekijaa_sen_on_ilmoitettava_tyontekijoiden_vaihtuvuus_raportointikaudelta",
+            "number_of_employees": {
               "type": "number"
             }
           }
@@ -958,22 +958,22 @@
         "headers": [
           "Yrityksen on julkistettava työntekijöistään seuraavat tiedot:"
         ],
-        "row": [
+        "rows": [
           {
-            "title": "kirjattavien työtapaturmien lukumäärä ja osuus",
-            "number_of_empolyees": {
+            "title": "kirjattavien_tyotapaturmien_lukumaarä_ja_osuus",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Työperäisistä vammoista ja työperäisistä terveysongelmista johtuvien kuolemantapausten lukumäärä.",
-            "number_of_empolyees": {
+            "title": "tyoperaisista_vammoista_ja_tyoperaisista_terveysongelmista_johtuvien_kuolemantapausten_lukumaarä",
+            "number_of_employees": {
               "type": "number"
             }
           },
           {
-            "title": "Kolmen viime vuoden aikana terveys- ja turvallisuuskoulutukseen osallistuneiden työntekijöiden määrä.",
-            "number_of_empolyees": {
+            "title": "kolmen_viime_vuoden_aikana_terveys_ja_turvallisuuskoulutukseen_osallistuneiden_tyontekijoiden_maara",
+            "number_of_employees": {
               "type": "number"
             }
           }
@@ -982,14 +982,14 @@
       "required_salary": {
         "rows": [
           {
-            "title": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, se voi ilmoittaa naisten ja miesten välisen suhteen johtotasolla raportointikaudelta.",
-            "number_of_empolyees": {
+            "title": "jos_yrityksen_palveluksessa_on_vahintaan_50_tyontekijaa_se_voi_ilmoittaa_naisten_ja_miesten_valisen_suhteen_johtotasolla_raportointikaudelta",
+            "number_of_employees": {
               "type": "ratio"
             }
           },
           {
-            "title": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, se voi ilmoittaa niiden itsenäisten ammatinharjoittajien lukumäärän, joilla ei ole henkilöstöä ja jotka työskentelevät yksinomaan yrityksen palveluksessa, sekä sellaisten yritysten tarjoamien vuokratyöntekijöiden lukumäärän, jotka pääasiallisesti harjoittavat \"palkkatyötä\".",
-            "number_of_empolyees": {
+            "title": "jos_yrityksen_palveluksessa_on_vahintaan_50_tyontekijaa_se_voi_ilmoittaa_niiden_itsenaisten_amatinharjoittajien_lukumaaran_joilla_ei_ole_henkilostoaja_joita_tyoskelevat_yksinomaan_yrityksen_palveluksessa",
+            "number_of_employees": {
               "type": "ratio"
             }
           }
@@ -1001,33 +1001,33 @@
           "type": "boolean",
           "follow_up_type_if_true": [
             {
-              "title": "Lapsityövoima",
+              "title": "lapsityovoima",
               "type": "boolean"
             },
             {
-              "title": "Pakkotyö",
+              "title": "pakkotyo",
               "type": "boolean"
             },
             {
-              "title": "Ihmiskauppa",
+              "title": "ihmiskauppa",
               "type": "boolean"
             },
             {
-              "title": "Syrjintä",
+              "title": "syrjinta",
               "type": "boolean"
             },
             {
-              "title": "Tapahtumien ehkäisy",
+              "title": "tapahtumien_ehkaisy",
               "type": "boolean"
             },
             {
-              "title": "Muuta?",
+              "title": "muuta",
               "type": "boolean",
               "follow_up_type_if_true": "text",
-              "follow_up_field": "Täsmennä"
+              "follow_up_field": "tasmanna"
             },
             {
-              "title": "Onko yrityksellä valitusten käsittelymekanismi omaa työvoimaansa varten?",
+              "title": "onko_yrityksella_valitusten_kasittelymekanismi_omaa_tyovoimaansa_varten",
               "type": "boolean"
             }
           ]
@@ -1035,39 +1035,39 @@
       },
       "confirmed_incidents_in_workforce": {
         "header": "Yrityksen on julkistettava vastaus seuraaviin kysymyksiin:",
-        "title": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät  :",
+        "title": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät:",
         "rows": [
           {
-            "title": "Lapsityövoima",
+            "title": "lapsityovoima",
             "type": "boolean"
           },
           {
-            "title": "Pakkotyö",
+            "title": "pakkotyo",
             "type": "boolean"
           },
           {
-            "title": "Ihmiskauppa",
+            "title": "ihmiskauppa",
             "type": "boolean"
           },
           {
-            "title": "Syrjintä",
+            "title": "syrjinta",
             "type": "boolean"
           },
           {
-            "title": "Muuta?",
+            "title": "muuta",
             "type": "boolean",
             "follow_up_type_if_true": "text",
-            "follow_up_field": "Täsmennä"
+            "follow_up_field": "tasmanna"
           },
           {
-            "title": "Jos vastasitte myöntävästi, yritys voi kuvailla toimia, joihin on ryhdytty edellä kuvattujen tapausten ratkaisemiseksi.",
+            "title": "jos_vastasitte_myontevasti_yritys_voi_kuvailla_toimia_joihin_on_ryhdytty_edella_kuvattujen_tapausten_ratkaisemiseksi",
             "type": "text"
           },
           {
-            "title": "Onko yrityksen tiedossa vahvistettuja tapauksia, jotka koskevat arvoketjun työntekijöitä, asianomaisia yhteisöjä, kuluttajia ja loppukäyttäjiä? Jos vastasitte myöntävästi, täsmentäkää.",
+            "title": "onko_yrityksen_tiedossa_vahvistettuja_tapauksia_jotka_koskevat_arvoketjun_tyontekijoita_asianomaisia_yhteisoja_kuluttajia_ja_loppukayttajia_jos_vastasitte_myontevasti_tasmantakaa",
             "type": "boolean",
             "follow_up_type_if_true": "text",
-            "follow_up_field": "Täsmennä"
+            "follow_up_field": "tasmanna"
           }
         ]
       },
@@ -1078,23 +1078,23 @@
         ],
         "rows": [
           {
-            "title": "Prosenttiosuus työntekijöistä, joilla on oikeus perhevapaaseen. Miehet.",
+            "title": "prosenttiosuus_tyontekijoista_joilla_on_oikeus_perhevapaaseen_miehet",
             "type": "number"
           },
           {
-            "title": "Prosenttiosuus työntekijöistä, joilla on oikeus perhevapaaseen. Naiset.",
+            "title": "prosenttiosuus_tyontekijoista_joilla_on_oikeus_perhevapaaseen_naiset",
             "type": "number"
           },
           {
-            "title": "Prosenttiosuus työntekijöistä, jotka ovat käyttäneet perhevapaata. Miehet.",
+            "title": "prosenttiosuus_tyontekijoista_jotka_ovat_kayttaneet_perhevapaata_miehet",
             "type": "number"
           },
           {
-            "title": "Prosenttiosuus työntekijöistä, jotka ovat käyttäneet perhevapaata. Naiset.",
+            "title": "prosenttiosuus_tyontekijoista_jotka_ovat_kayttaneet_perhevapaata_naiset",
             "type": "number"
           },
           {
-            "title": "Kuvaile houkuttelevat perhevapaajärjestelyt sekä miehille että naisille",
+            "title": "kuvaile_houkuttelevat_perhevapaajarjestelyt_seka_miehille_etta_naisille",
             "type": "text"
           }
         ]
@@ -1102,7 +1102,7 @@
     },
     {
       "section_id": "board_of_directions",
-      "title": "HALLITUS",
+      "title": "hallitus",
       "tables": {
         "corruption": [
           {
@@ -1119,43 +1119,43 @@
             "currency": "EUR"
           }
         ],
-        "industry_income_reporting": [ 
-          {       
+        "industry_income_reporting": [
+          {
             "title": "Jos yritys toimii yhdellä tai useammalla seuraavista aloista, sen on ilmoitettava asiaan liittyvät tulonsa kyseiseltä alalta tai aloilta:",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
           },
-          {       
-            "title": "kiistanalaiset aseet (jalkaväkimiinat, rypäleammukset, kemialliset aseet ja biologiset aseet);",
+          {
+            "title": "Kiistanalaiset aseet (jalkaväkimiinat, rypäleammukset, kemialliset aseet ja biologiset aseet);",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
           },
-          {       
-            "title": "tupakan viljely ja tuotanto;",
+          {
+            "title": "Tupakan viljely ja tuotanto;",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
           },
-          {       
-            "title": "fossiilisten polttoaineiden (hiili, öljy ja kaasu) ala (eli yritys saa tuloja Euroopan parlamentin ja neuvoston asetuksen (EU) 2018/1999 17 2 artiklan 62 alakohdassa määriteltyjen fossiilisten polttoaineiden etsinnästä, kaivostoiminnasta, talteenotosta, tuotannosta, jalostuksesta, varastoinnista, jalostuksesta tai jakelusta, mukaan lukien kuljetus, varastointi ja kauppa), mukaan lukien hiilestä saatavien tulojen erittely,  öljy ja kaasu; tai",
+          {
+            "title": "Fossiilisten polttoaineiden (hiili, öljy ja kaasu) ala (eli yritys saa tuloja Euroopan parlamentin ja neuvoston asetuksen (EU) 2018/1999 17 2 artiklan 62 alakohdassa määriteltyjen fossiilisten polttoaineiden etsinnästä, kaivostoiminnasta, talteenotosta, tuotannosta, jalostuksesta, varastoinnista, jalostuksesta tai jakelusta, mukaan lukien kuljetus, varastointi ja kauppa), mukaan lukien hiilestä saatavien tulojen erittely, öljy ja kaasu; tai",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
           },
-          {       
-            "title": "kemikaalien tuotanto, jos yritys valmistaa torjunta-aineita ja muita maatalouskemikaaleja.",
+          {
+            "title": "Kemikaalien tuotanto, jos yritys valmistaa torjunta-aineita ja muita maatalouskemikaaleja.",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
           },
-          {       
+          {
             "title": "Yrityksen on ilmoitettava, onko se jätetty sellaisten EU:n viitevertailuarvojen ulkopuolelle, jotka on yhdenmukaistettu Pariisin sopimuksen kanssa ohjeiden kohdassa 241 kuvatulla tavalla.",
             "type": "boolean"
           }
@@ -1170,3 +1170,4 @@
     }
   ]
 }
+
