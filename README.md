@@ -19,5 +19,6 @@
 | 04.07   | 0,5  | Refactor perusmoduuli json-data |
 | 06.07   | 0,5  | Add some json-data from kattava moduuli |
 | 12.07   | 3,75 | Add some more json-data from kattava moduuli |
-| Total   | 17,25 |                                                                                          |
+| 12.07   | 3    | Add rest of json-data from kattava moduuli |
+| Total   | 20,25 |                                                                                          |
 
