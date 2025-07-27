@@ -1125,35 +1125,35 @@
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
           },
           {
             "title": "Kiistanalaiset aseet (jalkaväkimiinat, rypäleammukset, kemialliset aseet ja biologiset aseet);",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
           },
           {
             "title": "Tupakan viljely ja tuotanto;",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
           },
           {
             "title": "Fossiilisten polttoaineiden (hiili, öljy ja kaasu) ala (eli yritys saa tuloja Euroopan parlamentin ja neuvoston asetuksen (EU) 2018/1999 17 2 artiklan 62 alakohdassa määriteltyjen fossiilisten polttoaineiden etsinnästä, kaivostoiminnasta, talteenotosta, tuotannosta, jalostuksesta, varastoinnista, jalostuksesta tai jakelusta, mukaan lukien kuljetus, varastointi ja kauppa), mukaan lukien hiilestä saatavien tulojen erittely, öljy ja kaasu; tai",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
           },
           {
             "title": "Kemikaalien tuotanto, jos yritys valmistaa torjunta-aineita ja muita maatalouskemikaaleja.",
             "type": "boolean",
             "follow_up_type_if_true": "number",
             "currency": "EUR",
-            "follow_up_field": "jos_kyla_ilmoita_asiaan_liittyvat_tulot"
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
           },
           {
             "title": "Yrityksen on ilmoitettava, onko se jätetty sellaisten EU:n viitevertailuarvojen ulkopuolelle, jotka on yhdenmukaistettu Pariisin sopimuksen kanssa ohjeiden kohdassa 241 kuvatulla tavalla.",
