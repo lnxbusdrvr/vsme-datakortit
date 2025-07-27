@@ -1,18 +1,18 @@
 //const jwt = require('jsonwebtoken')
 const router = require('express').Router()
-const Question = require('../models/question')
+const { InclusiveModule } = require('../models/questions')
 //const User = require('../models/user')
 //const userExtractor = require('../utils/middleware').userExtractor
 
 router.get('/', async (request, response) => {
-  const questions = await Question.find({})
+  const inclusiveQs = await InclusiveModule.find({})
 
     /*
-  const questions = await Question
+  const basicQs = await BasicModule
     .find({}).populate('user', { username: 1, name: 1 })
     */
 
-  response.json(questions)
+  response.json(inclusiveQs)
 })
 
   /*
