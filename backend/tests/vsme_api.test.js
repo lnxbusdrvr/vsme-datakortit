@@ -5,9 +5,16 @@ const app = require('../app')
 
 const api = supertest(app)
 
-test('Questions are returned as json', async () => {
+test('Basic questions are returned as json', async () => {
   await api
-    .get('/api/questions')
+    .get('/api/basic')
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+})
+
+test('Inclusive questions are returned as json', async () => {
+  await api
+    .get('/api/inclusive')
     .expect(200)
     .expect('Content-Type', /application\/json/)
 })

@@ -21,5 +21,6 @@
 | 12.07   | 3,75 | Add some more json-data from kattava moduuli |
 | 12.07   | 3    | Add rest of json-data from kattava moduuli |
 | 27.07   | 3,25 | fix minor datafix. Add models, controllers to questions and user collection on backend |
-| Total   | 22,5 |                                                                                          |
+| 23.08   | 1    | Make tests |
+| Total   | 23,5 |                                                                                          |
 
