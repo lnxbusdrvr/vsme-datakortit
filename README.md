@@ -23,5 +23,6 @@
 | 27.07   | 3,25 | fix minor datafix. Add models, controllers to questions and user collection on backend |
 | 23.08   | 1    | Make tests |
 | 24.08   | 1,5  | Make all user tests |
-| Total   | 25   |                                                                                          |
+| 02.09   | 1,5  | Make userController |
+| Total   | 26,5 |                                                                                          |
 
