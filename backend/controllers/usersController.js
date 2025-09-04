@@ -1,13 +1,27 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
+const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH
+
 
 const createUser = async (req, res) => {
-  const { username, name, password, role } = req.body
+  const {
+    name,
+    companyName,
+    email,
+    password,
+    phone,
+    address,
+    postalCode,
+    city,
+    legalFormOfCompany,
+    businessIdentityCode,
+    role
+  } = req.body
 
-  if ( !username || !password )
+  if ( !email|| !password )
     return res.status(400).json({ error: 'username or password is missing' })
 
-  if ( password.length < process.env.PASSWD_LENGTH )
+  if ( password.length < PASSWD_LEN )
     return res.status(400).json({ error: 'password is too short' })
 
   const saltRound = 10
@@ -15,9 +29,16 @@ const createUser = async (req, res) => {
 
   const user = new User(
     {
-      username,
       name,
+      companyName,
+      email,
       passwordHash,
+      phone,
+      address,
+      postalCode,
+      city,
+      legalFormOfCompany,
+      businessIdentityCode,
       role
     }
   )
@@ -49,9 +70,9 @@ const getUserById = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const {
+    newName,
     currentPassword,
     newPassword,
-    newName,
     newAddress,
     newLegalFormOfCompany,
     newBusinessIdentityCode
@@ -66,13 +87,13 @@ const updateUser = async (req, res) => {
     return res.status(403).json({ error: 'permission denied' })
 
   if ( newPassword) {
-    if ( newPassword.length < process.env.PASSWD_LENGTH )
+    if ( newPassword.length < PASSWD_LEN )
       return res.status(400).json({ error: 'new password is too short' })
 
     const passwordIsCorrect = await bcrypt
       .compare(
         currentPassword,
-        userToYoUpdate.passwordHash
+        userToUpdate.passwordHash
       )
     if ( !passwordIsCorrect)
       return res.status(400).json({ error: 'invalid password' })
@@ -86,12 +107,12 @@ const updateUser = async (req, res) => {
 
   // if new data is given
   if (newName) userToUpdate.name = newName
-  if (newAddress) userToUpdate = newAddress
+  if (newAddress) userToUpdate.newAddress = newAddress
   if (newLegalFormOfCompany) userToUpdate.legalFormOfCompany = newLegalFormOfCompany
   if (newBusinessIdentityCode) userToUpdate.businessIdentityCode = newBusinessIdentityCode
 
   const updatedUser = await userToUpdate.save()
-  res.json(updateUser)
+  res.json(updatedUser)
 }
 
 const deleteUser = async (req, res) => {

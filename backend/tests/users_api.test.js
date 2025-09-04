@@ -6,6 +6,7 @@ const api = supertest(app)
 const helper = require('./test_helper')
 const assert = require('assert')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const User = require('../models/user')
 
@@ -16,9 +17,17 @@ describe('users', () => {
 
   test('New user can be added', async () => {
     const newUser = {
-      username: "newuser",
-      name: "New User",
-      password: "password"
+      name: 'New User',
+      companyName: 'Vilen yritys ay',
+      email: 'newuser@example.com',
+      password: 'password',
+      phone: '012345678',
+      address: 'Manhauseninkati 8',
+      postalCode: '00100',
+      city: 'Helsinki',
+      legalFormOfCompany: 'avoin yhtiö',
+      businessIdentityCode: '1234567-9',
+      role: 'admin',
     }
 
     const usersAtStart = await helper.usersInDb()
@@ -36,7 +45,7 @@ describe('users', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length + 1)
   })
 
-  test('New user add without giving username will fail', async () => {
+  test('New user add without giving email will fail', async () => {
     const newUser = {
       name: "New User",
       password: "password"
@@ -52,12 +61,13 @@ describe('users', () => {
     const usersAtEnd = await helper.usersInDb()
 
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+    assert.strictEqual(result.body.error, 'username or password is missing')
   })
 
   test('New user add without giving password will fail', async () => {
     const newUser = {
-      username: "newuser",
-      name: "New User"
+      name: "New User",
+      email: "newuser@example.com"
     }
 
     const usersAtStart = await helper.usersInDb()
@@ -69,13 +79,13 @@ describe('users', () => {
 
     const usersAtEnd = await helper.usersInDb()
 
-    assert.strictEqual(result.body.error, 'password missing or too short')
+    assert.strictEqual(result.body.error, 'username or password is missing')
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
   test('Adding existing username will fail' , async () => {
     const newUser = {
-      username: "newuser",
+      email: "newuser@example.com",
       name: "New User",
       password: "password"
     }
@@ -96,16 +106,16 @@ describe('users', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test('New user can be found by id', async () => {
+  test('User can be found by id', async () => {
 
     const usersAtStart = await helper.usersInDb()
     const user = usersAtStart[0]
 
     const response = await api
-      .get(`/api/users:${user.id}`)
+      .get(`/api/users/${user.id}`)
       .expect(201)
 
-    const userFound= respo
+    const userFound = response.body
 
     assert.strictEqual(response.body.username, user.username)
     assert.strictEqual(response.body.name, user.name)
@@ -147,7 +157,7 @@ describe('users', () => {
       const usersAtStart = await helper.usersInDb()
       const user = usersAtStart[0]
 
-      const tooShortPasswd = 's'
+      const tooShortPasswd = 'yy'
       const response = await api
         .patch(`/api/users/${user.id}`)
         .send({ currentPassword, newPassword: tooShortPasswd })
@@ -185,12 +195,15 @@ describe('users', () => {
       const user = usersAtStart[0]
       const newName = 'Matti Meikäläinen'
       const newAddress = 'Mannerheimintie 42'
-      const newLegalFormOfCompany = 'Avoin yhtiö'
+      const newPhone = '0401234567'
+      const newPostalCode = '00100'
+      const newCity = 'Helsinki'
+      const newLegalFormOfCompany = 'avoin yhtiö'
       const newBusinessIdentityCode = '1234567-8'
 
       await api
         .patch(`/api/users/${user.id}`)
-        .send({ currentPassword, newName, newAddress, newLegalFormOfCompany, newBusinessIdentityCode })
+        .send({ newName, currentPassword, newAddress, newAddress, newPhone, newPostalCode, newCity, newLegalFormOfCompany, newBusinessIdentityCode })
         .expect(200)
         .expect('Content-Type', /application\/json/)
 
