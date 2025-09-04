@@ -24,5 +24,6 @@
 | 23.08   | 1    | Make tests |
 | 24.08   | 1,5  | Make all user tests |
 | 02.09   | 1,5  | Make userController |
-| Total   | 26,5 |                                                                                          |
+| 04.09   | 3,5  | made few user-tests to work |
+| Total   | 30   |                                                                                          |
 

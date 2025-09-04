@@ -1,16 +1,57 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
 
 const userSchema = new mongoose.Schema({
-  username: {
+  name: {
+    type: String,
+    required: true
+  },
+  companyName: {
+    type: String,
+    required: true
+  },
+  email: {
     type: String,
     required: true,
     unique: true,
-    minlength: 3
+    validate: {
+      validator: validator.isEmail,
+      message: `{VALUE} is not a valid email address.`
+    }
   },
   passwordHash: {
     type: String,
     required: true
+  },
+  phone: {
+    type: String,
+    required: false
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  postalCode: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  legalFormOfCompany: {
+    type: String,
+    required: true,
+    enum: ['toiminimi', 'osakeyhtiö', 'osuuskunta', 'avoin yhtiö', 'kommandiittiyhtiö'],
+    default: 'osakeyhtiö'
+  },
+  businessIdentityCode: {
+    type: String,
+    required: true,
+    unique: true,
+    // String match to this regex
+    match: [/^\d{7}-\d{1}$/, 'Anna kelvollinen Y-tunnus (esim. 1234567-8).']
   },
   role: {
     type: String,
@@ -49,7 +90,7 @@ userSchema.post('save', function(error, doc, next) {
 
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.tostring()
+    returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
     delete returnedObject.__v
     delete returnedObject.passwordHash
