@@ -25,5 +25,6 @@
 | 24.08   | 1,5  | Make all user tests |
 | 02.09   | 1,5  | Make userController |
 | 04.09   | 3,5  | made few user-tests to work |
-| Total   | 30   |                                                                                          |
+| 12.09   | 0,5  | Tried quickly to pass tests, but failed. Try again tommorrow |
+| Total   | 30,5 |                                                                                          |
 
