@@ -16,33 +16,8 @@ describe('users', () => {
   })
 
   test('New user can be added', async () => {
-    const newUser = {
-      name: 'New User',
-      companyName: 'Vilen yritys ay',
-      email: 'newuser@example.com',
-      password: 'password',
-      phone: '012345678',
-      address: 'Manhauseninkati 8',
-      postalCode: '00100',
-      city: 'Helsinki',
-      legalFormOfCompany: 'avoin yhtiö',
-      businessIdentityCode: '1234567-9',
-      role: 'admin',
-    }
-
-    const usersAtStart = await helper.usersInDb()
-
-    const response = await api
-      .post('/api/users')
-      .send(newUser)
-      .expect(201)
-
-    assert.strictEqual(response.body.username, newUser.username)
-    assert.strictEqual(response.body.name, newUser.name)
-
-    const usersAtEnd = await helper.usersInDb()
-
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length + 1)
+    const { response } = await helper.createUser()
+    assert.strictEqual(response.status, 201)
   })
 
   test('New user add without giving email will fail', async () => {
@@ -61,7 +36,7 @@ describe('users', () => {
     const usersAtEnd = await helper.usersInDb()
 
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-    assert.strictEqual(result.body.error, 'username or password is missing')
+    assert.strictEqual(result.body.error, 'email or password is missing')
   })
 
   test('New user add without giving password will fail', async () => {
@@ -79,63 +54,90 @@ describe('users', () => {
 
     const usersAtEnd = await helper.usersInDb()
 
-    assert.strictEqual(result.body.error, 'username or password is missing')
+    assert.strictEqual(result.body.error, 'email or password is missing')
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test('Adding existing username will fail' , async () => {
-    const newUser = {
-      email: "newuser@example.com",
-      name: "New User",
-      password: "password"
-    }
-  
-    await api
-      .post('/api/users')
-      .send(newUser)
+  test('Adding existing email will fail' , async () => {
+    const { response } = await helper.createUser()
+    assert.strictEqual(response.status, 201)
   
     const usersAtStart = await helper.usersInDb()
 
-    await api
+    const duplicatedUser = {
+      name: 'New User',
+      companyName: 'Vilen yritys ay',
+      email: 'newuser@example.com',
+      password: 'password',
+      phone: '012345678',
+      address: 'Fabianinkatu 33',
+      postalCode: '00100',
+      city: 'Helsinki',
+      legalFormOfCompany: 'Avoin yhtiö',
+      businessIdentityCode: '1234567-9',
+      role: 'admin'
+    }
+
+    const duplicateUserRes =await api
       .post('/api/users')
-      .send(newUser)
+      .send(duplicatedUser)
       .expect(400)
   
+    assert.containsEqual(duplicateUserRes.body.error, 'is in use')
     const usersAtEnd = await helper.usersInDb()
   
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test('User can be found by id', async () => {
-
-    const usersAtStart = await helper.usersInDb()
-    const user = usersAtStart[0]
-
-    const response = await api
-      .get(`/api/users/${user.id}`)
-      .expect(201)
-
-    const userFound = response.body
-
-    assert.strictEqual(response.body.username, user.username)
-    assert.strictEqual(response.body.name, user.name)
-
-    const usersAtEnd = await helper.usersInDb()
-
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-  })
-
-  describe('Modify password and userdata', () => {
+  describe('Modify email and password', () => {
     const currentPassword = 'lIT#alO0bkjrRN';
     const newPasswd = 'asDkfHj9%g9#lu'
+    let token;
+    let testUser
 
     beforeEach(async () => {
       await User.deleteMany({});
 
       const passwordHash = await bcrypt.hash(currentPassword, 10);
-      const user = new User({ username: 'root', passwordHash })
+      const user = new User(
+        {
+          name: 'root',
+          companyName: 'Company Ay',
+          email: 'lnxbusdrvr@gmail.com',
+          passwordHash,
+          address: 'Fabianinkatu 33',
+          postalCode: '00100',
+          city: 'Helsinki',
+          legalFormOfCompany: 'Avoin yhtiö',
+          businessIdentityCode: '1234567-9',
+          role: 'viewer',
+        })
 
       await user.save()
+
+      const response = await api
+        .post('/api/users')
+        .send(newUser)
+        .expect(201)
+
+
+    })
+
+    test('User can be found by id', async () => {
+      const usersAtStart = await helper.usersInDb()
+      const user = usersAtStart[0]
+
+      const response = await api
+        .get(`/api/users/${user.body.id}`)
+        .expect(200)
+
+      const userFound = response.body
+
+      assert.strictEqual(response.body.email, user.email)
+      assert.strictEqual(response.body.name, user.name)
+
+      const usersAtEnd = await helper.usersInDb()
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length)
     })
 
     test('Succesfully change password', async () => {
@@ -176,7 +178,7 @@ describe('users', () => {
         .send({ currentPassword: incorrectOldPasswd, newPassword })
         .expect(404)
 
-      assert.strictEqual(response.body.error, 'Password or username incorrect' )
+      assert.strictEqual(response.body.error, 'Password or email incorrect' )
     })
 
     test('fails with given new password as current password', async () => {
