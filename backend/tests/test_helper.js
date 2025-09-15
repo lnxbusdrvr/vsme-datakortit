@@ -1,5 +1,8 @@
 const { BasicModule, InclusiveModule } = require('../models/questions')
 const User = require('../models/user')
+const supertest = require('supertest')
+const app = require('../app')
+const api = supertest(app)
 
 const initialBasicModules = [
   {
@@ -79,11 +82,38 @@ usersInDb = async () => {
   return users.map(u => u.toJSON())
 }
 
+createUser = async () => {
+  const newUser = {
+    name: 'New User',
+    companyName: 'Vilen yritys ay',
+    email: 'newuser@example.com',
+    password: 'password',
+    phone: '012345678',
+    address: 'Fabianinkatu 33',
+    postalCode: '00100',
+    city: 'Helsinki',
+    legalFormOfCompany: 'Avoin yhtiö',
+    businessIdentityCode: '1234567-9',
+    role: 'admin'
+  }
+
+  const usersAtStart = await usersInDb()
+
+  const response = await api
+    .post('/api/users')
+    .send(newUser)
+    .expect(201)
+
+  const usersAtEnd = await usersInDb()
+  return { usersAtStart, usersAtEnd, response }
+}
+
 module.exports = {
   initialBasicModules,
   initialInclusiveModule, 
   basicModuleInDb,
   inclusiveModuleInDb,
-  usersInDb
+  usersInDb,
+  createUser
 }
 

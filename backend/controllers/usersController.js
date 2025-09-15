@@ -19,7 +19,7 @@ const createUser = async (req, res) => {
   } = req.body
 
   if ( !email|| !password )
-    return res.status(400).json({ error: 'username or password is missing' })
+    return res.status(400).json({ error: 'email or password is missing' })
 
   if ( password.length < PASSWD_LEN )
     return res.status(400).json({ error: 'password is too short' })
@@ -43,8 +43,18 @@ const createUser = async (req, res) => {
     }
   )
 
-  const savedNewUser = await user.save()
-  res.status(201).json(savedNewUser)
+  try {
+    const savedNewUser = await user.save()
+    res.status(201).json(savedNewUser)
+  } catch (error) {
+    // If duplicate
+    if (error.name === 'MongoServerError' && err.code === 11000) {
+      // which field is duplicated
+      const field = Object.keys(error.keyPattern[0]) 
+      throw createError(400, `${field} is already in use`)
+    }
+    throw err
+  }
 }
 
 const getAllUsers = async (req, res) => {

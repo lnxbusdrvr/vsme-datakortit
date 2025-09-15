@@ -43,8 +43,8 @@ const userSchema = new mongoose.Schema({
   legalFormOfCompany: {
     type: String,
     required: true,
-    enum: ['toiminimi', 'osakeyhtiö', 'osuuskunta', 'avoin yhtiö', 'kommandiittiyhtiö'],
-    default: 'osakeyhtiö'
+    enum: ['Toiminimi', 'Osakeyhtiö', 'Osuuskunta', 'Avoin yhtiö', 'Kommandiittiyhtiö'],
+    default: 'Osakeyhtiö'
   },
   businessIdentityCode: {
     type: String,
