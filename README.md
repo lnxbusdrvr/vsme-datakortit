@@ -27,5 +27,6 @@
 | 04.09   | 3,5  | made few user-tests to work |
 | 12.09   | 0,5  | Tried quickly to pass tests, but failed. Try again tommorrow |
 | 15.09   | 3,5  | Make some user-test to passed |
-| Total   | 34   |                                                                                          |
+| 16.09   | 1    | Implemnt little for next user-test |
+| Total   | 35   |                                                                                          |
 
