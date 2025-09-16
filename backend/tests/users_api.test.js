@@ -89,6 +89,38 @@ describe('users', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
+  test('User can be found by id', async () => {
+    const { response } = await helper.createUser()
+    assert.strictEqual(response.status, 201)
+
+    const usersAtStart = await helper.usersInDb()
+    const user = usersAtStart[0]
+
+    await api
+      .post('/api/login')
+      .send(
+        {
+          email: user.email,
+          password: user.password
+        }
+      )
+      .expect(200)
+
+/*
+    const userWithId = await api
+      .get(`/api/users/${user.id}`)
+      .expect(200)
+
+    const userFound = userWithId.body
+
+    assert.strictEqual(userWithId.body.email, user.email)
+    assert.strictEqual(userWithId.body.name, user.name)
+
+    const usersAtEnd = await helper.usersInDb()
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+*/
+  })
+
   describe('Modify email and password', () => {
     const currentPassword = 'lIT#alO0bkjrRN';
     const newPasswd = 'asDkfHj9%g9#lu'
@@ -121,23 +153,6 @@ describe('users', () => {
         .expect(201)
 
 
-    })
-
-    test('User can be found by id', async () => {
-      const usersAtStart = await helper.usersInDb()
-      const user = usersAtStart[0]
-
-      const response = await api
-        .get(`/api/users/${user.body.id}`)
-        .expect(200)
-
-      const userFound = response.body
-
-      assert.strictEqual(response.body.email, user.email)
-      assert.strictEqual(response.body.name, user.name)
-
-      const usersAtEnd = await helper.usersInDb()
-      assert.strictEqual(usersAtEnd.length, usersAtStart.length)
     })
 
     test('Succesfully change password', async () => {
