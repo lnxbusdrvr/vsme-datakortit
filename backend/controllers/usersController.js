@@ -43,18 +43,8 @@ const createUser = async (req, res) => {
     }
   )
 
-  try {
-    const savedNewUser = await user.save()
-    res.status(201).json(savedNewUser)
-  } catch (error) {
-    // If duplicate
-    if (error.name === 'MongoServerError' && err.code === 11000) {
-      // which field is duplicated
-      const field = Object.keys(error.keyPattern[0]) 
-      throw createError(400, `${field} is already in use`)
-    }
-    throw err
-  }
+  const savedNewUser = await user.save()
+  res.status(201).json(savedNewUser)
 }
 
 const getAllUsers = async (req, res) => {

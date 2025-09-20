@@ -86,7 +86,7 @@ createUser = async () => {
   const newUser = {
     name: 'New User',
     companyName: 'Vilen yritys ay',
-    email: 'newuser@example.com',
+    email: 'lnxbusdrvr@gmail.com',
     password: 'password',
     phone: '012345678',
     address: 'Fabianinkatu 33',
