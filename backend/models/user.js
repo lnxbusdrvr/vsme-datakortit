@@ -80,14 +80,6 @@ userSchema.methods.isAdmin = function() {
   return this.role === 'admin'
 }
 
-userSchema.post('save', function(error, doc, next) {
-  if (error.name === 'MongoServerError' && error.code === 11000) {
-    next(new Error('Käyttäjänimi on jo käytössä'));
-  } else {
-    next(error);
-  }
-});
-
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()

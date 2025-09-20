@@ -58,32 +58,34 @@ describe('users', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test('Adding existing email will fail' , async () => {
+  test('Adding user with existing email will fail' , async () => {
     const { response } = await helper.createUser()
     assert.strictEqual(response.status, 201)
   
     const usersAtStart = await helper.usersInDb()
 
+    console.log(`userAtStart: ${usersAtStart.length}`)
+
     const duplicatedUser = {
-      name: 'New User',
-      companyName: 'Vilen yritys ay',
-      email: 'newuser@example.com',
+      name: 'Matti Meikäläinen',
+      companyName: 'Matin yritys ay',
+      email: 'lnxbusdrvr@gmail.com',
       password: 'password',
       phone: '012345678',
       address: 'Fabianinkatu 33',
       postalCode: '00100',
       city: 'Helsinki',
       legalFormOfCompany: 'Avoin yhtiö',
-      businessIdentityCode: '1234567-9',
+      businessIdentityCode: '9976543-1',
       role: 'admin'
     }
 
-    const duplicateUserRes =await api
+    duplicateUserRes = await api
       .post('/api/users')
       .send(duplicatedUser)
       .expect(400)
   
-    assert.containsEqual(duplicateUserRes.body.error, 'is in use')
+    assert.strictEqual(duplicateUserRes.body.error, 'email is in use')
     const usersAtEnd = await helper.usersInDb()
   
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)

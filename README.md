@@ -28,5 +28,6 @@
 | 12.09   | 0,5  | Tried quickly to pass tests, but failed. Try again tommorrow |
 | 15.09   | 3,5  | Make some user-test to passed |
 | 16.09   | 1    | Implemnt little for next user-test |
-| Total   | 35   |                                                                                          |
+| 20.09   | 3    | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
+| Total   | 38   |                                                                                          |
 
