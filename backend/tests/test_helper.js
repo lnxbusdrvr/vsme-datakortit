@@ -67,26 +67,30 @@ const initialInclusiveModule = [
   }
 ]
 
-basicModuleInDb = async () => {
+const basicModuleInDb = async () => {
   const basicModule = await BasicModule.find({})
   return basicModule.map(b => b.toJSON())
 }
 
-inclusiveModuleInDb = async () => {
+const inclusiveModuleInDb = async () => {
   const inclusiveModule = await InclusiveModule.find({})
   return inclusiveModule.map(incl => incl.toJSON())
 }
 
-usersInDb = async () => {
+const usersInDb = async () => {
   const users = await User.find({})
   return users.map(u => u.toJSON())
 }
 
-createUser = async () => {
+/*
+ * Valid and Invalid emails:
+ * https://https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
+ */
+const createUser = async () => {
   const newUser = {
     name: 'New User',
     companyName: 'Vilen yritys ay',
-    email: 'lnxbusdrvr@gmail.com',
+    email: 'email@example.com',
     password: 'password',
     phone: '012345678',
     address: 'Fabianinkatu 33',
@@ -108,12 +112,32 @@ createUser = async () => {
   return { usersAtStart, usersAtEnd, response }
 }
 
+const loginUser = async (user, currentPassword) => {
+  const loginResponse = await api
+    .post('/api/login')
+    .send(
+      {
+        email: user.email,
+        password: currentPassword
+      }
+    )
+    .expect(200)
+
+    const authorizedUser = await api
+      .get(`/api/users/${user.id}`)
+      .set('Authorization', `Bearer ${loginResponse.body.token}`)
+      .expect(200)
+
+  return { authorizedUser, token: loginResponse.body.token }
+}
+
 module.exports = {
   initialBasicModules,
   initialInclusiveModule, 
   basicModuleInDb,
   inclusiveModuleInDb,
   usersInDb,
-  createUser
+  createUser,
+  loginUser
 }
 

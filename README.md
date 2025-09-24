@@ -29,5 +29,6 @@
 | 15.09   | 3,5  | Make some user-test to passed |
 | 16.09   | 1    | Implemnt little for next user-test |
 | 20.09   | 3    | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
-| Total   | 38   |                                                                                          |
+| 24.09   | 5    | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
+| Total   | 43   | 132h left. Goal: 175h (at least) |
 

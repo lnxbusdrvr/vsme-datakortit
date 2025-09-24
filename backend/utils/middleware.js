@@ -23,18 +23,16 @@ const errorHandler = (error, request, response, next) => {
   else if (error.name === 'ValidationError')
     return response.status(400).json({ error: error.message })
   // Duplicate error
-  else if (
-    error.name === 'MongoServerError' &&
-    error.message.includes('E11000 duplicate key error')) {
+  else if (error.name === 'MongoServerError' &&
+    error.message.includes('E11000 duplicate key error'))
 
-    const errorMsg = error.message
-    if (errorMsg.includes('businessIdentityCode'))
-      return response.status(400).json({ error: 'businessIdentityCode is in use' })
-    else if (errorMsg.includes('email'))
-      return response.status(400).json({ error: 'email is in use' })
-    else
-      return response.status(400).json({ error: 'duplicate key error' })
-  }
+    return response
+    .status(400)
+    .json(
+      {
+        error: 'Duplicate businessIdentityCode or email'
+      }
+    )
   else if (error.name === 'JsonWebTokenError')
     return response.status(401).json({ error: 'token missin of invalid' })
   else if (error.name === 'TokenExpiredError')
