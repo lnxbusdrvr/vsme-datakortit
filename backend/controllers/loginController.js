@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const SECRET_KEY = require('../utils/config').SECRET_KEY
+const SECRET = require('../utils/config').SECRET
 const User = require('../models/user')
 
 
@@ -23,7 +23,7 @@ const loginUser = async (request, response) => {
     id: user._id
   }
 
-  const token = jwt.sign(userForToken, SECRET_KEY)
+  const token = jwt.sign(userForToken, SECRET)
 
   response.status(200).send({ token, email: user.email, name: user.name })
 

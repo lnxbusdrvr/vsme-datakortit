@@ -72,23 +72,25 @@ const updateUser = async (req, res) => {
   const {
     newName,
     currentPassword,
+    newPhone,
     newPassword,
     newAddress,
-    newLegalFormOfCompany,
-    newBusinessIdentityCode
+    newPostalCode,
+    newCity
   } = req.body
+
   const userToUpdate = await User.findById(req.params.id)
 
   if ( !userToUpdate )
-    return res.status(404).json({ error: 'user not found'})
+    return res.status(404).json({ error: 'User not found'})
 
   // Only user itself can update it's data
   if ( req.user.id.toString() !== userToUpdate.id.toString() )
-    return res.status(403).json({ error: 'permission denied' })
+    return res.status(403).json({ error: 'Permission denied' })
 
   if ( newPassword) {
     if ( newPassword.length < PASSWD_LEN )
-      return res.status(400).json({ error: 'new password is too short' })
+      return res.status(400).json({ error: 'New password is too short' })
 
     const passwordIsCorrect = await bcrypt
       .compare(
@@ -96,10 +98,15 @@ const updateUser = async (req, res) => {
         userToUpdate.passwordHash
       )
     if ( !passwordIsCorrect)
-      return res.status(400).json({ error: 'invalid password' })
+      return res.status(400).json({ error: 'Password or email incorrect' })
 
     if (currentPassword === newPassword)
-      return res.status(400).json({ error: 'new password can\'t same as old password'  })
+      return res
+        .status(400)
+        .json(
+          {
+            error: 'New password must be different than current password'
+          })
 
     const saltRound = 10
     userToUpdate.passwordHash = await bcrypt.hash( newPassword, saltRound )
@@ -107,9 +114,10 @@ const updateUser = async (req, res) => {
 
   // if new data is given
   if (newName) userToUpdate.name = newName
-  if (newAddress) userToUpdate.newAddress = newAddress
-  if (newLegalFormOfCompany) userToUpdate.legalFormOfCompany = newLegalFormOfCompany
-  if (newBusinessIdentityCode) userToUpdate.businessIdentityCode = newBusinessIdentityCode
+  if (newPhone) userToUpdate.phone= newPhone
+  if (newAddress) userToUpdate.address = newAddress
+  if (newPostalCode) userToUpdate.postalCode= newPostalCode
+  if (newCity) userToUpdate.city = newCity
 
   const updatedUser = await userToUpdate.save()
   res.json(updatedUser)
