@@ -1,4 +1,3 @@
-/*
 const { test, after } = require('node:test')
 const mongoose = require('mongoose')
 const supertest = require('supertest')
@@ -20,7 +19,6 @@ test('Inclusive questions are returned as json', async () => {
     .expect('Content-Type', /application\/json/)
 })
    
-aftter(async () => {
-  aawait mongoose.connection.close()
+after(async () => {
+  await mongoose.connection.close()
 })
-*/
