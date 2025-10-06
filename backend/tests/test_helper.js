@@ -3,19 +3,22 @@ const User = require('../models/user')
 const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
+const mongoose = require('mongoose')
+
 
 const initialBasicModules = [
   {
-    "module": "Perusmoduuli",
-    "sections": [
+    _id: new mongoose.Types.ObjectId('688639b533545dffe4168751'),
+    module: "Perusmoduuli",
+    sections: [
       {
-        "section_id": "frofile",
-        "title": "Frofile",
-        "questions": [
+        section_id: "profile",
+        title: "Frofiili",
+        questions: [
           {
-            "id": "frofile_01",
-            "question": "Kuka. mitä, häh?",
-            "type": "text"
+            id: "frofile_01",
+            question: "Kuka. mitä, häh?",
+            type: "text"
           },
           {
             "id": "frofile_02",
@@ -29,9 +32,59 @@ const initialBasicModules = [
           }
         ]
       }
+    ],
+    [
+      {
+        sction_id: "frofile2",
+        title: "Frofiili kaksi",
+        questions: [
+          {
+            "id": "frofile2_01",
+            "question": "Oiroa",
+            "type": "number"
+          },
+          {
+            "id": "frofile2_02",
+            "question": "Ollako ei vai kyllä?",
+            "type": "boolean"
+          }
+          {
+            id: "frofile2_03",
+            question: "Kuka. häh, mitä?",
+            type: "text"
+          },
+        ]
+      }
+    ],
+    [
+      {
+        sction_id: "frofile3",
+        title: "Frofiili kolme",
+        questions: [
+          {
+            "id": "frofile2_01",
+            "question": "Oiroa",
+            "type": "group",
+            sub_questions: [
+              id: "mika_maa",
+              category: "category title",
+              count: "count title",
+              germany: [
+                category: "Germany non-sense"
+                count: 0
+              ],
+              italy: [
+                category: "Italy non-sense"
+                count: 0
+              ]
+            ]
+          }
+        ]
+      }
     ]
   }
-] 
+]
+
 
 const initialInclusiveModule = [
   {
@@ -75,6 +128,13 @@ const basicModuleInDb = async () => {
 const inclusiveModuleInDb = async () => {
   const inclusiveModule = await InclusiveModule.find({})
   return inclusiveModule.map(incl => incl.toJSON())
+}
+
+const seedBasicModule = async () => {
+  await BasicModule.deleteMany({})
+  const basicModuleObject = new BasicModule(initialBasicModules[0])
+  await basicModuleObject.save()
+  return basicModuleObject._id.toString()
 }
 
 const usersInDb = async () => {
@@ -136,6 +196,7 @@ module.exports = {
   initialInclusiveModule, 
   basicModuleInDb,
   inclusiveModuleInDb,
+  seedBasicModule, 
   usersInDb,
   createUser,
   loginUser
