@@ -31,5 +31,6 @@
 | 20.09   | 3     | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
 | 24.09   | 5     | Restructoring code and fix some parts so all user tests and lint went ok |
 | 27.09   | 1,25  | Implement code, so /api/basic &/api/inclusive return json data |
-| Total   | 44,25 | 130.75h left. Goal: 175h (at least) |
+| 27.09   | 1,25  | Implement test for questions |
+| Total   | 45,5  | 129.5h left. Goal: 175h (at least) |
 

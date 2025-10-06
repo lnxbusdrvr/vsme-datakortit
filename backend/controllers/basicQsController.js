@@ -6,8 +6,14 @@ const getAllBasicQs = async (request, response) => {
   response.json(basicQs)
 }
 
+const getBasicQById = async (request, response) => {
+  const basicQs = await BasicModule.findById(request.params.id)
+  response.json(basicQs)
+}
+
 
 module.exports = {
-  getAllBasicQs
+  getAllBasicQs,
+  getBasicQById 
 }
 
