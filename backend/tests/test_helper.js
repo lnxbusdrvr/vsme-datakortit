@@ -31,11 +31,9 @@ const initialBasicModules = [
             "type": "boolean"
           }
         ]
-      }
-    ],
-    [
+      },
       {
-        sction_id: "frofile2",
+        section_id: "frofile2",
         title: "Frofiili kaksi",
         questions: [
           {
@@ -47,36 +45,40 @@ const initialBasicModules = [
             "id": "frofile2_02",
             "question": "Ollako ei vai kyllä?",
             "type": "boolean"
-          }
+          },
           {
             id: "frofile2_03",
             question: "Kuka. häh, mitä?",
             type: "text"
-          },
+          }
         ]
-      }
-    ],
-    [
+      },
       {
-        sction_id: "frofile3",
+        section_id: "frofile3",
         title: "Frofiili kolme",
         questions: [
           {
-            "id": "frofile2_01",
+            "id": "frofile3_01",
             "question": "Oiroa",
             "type": "group",
             sub_questions: [
-              id: "mika_maa",
-              category: "category title",
-              count: "count title",
-              germany: [
-                category: "Germany non-sense"
-                count: 0
-              ],
-              italy: [
-                category: "Italy non-sense"
-                count: 0
-              ]
+              {
+                id: "mika_maa",
+                category: "category title",
+                count: "count title",
+                germany: [
+                  {
+                    category: "Germany non-sense",
+                    count: 0
+                  }
+                ],
+                italy: [
+                  {
+                    category: "Italy non-sense",
+                    count: 0
+                  }
+                ]
+              }
             ]
           }
         ]

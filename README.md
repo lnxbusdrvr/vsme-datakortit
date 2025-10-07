@@ -3,8 +3,8 @@
 # Working hours count (the time is an approximation )
 
 | date (dd.mm) in 2025 | hours  | tasks                                                                                    |
-| :-----: | :-----| :--------------------------------------------------------------------------------------- |
-|  13.02  |  1    | First meeting with client on teams, figure out is this project legit to fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with with login and register user etc.                                                        |
+|---------|-------|---------------------------------------------------------------------------------------- |
+| 13.02   | 1     | First meeting with client on teams, figure out is this project legit to fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with with login and register user etc.                                                        |
 | 13.05   | 0,25  | Meeting about how to read/understand data.                                               |
 | 13.05   | 0.75  | Early considerations: how the architecture of this code project would be structured. |
 | 20.05   | 1     | Add some question-data starting to track time on [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376)|
@@ -31,6 +31,7 @@
 | 20.09   | 3     | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
 | 24.09   | 5     | Restructoring code and fix some parts so all user tests and lint went ok |
 | 27.09   | 1,25  | Implement code, so /api/basic &/api/inclusive return json data |
-| 27.09   | 1,25  | Implement test for questions |
-| Total   | 45,5  | 129.5h left. Goal: 175h (at least) |
+| 06.10   | 1,25  | 1st Implement of tests for questions |
+| 07.10   | 1,5   | Continue to Implement tests for questions |
+| Total   | 47    | 128 h left. Goal: 175h (at least) |
 
