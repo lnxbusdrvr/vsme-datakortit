@@ -66,6 +66,7 @@ const initialBasicModules = [
                 id: "mika_maa",
                 category: "category title",
                 count: "count title",
+                // This is actually answer. not question
                 germany: [
                   {
                     category: "Germany non-sense",

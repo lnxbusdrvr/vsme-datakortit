@@ -33,5 +33,6 @@
 | 27.09   | 1,25  | Implement code, so /api/basic &/api/inclusive return json data |
 | 06.10   | 1,25  | 1st Implement of tests for questions |
 | 07.10   | 1,5   | Continue to Implement tests for questions |
-| Total   | 47    | 128 h left. Goal: 175h (at least) |
+| 12.10   | 2     | Continue to Implement some tests for questions and fix prodiction and dev modes |
+| Total   | 49    | 126 h left. Goal: 175h (at least) |
 

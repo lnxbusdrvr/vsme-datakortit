@@ -8,6 +8,10 @@ const getAllBasicQs = async (request, response) => {
 
 const getBasicQById = async (request, response) => {
   const basicQs = await BasicModule.findById(request.params.id)
+
+  if (!basicQs)
+    response.status(404).end()
+
   response.json(basicQs)
 }
 
