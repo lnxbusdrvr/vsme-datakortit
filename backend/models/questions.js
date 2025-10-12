@@ -13,10 +13,21 @@ const BasicAnswerSchema = new mongoose.Schema({
   ]
 });
 
+const BasicQuestionSchema = new mongoose.Schema({
+  id: { type: String, required: true },
+  question: { type: String, required: true },
+  type: { type: String, required: true },
+  /* Allowing mixed type to support the complex
+   * structure of 'group' sub_questions
+   */
+  sub_questions: mongoose.Schema.Types.Mixed
+}, { _id: false });
+
 const BasicSectionSchema = new mongoose.Schema({
   section_id: { type: String, required: true },
-  answers: [BasicAnswerSchema]
-});
+  title: { type: String, required: true},
+  questions: [BasicQuestionSchema]
+}, { _id: false });
 
 const BasicModuleSchema = new mongoose.Schema({
   module: { type: String, default: 'Perusmoduuli' },
