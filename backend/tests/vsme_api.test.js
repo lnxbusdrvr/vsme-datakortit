@@ -50,38 +50,55 @@ describe('Questions', () => {
         .expect(404)
     })
 
-    test('Fetching a BasicModule questions with title and type', async () => {
+    test('Fetching A BasicModule questions with title and type', async () => {
       const response = await api
         .get('/api/basic')
         .expect(200)
 
       const firstResSectionFromBasicModule = response.body[0].sections[0]
 
-      assert.strictEqual(firstResSectionFromBasicModule.title, 'Frofiili')
+      assert.strictEqual(firstResSectionFromBasicModule.title, 'Testi yksi mitä')
       assert.strictEqual(firstResSectionFromBasicModule.questions[0].question, 'Kuka. mitä, häh?')
+      assert.strictEqual(firstResSectionFromBasicModule.questions[0].type, 'text')
       assert.strictEqual(firstResSectionFromBasicModule.questions[1].question, 'Euroa')
+      assert.strictEqual(firstResSectionFromBasicModule.questions[1].type, 'number')
       assert.strictEqual(firstResSectionFromBasicModule.questions[2].question, 'Ollako vai ei?')
       assert.strictEqual(firstResSectionFromBasicModule.questions[2].type, 'boolean')
 
     })
 
-    test('BasicModule section two contains correct structure for new group type question', async () => {
+    test('BasicModule section two contains correct subquestions', async () => {
       const response = await api
         .get(`/api/basic/${basicModuleId}`)
         .expect(200)
 
-      const sectionThree = response.body.sections.find(s => s.section_id === 'frofile3')
-      assert.notStrictEqual(sectionThree, undefined, 'Section frofile3 should exist')
+      const sectionThree = response.body.sections.find(s => s.section_id === 'subquestion')
+      assert.notStrictEqual(sectionThree, undefined, 'Section subquestion should exist')
 
-      const newGroupQuestions = sectionThree.questions.find(q => q.id = 'frofile3_01')
-      assert.notStrictEqual(newGroupQuestions, undefined, 'Question frofile2_04 (group type) should exist')
+      const sofdrinksQuestions = sectionThree.questions.find(q => q.id === 'softdrinks_use')
+      assert.strictEqual(sofdrinksQuestions.id, 'softdrinks_use', 'Question id should be: \'softdrinks_use\'')
+      assert.strictEqual(sofdrinksQuestions.type, 'group', 'Question type should be group')
 
-      assert.strictEqual(newGroupQuestions.type, 'group', 'Question type should be group')
-      assert.strictEqual(newGroupQuestions.question, 'Oiroa', 'Question title should be: Oiroa')
-      assert.strictEqual(newGroupQuestions.sub_questions.length, 2, 'Question Oiroa sub_questions should exist')
-      assert.strictEqual(newGroupQuestions.sub_sections.id, 'mika_maa', 'Question Oiroa sub_questions id should be 'mika_maa')
-      assert.strictEqual(newGroupQuestions.sub_sections.category, 'category title', 'Question Oiroa sub_questions category should be 'category title')
-      assert.strictEqual(newGroupQuestions.sub_sections.count, 'count title', 'Question Oiroa sub_questions count should be 'count title')
+      const electricSubQuestion = sofdrinksQuestions.sub_questions.find(q => q.id === 'softdrinks_in_electric_vechiles')
+      assert.notStrictEqual(electricSubQuestion, undefined, 'Subquestion \'softdrinks_in_electric_vechiles\' should exist')
+      assert.strictEqual(electricSubQuestion.category_title, 'Sähköajoneuvoissa käytettävien limujen määrä (kpl)', 'Question don\'t match')
+      assert.strictEqual(electricSubQuestion.softdrinks_w_sugar_title, 'Sokeriset limut (kpl)', 'Question \'Sokeriset lumut (kpl)\' don\'t match')
+      assert.strictEqual(electricSubQuestion.softdrinks_no_sugar_title, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat lumut (kpl)\' don\'t match')
+      assert.strictEqual(electricSubQuestion.total_title, 'Sähköajoneuvojen limut yhteensä (kpl)', 'Question \'Sähköajoneuvojen limut yhteensä (kpl)\' don\'t match')
+
+      const dieselSubQuestion = sofdrinksQuestions.sub_questions.find(q => q.id === 'softdrinks_in_diesel_vechiles')
+      assert.notStrictEqual(dieselSubQuestion, undefined, 'Subquestion \'softdrinks_in_diesel_vechiles\' should exist')
+      assert.strictEqual(dieselSubQuestion.category_title, 'Dieselajoneuvoissa käytettävien limujen määrä (kpl)', 'Question don\'t match')
+      assert.strictEqual(dieselSubQuestion.softdrinks_w_sugar_title, 'Sokeriset limut (kpl)', 'Question \'Sokeriset limut (kpl)\' don\'t match')
+      assert.strictEqual(dieselSubQuestion.softdrinks_no_sugar_title, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat limut (kpl)\' don\'t match')
+      assert.strictEqual(dieselSubQuestion.total_title, 'Dieselajoneuvojen limut yhteensä (kpl)', 'Question \'Dieselajoneuvojen limut yhteensä (kpl)\' don\'t match')
+
+      /*
+      assert.strictEqual(typeOneSubQuestions.sub_sections.category_title, 'Sähköajoneuvoissa käytettävien juomien määrä (kpl)', 'Question not match')
+      assert.strictEqual(typeOneSubQuestions.sub_questions.length, 2, 'Question Oiroa sub_questions should exist')
+      assert.strictEqual(typeOneSubQuestions.sub_sections.id, 'mika_maa', 'Question Oiroa sub_questions id should be 'mika_maa')
+      assert.strictEqual(typeOneSubQuestions.sub_sections.count, 'count title', 'Question Oiroa sub_questions count should be 'count title')
+      */
 
       // Think. Is we gonne handle questions here, or also answers
 

@@ -12,73 +12,100 @@ const initialBasicModules = [
     module: "Perusmoduuli",
     sections: [
       {
-        section_id: "profile",
-        title: "Frofiili",
+        section_id: "test1",
+        title: "Testi yksi mitä",
         questions: [
           {
-            id: "frofile_01",
+            id: "test1_01",
             question: "Kuka. mitä, häh?",
             type: "text"
           },
           {
-            "id": "frofile_02",
+            "id": "test1_02",
             "question": "Euroa",
             "type": "number"
           },
           {
-            "id": "frofile_03",
+            "id": "test1_03",
             "question": "Ollako vai ei?",
             "type": "boolean"
           }
         ]
       },
       {
-        section_id: "frofile2",
-        title: "Frofiili kaksi",
+        section_id: "subquestion",
+        title: "Limuympärisstö",
         questions: [
           {
-            "id": "frofile2_01",
-            "question": "Oiroa",
-            "type": "number"
-          },
-          {
-            "id": "frofile2_02",
-            "question": "Ollako ei vai kyllä?",
-            "type": "boolean"
-          },
-          {
-            id: "frofile2_03",
-            question: "Kuka. häh, mitä?",
-            type: "text"
+            id: "softdrinks_use",
+            question: "Limujen käyttöympäristö eri kulkuvälineissä moottorin ominaisuuden mukaan",
+            type: "group",
+            sub_questions: [
+              {
+                id: "softdrinks_in_electric_vechiles",
+                category_title: "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
+                softdrinks_w_sugar_title: "Sokeriset limut (kpl)",
+                softdrinks_no_sugar_title: "Sokerittomat limut (kpl)",
+                total_title: "Sähköajoneuvojen limut yhteensä (kpl)"
+              },
+              {
+                id: "softdrinks_in_diesel_vechiles",
+                category_title: "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
+                softdrinks_w_sugar_title: "Sokeriset limut (kpl)",
+                softdrinks_no_sugar_title: "Sokerittomat limut (kpl)",
+                total_title: "Dieselajoneuvojen limut yhteensä (kpl)"
+              }
+            ]
           }
         ]
       },
       {
-        section_id: "frofile3",
-        title: "Frofiili kolme",
+        section_id: "subquestion_type_two",
+        title: "Elokuvat",
         questions: [
           {
-            "id": "frofile3_01",
-            "question": "Oiroa",
-            "type": "group",
+            id: "movies_in_collection_by_genre",
+            question: "Elokuvat kokoelmassa genrettäin",
+            type: "group",
             sub_questions: [
               {
-                id: "mika_maa",
-                category: "category title",
-                count: "count title",
-                // This is actually answer. not question
-                germany: [
-                  {
-                    category: "Germany non-sense",
-                    count: 0
-                  }
-                ],
-                italy: [
-                  {
-                    category: "Italy non-sense",
-                    count: 0
-                  }
-                ]
+                id: "softdrinks_in_electric_vachile",
+                category_title: "Sähköajoneuvoissa käytettävien juomien määrä (kpl)",
+                horror_movies: {
+                  category_title: "Kauhuelokuvat",
+                  movie_pcs_title: "Kappaleita"
+                },
+                scifi_movies: {
+                  category_title: "Scifi- ja fantasiaelokuvat",
+                  movie_pcs_title: "Kappaleita"
+                },
+                comedy_movies: {
+                  category_title: "Komediaelokuvat",
+                  movie_pcs_title: "Kappaleita"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section_id: "subquestion_type_two",
+        title: "Elokuvat",
+        questions: [
+          {
+            id: "question_w_if",
+            question: "Babylon 5 on parempi, kuin Star Trek?",
+            type: "boolean",
+            follow_up_if_true: [
+              {
+                id: "b5_total_seasons",
+                category_title: "Montaako Babylon 5 kautta on?",
+                type: "integer"
+              },
+              {
+                id: "b5_cost",
+                category_title: "Montaako euroa Babylon 5 Blu-Ray masoi?",
+                type: "currency"
               }
             ]
           }
@@ -87,7 +114,6 @@ const initialBasicModules = [
     ]
   }
 ]
-
 
 const initialInclusiveModule = [
   {
