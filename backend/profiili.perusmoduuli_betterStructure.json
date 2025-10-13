@@ -131,7 +131,6 @@
               "question": "Yhteensä",
               "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
               "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
-              "non_renewable": "MWh",
               "total_title": "Yhteensä 202(x) Energiankulutus (MWh)",
               "total": "MWh"
             }
@@ -146,31 +145,22 @@
               "id": "environment_02_scope1",
               "question": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
               "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
-              "greenhouse_gas_emission1": 0,
               "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)",
-              "greenhouse_gas_emission2": 0,
-              "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)",
-              "greenhouse_gas_emission3": 0
+              "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)"
             },
             {
               "id": "environment_02_scope2",
               "question": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
               "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
-              "greenhouse_gas_emission1": 0,
               "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)",
-              "greenhouse_gas_emission2": 0,
-              "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)",
-              "greenhouse_gas_emission3": 0
+              "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)"
             },
             {
               "id": "environment_02_total",
               "question": "Yhteensä",
               "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
-              "greenhouse_gas_emission1": 0,
               "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)",
-              "greenhouse_gas_emission2": 0,
-              "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)",
-              "greenhouse_gas_emission3": 0
+              "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)"
             }
           ]
         },
@@ -196,27 +186,27 @@
           "sub_questions": [
             {
               "id": "environment_06_pollution",
-              "category": "Päästöaine / saaste",
-              "emission_kg": "Päästöt (kg)",
-              "emission_release": "Päästöjen vapautuminen (ilma, vesi, maaperä)"
+              "category_title": "Päästöaine / saaste",
+              "emission_kg_title": "Päästöt (kg)",
+              "emission_release_title": "Päästöjen vapautuminen (ilma, vesi, maaperä)"
             },
             {
               "id": "environment_06_example_kadium",
-              "category": "esimerkiksi kadmium ja kadmiumyhdisteet",
-              "emission_kg": "kg",
-              "emission_release": ""
+              "category_title": "esimerkiksi kadmium ja kadmiumyhdisteet",
+              "emission_kg_title": "Päästöt (kg)",
+              "emission_release_title": "Päästöjen vapautuminen (ilma, vesi, maaperä)"
             },
             {
               "id": "environment_06_unclean_type2",
-              "category": "Epäpuhtauden tyyppi 2",
-              "emission_kg": "kg",
-              "emission_release": ""
+              "category_title": "Epäpuhtauden tyyppi 2",
+              "emission_kg_title": "Päästöt (kg)",
+              "emission_release_title": "Päästöjen vapautuminen (ilma, vesi, maaperä)"
             },
             {
               "id": "environment_06_unclean_type3",
-              "category": "Epäpuhtauden tyyppi 3",
-              "emission_kg": "kg",
-              "emission_release": ""
+              "category_title": "Epäpuhtauden tyyppi 3",
+              "emission_kg_title": "Päästöt (kg)",
+              "emission_release_title": "Päästöjen vapautuminen (ilma, vesi, maaperä)"
             }
           ]
         }
@@ -233,66 +223,59 @@
           "sub_questions": [
             {
               "id": "location_01_1",
-              "category": "Maa- toimipisteen nimi 1",
-              "area": "Alue (Hehtaaria)",
-              "biological_polymorph": "Biologiselle monimuotoisuudelle herkkä alue",
-              "breakdown": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)"
+              "category_title": "Maa- toimipisteen nimi 1",
+              "area_title": "Alue (Hehtaaria)",
+              "biological_polymorph_title": "Biologiselle monimuotoisuudelle herkkä alue",
+              "breakdown_title": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)"
             },
             {
               "id": "location_01_2",
-              "category": "Maa- toimipisteen nimi 1",
-              "area": "",
-              "biological_polymorph": "",
-              "breakdown": ""
+              "category_title": "Maa- toimipisteen nimi 1",
+              "area_title": "Alue",
+              "biological_polymorph_title": "Biologiselle monimuotoisuudelle herkkä alue",
+              "breakdown_title": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
             },
             {
               "id": "location_01_3",
-              "category": "Maa- toimipisteen nimi 1",
-              "area": "",
-              "biological_polymorph": "",
-              "breakdown": ""
+              "category_title": "Maa- toimipisteen nimi 1",
+              "area_title": "Alue",
+              "biological_polymorph_title": "Biologiselle monimuotoisuudelle herkkä alue",
+              "breakdown_title": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä"
             }
           ]
         },
         {
           "id": "location_02",
-          "question": "Yritys voi julkaista Maankäyttöön liittyviä mittareita",
+          "question": "Yritys voi julkaista Maankäyttöön liittyviä mittareita Tyyppi",
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_02_land_use_01",
-              "category": "tyyppi",
-              "last_year": "Edellinen vuosi (alue hehtaari m²)",
-              "reported_year": "Raportointi vuosi (alue hehtaari m²)",
-              "percent_change": "% muutos (alue hehtaari m²)"
-            },
-            {
               "id": "location_02_land_use_02",
-              "category": "maankäytön kokonaispinta-ala (hehtaareina);",
-              "last_year": 0,
-              "reported_year": 0,
-              "percent_change": 0
+              "category_title": "maankäytön kokonaispinta-ala (hehtaareina);",
+              "last_year_title": "Edellinen vuosi (alue hehtaari m²)",
+              "reported_year_title": "Raportointi vuosi (alue hehtaari m²)",
+              "percent_change_title": "% muutos (alue hehtaari m²)"
             },
             {
               "id": "location_02_land_use_03",
-              "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
-              "last_year": 0,
-              "reported_year": 0,
-              "percent_change": 0
+              "category_title": "vettä läpäisemättömän alueen kokonaispinta-ala",
+              "last_year_title": "Edellinen vuosi (alue hehtaari m²)",
+              "reported_year_title": "Raportointi vuosi (alue hehtaari m²)",
+              "percent_change_title": "% muutos (alue hehtaari m²)"
             },
             {
               "id": "location_02_land_use_04",
-              "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
-              "last_year": 0,
-              "reported_year": 0,
-              "percent_change": 0
+              "category_title": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
+              "last_year_title": "Edellinen vuosi (alue hehtaari m²)",
+              "reported_year_title": "Raportointi vuosi (alue hehtaari m²)",
+              "percent_change_title": "% muutos (alue hehtaari m²)"
             },
             {
               "id": "location_02_land_use_05",
-              "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
-              "last_year": 0,
-              "reported_year": 0,
-              "percent_change": 0
+              "category_title": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
+              "last_year_title": "Edellinen vuosi (alue hehtaari m²)",
+              "reported_year_title": "Raportointi vuosi (alue hehtaari m²)",
+              "percent_change_title": "% muutos (alue hehtaari m²)"
             }
           ]
         },
@@ -303,21 +286,21 @@
           "sub_questions": [
             {
               "id": "location_03_all_offices",
-              "category": "Kaikki toimipisteet",
-              "water_take": 0,
-              "water_used": 0
+              "category_title": "Kaikki toimipisteet",
+              "water_take_title": "Vedenotto (esim... m3)",
+              "water_used_title": "Vedenkulutus  (esim. m3) (jos sovellettavissa)"
             },
             {
               "id": "location_03_waterstress_offices",
-              "category": "Kohteet alueilla, joilla on vesistressiä",
-              "water_take": 0,
-              "water_used": 0
+              "category_title": "Kohteet alueilla, joilla on vesistressiä",
+              "water_take_title": "Vedenotto (esim... m3)",
+              "water_used_title": "Vedenkulutus  (esim. m3) (jos sovellettavissa)"
             },
             {
               "id": "location_03_dropsy_production_process",
-              "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
-              "water_take": 0,
-              "water_used": 0
+              "category_title": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
+              "water_take_title": "Vedenotto (esim... m3)",
+              "water_used_title": "Vedenkulutus  (esim. m3) (jos sovellettavissa)"
             }
           ]
         },
@@ -333,59 +316,59 @@
           "sub_questions": [
             {
               "id": "location_05_undangerous_waste",
-              "category": "Vaaraton jäte",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "Vaaraton jäte",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             },
             {
               "id": "location_05_waste_type1",
-              "category": "Jätteen tyyppi 1",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "Jätteen tyyppi 1",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             },
             {
               "id": "location_05_waste_type2",
-              "category": "Jätteen tyyppi 2",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "Jätteen tyyppi 2",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             },
             {
               "id": "location_05_etc",
-              "category": "jne.",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "jne.",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             },
             {
               "id": "location_05_dangerous_waste",
-              "category": "Vaarallinen jäte",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "Vaarallinen jäte",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             },
             {
               "id": "location_05_danger_waste_type1",
-              "category": "Jätteen tyyppi 1",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "Jätteen tyyppi 1",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             },
             {
               "id": "location_05_danger_etc",
-              "category": "jne.",
-              "all_waste": 0,
-              "recycled_waste": 0,
-              "recycled_waste_to_energy": 0,
-              "destroyable_waste": 0
+              "category_title": "jne.",
+              "all_waste_title": "Syntyneen jätteen kokonaismäärä",
+              "recycled_waste_title": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
+              "recycled_waste_to_energy_title": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
+              "destroyable_waste_title": "Jätteet ohjataan häviteettäväksi"
             }
           ]
         }
@@ -402,86 +385,81 @@
           "sub_questions": [
             {
               "id": "social_01_contract_employment_type",
-              "category": "Työsopimuksen tyyppi",
-              "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "category_title": "Työsopimuksen tyyppi",
               "fixed_contract": {
-                "category": "Määräaikainen sopimus",
-                "employees_count": 0
+                "category_title": "Määräaikainen sopimus",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "permanent_contract": {
-                "category": "Vakituinen / toistaiseksi voimassa oleva sopimus",
-                "employees_count": 0
+                "category_title": "Vakituinen / toistaiseksi voimassa oleva sopimus",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "personnel_employees_total": {
-                "category": "Henkilöstö / Työntekijät yhteensä",
-                "employees_count": 0
+                "category_title": "Henkilöstö / Työntekijät yhteensä",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               }
             },
             {
               "id": "social_01_gender",
-              "category": "Sukupuoli",
-              "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "category_title": "Sukupuoli",
               "male": {
-                "category": "Mies",
-                "employees_count": 0
+                "category_title": "Mies",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "female": {
-                "category": "Nainen",
-                "employees_count": 0
+                "category_title": "Nainen",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "other": {
-                "category": "Muu sukupuoli",
-                "employees_count": 0
+                "category_title": "Muu sukupuoli",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "unreported": {
-                "category": "Ei raportoitu",
-                "employees_count": 0
+                "category_title": "Ei raportoitu",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "personnel_employees_total": {
-                "category": "Henkilöstö / Työntekijät yhteensä",
-                "employees_count": 0
+                "category_title": "Henkilöstö / Työntekijät yhteensä",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               }
             },
             {
               "id": "social_01_country",
-              "category": "Maa (jos sovellettavissa)",
-              "employees_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "category_title": "Maa (jos sovellettavissa)",
               "country_a": {
-                "category": "Maa A",
-                "employees_count": 0
+                "category_title": "Maa A",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "country_b": {
-                "category": "Maa B",
-                "employees_count": 0
+                "category_title": "Maa B",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               },
               "personnel_employees_total": {
-                "category": "Henkilöstö / Työntekijät yhteensä",
-                "employees_count": 0
+                "category_title": "Henkilöstö / Työntekijät yhteensä",
+                "employees_count_title": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)"
               }
             },
             {
               "id": "social_01_minimum_wage",
               "question": "Saavatko työntekijät palkkaa, joka on sama tai suurempi kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa?",
-              "type": "text",
-              "answer": ""
+              "type": "text"
             },
             {
               "id": "social_01_wage_between_m_f",
               "category": "Nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
               "type": "text",
-              "how_many_percent": "%"
+              "how_many_percent_title": "%"
             },
             {
               "id": "social_01_collective_agreement",
               "category": "Työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus;",
               "type": "text",
-              "how_many_percent": "%"
+              "how_many_percent_title": "%"
             },
             {
               "id": "social_01_avg_education",
               "category": "Keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
-              "type": "text",
-              "answer": ""
+              "type": "text"
             }
           ]
         }
@@ -498,12 +476,12 @@
           "follow_up_if_true": [
             {
               "id": "management_01_01",
-              "category": "Tuomioiden lukumäärä",
+              "category_title": "Tuomioiden lukumäärä",
               "type": "integer"
             },
             {
               "id": "management_01_02",
-              "category": "Sakoista aiheutuneet kokonaiskulut",
+              "category_title": "Sakoista aiheutuneet kokonaiskulut",
               "type": "currency"
             }
           ]
