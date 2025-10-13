@@ -114,21 +114,21 @@
           "sub_questions": [
             {
               "id": "environment_01_electer",
-              "question": "Sähkö (näkyy sähkölaskutuksessa)",
+              "category_title": "Sähkö (näkyy sähkölaskutuksessa)",
               "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
               "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
               "total_title": "Yhteensä 202(x) Energiankulutus (MWh)"
             },
             {
               "id": "environment_01_fuel",
-              "question": "Polttoaineet",
+              "category_title": "Polttoaineet",
               "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
               "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
               "total_title": "Yhteensä 202(x) Energiankulutus (MWh)"
             },
             {
               "id": "environment_01_total",
-              "question": "Yhteensä",
+              "category_title": "Yhteensä",
               "renewable_title": "Uusiutuvan  Energian kulutus (MWh)",
               "non_renewable_title": "Ei Uusiutuvan Energian kulutus (MWh)",
               "total_title": "Yhteensä 202(x) Energiankulutus (MWh)",
@@ -143,21 +143,21 @@
           "sub_questions": [
             {
               "id": "environment_02_scope1",
-              "question": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
+              "category_title": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
               "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
               "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)",
               "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)"
             },
             {
               "id": "environment_02_scope2",
-              "question": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
+              "category_title": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
               "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
               "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)",
               "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)"
             },
             {
               "id": "environment_02_total",
-              "question": "Yhteensä",
+              "category_title": "Yhteensä",
               "greenhouse_gas_emission1_title": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
               "greenhouse_gas_emission2_title": "202(x) GHG emissions (tCO2e)",
               "greenhouse_gas_emission3_title": "202(x) GHG emissions (tCO2e)"
