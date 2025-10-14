@@ -35,5 +35,6 @@
 | 07.10   | 1,5   | Continue to Implement tests for questions |
 | 12.10   | 2     | Continue to Implement some tests for questions and fix prodiction and dev modes |
 | 13.10   | 6     | Fix basicModule database and fix testdatabse to suit to real data in database |
-| Total   | 55    | 120 h left. Goal: 175h (at least) |
+| 14.10   | 2     | Implement answerstest |
+| Total   | 57    | 118 h left. Goal: 175h (at least) |
 
