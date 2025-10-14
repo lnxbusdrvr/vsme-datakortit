@@ -1,5 +1,6 @@
 {
-  "module": "Perusmoduuli",
+  "module_title": "Perusmoduuli",
+  "module_id": "basic_module",
   "sections": [
     {
       "section_id": "profile",
