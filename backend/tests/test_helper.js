@@ -42,14 +42,14 @@ const initialBasicModules = [
             type: "group",
             sub_questions: [
               {
-                id: "softdrinks_in_electric_vechiles",
+                id: "softdrinks_in_electric_vehicles",
                 category_title: "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
                 softdrinks_w_sugar_title: "Sokeriset limut (kpl)",
                 softdrinks_no_sugar_title: "Sokerittomat limut (kpl)",
                 total_title: "Sähköajoneuvojen limut yhteensä (kpl)"
               },
               {
-                id: "softdrinks_in_diesel_vechiles",
+                id: "softdrinks_in_diesel_vehicles",
                 category_title: "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
                 softdrinks_w_sugar_title: "Sokeriset limut (kpl)",
                 softdrinks_no_sugar_title: "Sokerittomat limut (kpl)",
@@ -69,8 +69,8 @@ const initialBasicModules = [
             type: "group",
             sub_questions: [
               {
-                id: "softdrinks_in_electric_vachile",
-                category_title: "Sähköajoneuvoissa käytettävien juomien määrä (kpl)",
+                id: "movie_genres",
+                category_title: "Elokuvagenret (kpl)",
                 horror_movies: {
                   category_title: "Kauhuelokuvat",
                   movie_pcs_title: "Kappaleita"
@@ -89,8 +89,8 @@ const initialBasicModules = [
         ]
       },
       {
-        section_id: "subquestion_type_two",
-        title: "Elokuvat",
+        section_id: "boolean_w_follow_up",
+        title: "Kysymykset seurannalla",
         questions: [
           {
             id: "question_w_if",
@@ -104,7 +104,7 @@ const initialBasicModules = [
               },
               {
                 id: "b5_cost",
-                category_title: "Montaako euroa Babylon 5 Blu-Ray masoi?",
+                category_title: "Montaako euroa Babylon 5 Blu-Ray maksaa?",
                 type: "currency"
               }
             ]
@@ -114,6 +114,19 @@ const initialBasicModules = [
     ]
   }
 ]
+
+const getTestAnswers = (basicModuleId, userId) => {
+  return [
+    {
+      basicModuleId,
+      sectionId: 'test1',
+      questionId: 'test1_01',
+      userId, 
+      anwerType: 'text',
+      answer: 'Vastasin tekstikentään'
+    }
+  ]
+}
 
 const initialInclusiveModule = [
   {
@@ -222,6 +235,7 @@ const loginUser = async (user, currentPassword) => {
 
 module.exports = {
   initialBasicModules,
+  getTestAnswers,
   initialInclusiveModule, 
   basicModuleInDb,
   inclusiveModuleInDb,

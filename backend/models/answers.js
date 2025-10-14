@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-// --- BasicModule answers skeemas ---
 
+// --- Basic Module Schemas ---
 const BasicAnswerSchema = new mongoose.Schema({
   question_id: { type: String, required: true },
   answer: mongoose.Schema.Types.Mixed,
@@ -11,22 +11,33 @@ const BasicAnswerSchema = new mongoose.Schema({
       answer: mongoose.Schema.Types.Mixed
     }
   ]
-})
+});
+
+const BasicQuestionSchema = new mongoose.Schema({
+  id: { type: String, required: true },
+  question: { type: String, required: true },
+  type: { type: String, required: true },
+  /* Allowing mixed type to support the complex
+   * structure of 'group' sub_questions
+   */
+  sub_questions: mongoose.Schema.Types.Mixed
+}, { _id: false });
 
 const BasicSectionSchema = new mongoose.Schema({
   section_id: { type: String, required: true },
-  answers: [BasicAnswerSchema]
-})
+  title: { type: String, required: true},
+  questions: [BasicQuestionSchema]
+}, { _id: false });
 
-const BasicModuleAnswerSchema = new mongoose.Schema({
+const BasicModuleSchema = new mongoose.Schema({
   module: { type: String, default: 'Perusmoduuli' },
   createdAt: { type: Date, default: Date.now },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   sections: [BasicSectionSchema]
-})
+});
 
-// --- Inclusive module answers skeemas ---
 
+// --- Inclusive Module Schemas ---
 const InclusiveAnswerSchema = new mongoose.Schema({
   question_id: { type: String, required: true },
   answer: mongoose.Schema.Types.Mixed,
@@ -36,26 +47,26 @@ const InclusiveAnswerSchema = new mongoose.Schema({
       answer: mongoose.Schema.Types.Mixed
     }
   ]
-})
+});
 
 const InclusiveSectionSchema = new mongoose.Schema({
   section_id: { type: String, required: true },
   answers: [InclusiveAnswerSchema]
-})
+});
 
-const InclusiveModuleAnswerSchema = new mongoose.Schema({
+const InclusiveModuleSchema = new mongoose.Schema({
   module: { type: String, default: 'Kattava moduuli' },
   createdAt: { type: Date, default: Date.now },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   sections: [InclusiveSectionSchema]
-})
+});
 
+const BasicModule = mongoose.model('BasicModule', BasicModuleSchema, 'basicModule')
+const InclusiveModule = mongoose.model('InclusiveModule', InclusiveModuleSchema, 'inclusiveModule')
 
-const BasicModuleAnswer = mongoose.model('BasicModuleAnswer', BasicModuleAnswerSchema, 'basicModuleAnswers')
-const InclusiveModuleAnswer = mongoose.model('InclusiveModuleAnswer', InclusiveModuleAnswerSchema, 'inclusiveModuleAnswers')
 
 module.exports = {
-  BasicModuleAnswer,
-  InclusiveModuleAnswer
-}
+  BasicModule,
+  InclusiveModule
+};
 
