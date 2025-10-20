@@ -122,8 +122,49 @@ const getTestAnswers = (basicModuleId, userId) => {
       sectionId: 'test1',
       questionId: 'test1_01',
       userId, 
-      anwerType: 'text',
+      answerType: 'text',
       answer: 'Vastasin tekstikentään'
+    },
+    {
+      basicModuleId,
+      sectionId: 'subquestion',
+      questionId: 'softdrinks_use',
+      userId, 
+      answerType: 'group',
+      answer: JSON.stringify({
+        softdrinks_in_electric_vehicles: {
+          softdrinks_w_sugar_title: 15,
+          softdrinks_no_sugar_title: 5
+        },
+        softdrinks_in_diesel_vehicles: {
+          softdrinks_w_sugar_title: 1,
+          softdrinks_no_sugar_title: 21
+        }
+      })
+    },
+    {
+      basicModuleId,
+      sectionId: 'boolean_w_follow_up',
+      questionId: 'question_w_if',
+      userId, 
+      answerType: 'boolean',
+      answer: true
+    },
+    {
+      basicModuleId,
+      sectionId: 'boolean_w_follow_up',
+      questionId: 'b5_total_seasons',
+      userId, 
+      answerType: 'integer',
+      answer: 5
+    },
+    {
+      basicModuleId,
+      sectionId: 'boolean_w_follow_up',
+      questionId: 'b5_cost',
+      userId, 
+      answerType: 'currency',
+      answer: 99.95
     }
   ]
 }
@@ -191,15 +232,15 @@ const usersInDb = async () => {
 const createUser = async () => {
   const newUser = {
     name: 'New User',
-    companyName: 'Vilen yritys ay',
+    companyName: 'Kian yritys ay',
     email: 'email@example.com',
     password: 'password',
-    phone: '012345678',
+    phone: 'Math.random().toString(10).substr(2, 9)',
     address: 'Fabianinkatu 33',
     postalCode: '00100',
     city: 'Helsinki',
     legalFormOfCompany: 'Avoin yhtiö',
-    businessIdentityCode: '1234567-9',
+    businessIdentityCode: `Math.random().toString(10).substr(2, 7)-${Math.random().toString(10).substr(2, 1)}`, 
     role: 'admin'
   }
 
