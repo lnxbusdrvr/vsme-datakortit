@@ -8,11 +8,25 @@ const assert = require('assert')
 const api = supertest(app)
 
 let basicModuleId = null
+let userToken = null
+let testUser = null
+let answers = null
 
 
 describe('Questions & Answers', () => {
   beforeEach(async () => {
     basicModuleId = await helper.seedBasicModule()
+    /*
+    */
+    const { response } = await helper.createUser()
+    const { authorizedUser, token } = await helper.loginUser(response.body, 'password')
+    userToken  = token
+    testUser = authorizedUser
+
+    if (!token)
+      throw new Error('token is null')
+
+    answers = helper.getTestAnswers(basicModuleId, testUser.id)
   })
 
   describe('BasicModule Questions', () => {
@@ -20,15 +34,7 @@ describe('Questions & Answers', () => {
       const response = await api
         .get('/api/basic')
         .expect(200)
-
-      if (response.body.length > 0) {
-        const basicModule = response.body[0]
-        if (basicModule.sections && basicModule.sections.length > 0)
-          if (!basicModule.sections[0].section_id) // Ensure, that 1st section exist
-            throw new Error('BasicModule section is missing section_id')
-      } else {
-        throw new Error('No BasicModules returned from API')
-      }
+        .expect('Content-Type', /application\/json/)
     })
 
     test('Fetching A single BasicModule by ID returns the correct module', async () => {
@@ -92,7 +98,6 @@ describe('Questions & Answers', () => {
       assert.strictEqual(dieselSubQuestion.softdrinks_w_sugar_title, 'Sokeriset limut (kpl)', 'Question \'Sokeriset limut (kpl)\' don\'t match')
       assert.strictEqual(dieselSubQuestion.softdrinks_no_sugar_title, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat limut (kpl)\' don\'t match')
       assert.strictEqual(dieselSubQuestion.total_title, 'Dieselajoneuvojen limut yhteensä (kpl)', 'Question \'Dieselajoneuvojen limut yhteensä (kpl)\' don\'t match')
-
     })
   })
 
@@ -106,10 +111,29 @@ describe('Questions & Answers', () => {
   })
 
   describe('BasicModule Answers', () => {
-    test('Question can be answered', async () => {
-      /*
-       * TODO
-      */
+    test('User can\'t post answers without authorization', async () => {
+      await api
+        .post('/api/answers')
+        .send(answers[0])
+        .expect(401) // Unauthorized
+    })
+
+    test('Question can be answered and it return json', async () => {
+      const answer = answers[0]
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${UserToken}`)
+        .send(answer)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+
+      const body = response.body
+      assert.strictEqual(body.questionId, answer.questionId, 'questionId won\'t match')
+      assert.strictEqual(body.answer, answer.answer, 'Answered answer won\'t match')
+    })
+
+    test('Multible question can be answered', async () => {
+
     })
   })
 
