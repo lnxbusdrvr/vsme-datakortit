@@ -108,7 +108,7 @@ describe('users', () => {
       postalCode: '33014',
       city: 'Tampere',
       legalFormOfCompany: 'Avoin yhtiö',
-      businessIdentityCode: '1234567-9',
+      businessIdentityCode: usersAtStart[0].businessIdentityCode,
       role: 'admin'
     }
 
@@ -265,11 +265,6 @@ describe('users', () => {
       assert.strictEqual(usersAtEnd.length, usersAtStart.length - 1)
       assert.strictEqual(userInDb, null)
     })
-  })
-
-
-  after(() => {
-    mongoose.connection.close()
   })
 })
 

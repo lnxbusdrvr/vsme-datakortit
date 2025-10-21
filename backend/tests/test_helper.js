@@ -235,12 +235,12 @@ const createUser = async () => {
     companyName: 'Kian yritys ay',
     email: 'email@example.com',
     password: 'password',
-    phone: 'Math.random().toString(10).substr(2, 9)',
+    phone: Math.random().toString(10).substr(2, 9),
     address: 'Fabianinkatu 33',
     postalCode: '00100',
     city: 'Helsinki',
     legalFormOfCompany: 'Avoin yhtiö',
-    businessIdentityCode: `Math.random().toString(10).substr(2, 7)-${Math.random().toString(10).substr(2, 1)}`, 
+    businessIdentityCode: '1234567-9', 
     role: 'admin'
   }
 
