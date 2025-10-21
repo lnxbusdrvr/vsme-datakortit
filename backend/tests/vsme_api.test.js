@@ -15,9 +15,9 @@ let answers = null
 
 describe('Questions & Answers', () => {
   beforeEach(async () => {
+    await User.deleteMany({})
+
     basicModuleId = await helper.seedBasicModule()
-    /*
-    */
     const { response } = await helper.createUser()
     const { authorizedUser, token } = await helper.loginUser(response.body, 'password')
     userToken  = token
@@ -136,9 +136,4 @@ describe('Questions & Answers', () => {
 
     })
   })
-
-  after(async () => {
-    await mongoose.connection.close()
-  })
-
 })

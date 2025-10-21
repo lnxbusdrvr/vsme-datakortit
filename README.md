@@ -37,5 +37,6 @@
 | 13.10   | 6     | Fix basicModule database and fix testdatabse to suit to real data in database |
 | 14.10   | 2     | Implement answerstest |
 | 20.10   | 2,75  | Make more tests for answers |
-| Total   | 59,75 | 115h 25 min left. Goal: 175h (at least) |
+| 21.10   | 1,25  | Implement usertest to passed|
+| Total   | 61    | 114h left. Goal: 175h (at least) |
 
