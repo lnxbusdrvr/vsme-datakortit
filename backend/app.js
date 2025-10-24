@@ -3,10 +3,13 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 require('express-async-errors')
+
 const basicQsRouter = require('./routes/basicQsRouter')
 const inclusiveQsRouter = require('./routes/inclusiveQsRouter')
 const usersRouter = require('./routes/usersRouter')
 const loginRouter = require('./routes/loginRouter')
+const answersRouter = require('./routes/answersRouter')
+
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
@@ -32,6 +35,9 @@ app.use('/api/basic', basicQsRouter)
 app.use('/api/inclusive', inclusiveQsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+
+app.use(middleware.tokenExtractor)
+app.use('/api/answers', middleware.userExtractor, answersRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

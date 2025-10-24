@@ -41,15 +41,18 @@ const errorHandler = (error, request, response, next) => {
   next(error)
 }
 
-const getTokenFrom = request => {
+const tokenExtractor = (request, response, next) => {
   const authorization = request.get('authorization')
   if (authorization && authorization.startsWith('Bearer '))
-    return authorization.replace('Bearer ', '')
-  return null
+    request.token =authorization.replace('Bearer ', '')
+  else
+    request = null
+
+  next()
 }
 
 const userExtractor = async (request, response, next) => {
-  const token = getTokenFrom(request)
+  const token = request.token
 
   if (!token) {
     return response.status(401).json({ error: 'token missimg' })
@@ -75,6 +78,7 @@ module.exports = {
   requestLogger,
   unknownEndpoint,
   errorHandler,
-  userExtractor,
+  tokenExtractor,
+  userExtractor
 }
 

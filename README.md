@@ -38,5 +38,6 @@
 | 14.10   | 2     | Implement answerstest |
 | 20.10   | 2,75  | Make more tests for answers |
 | 21.10   | 1,25  | Implement usertest to passed|
-| Total   | 61    | 114h left. Goal: 175h (at least) |
+| 24.10   | 4     | Actual answers cat be answered |
+| Total   | 65    | 110h left. Goal: 175h (at least) |
 
