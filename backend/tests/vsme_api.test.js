@@ -4,29 +4,17 @@ const supertest = require('supertest')
 const app = require('../app')
 const helper = require('./test_helper')
 const assert = require('assert')
+const User = require('../models/user')
 
 const api = supertest(app)
 
 let basicModuleId = null
-let userToken = null
-let testUser = null
-let answers = null
 
 
 describe('Questions & Answers', () => {
   beforeEach(async () => {
     await User.deleteMany({})
-
     basicModuleId = await helper.seedBasicModule()
-    const { response } = await helper.createUser()
-    const { authorizedUser, token } = await helper.loginUser(response.body, 'password')
-    userToken  = token
-    testUser = authorizedUser
-
-    if (!token)
-      throw new Error('token is null')
-
-    answers = helper.getTestAnswers(basicModuleId, testUser.id)
   })
 
   describe('BasicModule Questions', () => {
@@ -115,25 +103,49 @@ describe('Questions & Answers', () => {
       await api
         .post('/api/answers')
         .send(answers[0])
-        .expect(401) // Unauthorized
+        .expect(401)
     })
 
-    test('Question can be answered and it return json', async () => {
-      const answer = answers[0]
-      const response = await api
-        .post('/api/answers')
-        .set(`Authorization`, `Bearer ${UserToken}`)
-        .send(answer)
-        .expect(201)
-        .expect('Content-Type', /application\/json/)
+    describe('AuthorizedUser', () => {
+      let userToken = null
+      let testUser = null
+      let answers = null
 
-      const body = response.body
-      assert.strictEqual(body.questionId, answer.questionId, 'questionId won\'t match')
-      assert.strictEqual(body.answer, answer.answer, 'Answered answer won\'t match')
-    })
+      beforeEach(async () => {
+        await User.deleteMany({})
+        const { response } = await helper.createUser()
+        assert.strictEqual(response.status, 201, 'User creation failed')
 
-    test('Multible question can be answered', async () => {
+        const usersAtStart = await helper.usersInDb()
+        
+        const { authorizedUser, token } = await helper.loginUser(usersAtStart[0], 'password')
+        testUser = authorizedUser.body
+        userToken = token
 
+        if (!userToken)
+          throw new Error('token is null')
+
+        answers = helper.getTestAnswers(basicModuleId, testUser.id)
+      })
+
+      test('Question can be answered and it return json', async () => {
+        const answer = answers[0]
+
+        const response = await api
+          .post('/api/answers')
+          .set(`Authorization`, `Bearer ${userToken}`)
+          .send(answer)
+          .expect(201)
+          .expect('Content-Type', /application\/json/)
+
+        const body = response.body
+        assert.strictEqual(body.questionId, answer.questionId, 'questionId won\'t match')
+        assert.strictEqual(body.answer, answer.answer, 'Answered answer won\'t match')
+      })
+
+      test('Multible question can be answered', async () => {
+
+      })
     })
   })
 })

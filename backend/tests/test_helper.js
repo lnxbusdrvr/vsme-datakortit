@@ -4,6 +4,7 @@ const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 
 const initialBasicModules = [
@@ -131,7 +132,7 @@ const getTestAnswers = (basicModuleId, userId) => {
       questionId: 'softdrinks_use',
       userId, 
       answerType: 'group',
-      answer: JSON.stringify({
+      answer: {
         softdrinks_in_electric_vehicles: {
           softdrinks_w_sugar_title: 15,
           softdrinks_no_sugar_title: 5
@@ -140,7 +141,7 @@ const getTestAnswers = (basicModuleId, userId) => {
           softdrinks_w_sugar_title: 1,
           softdrinks_no_sugar_title: 21
         }
-      })
+      }
     },
     {
       basicModuleId,
@@ -230,6 +231,8 @@ const usersInDb = async () => {
  * https://https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
  */
 const createUser = async () => {
+  await User.deleteMany({})
+
   const newUser = {
     name: 'New User',
     companyName: 'Kian yritys ay',
@@ -252,26 +255,26 @@ const createUser = async () => {
     .expect(201)
 
   const usersAtEnd = await usersInDb()
-  return { usersAtStart, usersAtEnd, response }
+  const createdUser = response.body
+  return { usersAtStart, usersAtEnd, createdUser, response }
 }
 
 const loginUser = async (user, currentPassword) => {
   const loginResponse = await api
     .post('/api/login')
-    .send(
-      {
+    .send({
         email: user.email,
         password: currentPassword
-      }
-    )
+      })
     .expect(200)
 
-    const authorizedUser = await api
-      .get(`/api/users/${user.id}`)
-      .set('Authorization', `Bearer ${loginResponse.body.token}`)
-      .expect(200)
+  const token = loginResponse.body.token
 
-  return { authorizedUser, token: loginResponse.body.token }
+  const authorizedUser = {
+    body: user
+  }
+
+  return { authorizedUser, token }
 }
 
 module.exports = {
