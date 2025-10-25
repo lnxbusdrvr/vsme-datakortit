@@ -48,7 +48,7 @@ const createUser = async (req, res) => {
 }
 
 const getAllUsers = async (req, res) => {
-  if (req.user && req.user.role == 'admin') {
+  if (req.user && (req.user.role == 'admin' || req.user.role === 'viewer')) {
     const users = await User.find({})
     res.json(users)
   } else {

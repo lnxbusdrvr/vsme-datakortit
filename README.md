@@ -39,5 +39,6 @@
 | 20.10   | 2,75  | Make more tests for answers |
 | 21.10   | 1,25  | Implement usertest to passed|
 | 24.10   | 7     | Actual answers cat be answered but not in test yet |
-| Total   | 68    | 107 h left. Goal: 175h (at least) |
+| 25.10   | 3     | Answer test is passed, but problem in usertest |
+| Total   | 71    | 104 h left. Goal: 175h (at least) |
 

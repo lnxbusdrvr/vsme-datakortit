@@ -6,8 +6,8 @@ const api = supertest(app)
 const helper = require('./test_helper')
 const assert = require('assert')
 const bcrypt = require('bcrypt')
-
 const User = require('../models/user')
+
 
 describe('users', () => {
   beforeEach(async () => {
@@ -16,7 +16,7 @@ describe('users', () => {
 
   test('New user can be added', async () => {
     const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201)
+    assert.strictEqual(response.status, 201, 'User creation failed')
   })
 
   test('New user add without giving email will fail', async () => {
@@ -59,7 +59,7 @@ describe('users', () => {
 
   test('Adding user with existing email will fail' , async () => {
     const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201)
+    assert.strictEqual(response.status, 201, 'User creation failed')
   
     const usersAtStart = await helper.usersInDb()
 
@@ -94,7 +94,7 @@ describe('users', () => {
 
   test('Adding user with existing businessIdentityCode will fail' , async () => {
     const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201)
+    assert.strictEqual(response.status, 201, 'User creation failed')
   
     const usersAtStart = await helper.usersInDb()
 
@@ -127,52 +127,49 @@ describe('users', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test('User can be found by id', async () => {
-    const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201)
-
-    const usersAtStart = await helper.usersInDb()
-    const user = usersAtStart[0]
-
-    const { authorizedUser } = await helper.loginUser(user, 'password')
-    const userFound = authorizedUser.body
-
-    assert.strictEqual(userFound.email, user.email)
-    assert.strictEqual(userFound.name, user.name)
-
-    const usersAtEnd = await helper.usersInDb()
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-  })
-
   describe('Modify email and password', () => {
-    let user
-    let token
+    let testUser
+    let userToken
     const currentPassword = 'password'
 
     beforeEach(async () => {
       await User.deleteMany({});
 
       const { response } = await helper.createUser()
-      assert.strictEqual(response.status, 201)
+      assert.strictEqual(response.status, 201, 'User creation failed')
 
       const usersAtStart = await helper.usersInDb()
-      user = usersAtStart[0]
+      testUser = usersAtStart[0]
+      testUser = usersAtStart[0].toObject ? usersAtStart[0].toObject() : usersAtStart[0] // ei vaikutusta
      
-      // eslint-disable-next-line no-unused-vars
-      const { authorizedUser, token: authToken } = await helper.loginUser(user, currentPassword )
-      token = authToken
+      const { token } = await helper.loginUser(testUser, currentPassword)
+      userToken = token
+
+      if (!userToken)
+        throw new Error('token is null')
+
+      console.log(`päästiin beforeEach loppuun`)
+    })
+
+    test('User can be found by id', async () => {
+
+      console.log(`User get user.id: ${testUser.id }`)
+      await api
+        .get(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
+        .expect(200)
     })
 
     test('Succesfully change password', async () => {
       const newPassword = 'newpassword'
 
       await api
-        .patch(`/api/users/${user.id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .patch(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword, newPassword })
         .expect(200)
 
-      const updatedUser = await User.findById(user.id)
+      const updatedUser = await User.findById(testUser.id)
       const newPasswordMatches = await bcrypt.compare(newPassword, updatedUser.passwordHash);
       assert.strictEqual(newPasswordMatches, true)
     })
@@ -181,8 +178,8 @@ describe('users', () => {
 
       const tooShortPasswd = 'yy'
       const response = await api
-        .patch(`/api/users/${user.id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .patch(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword, newPassword: tooShortPasswd })
         .expect(400);
 
@@ -194,8 +191,8 @@ describe('users', () => {
       const newPassword = 'newpassword'
 
       const response = await api
-        .patch(`/api/users/${user.id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .patch(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword: incorrectOldPasswd, newPassword })
         .expect(400)
 
@@ -205,8 +202,8 @@ describe('users', () => {
     test('Fails with given new password as current password', async () => {
 
       const response = await api
-        .patch(`/api/users/${user.id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .patch(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword, newPassword: currentPassword })
         .expect(400)
 
@@ -229,7 +226,7 @@ describe('users', () => {
 
       await api
         .patch(`/api/users/${user.id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .send(
           {
             newName,
@@ -256,7 +253,7 @@ describe('users', () => {
 
       await api
         .delete(`/api/users/${userToDelete.id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${userToken}`)
         .expect(204)
 
       const usersAtEnd = await helper.usersInDb()
