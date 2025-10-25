@@ -99,7 +99,7 @@ describe('Questions & Answers', () => {
   })
 
   describe('BasicModule Answers', () => {
-    test('User can\'t post answers without authorization', async () => {
+    test('User can\'t post answers without authorization will fail', async () => {
       await api
         .post('/api/answers')
         .send(answers[0])
@@ -113,13 +113,14 @@ describe('Questions & Answers', () => {
 
       beforeEach(async () => {
         await User.deleteMany({})
+
         const { response } = await helper.createUser()
         assert.strictEqual(response.status, 201, 'User creation failed')
 
         const usersAtStart = await helper.usersInDb()
+        testUser = usersAtStart[0]
         
-        const { authorizedUser, token } = await helper.loginUser(usersAtStart[0], 'password')
-        testUser = authorizedUser.body
+        const { token } = await helper.loginUser(testUser, 'password')
         userToken = token
 
         if (!userToken)

@@ -10,7 +10,8 @@ const bcrypt = require('bcrypt')
 const initialBasicModules = [
   {
     _id: new mongoose.Types.ObjectId('688639b533545dffe4168751'),
-    module: "Perusmoduuli",
+    module_title: "Perusmoduuli",
+    module_id: "basic_module",
     sections: [
       {
         section_id: "test1",
@@ -116,23 +117,22 @@ const initialBasicModules = [
   }
 ]
 
-const getTestAnswers = (basicModuleId, userId) => {
+const getTestAnswers = (moduleId, userId) => {
   return [
     {
-      basicModuleId,
+      moduleId,
       sectionId: 'test1',
       questionId: 'test1_01',
-      userId, 
-      answerType: 'text',
+      type: 'text',
       answer: 'Vastasin tekstikentään'
     },
     {
-      basicModuleId,
+      moduleId,
       sectionId: 'subquestion',
       questionId: 'softdrinks_use',
       userId, 
-      answerType: 'group',
-      answer: {
+      type: 'group',
+      answer: JSON.stringify({
         softdrinks_in_electric_vehicles: {
           softdrinks_w_sugar_title: 15,
           softdrinks_no_sugar_title: 5
@@ -141,10 +141,10 @@ const getTestAnswers = (basicModuleId, userId) => {
           softdrinks_w_sugar_title: 1,
           softdrinks_no_sugar_title: 21
         }
-      }
+      })
     },
     {
-      basicModuleId,
+      moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'question_w_if',
       userId, 
@@ -152,7 +152,7 @@ const getTestAnswers = (basicModuleId, userId) => {
       answer: true
     },
     {
-      basicModuleId,
+      moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'b5_total_seasons',
       userId, 
@@ -160,7 +160,7 @@ const getTestAnswers = (basicModuleId, userId) => {
       answer: 5
     },
     {
-      basicModuleId,
+      moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'b5_cost',
       userId, 
@@ -218,7 +218,7 @@ const seedBasicModule = async () => {
   await BasicModule.deleteMany({})
   const basicModuleObject = new BasicModule(initialBasicModules[0])
   await basicModuleObject.save()
-  return basicModuleObject._id.toString()
+  return basicModuleObject.id.toString()
 }
 
 const usersInDb = async () => {
@@ -233,6 +233,7 @@ const usersInDb = async () => {
 const createUser = async () => {
   await User.deleteMany({})
 
+  const passwordHash = await bcrypt.hash('password', 10)
   const newUser = {
     name: 'New User',
     companyName: 'Kian yritys ay',
@@ -268,13 +269,7 @@ const loginUser = async (user, currentPassword) => {
       })
     .expect(200)
 
-  const token = loginResponse.body.token
-
-  const authorizedUser = {
-    body: user
-  }
-
-  return { authorizedUser, token }
+  return { token: loginResponse.body.token }
 }
 
 module.exports = {

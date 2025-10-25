@@ -45,7 +45,7 @@ const getAllAnswers = async (req, res) => {
   let answerQuery = {}
 
   // exepct if not admin or vieweer
-  if (req.user.role !== ('viewer' || 'admin'))
+  if (req.user.role !== 'admin' && req.user.role !== 'viewer')
     answersQuery = { user: req.user.id }
 
   const answers = await Answer
