@@ -100,10 +100,19 @@ describe('Questions & Answers', () => {
 
   describe('BasicModule Answers', () => {
     test('User can\'t post answers without authorization will fail', async () => {
+      const failedAnswer = {
+        moduleId: basicModuleId,
+        sectionId: 'test1',
+        questionId: 'test1_01',
+        type: 'text',
+        answer: 'Tämä testin on tarkoitus epäonnistua.'
+      }
+
       await api
         .post('/api/answers')
-        .send(answers[0])
+        .send(failedAnswer)
         .expect(401)
+        .expect({ error: 'token missing' })
     })
 
     describe('AuthorizedUser', () => {

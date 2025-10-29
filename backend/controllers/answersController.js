@@ -22,7 +22,6 @@ const createAnswer = async (req, res) => {
   else if (type !== 'group' && typeof answer === 'undefined̈́')
     return res.status(400).json({error: 'Requires \'answer\' field'})
 
-  console.log(`käyttäjä:${req.user.id}`)
   const newAnswer = new Answer({
     user: req.user.id,
     moduleId,
@@ -42,11 +41,12 @@ const createAnswer = async (req, res) => {
 
 const getAllAnswers = async (req, res) => {
   // Get all users answers
-  let answerQuery = {}
+  let answersQuery = {}
 
-  // exepct if not admin or vieweer
+  // excpect if not admin or vieweer: get own answers
   if (req.user.role !== 'admin' && req.user.role !== 'viewer')
     answersQuery = { user: req.user.id }
+
 
   const answers = await Answer
     .find(answersQuery)
@@ -59,39 +59,32 @@ const getAllAnswers = async (req, res) => {
 }
 
 const getAnswerById = async (req, res) => {
-  if (req.answer.id.toString() === req.params.id) {
-    const answer = await Answer.findById(req.params.id)
-    if (answer)
-      res.json(answer)
-    else
-      res.status(404).end()
-  } else {
-    res.status(401).json({ error: 'permission denied'})
+  const answer = await Answer
+    .findById(req.params.id)
+    .populate('user', {
+      name: 1,
+      companyName: 1
+    })
+
+  if (!answer)
+    return res.status(404).end()
+
+  if (
+    answer.user.id.toString() !== req.user.id.toString()
+    && req.user.role !== 'admin'
+    || req.user.role !== 'viewer'
+  ) {
+    return res.status(403).json({ error: 'Permission denied' })
   }
+  res.json(answer)
 }
 
 const updateAnswer = async (req, res) => {
-  const {
-    userId,
-    moduleId,
-    sectiionId,
-    questionId,
-    answer,
-  } = req.body
-
   // TODO
-
-  res.json(updatedAnswer)
 }
 
 const deleteAnswer = async (req, res) => {
-  const answerFromParams = req.params.id
-  if (req.answer.id.toString() !== answerFromParams )
-    return res.status(403).json({ error: 'permission denied' })
-
-  await Answer.findByIdAndDelete( answerFromParams ) 
-  res.status(204).end()
-
+  // TODO
 }
 
 module.exports = {

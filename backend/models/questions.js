@@ -2,17 +2,6 @@ const mongoose = require('mongoose');
 
 
 // --- Basic Module Schemas ---
-const BasicAnswerSchema = new mongoose.Schema({
-  question_id: { type: String, required: true },
-  answer: mongoose.Schema.Types.Mixed,
-  sub_answers: [
-    {
-      sub_question_id: String,
-      answer: mongoose.Schema.Types.Mixed
-    }
-  ]
-});
-
 const BasicQuestionSchema = new mongoose.Schema({
   id: { type: String, required: true },
   question: { type: String, required: true },
@@ -38,21 +27,18 @@ const BasicModuleSchema = new mongoose.Schema({
 
 
 // --- Inclusive Module Schemas ---
-const InclusiveAnswerSchema = new mongoose.Schema({
-  question_id: { type: String, required: true },
-  answer: mongoose.Schema.Types.Mixed,
-  sub_answers: [
-    {
-      sub_question_id: String,
-      answer: mongoose.Schema.Types.Mixed
-    }
-  ]
-});
+const InclusiveQuestionSchema = new mongoose.Schema({
+  id: { type: String, required: true },
+  question: { type: String, required: true },
+  type: { type: String, required: true },
+  sub_questions: mongoose.Schema.Types.Mixed
+}, { _id: false });
 
 const InclusiveSectionSchema = new mongoose.Schema({
   section_id: { type: String, required: true },
-  answers: [InclusiveAnswerSchema]
-});
+  title: { type: String, required: true},
+  questions: [InclusiveQuestionSchema]
+}, { _id: false });
 
 const InclusiveModuleSchema = new mongoose.Schema({
   module: { type: String, default: 'Kattava moduuli' },
