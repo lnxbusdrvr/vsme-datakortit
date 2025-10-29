@@ -1,12 +1,13 @@
 const router = require('express').Router()
 const answersController = require('../controllers/answersController')
+const { userExtractor } = require('../utils/middleware')
 
 
-router.post('/', answersController.createAnswer)
-router.get(`/`, answersController.getAllAnswers)
-router.get(`/:id`, answersController.getAnswerById)
-router.patch(`/:id`, answersController.updateAnswer)
-router.delete(`/:id`, answersController.deleteAnswer)
+router.post('/', userExtractor,answersController.createAnswer)
+router.get(`/`, userExtractor, answersController.getAllAnswers)
+router.get(`/:id`, userExtractor, answersController.getAnswerById)
+router.patch(`/:id`, userExtractor, answersController.updateAnswer)
+router.delete(`/:id`, userExtractor, answersController.deleteAnswer)
 
 module.exports = router
 

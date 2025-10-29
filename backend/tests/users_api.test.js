@@ -148,12 +148,10 @@ describe('users', () => {
       if (!userToken)
         throw new Error('token is null')
 
-      console.log(`päästiin beforeEach loppuun`)
     })
 
     test('User can be found by id', async () => {
 
-      console.log(`User get user.id: ${testUser.id }`)
       await api
         .get(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
