@@ -5,6 +5,7 @@ const app = require('../app')
 const helper = require('./test_helper')
 const assert = require('assert')
 const User = require('../models/user')
+const Answer = require('../models/answer')
 
 const api = supertest(app)
 
@@ -74,18 +75,19 @@ describe('Questions & Answers', () => {
       assert.strictEqual(sofdrinksQuestions.type, 'group', 'Question type should be group')
 
       const electricSubQuestion = sofdrinksQuestions.sub_questions.find(q => q.id === 'softdrinks_in_electric_vehicles')
-      assert.notStrictEqual(electricSubQuestion, undefined, 'Subquestion \'softdrinks_in_electric_vehicles\' should exist')
-      assert.strictEqual(electricSubQuestion.category_title, 'Sähköajoneuvoissa käytettävien limujen määrä (kpl)', 'Question don\'t match')
-      assert.strictEqual(electricSubQuestion.softdrinks_w_sugar_title, 'Sokeriset limut (kpl)', 'Question \'Sokeriset lumut (kpl)\' don\'t match')
-      assert.strictEqual(electricSubQuestion.softdrinks_no_sugar_title, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat lumut (kpl)\' don\'t match')
-      assert.strictEqual(electricSubQuestion.total_title, 'Sähköajoneuvojen limut yhteensä (kpl)', 'Question \'Sähköajoneuvojen limut yhteensä (kpl)\' don\'t match')
+      assert.strictEqual(electricSubQuestion.id, 'softdrinks_in_electric_vehicles', 'Subquestion \'softdrinks_in_electric_vehicles\' should exist')
+
+      assert.strictEqual(electricSubQuestion.category, 'Sähköajoneuvoissa käytettävien limujen määrä (kpl)', 'Question don\'t match')
+      assert.strictEqual(electricSubQuestion.softdrinks_w_sugar, 'Sokeriset limut (kpl)', 'Question \'Sokeriset lumut (kpl)\' don\'t match')
+      assert.strictEqual(electricSubQuestion.softdrinks_no_sugar, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat lumut (kpl)\' don\'t match')
+      assert.strictEqual(electricSubQuestion.total, 'Sähköajoneuvojen limut yhteensä (kpl)', 'Question \'Sähköajoneuvojen limut yhteensä (kpl)\' don\'t match')
 
       const dieselSubQuestion = sofdrinksQuestions.sub_questions.find(q => q.id === 'softdrinks_in_diesel_vehicles')
       assert.notStrictEqual(dieselSubQuestion, undefined, 'Subquestion \'softdrinks_in_diesel_vehicles\' should exist')
-      assert.strictEqual(dieselSubQuestion.category_title, 'Dieselajoneuvoissa käytettävien limujen määrä (kpl)', 'Question don\'t match')
-      assert.strictEqual(dieselSubQuestion.softdrinks_w_sugar_title, 'Sokeriset limut (kpl)', 'Question \'Sokeriset limut (kpl)\' don\'t match')
-      assert.strictEqual(dieselSubQuestion.softdrinks_no_sugar_title, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat limut (kpl)\' don\'t match')
-      assert.strictEqual(dieselSubQuestion.total_title, 'Dieselajoneuvojen limut yhteensä (kpl)', 'Question \'Dieselajoneuvojen limut yhteensä (kpl)\' don\'t match')
+      assert.strictEqual(dieselSubQuestion.category, 'Dieselajoneuvoissa käytettävien limujen määrä (kpl)', 'Question don\'t match')
+      assert.strictEqual(dieselSubQuestion.softdrinks_w_sugar, 'Sokeriset limut (kpl)', 'Question \'Sokeriset limut (kpl)\' don\'t match')
+      assert.strictEqual(dieselSubQuestion.softdrinks_no_sugar, 'Sokerittomat limut (kpl)', 'Question \'Sokerittomat limut (kpl)\' don\'t match')
+      assert.strictEqual(dieselSubQuestion.total, 'Dieselajoneuvojen limut yhteensä (kpl)', 'Question \'Dieselajoneuvojen limut yhteensä (kpl)\' don\'t match')
     })
   })
 
@@ -122,6 +124,7 @@ describe('Questions & Answers', () => {
 
       beforeEach(async () => {
         await User.deleteMany({})
+        await Answer.deleteMany({})
 
         const { response } = await helper.createUser()
         assert.strictEqual(response.status, 201, 'User creation failed')
@@ -135,7 +138,7 @@ describe('Questions & Answers', () => {
         if (!userToken)
           throw new Error('token is null')
 
-        answers = helper.getTestAnswers(basicModuleId, testUser.id)
+        answers = helper.getBasicAnswers(basicModuleId, testUser.id)
       })
 
       test('Question can be answered and it return json', async () => {
@@ -154,7 +157,28 @@ describe('Questions & Answers', () => {
       })
 
       test('Multible question can be answered', async () => {
+        const answersLenAtStart = await helper.answersInDb().length
 
+        for (const answer of answers) {
+          await api
+            .post('/api/answers')
+            .set(`Authorization`, `Bearer ${userToken}`)
+            .send(answer)
+            .expect(201)
+        }
+
+        const answersAtEnd = await Answer.find({})
+        assert.strictEqual(answersAtEnd.length, answers.length, 'The number of saved answers should match the number of sent answers')
+
+        // Check if groupAnswer
+        const groupAnswer = answersAtEnd.find(a => a.type === 'group')
+        assert.notStrictEqual(groupAnswer.groupAnswers, undefined, 'groupanswerTest answer should exist')
+        assert.strictEqual(groupAnswer.answer, undefined, 'groupAnswerTest answer-field should be undefined')
+
+        // Check if answer-field is answered
+        const answerField = answersAtEnd.find(a => a.type !== 'group')
+        assert.notStrictEqual(answerField.answer, undefined, 'answerTest should exist')
+        assert.strictEqual(answerField.groupAnswers.length, 0, 'answerTest groupAnswers-field should be undefined')
       })
     })
   })

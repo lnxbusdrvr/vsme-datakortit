@@ -33,7 +33,9 @@ const answerSchema = new mongoose.Schema({
   groupAnswers: [{
     subQuestionId: {
       type: String,
-      required: true,
+      required: function() {
+        return this.type === 'group'
+      }
     },
     // eg. { "renewable_title": 100, "non_renewable_title": 50 })
     // Use Map-type for dynamic fields
