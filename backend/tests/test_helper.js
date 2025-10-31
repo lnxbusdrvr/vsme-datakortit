@@ -1,5 +1,6 @@
 const { BasicModule, InclusiveModule } = require('../models/questions')
 const User = require('../models/user')
+const Answer = require('../models/answer')
 const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
@@ -10,7 +11,7 @@ const bcrypt = require('bcrypt')
 const initialBasicModules = [
   {
     _id: new mongoose.Types.ObjectId('688639b533545dffe4168751'),
-    module_title: "Perusmoduuli",
+    module: "Perusmoduuli",
     module_id: "basic_module",
     sections: [
       {
@@ -45,17 +46,17 @@ const initialBasicModules = [
             sub_questions: [
               {
                 id: "softdrinks_in_electric_vehicles",
-                category_title: "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
-                softdrinks_w_sugar_title: "Sokeriset limut (kpl)",
-                softdrinks_no_sugar_title: "Sokerittomat limut (kpl)",
-                total_title: "Sähköajoneuvojen limut yhteensä (kpl)"
+                category: "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
+                softdrinks_w_sugar: "Sokeriset limut (kpl)",
+                softdrinks_no_sugar: "Sokerittomat limut (kpl)",
+                total: "Sähköajoneuvojen limut yhteensä (kpl)"
               },
               {
                 id: "softdrinks_in_diesel_vehicles",
-                category_title: "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
-                softdrinks_w_sugar_title: "Sokeriset limut (kpl)",
-                softdrinks_no_sugar_title: "Sokerittomat limut (kpl)",
-                total_title: "Dieselajoneuvojen limut yhteensä (kpl)"
+                category: "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
+                softdrinks_w_sugar: "Sokeriset limut (kpl)",
+                softdrinks_no_sugar: "Sokerittomat limut (kpl)",
+                total: "Dieselajoneuvojen limut yhteensä (kpl)"
               }
             ]
           }
@@ -72,18 +73,18 @@ const initialBasicModules = [
             sub_questions: [
               {
                 id: "movie_genres",
-                category_title: "Elokuvagenret (kpl)",
+                category: "Elokuvagenret (kpl)",
                 horror_movies: {
-                  category_title: "Kauhuelokuvat",
-                  movie_pcs_title: "Kappaleita"
+                  category: "Kauhuelokuvat",
+                  movie_pcs: "Kappaleita"
                 },
                 scifi_movies: {
-                  category_title: "Scifi- ja fantasiaelokuvat",
-                  movie_pcs_title: "Kappaleita"
+                  category: "Scifi- ja fantasiaelokuvat",
+                  movie_pcs: "Kappaleita"
                 },
                 comedy_movies: {
-                  category_title: "Komediaelokuvat",
-                  movie_pcs_title: "Kappaleita"
+                  category: "Komediaelokuvat",
+                  movie_pcs: "Kappaleita"
                 }
               }
             ]
@@ -101,12 +102,12 @@ const initialBasicModules = [
             follow_up_if_true: [
               {
                 id: "b5_total_seasons",
-                category_title: "Montaako Babylon 5 kautta on?",
+                category: "Montaako Babylon 5 kautta on?",
                 type: "integer"
               },
               {
                 id: "b5_cost",
-                category_title: "Montaako euroa Babylon 5 Blu-Ray maksaa?",
+                category: "Montaako euroa Babylon 5 Blu-Ray maksaa?",
                 type: "currency"
               }
             ]
@@ -117,7 +118,7 @@ const initialBasicModules = [
   }
 ]
 
-const getTestAnswers = (moduleId, userId) => {
+const getBasicAnswers = (moduleId, userId) => {
   return [
     {
       moduleId,
@@ -130,41 +131,43 @@ const getTestAnswers = (moduleId, userId) => {
       moduleId,
       sectionId: 'subquestion',
       questionId: 'softdrinks_use',
-      userId, 
       type: 'group',
-      answer: JSON.stringify({
-        softdrinks_in_electric_vehicles: {
-          softdrinks_w_sugar_title: 15,
-          softdrinks_no_sugar_title: 5
+      groupAnswers: [
+        {
+          id: 'softdrinks_in_electric_vehicles',
+          values: {
+            softdrinks_w_sugar: 15,
+            softdrinks_no_sugar: 5
+          }
         },
-        softdrinks_in_diesel_vehicles: {
-          softdrinks_w_sugar_title: 1,
-          softdrinks_no_sugar_title: 21
+        {
+          id: 'softdrinks_in_diesel_vehicles',
+          values: {
+            softdrinks_w_sugar: 1,
+            softdrinks_no_sugar: 21
+          }
         }
-      })
+      ]
     },
     {
       moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'question_w_if',
-      userId, 
-      answerType: 'boolean',
+      type: 'boolean',
       answer: true
     },
     {
       moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'b5_total_seasons',
-      userId, 
-      answerType: 'integer',
+      type: 'integer',
       answer: 5
     },
     {
       moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'b5_cost',
-      userId, 
-      answerType: 'currency',
+      type: 'currency',
       answer: 99.95
     }
   ]
@@ -226,6 +229,11 @@ const usersInDb = async () => {
   return users.map(u => u.toJSON())
 }
 
+const answersInDb = async () => {
+  const answers = await Answer.find({})
+  return answers.map(a => a.toJSON())
+}
+
 /*
  * Valid and Invalid emails:
  * https://https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
@@ -274,13 +282,14 @@ const loginUser = async (user, currentPassword) => {
 
 module.exports = {
   initialBasicModules,
-  getTestAnswers,
+  getBasicAnswers,
   initialInclusiveModule, 
   basicModuleInDb,
   inclusiveModuleInDb,
   seedBasicModule, 
   usersInDb,
+  answersInDb,
   createUser,
-  loginUser
+  loginUser,
 }
 

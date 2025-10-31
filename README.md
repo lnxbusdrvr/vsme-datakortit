@@ -41,5 +41,6 @@
 | 24.10   | 7     | Actual answers cat be answered but not in test yet |
 | 25.10   | 3     | Answer test is passed, but problem in usertest |
 | 25.10   | 3     | Fixed all tests |
-| Total   | 75    | 100 h left. Goal: 175h (at least) |
+| 31.10   | 5     | Add more test and get em passed |
+| Total   | 80    | 95 h left. Goal: 175h (at least) |
 
