@@ -236,36 +236,80 @@ const answersInDb = async () => {
 
 /*
  * Valid and Invalid emails:
- * https://https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
+ * https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
  */
 const createUser = async () => {
   await User.deleteMany({})
 
   const passwordHash = await bcrypt.hash('password', 10)
-  const newUser = {
-    name: 'New User',
-    companyName: 'Kian yritys ay',
-    email: 'email@example.com',
-    password: 'password',
-    phone: Math.random().toString(10).substr(2, 9),
-    address: 'Fabianinkatu 33',
-    postalCode: '00100',
-    city: 'Helsinki',
-    legalFormOfCompany: 'Avoin yhtiö',
-    businessIdentityCode: '1234567-9', 
-    role: 'admin'
-  }
+  const newUsers = [
+    {
+      name: 'New User',
+      companyName: 'Kian yritys ay',
+      email: 'email@example.com',
+      password: 'password',
+      phone: Math.random().toString(10).substr(2, 9),
+      address: 'Fabianinkatu 33',
+      postalCode: '00100',
+      city: 'Helsinki',
+      legalFormOfCompany: 'Avoin yhtiö',
+      businessIdentityCode: '1234567-9',
+      role: 'admin'
+    },
+    {
+      name: 'Viewer User',
+      companyName: 'Nean yritys Oy',
+      email: 'email@subdomain.example.com',
+      password: 'password',
+      phone: Math.random().toString(10).substr(2, 9),
+      address: 'Pohjoinenkatu 16',
+      postalCode: '90100',
+      city: 'Oulu',
+      legalFormOfCompany: 'Osakeyhtiö',
+      businessIdentityCode: '1325647-9',
+      role: 'viewer'
+    },
+    {
+      name: 'User User',
+      companyName: 'Vian yritys ay',
+      email: 'firstname-lastname@example.com',
+      password: 'password',
+      phone: Math.random().toString(10).substr(2, 9),
+      address: 'Hämeenkatu 9 C 113',
+      postalCode: '33210',
+      city: 'Tampere',
+      legalFormOfCompany: 'Avoin yhtiö',
+      businessIdentityCode: '3219564-7',
+      role: 'user'
+    }
+  ]
+
 
   const usersAtStart = await usersInDb()
+  const creationResponse = []
 
-  const response = await api
-    .post('/api/users')
-    .send(newUser)
-    .expect(201)
+  for (const user of newUsers) {
+    const response = await api
+      .post('/api/users')
+      .send(user)
+      .expect(201)
+    creationResponse.push(response.body)
+  }
 
   const usersAtEnd = await usersInDb()
-  const createdUser = response.body
-  return { usersAtStart, usersAtEnd, createdUser, response }
+
+
+  const adminUser = creationResponse.find(u => u.role === 'admin')
+
+  return {
+    usersAtStart,
+    usersAtEnd,
+    createdUser: adminUser,
+    adminUser,
+    viewerUser: creationResponse.find(u => u.role === 'viewer'),
+    user: creationResponse.find(u => u.role === 'user'),
+    allCreatedUsers: creationResponse
+  }
 }
 
 const loginUser = async (user, currentPassword) => {
