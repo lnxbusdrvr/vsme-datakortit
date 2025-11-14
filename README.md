@@ -42,5 +42,6 @@
 | 25.10   | 3     | Answer test is passed, but problem in usertest |
 | 25.10   | 3     | Fixed all tests |
 | 31.10   | 5     | Add more test and get em passed |
-| Total   | 80    | 95 h left. Goal: 175h (at least) |
+| 13.11   | 3     | Implement some tests, now theres three roles in testusers |
+| Total   | 83    | 93 h left. Goal: 175h (at least) |
 
