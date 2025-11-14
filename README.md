@@ -44,5 +44,6 @@
 | 31.10   | 5     | Add more test and get em passed |
 | 13.11   | 3     | Implement some tests, now theres three roles in testusers |
 | 14.11   | 3     | Add 2nd normal user, add test to see only own answers |
-| Total   | 86    | 89 h left. Goal: 175h (at least) |
+| 14.11   | 1,25  | Admin and viewer can see all answers |
+| Total   | 87,25 | 86,75 h left. Goal: 175h (at least) |
 

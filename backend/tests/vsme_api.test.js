@@ -252,12 +252,51 @@ describe('Questions & Answers', () => {
       })
 
       test('admin see all answers', async () => {
-        // TODO
+        const answersLenAtStart = (await helper.answersInDb()).length
+
+        const response = await api
+          .get('/api/answers')
+          .set('Authorization', `Bearer ${adminToken}`)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+
+        const answersRes = response.body
+
+        assert.strictEqual(answersLenAtStart, answersRes.length, 'Admin answer count won\'t match')
+
+        const isUsers = answersRes.every(a => a.user.id === testUser.id || a.user.id === testUserTwo.id)
+        assert(isUsers, 'Adminall: Users won\'t match')
       })
 
       test('viewer see all answers', async () => {
-        // TODO
+        const answersLenAtStart = (await helper.answersInDb()).length
+
+        const response = await api
+          .get('/api/answers')
+          .set('Authorization', `Bearer ${viewerToken}`)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+
+        const answersRes = response.body
+
+        assert.strictEqual(answersLenAtStart, answersRes.length, 'Admin answer count won\'t match')
+
+        const isUsers = answersRes.every(a => a.user.id === testUser.id || a.user.id === testUserTwo.id)
+        assert(isUsers, 'Adminall: Users won\'t match')
       })
+
+      test('User can modify it\'s answers', async () => {
+        // TODO 
+      })
+
+      test('Other user modifying other user\'s answers will fail', async () => {
+        // TODO 
+      })
+
+      test('User can delete it\'s answer', async () => {
+        // TODO 
+      })
+
     })
   })
 })
