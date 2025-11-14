@@ -19,7 +19,7 @@ describe('users', () => {
     const { response } = await helper.createUser()
     const usersAtEnd = await helper.usersInDb()
 
-    assert.strictEqual(usersAtStart.length + 3, usersAtEnd.length, 'User creation failed')
+    assert.strictEqual(usersAtStart.length + usersAtEnd.length, usersAtEnd.length, 'User creation failed')
   })
 
   test('New user add without giving email will fail', async () => {

@@ -270,7 +270,7 @@ const createUser = async () => {
       role: 'viewer'
     },
     {
-      name: 'User User',
+      name: 'User One',
       companyName: 'Vian yritys ay',
       email: 'firstname-lastname@example.com',
       password: 'password',
@@ -280,6 +280,19 @@ const createUser = async () => {
       city: 'Tampere',
       legalFormOfCompany: 'Avoin yhtiö',
       businessIdentityCode: '3219564-7',
+      role: 'user'
+    },
+    {
+      name: 'User Two',
+      companyName: 'Villen yritys ay',
+      email: 'email@example.co.jp',
+      password: 'password',
+      phone: Math.random().toString(10).substr(2, 9),
+      address: 'Hämeenkatu 9 C 113',
+      postalCode: '70210',
+      city: 'Kuopio',
+      legalFormOfCompany: 'Avoin yhtiö',
+      businessIdentityCode: '7925164-3',
       role: 'user'
     }
   ]
@@ -307,7 +320,8 @@ const createUser = async () => {
     createdUser: adminUser,
     adminUser,
     viewerUser: creationResponse.find(u => u.role === 'viewer'),
-    user: creationResponse.find(u => u.role === 'user'),
+    user: creationResponse.find(u => u.email === 'firstname-lastname@example.com'),
+    userTwo: creationResponse.find(u => u.email === 'email@example.co.jp'),
     allCreatedUsers: creationResponse
   }
 }

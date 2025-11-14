@@ -71,8 +71,8 @@ const getAnswerById = async (req, res) => {
 
   if (
     answer.user.id.toString() !== req.user.id.toString()
-    && req.user.role !== 'admin'
-    || req.user.role !== 'viewer'
+    && (req.user.role !== 'admin'
+    || req.user.role !== 'viewer')
   ) {
     return res.status(403).json({ error: 'Permission denied' })
   }
