@@ -121,9 +121,12 @@ describe('Questions & Answers', () => {
       let adminToken = null
       let viewerToken = null
       let userToken = null
+      let userTwoToken = null
+
       let adminUser = null
       let viewerUser = null
       let testUser = null
+      let testUserTwo = null
       let answers = null
 
       beforeEach(async () => {
@@ -131,34 +134,41 @@ describe('Questions & Answers', () => {
         await Answer.deleteMany({})
 
         const createdUsers  = await helper.createUser()
+
         adminUser = createdUsers.adminUser
         viewerUser = createdUsers.viewerUser
         testUser = createdUsers.user
+        testUserTwo = createdUsers.userTwo
 
-        const usersAtStart = await helper.usersInDb()
-        testUser = usersAtStart[0]
-        
-        const adminLogin = await helper.loginUser(adminUser, 'password')
-        adminToken = adminLogin.token
-
-        const viewerLogin = await helper.loginUser(viewerUser, 'password')
-        viewerToken = viewerLogin.token
-
-        const userLogin = await helper.loginUser(testUser, 'password')
-        userToken = userLogin.token
-
-        if (!userToken)
-          throw new Error('token is null')
+        adminToken = (await helper.loginUser(adminUser, 'password')).token
+        viewerToken = (await helper.loginUser(viewerUser, 'password')).token
+        userToken = (await helper.loginUser(testUser, 'password')).token
+        userTwoToken = (await helper.loginUser(testUserTwo, 'password')).token
 
         answers = helper.getBasicAnswers(basicModuleId, testUser.id)
       })
 
-      test('Question can be answered and it return json', async () => {
+      test('Question can be answered by user and it return json', async () => {
         const answer = answers[0]
 
         const response = await api
           .post('/api/answers')
           .set(`Authorization`, `Bearer ${userToken}`)
+          .send(answer)
+          .expect(201)
+          .expect('Content-Type', /application\/json/)
+
+        const body = response.body
+        assert.strictEqual(body.questionId, answer.questionId, 'questionId won\'t match')
+        assert.strictEqual(body.answer, answer.answer, 'Answered answer won\'t match')
+      })
+
+      test('Question can be answered by userTwo and it return json', async () => {
+        const answer = answers[0]
+
+        const response = await api
+          .post('/api/answers')
+          .set(`Authorization`, `Bearer ${userTwoToken}`)
           .send(answer)
           .expect(201)
           .expect('Content-Type', /application\/json/)
@@ -193,7 +203,59 @@ describe('Questions & Answers', () => {
         assert.strictEqual(answerField.groupAnswers.length, 0, 'answerTest groupAnswers-field should be undefined')
       })
 
-      test('Only admin or viewer -role can see all answers', async () => {
+      test('Multible question can be answered by userTwo', async () => {
+        const answersLenAtStart = await helper.answersInDb().length
+
+        for (const answer of answers) {
+          await api
+            .post('/api/answers')
+            .set(`Authorization`, `Bearer ${userTwoToken}`)
+            .send(answer)
+            .expect(201)
+        }
+
+        const answersAtEnd = await Answer.find({})
+        assert.strictEqual(answersAtEnd.length, answers.length, 'The number of saved answers should match the number of sent answers')
+
+        const groupAnswer = answersAtEnd.find(a => a.type === 'group')
+        assert.notStrictEqual(groupAnswer.groupAnswers, undefined, 'groupanswerTest answer should exist')
+        assert.strictEqual(groupAnswer.answer, undefined, 'groupAnswerTest answer-field should be undefined')
+
+        const answerField = answersAtEnd.find(a => a.type !== 'group')
+        assert.notStrictEqual(answerField.answer, undefined, 'answerTest should exist')
+        assert.strictEqual(answerField.groupAnswers.length, 0, 'answerTest groupAnswers-field should be undefined')
+      })
+
+      test('User sees only own answers', async () => {
+        for (const answer of answers) {
+          await api
+            .post('/api/answers')
+            .set(`Authorization`, `Bearer ${userToken}`)
+            .send(answer)
+            .expect(201)
+        }
+
+        const answersLenAtStart = (await helper.answersInDb()).length
+
+        const response = await api
+          .get('/api/answers')
+          .set('Authorization', `Bearer ${userToken}`)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+
+        const body = response.body
+
+        assert.strictEqual(answersLenAtStart, body.length, 'Answer count won\'t match')
+
+        const isUser = body.every(a => a.user.id === testUser.id)
+        assert(isUser, 'User won\'t match')
+      })
+
+      test('admin see all answers', async () => {
+        // TODO
+      })
+
+      test('viewer see all answers', async () => {
         // TODO
       })
     })
