@@ -107,7 +107,7 @@ describe('Questions & Answers', () => {
         sectionId: 'test1',
         questionId: 'test1_01',
         type: 'text',
-        answer: 'Tämä testin on tarkoitus epäonnistua.'
+        answer: 'Tämän testin on tarkoitus epäonnistua.'
       }
 
       await api
@@ -118,7 +118,11 @@ describe('Questions & Answers', () => {
     })
 
     describe('AuthorizedUser', () => {
+      let adminToken = null
+      let viewerToken = null
       let userToken = null
+      let adminUser = null
+      let viewerUser = null
       let testUser = null
       let answers = null
 
@@ -126,14 +130,22 @@ describe('Questions & Answers', () => {
         await User.deleteMany({})
         await Answer.deleteMany({})
 
-        const { response } = await helper.createUser()
-        assert.strictEqual(response.status, 201, 'User creation failed')
+        const createdUsers  = await helper.createUser()
+        adminUser = createdUsers.adminUser
+        viewerUser = createdUsers.viewerUser
+        testUser = createdUsers.user
 
         const usersAtStart = await helper.usersInDb()
         testUser = usersAtStart[0]
         
-        const { token } = await helper.loginUser(testUser, 'password')
-        userToken = token
+        const adminLogin = await helper.loginUser(adminUser, 'password')
+        adminToken = adminLogin.token
+
+        const viewerLogin = await helper.loginUser(viewerUser, 'password')
+        viewerToken = viewerLogin.token
+
+        const userLogin = await helper.loginUser(testUser, 'password')
+        userToken = userLogin.token
 
         if (!userToken)
           throw new Error('token is null')
@@ -179,6 +191,10 @@ describe('Questions & Answers', () => {
         const answerField = answersAtEnd.find(a => a.type !== 'group')
         assert.notStrictEqual(answerField.answer, undefined, 'answerTest should exist')
         assert.strictEqual(answerField.groupAnswers.length, 0, 'answerTest groupAnswers-field should be undefined')
+      })
+
+      test('Only admin or viewer -role can see all answers', async () => {
+        // TODO
       })
     })
   })

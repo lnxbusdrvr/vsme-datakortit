@@ -15,8 +15,11 @@ describe('users', () => {
   })
 
   test('New user can be added', async () => {
+    const usersAtStart = await helper.usersInDb()
     const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201, 'User creation failed')
+    const usersAtEnd = await helper.usersInDb()
+
+    assert.strictEqual(usersAtStart.length + 3, usersAtEnd.length, 'User creation failed')
   })
 
   test('New user add without giving email will fail', async () => {
@@ -58,15 +61,14 @@ describe('users', () => {
   })
 
   test('Adding user with existing email will fail' , async () => {
-    const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201, 'User creation failed')
+    const { adminUser } = await helper.createUser()
   
     const usersAtStart = await helper.usersInDb()
 
     const duplicatedUser = {
       name: 'Matti Meikäläinen',
       companyName: 'Matin yritys ay',
-      email: 'email@example.com',
+      email: adminUser.email,
       password: 'password',
       phone: '012345678',
       address: 'Fabianinkatu 33',
@@ -93,8 +95,7 @@ describe('users', () => {
   })
 
   test('Adding user with existing businessIdentityCode will fail' , async () => {
-    const { response } = await helper.createUser()
-    assert.strictEqual(response.status, 201, 'User creation failed')
+    const { user } = await helper.createUser()
   
     const usersAtStart = await helper.usersInDb()
 
@@ -108,8 +109,8 @@ describe('users', () => {
       postalCode: '33014',
       city: 'Tampere',
       legalFormOfCompany: 'Avoin yhtiö',
-      businessIdentityCode: usersAtStart[0].businessIdentityCode,
-      role: 'admin'
+      businessIdentityCode: user.businessIdentityCode,
+      role: 'user'
     }
 
     const duplicateUserRes = await api
@@ -135,12 +136,11 @@ describe('users', () => {
     beforeEach(async () => {
       await User.deleteMany({});
 
-      const { response } = await helper.createUser()
-      assert.strictEqual(response.status, 201, 'User creation failed')
+      const { user } = await helper.createUser()
 
       const usersAtStart = await helper.usersInDb()
-      testUser = usersAtStart[0]
-      testUser = usersAtStart[0].toObject ? usersAtStart[0].toObject() : usersAtStart[0] // ei vaikutusta
+      testUser = user
+      //testUser = usersAtStart[0].toObject ? usersAtStart[0].toObject() : usersAtStart[0] // ei vaikutusta
      
       const { token } = await helper.loginUser(testUser, currentPassword)
       userToken = token
@@ -213,9 +213,6 @@ describe('users', () => {
     })
 
     test('User\'s information can be changed', async () => {
-      const usersAtStart = await helper.usersInDb()
-      const user = usersAtStart[0]
-
       const newName = 'Matti Meikäläinen'
       const newAddress = 'Mannerheimintie 42'
       const newPhone = '0401234567'
@@ -223,7 +220,7 @@ describe('users', () => {
       const newCity = 'Helsinki'
 
       await api
-        .patch(`/api/users/${user.id}`)
+        .patch(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .send(
           {
@@ -237,7 +234,7 @@ describe('users', () => {
         )
         .expect(200)
 
-      const updatedUser = await User.findById(user.id)
+      const updatedUser = await User.findById(testUser.id)
       assert.strictEqual(updatedUser.name, newName)
       assert.strictEqual(updatedUser.address, newAddress)
       assert.strictEqual(updatedUser.phone, newPhone)
@@ -247,15 +244,15 @@ describe('users', () => {
 
     test('User can be deleted', async () => {
       const usersAtStart = await helper.usersInDb()
-      const userToDelete = usersAtStart[0] 
 
       await api
-        .delete(`/api/users/${userToDelete.id}`)
+        .delete(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .expect(204)
 
       const usersAtEnd = await helper.usersInDb()
-      const userInDb = await User.findById(userToDelete.id)
+
+      const userInDb = await User.findById(testUser.id)
 
       assert.strictEqual(usersAtEnd.length, usersAtStart.length - 1)
       assert.strictEqual(userInDb, null)
