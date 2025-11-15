@@ -145,7 +145,7 @@ describe('Questions & Answers', () => {
         userToken = (await helper.loginUser(testUser, 'password')).token
         userTwoToken = (await helper.loginUser(testUserTwo, 'password')).token
 
-        answers = helper.getBasicAnswers(basicModuleId, testUser.id)
+        answers = helper.getAnswers(basicModuleId)
       })
 
       test('Question can be answered by user and it return json', async () => {
@@ -178,7 +178,7 @@ describe('Questions & Answers', () => {
         assert.strictEqual(body.answer, answer.answer, 'Answered answer won\'t match')
       })
 
-      test('Multible question can be answered', async () => {
+      test('Multiple question can be answered', async () => {
         const answersLenAtStart = await helper.answersInDb().length
 
         for (const answer of answers) {
@@ -203,7 +203,7 @@ describe('Questions & Answers', () => {
         assert.strictEqual(answerField.groupAnswers.length, 0, 'answerTest groupAnswers-field should be undefined')
       })
 
-      test('Multible question can be answered by userTwo', async () => {
+      test('Multiple question can be answered by userTwo', async () => {
         const answersLenAtStart = await helper.answersInDb().length
 
         for (const answer of answers) {
@@ -227,13 +227,8 @@ describe('Questions & Answers', () => {
       })
 
       test('User sees only own answers', async () => {
-        for (const answer of answers) {
-          await api
-            .post('/api/answers')
-            .set(`Authorization`, `Bearer ${userToken}`)
-            .send(answer)
-            .expect(201)
-        }
+        await helper.seedAnswersForUser(userToken, answers)
+        await helper.seedAnswersForUser(userTwoToken, answers)
 
         const answersLenAtStart = (await helper.answersInDb()).length
 
@@ -245,13 +240,19 @@ describe('Questions & Answers', () => {
 
         const body = response.body
 
-        assert.strictEqual(answersLenAtStart, body.length, 'Answer count won\'t match')
+        assert.notStrictEqual(answersLenAtStart, body.length, 'Answer count won\'t match')
 
         const isUser = body.every(a => a.user.id === testUser.id)
         assert(isUser, 'User won\'t match')
+
+        const notUserTwo = body.every(a => a.user.id !== testUserTwo.id)
+        assert(notUserTwo, 'User should not see other user answers')
       })
 
       test('admin see all answers', async () => {
+        await helper.seedAnswersForUser(userToken, answers)
+        await helper.seedAnswersForUser(userTwoToken, answers)
+
         const answersLenAtStart = (await helper.answersInDb()).length
 
         const response = await api
@@ -272,6 +273,9 @@ describe('Questions & Answers', () => {
       })
 
       test('viewer see all answers', async () => {
+        await helper.seedAnswersForUser(userToken, answers)
+        await helper.seedAnswersForUser(userTwoToken, answers)
+
         const answersLenAtStart = (await helper.answersInDb()).length
 
         const response = await api
@@ -291,7 +295,10 @@ describe('Questions & Answers', () => {
         assert(isUsers, 'Adminall: Users won\'t match')
       })
 
-      test('User can modify it\'s answers', async () => {
+      test('User can modify it\'s answer', async () => {
+        await helper.seedAnswersForUser(userToken, answers)
+        await helper.seedAnswersForUser(userTwoToken, answers)
+
         const answerToModify = await Answer
           .findOne({ user: testUser.id, type: 'text' })
 
@@ -299,25 +306,117 @@ describe('Questions & Answers', () => {
           answer: 'Päivitetty vastaus'
         }
 
-        const updatedResponse = await api
-          .patch('/api/answers/${answerToModify.id.toString()}')
+        await api
+          .patch(`/api/answers/${answerToModify.id.toString()}`)
           .set('Authorization', `Bearer ${userToken}`)
           .send(updatedData)
           .expect(200)
           .expect('Content-Type', /application\/json/)
 
-        const answerRes = updatedResponse.body
+        const UpdatedRes = await api
+          .get(`/api/answers/${answerToModify.id.toString()}`)
+          .set('Authorization', `Bearer ${userToken}`)
+          .send(updatedData)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
 
-        assert.strictEqual(answerRes.answer, updatedData.answer, 'Answer won\'t match')
+        const updatedAnswer = UpdatedRes.body 
 
-        assert(new Date(answerRes.updatedAt) > new Date(answerToModify.updatedAt), 'Updated date should be newer')
+        assert.strictEqual(updatedAnswer.answer, updatedData.answer, 'Updated answer won\'t match')
+        assert(new Date(updatedAnswer.updatedAt) > new Date(answerToModify.updatedAt), 'Updated date should be newer')
       })
 
-      test('Other user modifying other user\'s answers will fail', async () => {
-        // TODO 
+      test('Other user modifying other user\'s answer will fail', async () => {
+        await helper.seedAnswersForUser(userTwoToken, answers)
+
+        const answerToModify = await Answer
+          .findOne({ user: testUserTwo.id, type: 'text' })
+
+        const updatedData = {
+          answer: 'Tämän ei pitäisi päivittyä'
+        }
+
+        await api
+          .patch(`/api/answers/${answerToModify.id.toString()}`)
+          .set('Authorization', `Bearer ${userToken}`)
+          .send(updatedData)
+          .expect(403)
+
+        const answerAfterAttempt = await Answer.findById(answerToModify.id)
+        assert.strictEqual(answerAfterAttempt.answer, answerToModify.answer, 'Answer should not be modified')
+      })
+
+      test('Admin can modify users\'s answer', async () => {
+        await helper.seedAnswersForUser(userTwoToken, answers)
+
+        const answerToModify = await Answer
+          .findOne({ user: testUserTwo.id, type: 'text' })
+
+        const updatedData = {
+          answer: 'Tämä adminin pitäisi päivittyä'
+        }
+
+        const updatedRes = await api
+          .patch(`/api/answers/${answerToModify.id.toString()}`)
+          .set('Authorization', `Bearer ${adminToken}`)
+          .send(updatedData)
+          .expect(200)
+
+        const updatedAnswer = updatedRes.body
+
+        assert.strictEqual(updatedAnswer.answer, updatedData.answer, 'Adminupdated answer should match')
+        assert(new Date(updatedAnswer.updatedAt) > new Date(answerToModify.updatedAt), 'Updated date should be newer')
+      })
+
+      test('Viwer users\'s answer modify will fail', async () => {
+        await helper.seedAnswersForUser(userTwoToken, answers)
+
+        const answerToModify = await Answer
+          .findOne({ user: testUserTwo.id, type: 'text' })
+
+        const updatedData = {
+          answer: 'Tämä viewerin päivitys ei pitäisi päivittyä'
+        }
+
+        const updatedRes = await api
+          .patch(`/api/answers/${answerToModify.id.toString()}`)
+          .set('Authorization', `Bearer ${viewerToken}`)
+          .send(updatedData)
+          .expect(403)
+
+        const answerAfterAttempt = await Answer.findById(answerToModify.id)
+        assert.strictEqual(answerAfterAttempt.answer, answerToModify.answer, 'Answer should not be modified')
       })
 
       test('User can delete it\'s answer', async () => {
+        await helper.seedAnswersForUser(userToken, answers)
+
+        const answerToDelete = await Answer
+          .findOne({ user: testUser.id, type: 'text' })
+
+        const answerAtStart = await Answer.find({})
+        console.log(`answerToDelete: ${answerToDelete.id}\nanswerToDelete: ${answerToDelete._id}`)
+
+        await api
+          .delete(`/api/answers/${answerToDelete.id.toString()}`)
+          .set('Authorization', `Bearer ${userToken}`)
+          .expect(204)
+
+        const answerAtEnd = await Answer.find({})
+        assert.strictEqual(answerAtEnd.length, answerAtStart.length - 1, 'Answer count should be less')
+
+        const deletedAnswer = await Answer.findById(answerToDelete.id)
+        assert.strictEqual(deletedAnswer, null, 'Answer should be deleted')
+      })
+
+      test('User delete other user\'s answer will fail', async () => {
+      })
+
+      test('Admin can delete users\'s answer', async () => {
+        // TODO 
+      })
+
+      test('Viewer deleting users\'s answer will fail', async () => {
         // TODO 
       })
 

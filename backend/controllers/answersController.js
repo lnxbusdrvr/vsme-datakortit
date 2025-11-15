@@ -69,10 +69,13 @@ const getAnswerById = async (req, res) => {
   if (!answer)
     return res.status(404).end()
 
-  if (
-    answer.user.id.toString() !== req.user.id.toString()
-    && (req.user.role !== 'admin'
-    || req.user.role !== 'viewer')
+  const user = req.user
+  const userRole = req.user.role
+
+  // Only registered users can see answers
+  if (answer.user.id.toString() !== user.id.toString()
+    && userRole !== 'admin'
+    && userRole !== 'viewer'
   ) {
     return res.status(403).json({ error: 'Permission denied' })
   }
@@ -80,21 +83,60 @@ const getAnswerById = async (req, res) => {
 }
 
 const updateAnswer = async (req, res) => {
-  // TODO
-  /*
-  const answer = await Answer
+  const answerToUpdate = await Answer
     .findById(req.params.id)
     .populate('user')
-  const { answer, groupAnswer } = req.body
-  const userId = req.user.id
-  const userRole = req.user.role
 
-  const answerToUpdate = await A
-  */
+  // Only these fields can be updated
+  const { answer, groupAnswers } = req.body
+
+  const user = req.user
+
+  if (!answerToUpdate)
+    return res.status(404).json({ error: 'Updatable answer not found'})
+
+  const isOwner = answerToUpdate.user.id.toString() === user.id.toString()
+  // Only owner and admin can update answer
+  const canUpdate = isOwner || user.role === 'admin'
+
+  if (!canUpdate)
+    return res.status(403).json({ error: 'Updating permission denied' })
+
+  if (answerToUpdate.type === 'group') {
+    // To ensure fields are not empty
+    if (groupAnswers)
+      answerToUpdate.groupAnswers = groupAnswers
+  } else {
+    if (typeof answer !== 'undefined')
+      answerToUpdate.answer = answer
+  }
+
+  answerToUpdate.updatedAt = new Date()
+
+  const updatedAnswer = await answerToUpdate.save()
+  await updatedAnswer.populate('user', { name: 1, companyName: 1 })
+
+  res.json(updatedAnswer)
 }
 
 const deleteAnswer = async (req, res) => {
+  const answerId = req.params.id
+  const answerToDelete = await Answer.findById(answerId)
+
+  if (!answerToDelete)
+    return res.status(404).json({ error: 'Deletable answer not found'})
+
+  const userIdFromToken = req.user.id
+  const answerCreatorId = answerToDelete.toString()
+
   // TODO
+  /*
+  if (userIdFromToken !== answerCreatorId || res.user.role !== 'admin')
+    return res.status(403).json({ error: 'Answer deletion permission denied' })
+
+  await Answer.findByIdAndDelete(answerId)
+  res.status(204).end()
+  */
 }
 
 module.exports = {
