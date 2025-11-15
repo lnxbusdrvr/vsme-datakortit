@@ -81,6 +81,16 @@ const getAnswerById = async (req, res) => {
 
 const updateAnswer = async (req, res) => {
   // TODO
+  /*
+  const answer = await Answer
+    .findById(req.params.id)
+    .populate('user')
+  const { answer, groupAnswer } = req.body
+  const userId = req.user.id
+  const userRole = req.user.role
+
+  const answerToUpdate = await A
+  */
 }
 
 const deleteAnswer = async (req, res) => {

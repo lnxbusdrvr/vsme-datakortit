@@ -264,8 +264,11 @@ describe('Questions & Answers', () => {
 
         assert.strictEqual(answersLenAtStart, answersRes.length, 'Admin answer count won\'t match')
 
-        const isUsers = answersRes.every(a => a.user.id === testUser.id || a.user.id === testUserTwo.id)
-        assert(isUsers, 'Adminall: Users won\'t match')
+        const isUsers = answersRes.every(
+            a => a.user.id === testUser.id ||
+            a.user.id === testUserTwo.id
+        )
+        assert(isUsers, 'Admin Users won\'t match')
       })
 
       test('viewer see all answers', async () => {
@@ -281,12 +284,33 @@ describe('Questions & Answers', () => {
 
         assert.strictEqual(answersLenAtStart, answersRes.length, 'Admin answer count won\'t match')
 
-        const isUsers = answersRes.every(a => a.user.id === testUser.id || a.user.id === testUserTwo.id)
+        const isUsers = answersRes.every(
+          a => a.user.id === testUser.id ||
+          a.user.id === testUserTwo.id
+        )
         assert(isUsers, 'Adminall: Users won\'t match')
       })
 
       test('User can modify it\'s answers', async () => {
-        // TODO 
+        const answerToModify = await Answer
+          .findOne({ user: testUser.id, type: 'text' })
+
+        const updatedData = {
+          answer: 'Päivitetty vastaus'
+        }
+
+        const updatedResponse = await api
+          .patch('/api/answers/${answerToModify.id.toString()}')
+          .set('Authorization', `Bearer ${userToken}`)
+          .send(updatedData)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+
+        const answerRes = updatedResponse.body
+
+        assert.strictEqual(answerRes.answer, updatedData.answer, 'Answer won\'t match')
+
+        assert(new Date(answerRes.updatedAt) > new Date(answerToModify.updatedAt), 'Updated date should be newer')
       })
 
       test('Other user modifying other user\'s answers will fail', async () => {
