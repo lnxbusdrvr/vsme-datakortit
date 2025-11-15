@@ -118,7 +118,7 @@ const initialBasicModules = [
   }
 ]
 
-const getBasicAnswers = (moduleId, userId) => {
+const getAnswers = (moduleId) => {
   return [
     {
       moduleId,
@@ -224,6 +224,16 @@ const seedBasicModule = async () => {
   return basicModuleObject.id.toString()
 }
 
+const seedAnswersForUser = async (token, answers) => {
+  for (const answer of answers) {
+    await api
+      .post('/api/answers')
+      .set('Authorization', `Bearer ${token}`)
+      .send(answer)
+      .expect(201)
+  }
+}
+
 const usersInDb = async () => {
   const users = await User.find({})
   return users.map(u => u.toJSON())
@@ -297,7 +307,6 @@ const createUser = async () => {
     }
   ]
 
-
   const usersAtStart = await usersInDb()
   const creationResponse = []
 
@@ -340,11 +349,12 @@ const loginUser = async (user, currentPassword) => {
 
 module.exports = {
   initialBasicModules,
-  getBasicAnswers,
+  getAnswers,
   initialInclusiveModule, 
   basicModuleInDb,
   inclusiveModuleInDb,
-  seedBasicModule, 
+  seedBasicModule,
+  seedAnswersForUser,
   usersInDb,
   answersInDb,
   createUser,
