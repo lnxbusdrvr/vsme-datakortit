@@ -47,5 +47,6 @@
 | 14.11   | 1,25  | Admin and viewer can see all answers |
 | 15.11   | 0,75  | Add test: User can modify own answer |
 | 15.11   | 6     | Implement answers patch & delete, add some security tests |
-| Total   | 94    | 81 h left. Goal: 175h (at least) |
+| 16.11   | 7     | All are almost done in backend, except inclusive questions |
+| Total   | 101   | 74 h left. Goal: 175h (at least) |
 

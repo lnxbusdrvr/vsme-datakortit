@@ -1,7 +1,6 @@
-const mongoose = require('mongoose')
-const { after } = require('node:test')
+const mongoose = require('mongoose');
+const { after } = require('node:test');
 
 after(async () => {
-  await mongoose.connection.close()
-})
-
+  await mongoose.connection.close();
+});

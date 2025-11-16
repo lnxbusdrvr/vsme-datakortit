@@ -1,9 +1,7 @@
-const router = require('express').Router()
-const basicQsController = require('../controllers/basicQsController')
+const router = require('express').Router();
+const basicQsController = require('../controllers/basicQsController');
 
-router.get(`/`, basicQsController.getAllBasicQs)
-router.get(`/:id`, basicQsController.getBasicQById)
+router.get(`/`, basicQsController.getAllBasicQs);
+router.get(`/:id`, basicQsController.getBasicQById);
 
-
-module.exports = router
-
+module.exports = router;
