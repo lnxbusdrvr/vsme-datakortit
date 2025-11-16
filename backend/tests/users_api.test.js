@@ -1,69 +1,65 @@
-const supertest = require('supertest')
-const mongoose = require('mongoose')
-const { test, describe, after, beforeEach } = require('node:test')
-const app = require('../app')
-const api = supertest(app)
-const helper = require('./test_helper')
-const assert = require('assert')
-const bcrypt = require('bcrypt')
-const User = require('../models/user')
-
+const supertest = require('supertest');
+const { test, describe, beforeEach } = require('node:test');
+const app = require('../app');
+const api = supertest(app);
+const helper = require('./test_helper');
+const assert = require('assert');
+const bcrypt = require('bcrypt');
+const User = require('../models/user');
 
 describe('users', () => {
   beforeEach(async () => {
-    await User.deleteMany({})
-  })
+    await User.deleteMany({});
+  });
 
   test('New user can be added', async () => {
-    const usersAtStart = await helper.usersInDb()
-    const { response } = await helper.createUser()
-    const usersAtEnd = await helper.usersInDb()
+    const usersAtStart = await helper.usersInDb();
+    await helper.createUser();
+    const usersAtEnd = await helper.usersInDb();
 
-    assert.strictEqual(usersAtStart.length + usersAtEnd.length, usersAtEnd.length, 'User creation failed')
-  })
+    assert.strictEqual(
+      usersAtStart.length + usersAtEnd.length,
+      usersAtEnd.length,
+      'User creation failed'
+    );
+  });
 
   test('New user add without giving email will fail', async () => {
     const newUser = {
-      name: "New User",
-      password: "password"
-    }
+      name: 'New User',
+      password: 'password',
+    };
 
-    const usersAtStart = await helper.usersInDb()
+    const usersAtStart = await helper.usersInDb();
 
-    const result = await api
-      .post('/api/users')
-      .send(newUser)
-      .expect(400)
+    const result = await api.post('/api/users').send(newUser).expect(400);
 
-    const usersAtEnd = await helper.usersInDb()
+    const usersAtEnd = await helper.usersInDb();
 
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-    assert.strictEqual(result.body.error, 'email or password is missing')
-  })
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+    assert.strictEqual(result.body.error, 'email or password is missing');
+  });
 
   test('New user add without giving password will fail', async () => {
     const newUser = {
-      name: "New User",
-      email: "newuser@example.com"
-    }
+      name: 'New User',
+      email: 'newuser@example.com',
+    };
 
-    const usersAtStart = await helper.usersInDb()
+    const usersAtStart = await helper.usersInDb();
 
-    const result = await api
-      .post('/api/users')
-      .send(newUser)
-      .expect(400)
+    const result = await api.post('/api/users').send(newUser).expect(400);
 
-    const usersAtEnd = await helper.usersInDb()
+    const usersAtEnd = await helper.usersInDb();
 
-    assert.strictEqual(result.body.error, 'email or password is missing')
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-  })
+    assert.strictEqual(result.body.error, 'email or password is missing');
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+  });
 
-  test('Adding user with existing email will fail' , async () => {
-    const { adminUser } = await helper.createUser()
-  
-    const usersAtStart = await helper.usersInDb()
+  test('Adding user with existing email will fail', async () => {
+    const { adminUser } = await helper.createUser();
+
+    const usersAtStart = await helper.usersInDb();
 
     const duplicatedUser = {
       name: 'Matti Meikäläinen',
@@ -76,28 +72,21 @@ describe('users', () => {
       city: 'Helsinki',
       legalFormOfCompany: 'Avoin yhtiö',
       businessIdentityCode: '9976543-1',
-      role: 'admin'
-    }
+      role: 'admin',
+    };
 
-    const duplicateUserRes = await api
-      .post('/api/users')
-      .send(duplicatedUser)
-      .expect(400)
-  
-    assert
-      .strictEqual(
-        duplicateUserRes.body.error,
-        'Duplicate businessIdentityCode or email'
-      )
-    const usersAtEnd = await helper.usersInDb()
-  
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-  })
+    const duplicateUserRes = await api.post('/api/users').send(duplicatedUser).expect(400);
 
-  test('Adding user with existing businessIdentityCode will fail' , async () => {
-    const { user } = await helper.createUser()
-  
-    const usersAtStart = await helper.usersInDb()
+    assert.strictEqual(duplicateUserRes.body.error, 'Duplicate businessIdentityCode or email');
+    const usersAtEnd = await helper.usersInDb();
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+  });
+
+  test('Adding user with existing businessIdentityCode will fail', async () => {
+    const { user } = await helper.createUser();
+
+    const usersAtStart = await helper.usersInDb();
 
     const duplicatedUser = {
       name: 'Maija Meikäläinen',
@@ -110,153 +99,236 @@ describe('users', () => {
       city: 'Tampere',
       legalFormOfCompany: 'Avoin yhtiö',
       businessIdentityCode: user.businessIdentityCode,
-      role: 'user'
-    }
+      role: 'user',
+    };
 
-    const duplicateUserRes = await api
-      .post('/api/users')
-      .send(duplicatedUser)
-      .expect(400)
-  
-    assert
-      .strictEqual(
-        duplicateUserRes.body.error,
-        'Duplicate businessIdentityCode or email'
-      )
-    const usersAtEnd = await helper.usersInDb()
-  
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
-  })
+    const duplicateUserRes = await api.post('/api/users').send(duplicatedUser).expect(400);
+
+    assert.strictEqual(duplicateUserRes.body.error, 'Duplicate businessIdentityCode or email');
+    const usersAtEnd = await helper.usersInDb();
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+  });
 
   describe('Modify email and password', () => {
-    let testUser
-    let userToken
-    const currentPassword = 'password'
+    let adminUser = null;
+    let viewerUser = null;
+    let testUser = null;
+    let testUserTwo = null;
+
+    let adminToken = null;
+    let viewerToken = null;
+    let userToken = null;
+
+    const currentPassword = 'password';
 
     beforeEach(async () => {
       await User.deleteMany({});
 
-      const { user } = await helper.createUser()
+      const createdUsers = await helper.createUser();
 
-      const usersAtStart = await helper.usersInDb()
-      testUser = user
-      //testUser = usersAtStart[0].toObject ? usersAtStart[0].toObject() : usersAtStart[0] // ei vaikutusta
-     
-      const { token } = await helper.loginUser(testUser, currentPassword)
-      userToken = token
+      adminUser = createdUsers.adminUser;
+      viewerUser = createdUsers.viewerUser;
+      testUser = createdUsers.user;
+      testUserTwo = createdUsers.userTwo;
 
-      if (!userToken)
-        throw new Error('token is null')
-
-    })
+      adminToken = (await helper.loginUser(adminUser, 'password')).token;
+      viewerToken = (await helper.loginUser(viewerUser, 'password')).token;
+      userToken = (await helper.loginUser(testUser, 'password')).token;
+    });
 
     test('User can be found by id', async () => {
-
       await api
         .get(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
-        .expect(200)
-    })
+        .expect(200);
+    });
 
     test('Succesfully change password', async () => {
-      const newPassword = 'newpassword'
+      const newPassword = 'newpassword';
 
       await api
         .patch(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword, newPassword })
-        .expect(200)
+        .expect(200);
 
-      const updatedUser = await User.findById(testUser.id)
+      const updatedUser = await User.findById(testUser.id);
       const newPasswordMatches = await bcrypt.compare(newPassword, updatedUser.passwordHash);
-      assert.strictEqual(newPasswordMatches, true)
-    })
+      assert.strictEqual(newPasswordMatches, true);
+    });
 
     test('Updated password fails with too short password', async () => {
-
-      const tooShortPasswd = 'yy'
+      const tooShortPasswd = 'yy';
       const response = await api
         .patch(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword, newPassword: tooShortPasswd })
         .expect(400);
 
-      assert.strictEqual(response.body.error, 'New password is too short' )
-    })
+      assert.strictEqual(response.body.error, 'New password is too short');
+    });
 
     test('Current password fails with wrong password', async () => {
-      const incorrectOldPasswd = 'incorrectPasswd'
-      const newPassword = 'newpassword'
+      const incorrectOldPasswd = 'incorrectPasswd';
+      const newPassword = 'newpassword';
 
       const response = await api
         .patch(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword: incorrectOldPasswd, newPassword })
-        .expect(400)
+        .expect(400);
 
-      assert.strictEqual(response.body.error, 'Password or email incorrect' )
-    })
+      assert.strictEqual(response.body.error, 'Password or email incorrect');
+    });
 
     test('Fails with given new password as current password', async () => {
-
       const response = await api
         .patch(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
         .send({ currentPassword, newPassword: currentPassword })
-        .expect(400)
+        .expect(400);
 
-      assert
-        .strictEqual(
-          response.body.error,
-          'New password must be different than current password'
-        )
-    })
+      assert.strictEqual(
+        response.body.error,
+        'New password must be different than current password'
+      );
+    });
 
-    test('User\'s information can be changed', async () => {
-      const newName = 'Matti Meikäläinen'
-      const newAddress = 'Mannerheimintie 42'
-      const newPhone = '0401234567'
-      const newPostalCode = '00100'
-      const newCity = 'Helsinki'
+    test("User's information can be changed", async () => {
+      const newName = 'Matti Meikäläinen';
+      const newAddress = 'Mannerheimintie 42';
+      const newPhone = '0401234567';
+      const newPostalCode = '00100';
+      const newCity = 'Helsinki';
 
       await api
         .patch(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
-        .send(
-          {
-            newName,
-            currentPassword,
-            newAddress,
-            newPhone,
-            newPostalCode,
-            newCity
-          }
-        )
-        .expect(200)
+        .send({
+          newName,
+          currentPassword,
+          newAddress,
+          newPhone,
+          newPostalCode,
+          newCity,
+        })
+        .expect(200);
 
-      const updatedUser = await User.findById(testUser.id)
-      assert.strictEqual(updatedUser.name, newName)
-      assert.strictEqual(updatedUser.address, newAddress)
-      assert.strictEqual(updatedUser.phone, newPhone)
-      assert.strictEqual(updatedUser.postalCode, newPostalCode)
-      assert.strictEqual(updatedUser.city, newCity)
-    })
+      const updatedUser = await User.findById(testUser.id);
+      assert.strictEqual(updatedUser.name, newName);
+      assert.strictEqual(updatedUser.address, newAddress);
+      assert.strictEqual(updatedUser.phone, newPhone);
+      assert.strictEqual(updatedUser.postalCode, newPostalCode);
+      assert.strictEqual(updatedUser.city, newCity);
+    });
 
-    test('User can be deleted', async () => {
-      const usersAtStart = await helper.usersInDb()
+    test('User can delete itself', async () => {
+      const usersAtStart = await helper.usersInDb();
 
       await api
         .delete(`/api/users/${testUser.id}`)
         .set('Authorization', `Bearer ${userToken}`)
-        .expect(204)
+        .expect(204);
 
-      const usersAtEnd = await helper.usersInDb()
+      const usersAtEnd = await helper.usersInDb();
 
-      const userInDb = await User.findById(testUser.id)
+      const userInDb = await User.findById(testUser.id);
 
-      assert.strictEqual(usersAtEnd.length, usersAtStart.length - 1)
-      assert.strictEqual(userInDb, null)
-    })
-  })
-})
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length - 1);
+      assert.strictEqual(userInDb, null);
+    });
 
+    test('Admin can delete user', async () => {
+      const usersAtStart = await helper.usersInDb();
+
+      await api
+        .delete(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .expect(204);
+
+      const usersAtEnd = await helper.usersInDb();
+
+      const userInDb = await User.findById(testUser.id);
+
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length - 1);
+      assert.strictEqual(userInDb, null);
+    });
+
+    test('Viewer delete user will fail', async () => {
+      const usersAtStart = await helper.usersInDb();
+
+      await api
+        .delete(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${viewerToken}`)
+        .expect(403);
+
+      const usersAtEnd = await helper.usersInDb();
+
+      const userFound = await User.findById(testUser.id);
+
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+      assert.notStrictEqual(userFound, null, 'user should not be deleted');
+      assert.strictEqual(userFound.id, testUser.id, 'Found user ID does not match');
+    });
+
+    test('Other user delete user will fail', async () => {
+      const usersAtStart = await helper.usersInDb();
+
+      await api
+        .delete(`/api/users/${testUserTwo.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
+        .expect(403);
+
+      const usersAtEnd = await helper.usersInDb();
+
+      const userFound = await User.findById(adminUser.id);
+
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+      assert.notStrictEqual(userFound, null, 'user should not be deleted');
+      assert.deepStrictEqual(userFound.id, adminUser.id, 'Found user ID does not match');
+    });
+
+    test('Admin delete itself will fail', async () => {
+      const usersAtStart = await helper.usersInDb();
+
+      await api
+        .delete(`/api/users/${adminUser.id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .expect(403);
+
+      const usersAtEnd = await helper.usersInDb();
+
+      const userFound = await User.findById(adminUser.id);
+
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+      assert.notStrictEqual(userFound, null, 'Admin should not be deleted');
+      assert.deepStrictEqual(
+        userFound.id,
+        adminUser.id,
+        'Found user ID does not match, should be admin'
+      );
+    });
+
+    test('User delete admin will fail', async () => {
+      const usersAtStart = await helper.usersInDb();
+
+      await api
+        .delete(`/api/users/${adminUser.id}`)
+        .set('Authorization', `Bearer ${userToken}`)
+        .expect(403);
+
+      const usersAtEnd = await helper.usersInDb();
+
+      const userFound = await User.findById(adminUser.id);
+
+      assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+      assert.notStrictEqual(userFound, null, 'Admin should not be deleted');
+      assert.deepStrictEqual(
+        userFound.id,
+        adminUser.id,
+        'Found user ID does not match, should be admin'
+      );
+    });
+  });
+});

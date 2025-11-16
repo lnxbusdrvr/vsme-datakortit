@@ -1,8 +1,6 @@
-const router = require('express').Router()
-const inclusiveQsController = require('../controllers/inclusiveQsController')
+const router = require('express').Router();
+const inclusiveQsController = require('../controllers/inclusiveQsController');
 
-router.get(`/`, inclusiveQsController.getAllInclusiveQs)
+router.get(`/`, inclusiveQsController.getAllInclusiveQs);
 
-
-module.exports = router
-
+module.exports = router;

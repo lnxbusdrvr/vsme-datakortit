@@ -1,131 +1,129 @@
-const { BasicModule, InclusiveModule } = require('../models/questions')
-const User = require('../models/user')
-const Answer = require('../models/answer')
-const supertest = require('supertest')
-const app = require('../app')
-const api = supertest(app)
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-
+const { BasicModule, InclusiveModule } = require('../models/questions');
+const User = require('../models/user');
+const Answer = require('../models/answer');
+const supertest = require('supertest');
+const app = require('../app');
+const api = supertest(app);
+const mongoose = require('mongoose');
 
 const initialBasicModules = [
   {
     _id: new mongoose.Types.ObjectId('688639b533545dffe4168751'),
-    module: "Perusmoduuli",
-    module_id: "basic_module",
+    module: 'Perusmoduuli',
+    module_id: 'basic_module',
     sections: [
       {
-        section_id: "test1",
-        title: "Testi yksi mitä",
+        section_id: 'test1',
+        title: 'Testi yksi mitä',
         questions: [
           {
-            id: "test1_01",
-            question: "Kuka. mitä, häh?",
-            type: "text"
+            id: 'test1_01',
+            question: 'Kuka. mitä, häh?',
+            type: 'text',
           },
           {
-            "id": "test1_02",
-            "question": "Euroa",
-            "type": "number"
+            id: 'test1_02',
+            question: 'Euroa',
+            type: 'number',
           },
           {
-            "id": "test1_03",
-            "question": "Ollako vai ei?",
-            "type": "boolean"
-          }
-        ]
+            id: 'test1_03',
+            question: 'Ollako vai ei?',
+            type: 'boolean',
+          },
+        ],
       },
       {
-        section_id: "subquestion",
-        title: "Limuympärisstö",
+        section_id: 'subquestion',
+        title: 'Limuympärisstö',
         questions: [
           {
-            id: "softdrinks_use",
-            question: "Limujen käyttöympäristö eri kulkuvälineissä moottorin ominaisuuden mukaan",
-            type: "group",
+            id: 'softdrinks_use',
+            question: 'Limujen käyttöympäristö eri kulkuvälineissä moottorin ominaisuuden mukaan',
+            type: 'group',
             sub_questions: [
               {
-                id: "softdrinks_in_electric_vehicles",
-                category: "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
-                softdrinks_w_sugar: "Sokeriset limut (kpl)",
-                softdrinks_no_sugar: "Sokerittomat limut (kpl)",
-                total: "Sähköajoneuvojen limut yhteensä (kpl)"
+                id: 'softdrinks_in_electric_vehicles',
+                category: 'Sähköajoneuvoissa käytettävien limujen määrä (kpl)',
+                softdrinks_w_sugar: 'Sokeriset limut (kpl)',
+                softdrinks_no_sugar: 'Sokerittomat limut (kpl)',
+                total: 'Sähköajoneuvojen limut yhteensä (kpl)',
               },
               {
-                id: "softdrinks_in_diesel_vehicles",
-                category: "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
-                softdrinks_w_sugar: "Sokeriset limut (kpl)",
-                softdrinks_no_sugar: "Sokerittomat limut (kpl)",
-                total: "Dieselajoneuvojen limut yhteensä (kpl)"
-              }
-            ]
-          }
-        ]
+                id: 'softdrinks_in_diesel_vehicles',
+                category: 'Dieselajoneuvoissa käytettävien limujen määrä (kpl)',
+                softdrinks_w_sugar: 'Sokeriset limut (kpl)',
+                softdrinks_no_sugar: 'Sokerittomat limut (kpl)',
+                total: 'Dieselajoneuvojen limut yhteensä (kpl)',
+              },
+            ],
+          },
+        ],
       },
       {
-        section_id: "subquestion_type_two",
-        title: "Elokuvat",
+        section_id: 'subquestion_type_two',
+        title: 'Elokuvat',
         questions: [
           {
-            id: "movies_in_collection_by_genre",
-            question: "Elokuvat kokoelmassa genrettäin",
-            type: "group",
+            id: 'movies_in_collection_by_genre',
+            question: 'Elokuvat kokoelmassa genrettäin',
+            type: 'group',
             sub_questions: [
               {
-                id: "movie_genres",
-                category: "Elokuvagenret (kpl)",
+                id: 'movie_genres',
+                category: 'Elokuvagenret (kpl)',
                 horror_movies: {
-                  category: "Kauhuelokuvat",
-                  movie_pcs: "Kappaleita"
+                  category: 'Kauhuelokuvat',
+                  movie_pcs: 'Kappaleita',
                 },
                 scifi_movies: {
-                  category: "Scifi- ja fantasiaelokuvat",
-                  movie_pcs: "Kappaleita"
+                  category: 'Scifi- ja fantasiaelokuvat',
+                  movie_pcs: 'Kappaleita',
                 },
                 comedy_movies: {
-                  category: "Komediaelokuvat",
-                  movie_pcs: "Kappaleita"
-                }
-              }
-            ]
-          }
-        ]
+                  category: 'Komediaelokuvat',
+                  movie_pcs: 'Kappaleita',
+                },
+              },
+            ],
+          },
+        ],
       },
       {
-        section_id: "boolean_w_follow_up",
-        title: "Kysymykset seurannalla",
+        section_id: 'boolean_w_follow_up',
+        title: 'Kysymykset seurannalla',
         questions: [
           {
-            id: "question_w_if",
-            question: "Babylon 5 on parempi, kuin Star Trek?",
-            type: "boolean",
+            id: 'question_w_if',
+            question: 'Babylon 5 on parempi, kuin Star Trek?',
+            type: 'boolean',
             follow_up_if_true: [
               {
-                id: "b5_total_seasons",
-                category: "Montaako Babylon 5 kautta on?",
-                type: "integer"
+                id: 'b5_total_seasons',
+                category: 'Montaako Babylon 5 kautta on?',
+                type: 'integer',
               },
               {
-                id: "b5_cost",
-                category: "Montaako euroa Babylon 5 Blu-Ray maksaa?",
-                type: "currency"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+                id: 'b5_cost',
+                category: 'Montaako euroa Babylon 5 Blu-Ray maksaa?',
+                type: 'currency',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
 
-const getAnswers = (moduleId) => {
+const getAnswers = moduleId => {
   return [
     {
       moduleId,
       sectionId: 'test1',
       questionId: 'test1_01',
       type: 'text',
-      answer: 'Vastasin tekstikentään'
+      answer: 'Vastasin tekstikentään',
     },
     {
       moduleId,
@@ -137,121 +135,116 @@ const getAnswers = (moduleId) => {
           id: 'softdrinks_in_electric_vehicles',
           values: {
             softdrinks_w_sugar: 15,
-            softdrinks_no_sugar: 5
-          }
+            softdrinks_no_sugar: 5,
+          },
         },
         {
           id: 'softdrinks_in_diesel_vehicles',
           values: {
             softdrinks_w_sugar: 1,
-            softdrinks_no_sugar: 21
-          }
-        }
-      ]
+            softdrinks_no_sugar: 21,
+          },
+        },
+      ],
     },
     {
       moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'question_w_if',
       type: 'boolean',
-      answer: true
+      answer: true,
     },
     {
       moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'b5_total_seasons',
       type: 'integer',
-      answer: 5
+      answer: 5,
     },
     {
       moduleId,
       sectionId: 'boolean_w_follow_up',
       questionId: 'b5_cost',
       type: 'currency',
-      answer: 99.95
-    }
-  ]
-}
+      answer: 99.95,
+    },
+  ];
+};
 
 const initialInclusiveModule = [
   {
-    "module": "Perusmoduuli",
-    "sections": [
+    module: 'Perusmoduuli',
+    sections: [
       {
-        "section_id": "frofile",
-        "title": "Frofile",
-        "questions": [
+        section_id: 'frofile',
+        title: 'Frofile',
+        questions: [
           {
-            "id": "frofile_01",
-            "question": "Kuka. mitä, häh?",
-            "type": "text"
+            id: 'frofile_01',
+            question: 'Kuka. mitä, häh?',
+            type: 'text',
           },
           {
-            "id": "frofile_02",
-            "question": "Euroa",
-            "type": "number"
+            id: 'frofile_02',
+            question: 'Euroa',
+            type: 'number',
           },
           {
-            "id": "frofile_03",
-            "question": "Ollako vai ei?",
-            "type": "boolean"
+            id: 'frofile_03',
+            question: 'Ollako vai ei?',
+            type: 'boolean',
           },
           {
-            "id": "frofile_04",
-            "question": "Mitä kuuluu?",
-            "type": "text"
-          }
-        ]
-      }
-    ]
-  }
-]
+            id: 'frofile_04',
+            question: 'Mitä kuuluu?',
+            type: 'text',
+          },
+        ],
+      },
+    ],
+  },
+];
 
 const basicModuleInDb = async () => {
-  const basicModule = await BasicModule.find({})
-  return basicModule.map(b => b.toJSON())
-}
+  const basicModule = await BasicModule.find({});
+  return basicModule.map(b => b.toJSON());
+};
 
 const inclusiveModuleInDb = async () => {
-  const inclusiveModule = await InclusiveModule.find({})
-  return inclusiveModule.map(incl => incl.toJSON())
-}
+  const inclusiveModule = await InclusiveModule.find({});
+  return inclusiveModule.map(incl => incl.toJSON());
+};
 
 const seedBasicModule = async () => {
-  await BasicModule.deleteMany({})
-  const basicModuleObject = new BasicModule(initialBasicModules[0])
-  await basicModuleObject.save()
-  return basicModuleObject.id.toString()
-}
+  await BasicModule.deleteMany({});
+  const basicModuleObject = new BasicModule(initialBasicModules[0]);
+  await basicModuleObject.save();
+  return basicModuleObject.id.toString();
+};
 
 const seedAnswersForUser = async (token, answers) => {
   for (const answer of answers) {
-    await api
-      .post('/api/answers')
-      .set('Authorization', `Bearer ${token}`)
-      .send(answer)
-      .expect(201)
+    await api.post('/api/answers').set('Authorization', `Bearer ${token}`).send(answer).expect(201);
   }
-}
+};
 
 const usersInDb = async () => {
-  const users = await User.find({})
-  return users.map(u => u.toJSON())
-}
+  const users = await User.find({});
+  return users.map(u => u.toJSON());
+};
 
 const answersInDb = async () => {
-  const answers = await Answer.find({})
-  return answers.map(a => a.toJSON())
-}
+  const answers = await Answer.find({});
+  return answers.map(a => a.toJSON());
+};
 
 /*
  * Valid and Invalid emails:
  * https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
  */
 const createUser = async () => {
-  await User.deleteMany({})
+  await User.deleteMany({});
 
-  const passwordHash = await bcrypt.hash('password', 10)
   const newUsers = [
     {
       name: 'New User',
@@ -264,7 +257,7 @@ const createUser = async () => {
       city: 'Helsinki',
       legalFormOfCompany: 'Avoin yhtiö',
       businessIdentityCode: '1234567-9',
-      role: 'admin'
+      role: 'admin',
     },
     {
       name: 'Viewer User',
@@ -277,7 +270,7 @@ const createUser = async () => {
       city: 'Oulu',
       legalFormOfCompany: 'Osakeyhtiö',
       businessIdentityCode: '1325647-9',
-      role: 'viewer'
+      role: 'viewer',
     },
     {
       name: 'User One',
@@ -290,7 +283,7 @@ const createUser = async () => {
       city: 'Tampere',
       legalFormOfCompany: 'Avoin yhtiö',
       businessIdentityCode: '3219564-7',
-      role: 'user'
+      role: 'user',
     },
     {
       name: 'User Two',
@@ -303,54 +296,47 @@ const createUser = async () => {
       city: 'Kuopio',
       legalFormOfCompany: 'Avoin yhtiö',
       businessIdentityCode: '7925164-3',
-      role: 'user'
-    }
-  ]
+      role: 'user',
+    },
+  ];
 
-  const usersAtStart = await usersInDb()
-  const creationResponse = []
+  const usersAtStart = await usersInDb();
+  const creationResponse = [];
 
   for (const user of newUsers) {
-    const response = await api
-      .post('/api/users')
-      .send(user)
-      .expect(201)
-    creationResponse.push(response.body)
+    const response = await api.post('/api/users').send(user).expect(201);
+    creationResponse.push(response.body);
   }
 
-  const usersAtEnd = await usersInDb()
-
-
-  const adminUser = creationResponse.find(u => u.role === 'admin')
+  const usersAtEnd = await usersInDb();
 
   return {
     usersAtStart,
     usersAtEnd,
-    createdUser: adminUser,
-    adminUser,
+    adminUser: creationResponse.find(u => u.role === 'admin'),
     viewerUser: creationResponse.find(u => u.role === 'viewer'),
     user: creationResponse.find(u => u.email === 'firstname-lastname@example.com'),
     userTwo: creationResponse.find(u => u.email === 'email@example.co.jp'),
-    allCreatedUsers: creationResponse
-  }
-}
+    allCreatedUsers: creationResponse,
+  };
+};
 
 const loginUser = async (user, currentPassword) => {
   const loginResponse = await api
     .post('/api/login')
     .send({
-        email: user.email,
-        password: currentPassword
-      })
-    .expect(200)
+      email: user.email,
+      password: currentPassword,
+    })
+    .expect(200);
 
-  return { token: loginResponse.body.token }
-}
+  return { token: loginResponse.body.token };
+};
 
 module.exports = {
   initialBasicModules,
   getAnswers,
-  initialInclusiveModule, 
+  initialInclusiveModule,
   basicModuleInDb,
   inclusiveModuleInDb,
   seedBasicModule,
@@ -359,5 +345,4 @@ module.exports = {
   answersInDb,
   createUser,
   loginUser,
-}
-
+};
