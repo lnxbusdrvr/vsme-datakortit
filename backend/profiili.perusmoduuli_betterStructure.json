@@ -3,102 +3,103 @@
   "module_id": "basic_module",
   "sections": [
     {
-      "section_id": "profile",
-      "title": "Profiili",
+      "section_id": "b1",
+      "title": "B1 - Raprtoinnin valmistelun perusteet",
+      "header": "Tämä raportti on laadittu VSME 17.12.2024 mukaisesti: https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf",
       "questions": [
         {
-          "id": "profile_01",
+          "id": "basic_or_incl_module",
           "question": "Minkä seuraavista vaihtoehdoista on valinnut: a) Perusmoduulin b) perusmoduulin ja kattavan moduulin mukaisesti.",
           "type": "text"
         },
         {
-          "id": "profile_02",
+          "id": "if_unpublished_secure_info",
           "question": "Jos yritys on jättänyt julkistamatta tietoja, koska niitä pidetään turvallisuusluokiteltuina tai arkaluonteisina tietoina (ks. kappale 19), yrityksen on ilmoitettava julkistamatta jätetyt tiedot.",
           "type": "text"
         },
         {
-          "id": "profile_03",
+          "id": "company_itself_or_w_subsidiary",
           "question": "Onko kestävyysraportti laadittu yksittäisenä yrityksenä (eli raportti rajoittuu vain yrityksen tietoihin) vai konsolidoitusti (eli raportti sisältää tietoja yrityksestä ja sen tytäryrityksistä);",
           "type": "text"
         },
         {
-          "id": "profile_04",
+          "id": "if_subsidiary_then_its_address",
           "question": "Jos kyseessä on konsolidoitu kestävyysraportti, luettelo raportin kattamista tytäryrityksistä, mukaan lukien niiden rekisteröity osoite;",
           "type": "text"
         },
         {
-          "id": "profile_05",
+          "id": "type_of_company",
           "question": "Yrityksen oikeudellinen muoto;",
           "type": "text"
         },
         {
-          "id": "profile_06",
+          "id": "nace-code",
           "question": "NACE:n toimialaluokituskoodi(t);",
           "type": "text"
         },
         {
-          "id": "profile_07",
+          "id": "balance_sheet_total",
           "question": "Taseen loppusumma (euroina);",
           "type": "number"
         },
         {
-          "id": "profile_08",
+          "id": "companys_revenue",
           "question": "Liikevaihto (euroina);",
           "type": "number"
         },
         {
-          "id": "profile_09",
+          "id": "number_of_employees",
           "question": "Työntekijöiden lukumäärä henkilöstömääränä tai kokoaikaiseksi muutettuna;",
           "type": "number"
         },
         {
-          "id": "profile_10",
+          "id": "country_of_primary_activity",
           "question": "Maa, jossa ensisijainen toiminta tapahtuu ja merkittävän omaisuuserän (merkittävien omaisuuserien) sijaintipaikka;",
           "type": "text"
         },
         {
-          "id": "profile_11",
+          "id": "locations_of_owned_leased_properties",
           "question": "Omistetun, vuokrattujen tai hallinnoitujen toimipaikkojen maantieteellinen sijainti / koordinaatit;",
           "type": "text"
         },
         {
-          "id": "profile_12",
+          "id": "if_cert_give_info_of_that",
           "question": "Jos yritys on saanut kestävyyteen liittyvän sertifikaatin tai merkin, sen on annettava niistä lyhyt kuvaus (mukaan lukien tarvittaessa sertifioinnin tai merkin myöntäjät, päivämäärä ja luokituspisteytys).",
           "type": "text"
         }
       ]
     },
     {
-      "section_id": "profile_stage_3",
-      "title": "Vaihe 3 Profiili",
+      "section_id": "b2",
+      "title": "B2 – Käytännöt, politiikat ja tulevat aloitteet siirtymiseksi kohti kestävämpää taloutta",
       "questions": [
         {
-          "id": "profile_stage_3_01",
+          "id": "if_transition_policies",
           "question": "Jos yritys on ottanut käyttöön erityisiä käytäntöjä, politiikkoja tai tulevia aloitteita siirtyäkseen kestävämpään talouteen, sen on ilmoitettava tästä. Yrityksen on ilmoitettava, onko sillä (Tämä ilmoitus ei päde, kun yritys laatii kestävyysraporttinsa Kattavan moduulin mukaisesti).",
           "type": "text"
         },
         {
-          "id": "profile_stage_3_02",
+          "id": "transition_policies_practices",
           "question": "Käytännöt: Tähän liittyviä käytäntöjä voivat olla esimerkiksi toimet yrityksen veden- ja sähkönkulutuksen vähentämiseksi, kasvihuonekaasupäästöjen vähentämiseksi tai pilaantumisen / saasteiden ehkäisemiseksi, tuoteturvallisuuden parantamiseen tähtäävät aloitteet sekä nykyiset aloitteet työolojen ja yhdenvertaisen kohtelun parantamiseksi työpaikalla, yrityksen työvoiman kestävyyskoulutus ja kestävyyshankkeisiin liittyvät kumppanuudet;",
-          "type": "text"
+          "type": "boolean"
         },
         {
-          "id": "profile_stage_3_03",
+          "id": "policies_sustainablility_issues",
           "question": "Kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;",
-          "type": "text"
+          "type": "boolean"
         },
         {
-          "id": "profile_stage_3_04",
+          "id": "policies_goals",
           "question": "Tavoitteet, joilla seurataan politiikkojen täytäntöönpanoa ja edistymistä näiden tavoitteiden saavuttamisessa. (politiikkojen toteutuksen seurantaan liittyvät tavoitteet ja saavutettu edistys)",
-          "type": "text"
+          "type": "boolean"
         },
         {
-          "id": "profile_stage_3_05",
+          "id": "policy_scope_and_referrals",
           "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen.",
           "type": "text"
         },
         {
-          "id": "profile_stage_3_06",
+          "id": "if_company_inclusive_module",
           "question": "Jos yritys raportoi myös kattavasta moduulista, sen on täydennettävä B2 kohdassa annettuja tietoja kohdassa C2 olevilla tietopisteillä.",
           "type": "text"
         }
@@ -106,7 +107,7 @@
     },
     {
       "section_id": "environment",
-      "title": "Ympäristö",
+      "title": "B3 Energia",
       "questions": [
         {
           "id": "environment_01",
@@ -215,7 +216,7 @@
     },
     {
       "section_id": "location",
-      "title": "Sijainti",
+      "title": "B5 Biodiversity - Biologinen monimuotoisuus",
       "questions": [
         {
           "id": "location_01",

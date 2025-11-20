@@ -1,0 +1,1438 @@
+{
+  "module": "Kattava moduuli",
+  "module_id": "inclusive_module",
+  "sections": [
+    {
+      "section_id": "b1",
+      "title": "B1 - Raprtoinnin valmistelun perusteet",
+      "header": "Tämä raportti on laadittu VSME 17.12.2024 mukaisesti: https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf",
+      "questions": [
+        {
+          "id": "basic_or_incl_module",
+          "question": "Minkä seuraavista vaihtoehtoista on valinnut: a) Perusmoduulin b) perusmoduulin ja kattavan moduulin mukaisesti.",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "basic_or_incl_module"
+        },
+        {
+          "id": "if_unpublished_secure_info",
+          "question": "Jos yritys on jättänyt julkistamatta tietoja, koska niitä pidetään turvallisuusluokiteltuina tai arkaluonteisina tietoina (ks. kappale 19), yrityksen on ilmoitettava julkistamatta jätetyt tiedot.",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "if_unpublished_secure_info"
+        },
+        {
+          "id": "company_itself_or_w_subsidiary",
+          "question": "Onko kestävyysraportti laadittu yksittäisenä yrityksenä (eli raportti rajoittuu vain yrityksen tietoihin) vai konsolidoidusti (eli raportti sisältää tietoja yrityksestä ja sen tytäryrityksistä);",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "company_itself_or_w_subsidiary"
+        },
+        {
+          "id": "if_subsidiary_then_its_address",
+          "question": "Jos kyseessä on konsolidoitu kestävyysraportti, luettelo raportin kattamista tytäryrityksistä, mukaan lukien niiden rekisteröity osoite4; ja",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "if_subsidiary_then_its_address"
+        },
+        {
+          "id": "type_of_company",
+          "question": "Yrityksen oikeudellinen muoto;",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "type_of_company"
+        },
+        {
+          "id": "nace-code",
+          "question": "NACE:n toimialaluokituskoodi(t);",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "nace-code"
+        },
+        {
+          "id": "balance_sheet_total",
+          "question": "Taseen loppusumma (euroina);",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "balance_sheet_total"
+        },
+        {
+          "id": "companys_revenue",
+          "question": "Liikevaihto (euroina);",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "companys_revenue"
+        },
+        {
+          "id": "number_of_employees",
+          "question": "Työntekijöiden lukumäärä henkilöstömääränä tai kokoaikaiseksi muutettuna;",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "number_of_employees"
+        },
+        {
+          "id": "country_of_primary_activity",
+          "question": "Maa, jossa ensisijainen toiminta tapahtuu ja merkittävän omaisuuserän (merkittävien omaisuuserien) sijaintipaikka; ja",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "country_of_primary_activity"
+        },
+        {
+          "id": "locations_of_owned_leased_properties",
+          "question": "Omistetun, vuokrattujen tai hallinnoitujen toimipaikkojen maantieteellinen sijainti / koordinaatit",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "locations_of_owned_leased_properties"
+        },
+        {
+          "id": "if_cert_give_info_of_that",
+          "question": "Jos yritys on saanut kestävyyteen liittyvän sertifikaatin tai merkin, sen on annettava niistä lyhyt kuvaus (mukaan lukien tarvittaessa sertifioinnin tai merkin myöntäjät, päivämäärä ja luokituspisteytys).",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "if_cert_give_info_of_that"
+        }
+      ]
+    },
+    {
+      "section_id": "b2",
+      "title": "B2 – Käytännöt, politiikat ja tulevat aloitteet siirtymiseksi kohti kestävämpää taloutta",
+      "questions": [
+        {
+          "id": "if_transition_policies",
+          "question": "Jos yritys on ottanut käyttöön erityisiä käytäntöjä, politiikkoja tai tulevia aloitteita siirtyäkseen kestävämpään talouteen, sen on ilmoitettava tästä. Yrityksen on ilmoitettava, onko sillä (Tämä ilmoitus ei päde, kun yritys laatii kestävyysraporttinsa Kattavan moduulin mukaisesti).",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "if_transition_policies"
+        },
+        {
+          "id": "transition_policies_practices",
+          "question": "Käytännöt: Tähän liittyviä käytäntöjä voivat olla esimerkiksi toimet yrityksen veden- ja sähkönkulutuksen vähentämiseksi, kasvihuonekaasupäästöjen vähentämiseksi tai pilaantumisen / saasteiden ehkäisemiseksi, tuoteturvallisuuden parantamiseen tähtäävät aloitteet sekä nykyiset aloitteet työolojen ja yhdenvertaisen kohtelun parantamiseksi työpaikalla, yrityksen työvoiman kestävyyskoulutus ja kestävyyshankkeisiin liittyvät kumppanuudet;",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "transition_policies_practices"
+        },
+        {
+          "id": "policies_sustainablility_issues",
+          "question": "Kestävyyskysymyksiä koskevat toimintapolitiikat riippumatta siitä, ovatko ne julkisesti saatavilla, ja mahdolliset erilliset ympäristö-, yhteiskunta- tai hallintotapapolitiikat kestävyyskysymysten käsittelemiseksi;",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "policies_sustainablility_issues"
+        },
+        {
+          "id": "all_sustainability_plans",
+          "question": "Kaikki tulevat aloitteet tai tulevaisuuteen suuntautuvat suunnitelmat, joita toteutetaan kestävyyskysymyksissä; ja",
+          "type": "text"
+        },
+        {
+          "id": "policies_goals",
+          "question": "Tavoitteet, joilla seurataan politiikkojen täytäntöönpanoa ja edistymistä näiden tavoitteiden saavuttamisessa. (politiikkojen toteutuksen seurantaan liittyvät tavoitteet ja saavutettu edistys)",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "policies_goals"
+        },
+        {
+          "id": "policy_scope_and_referrals",
+          "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen.",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "policy_scope_and_referrals"
+        },
+        {
+          "id": "if_company_inclusive_module",
+          "question": "Jos yritys raportoi myös kattavasta moduulista, sen on täydennettävä B2 kohdassa annettuja tietoja kohdassa C2 olevilla tietopisteillä.",
+          "type": "reference",
+          "reference_module_id": "basic_module",
+          "reference_question_id": "if_company_inclusive_module"
+        }
+      ]
+    },
+    {
+      "section_id": "c1",
+      "title": "C1",
+      "header": "Yrityksen on julkistettava liiketoimintamallinsa ja strategiansa keskeiset osatekijät, mukaan lukien seuraavat:",
+      "questions": [
+        {
+          "id": "c1_01",
+          "question": "Kuvaus merkittävistä tarjottavien tuotteiden ja/tai palvelujen ryhmistä;",
+          "type": "text"
+        },
+        {
+          "id": "c1_02",
+          "question": "Kuvaus merkittävistä markkinoista, joilla yritys toimii (esim. B2B, vähittäiskauppa, tukkukauppa, maat);",
+          "type": "text"
+        },
+        {
+          "id": "c1_03",
+          "question": "Kuvaus tärkeimmistä liikekumppaneista (esim. tärkeimmät toimittajat, asiakkaat, jakelukanavat ja kuluttajat); ja",
+          "type": "text"
+        },
+        {
+          "id": "c1_04",
+          "question": "Jos strategiassa on keskeisiä osatekijöitä, jotka liittyvät kestävyyskysymyksiin tai vaikuttavat niihin, lyhyt kuvaus näistä keskeisistä osatekijöistä.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "section_id": "c2_environmental_initiatives",
+      "title": "C2 – Kuvaus käytännöistä, politiikoista ja tulevista aloitteista siirtymiseksi kohti kestävämpää taloutta",
+      "questions": [
+        {
+          "id": "c2_policy_matrix",
+          "question": "Yrityksen ilmoitus käytännöistä",
+          "type": "group",
+          "sub_questions": [
+            {
+              "id": "c2_topic_climate_change",
+              "category": "ilmastonmuutos",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "climate_current_practices",
+                  "category": "",
+                  "type": "text"
+                },
+                {
+                  "id": "climate_future_initiatives",
+                  "category": "",
+                  "type": "text"
+                },
+                {
+                  "id": "climate_responsible_person",
+                  "category": "",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_pollution",
+              "category": "pilaantuminen",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "pollution_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "pollution_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "pollution_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "vesivarat_ja_merten_luonnovarat",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_topic_",
+              "category": "",
+              "type": "group",
+              "sub_questions": [
+                {
+                  "id": "_current_practices",
+                  "category": "Kuvaus nykyisistä käytännöistä/politiikoista",
+                  "type": "text"
+                },
+                {
+                  "id": "_future_initiatives",
+                  "category": "Tulevat aloitteet ja tavoitteet",
+                  "type": "text"
+                },
+                {
+                  "id": "_responsible_person",
+                  "category": "Vastuuhenkilö",
+                  "type": "text"
+                }
+              ]
+            },
+          ]
+        }
+      ]
+      
+      "table": {
+        "headers": [
+          "Yrityksen ilmoitus käytännöistä",
+          "Kuvaus nykyisistä käytännöistä/politiikoista",
+          "Tulevat aloitteet ja tavoitteet",
+          "Vastuuhenkilö"
+        ],
+        "rows": [
+          {
+            "topic": "",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "biologinen_monimuotoisuus_ja_ekosysteemit",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "kiertotalous",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "oma_tyovoima",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "arvoketjun_tyontekijat",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "vaikutusten_kohteena_olevat_yhteisot",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "kuluttajat_ja_loppukayttajat",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "liiketoiminnan_harjottaminen",
+            "current_practices": {
+              "type": "text"
+            },
+            "future_initiatives": {
+              "type": "text"
+            },
+            "responsible_person": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "yritys_voi_ilmoittaa_niiden_taytantoopan_vastaavan_yrityksen_ylimman_tason_jos_sellainen_on",
+            "current_practices": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "environment",
+      "title": "B3 Energia",
+      "table": {
+        "headers": [
+          "Yrityksen vaikutukset ilmastoon ilmoittamalla energiankulutuksen ja kasvihuonekaasupäästöt: yrityksen on ilmoitettava energian kokonaiskulutuksensa megawattitunteina (MWh) seuraavan taulukon mukaisesti jaoteltuna, jos se voi saada tarvittavat tiedot tällaisen erittelyn tekemiseksi:",
+          "Uusiutuvan energian kulutus (MWh)",
+          "Ei uusiutuvan energian kulutus (MWh)",
+          "Yhteensä 202(x) Energiankulutus (MWh)"
+        ],
+        "rows": [
+          {
+            "topic": "sahko_naky_sahkolaskutuksessa",
+            "renewable_energy_consumption_mwh": {
+              "type": "number"
+            },
+            "non_renewable_energy_consumption_mwh": {
+              "type": "number"
+            },
+            "total_energy_consumption_mwh": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "env_02",
+      "table": {
+        "headers": [
+          "Yrityksen on ilmoitettava arvioidut kasvihuonekaasujen (GHG) bruttopäästönsä CO2 ekvivalenttitonneina (tCO2eq) ottaen huomioon GHG Protocol Corporate Standard (2004 versio) sisältö",
+          "202(x) kasvihuonekaasupäästöt (GHG) (tCO2e)",
+          "202(x) GHG emissions (tCO2e)",
+          "202(x) GHG emissions (tCO2e)"
+        ],
+        "rows": [
+          {
+            "topic": "scope_1_suorat_paastot_omista_tai_hallinnoiduista_lahteista_tco2eq",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "scope_2_sijaintiin_perustuvat_epasuorat_eli_ostetun_energian_tuonnista_johtuvat_paastot_tco2eq",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "scope_3_jos_olennaista",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "yhteensa",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "kasvihuonekaasuintensiteetti_kasvihuonekaasujen_bruttomaara_liikevaihto_euroina",
+            "ghg_emissions_202x_tco2e": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt1": {
+              "type": "number"
+            },
+            "ghg_emissions_202x_tco2e_alt2": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "kuvaa_menetelmaa_jolla_keratyt_tiedot_haetaan_ja_paastokertoimen_lahteet",
+            "ghg_emissions_202x_tco2e": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "kuvaa_kerattyihin_tietoihin_liittyvat_mahdolliset_epavarmuustekijat",
+            "ghg_emissions_202x_tco2e": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "env_03",
+      "title": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
+      "table": {
+        "headers": [
+          "Päästöaine / saaste",
+          "Päästöt (kg)",
+          "Päästöjen vapautuminen (ilma, vesi, maaperä)"
+        ],
+        "rows": [
+          {
+            "topic": "example_cadmium_and_compounds",
+            "emissions_kg": {
+              "type": "number"
+            },
+            "emission_release_air_water_soil": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "impurity_type_2",
+            "emissions_kg": {
+              "type": "number"
+            },
+            "emission_release_air_water_soil": {
+              "type": "text"
+            }
+          },
+          {
+            "topic": "impurity_type_3",
+            "emissions_kg": {
+              "type": "number"
+            },
+            "emission_release_air_water_soil": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location",
+      "title": "Yrityksen on julkistettava biologisesti herkällä alueella tai sen läheisyydessä omistamiensa, vuokraamiensa tai hallinnoimiensa alueiden lukumäärä ja pinta-ala (hehtaareina).",
+      "table": {
+        "headers": [
+          "Sijainti",
+          "Alue (hehtaaria)",
+          "Biologiselle monimuotoisuudelle herkkä alue",
+          "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)"
+        ],
+        "rows": [
+          {
+            "topic": "maa_toimipisteen_nimi_1",
+            "area_ha": {
+              "type": "number"
+            },
+            "biodiversity_sensitive_ha": {
+              "type": "number"
+            },
+            "details_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "maa_toimipisteen_nimi_2",
+            "area_ha": {
+              "type": "number"
+            },
+            "biodiversity_sensitive_ha": {
+              "type": "number"
+            },
+            "details_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "maa_toimipisteen_nimi_3",
+            "area_ha": {
+              "type": "number"
+            },
+            "biodiversity_sensitive_ha": {
+              "type": "number"
+            },
+            "details_ha": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_02",
+      "title": "Yritys voi julkaistaa maankäyttöön liittyviä mittareita tyyppi",
+      "table": {
+        "headers": [
+          "Tyyppi",
+          "Edellinen vuosi alue (ha m2)",
+          "Raportointi vuosi alue (ha m2)",
+          "Prosenttimuutos alue (ha m2)"
+        ],
+        "rows": [
+          {
+            "topic": "maankayton_kokonaispinta_ala_hehtaareina",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "reported_year_area_ha": {
+              "type": "number"
+            },
+            "percent_change_area_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "vetta_lapaisemattoman_alueen_kokonaispinta_ala",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "reported_year_area_ha": {
+              "type": "number"
+            },
+            "percent_change_area_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "luonnonsuojelunsuuntautuneen_alueen_kokonaispinta_ala_toimipaikassa",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "reported_year_area_ha": {
+              "type": "number"
+            },
+            "percent_change_area_ha": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "luonnonsuojelunsuuntautuneen_alueen_kokonaispinta_ala_toimipaikan_ulkopuolella",
+            "last_year_area_ha": {
+              "type": "number"
+            },
+            "reported_year_area_ha": {
+              "type": "number"
+            },
+            "percent_change_area_ha": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_03",
+      "table": {
+        "headers": [
+          "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
+          "Vedenotto (esim. m3)",
+          "Vedenkulutus (esim. m3) (jos sovellettavissa)"
+        ],
+        "rows": [
+          {
+            "topic": "kaikki_toimipisteet",
+            "water_withdrawal": {
+              "type": "number"
+            },
+            "water_consumption_if_applicable": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "kohteet_alueilla_joilla_on_vesistressia",
+            "water_withdrawal": {
+              "type": "number"
+            },
+            "water_consumption_if_applicable": {
+              "type": "number"
+            }
+          },
+          {
+            "topic": "jos_yrityksella_on_kaytossa_tuotantoprosesseja_jotka_kuluttavat_merkittavasti_vetta",
+            "water_withdrawal": {
+              "type": "number"
+            },
+            "water_consumption_if_applicable": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_04",
+      "topic": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+      "circular_economy_principles": {
+        "type": "text"
+      },
+      "table": {
+        "headers": [
+          "Yrityksen on ilmoitettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
+          "Syntyneen jätteen kokonaismäärä",
+          "Jätteet toimitetaan kierrätykseen tai uudelleenkäyttöön",
+          "Ei pakollinen: Jätteet toimitetaan energiakäyttöön",
+          "Jätteet ohjataan hävitteettäväksi"
+        ],
+        "rows": [
+          {
+            "title": "vaaraton_jatteen_tyyppi_1",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "vaaraton_jatteen_tyyppi_2",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "vaaraton_jate_jne",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "vaarallinen_jatteen_tyyppi_1",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "vaarallinen_jate_jne",
+            "total_waste_generated": {
+              "type": "number"
+            },
+            "waste_recycled_or_reused": {
+              "type": "number"
+            },
+            "waste_sent_to_energy_recovery_opt": {
+              "type": "number"
+            },
+            "waste_sent_for_disposal": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_05",
+      "table": {
+        "headers": [
+          "Jos yritys on asettanut kasvihuonekaasupäästöjen vähennystavoitteita, sen on ilmoitettava tavoitteensa scope 1- ja scope 2 -päästöjen absoluuttisina arvoina. 50–53 kohdan mukaisesti ja jos yritys on asettanut scope 3 -vähennystavoitteita, sen on asetettava tavoitteet myös merkittäville scope 3 -päästöille. Siinä säädetään erityisesti:",
+          "Perusvuosi perusvuoden arvo, mittayksikkö",
+          "Tavoitevuosi ja tavoitevuoden arvo, mittayksikkö",
+          "2030",
+          "2050"
+        ],
+        "rows": [
+          {
+            "title": "scope_1_kasvihuonekaasupaastot",
+            "base_year_value_unit": {
+              "type": "number"
+            },
+            "target_year_value_unit": {
+              "type": "number"
+            },
+            "year_2030": {
+              "type": "number"
+            },
+            "year_2050": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "scope_2_kasvihuonekaasupaastot",
+            "base_year_value_unit": {
+              "type": "number"
+            },
+            "target_year_value_unit": {
+              "type": "number"
+            },
+            "year_2030": {
+              "type": "number"
+            },
+            "year_2050": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "scope_3_kasvihuonekaasupaastot_jos_olennaista_jota_tavoite_koskee",
+            "base_year_value_unit": {
+              "type": "number"
+            },
+            "target_year_value_unit": {
+              "type": "number"
+            },
+            "year_2030": {
+              "type": "number"
+            },
+            "year_2050": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "luettelo_tarkeimmista_toimista_jotka_se_aikoo_toteuttaa_tavoitteidensa_saavuttamiseksi",
+            "base_year_value_unit": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "Jos ilmastovaikutuksiltaan merkittävillä aloilla toimiva yritys on hyväksynyt siirtymäsuunnitelman ilmastonmuutoksen hillitsemiseksi, se voi antaa siitä tietoja, mukaan lukien selvityksen siitä, miten se edistää kasvihuonekaasupäästöjen vähentämistä.",
+            "base_year_value_unit": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "Jos yritys toimii aloilla, joilla ilmastovaikutukset ovat huomattavat, eikä sillä ole siirtymäsuunnitelmaa ilmastonmuutoksen hillitsemiseksi, sen on ilmoitettava, hyväksyykö se tällaisen siirtymäsuunnitelman ja jos hyväksyy, milloin.",
+            "base_year_value_unit": {
+              "type": "text"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "location_06",
+      "table": {
+        "headers": [
+          "Jos yritys on havainnut ilmastoon liittyviä uhkia ja siirtymätapahtumia, jotka aiheuttavat merkittäviä ilmastoriskejä yritykselle, sen on",
+          "Lyhyt aikaväli: arvo",
+          "Lyhyt aikaväli: prosenttiosuus",
+          "Keskipitkä aikaväli arvo",
+          "Keskipitkä aikaväli prosenttiosuus",
+          "Pitkä aikaväli arvo",
+          "Pitkä aikaväli prosenttiosuus"
+        ],
+        "rows": [
+          {
+            "title": "kuvattava_lyhyesti_tallaisia_ilmastoon_liittyvia_uhkia_ja_ilmastoon_liittyvia_siirtymatapahtumia",
+            "short_term_value": {
+              "type": "text"
+            },
+            "short_term_percentage": {
+              "type": "text"
+            },
+            "medium_term_value": {
+              "type": "text"
+            },
+            "medium_term_percentage": {
+              "type": "text"
+            },
+            "long_term_value": {
+              "type": "text"
+            },
+            "long_term_percentage": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "ilmoitettava_miten_se_on_arvioinut_omaisuutensa_toimintojensa_ja_arvoketjunsa_altistumisen_ja_herkkyyden_naille_uhille_ja_siirtymatapahtumille",
+            "short_term_value": {
+              "type": "number"
+            },
+            "short_term_percentage": {
+              "type": "number"
+            },
+            "medium_term_value": {
+              "type": "number"
+            },
+            "medium_term_percentage": {
+              "type": "number"
+            },
+            "long_term_value": {
+              "type": "number"
+            },
+            "long_term_percentage": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "julkistettava_tunnistettujen_ilmastoon_liittyvien_uhkien_ja_siirtymatapahtumien_aikahorisontti_lyhyt_keskipitka_pitka",
+            "short_term_value": {
+              "type": "text"
+            }
+          },
+          {
+            "title": "ilmoitettava_onko_se_toteuttanut_toimia_ilmastonmuutokseen_sopeutumiseksi_ilmastoon_liittyvien_uhkien_ja_siirtymatapahtumien_varalta",
+            "short_term_value": {
+              "type": "number"
+            },
+            "short_term_percentage": {
+              "type": "number"
+            },
+            "medium_term_value": {
+              "type": "number"
+            },
+            "medium_term_percentage": {
+              "type": "number"
+            },
+            "long_term_value": {
+              "type": "number"
+            },
+            "long_term_percentage": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "yritys_voi_julkistaa_ilmastoriskien_mahdolliset_haitalliset_vaikutukset_jotka_voivat_vaikuttaa_sen_taloudelliseen_tulokseen_tai_liiketoimintaan_lyhyella_keskipitkalla_tai_pitkalla_aikavalilla_ja_ilmoittaa_arvioiko_se_riskit_suuriksi_keskisuuriksi_vai_alhaisiksi",
+            "short_term_value": {
+              "type": "text"
+            },
+            "short_term_percentage": {
+              "type": "number"
+            },
+            "medium_term_value": {
+              "type": "number"
+            },
+            "medium_term_percentage": {
+              "type": "number"
+            },
+            "long_term_value": {
+              "type": "number"
+            },
+            "long_term_percentage": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "social_responsibility",
+      "title": "sosiaalinen_vastuu",
+      "header": "Yrityksen on ilmoitettava työntekijöiden lukumäärä henkilöstömääränä tai kokopäiväiseksi muutettuna seuraavien mittareiden osalta:",
+      "contract_type": {
+        "headers": [
+          "Työsopimuksen tyyppi",
+          "Työntekijöiden lukumäärä (henkilöstömäärä tai kokoaikaiseksi muutettuna)"
+        ],
+        "rows": [
+          {
+            "title": "maaraikainen_sopimus",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "vakituinen_toistaiseksi_voimassa_oleva_sopimus",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "henkilosto_tyontekijat_yhteensa",
+            "number_of_employees": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "sex": {
+        "headers": [
+          "Sukupuoli",
+          "Työntekijöiden lukumäärä (henkilöstömäärä tai kokoaikaiseksi muutettuna)"
+        ],
+        "rows": [
+          {
+            "title": "mies",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "nainen",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "muu_sukupuoli",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "ei_raportoitu",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "henkilosto_tyontekijat_yhteensa",
+            "number_of_employees": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "country": {
+        "headers": [
+          "Maa (jos sovellettavissa)",
+          "Työntekijöiden lukumäärä (henkilöstömäärä tai kokoaikaiseksi muutettuna)"
+        ],
+        "rows": [
+          {
+            "title": "maa_a",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "maa_b",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "henkilosto_tyontekijat_yhteensa",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "jos_yrityksen_palveluksessa_on_vahintaan_50_tyontekijaa_sen_on_ilmoitettava_tyontekijoiden_vaihtuvuus_raportointikaudelta",
+            "number_of_employees": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "occupational_health_and_safety": {
+        "headers": [
+          "Yrityksen on julkistettava työntekijöistään seuraavat tiedot:"
+        ],
+        "rows": [
+          {
+            "title": "kirjattavien_tyotapaturmien_lukumaarä_ja_osuus",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "tyoperaisista_vammoista_ja_tyoperaisista_terveysongelmista_johtuvien_kuolemantapausten_lukumaarä",
+            "number_of_employees": {
+              "type": "number"
+            }
+          },
+          {
+            "title": "kolmen_viime_vuoden_aikana_terveys_ja_turvallisuuskoulutukseen_osallistuneiden_tyontekijoiden_maara",
+            "number_of_employees": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "required_salary": {
+        "rows": [
+          {
+            "title": "jos_yrityksen_palveluksessa_on_vahintaan_50_tyontekijaa_se_voi_ilmoittaa_naisten_ja_miesten_valisen_suhteen_johtotasolla_raportointikaudelta",
+            "number_of_employees": {
+              "type": "ratio"
+            }
+          },
+          {
+            "title": "jos_yrityksen_palveluksessa_on_vahintaan_50_tyontekijaa_se_voi_ilmoittaa_niiden_itsenaisten_amatinharjoittajien_lukumaaran_joilla_ei_ole_henkilostoaja_joita_tyoskelevat_yksinomaan_yrityksen_palveluksessa",
+            "number_of_employees": {
+              "type": "ratio"
+            }
+          }
+        ]
+      },
+      "ethical_guidance_and_human_rights_policy": {
+        "header": "Yrityksen on ilmoitettava vastaus seuraaviin kysymyksiin.",
+        "has_policy": {
+          "type": "boolean",
+          "follow_up_type_if_true": [
+            {
+              "title": "lapsityovoima",
+              "type": "boolean"
+            },
+            {
+              "title": "pakkotyo",
+              "type": "boolean"
+            },
+            {
+              "title": "ihmiskauppa",
+              "type": "boolean"
+            },
+            {
+              "title": "syrjinta",
+              "type": "boolean"
+            },
+            {
+              "title": "tapahtumien_ehkaisy",
+              "type": "boolean"
+            },
+            {
+              "title": "muuta",
+              "type": "boolean",
+              "follow_up_type_if_true": "text",
+              "follow_up_field": "tasmanna"
+            },
+            {
+              "title": "onko_yrityksella_valitusten_kasittelymekanismi_omaa_tyovoimaansa_varten",
+              "type": "boolean"
+            }
+          ]
+        }
+      },
+      "confirmed_incidents_in_workforce": {
+        "header": "Yrityksen on julkistettava vastaus seuraaviin kysymyksiin:",
+        "title": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät:",
+        "rows": [
+          {
+            "title": "lapsityovoima",
+            "type": "boolean"
+          },
+          {
+            "title": "pakkotyo",
+            "type": "boolean"
+          },
+          {
+            "title": "ihmiskauppa",
+            "type": "boolean"
+          },
+          {
+            "title": "syrjinta",
+            "type": "boolean"
+          },
+          {
+            "title": "muuta",
+            "type": "boolean",
+            "follow_up_type_if_true": "text",
+            "follow_up_field": "tasmanna"
+          },
+          {
+            "title": "jos_vastasitte_myontevasti_yritys_voi_kuvailla_toimia_joihin_on_ryhdytty_edella_kuvattujen_tapausten_ratkaisemiseksi",
+            "type": "text"
+          },
+          {
+            "title": "onko_yrityksen_tiedossa_vahvistettuja_tapauksia_jotka_koskevat_arvoketjun_tyontekijoita_asianomaisia_yhteisoja_kuluttajia_ja_loppukayttajia_jos_vastasitte_myontevasti_tasmantakaa",
+            "type": "boolean",
+            "follow_up_type_if_true": "text",
+            "follow_up_field": "tasmanna"
+          }
+        ]
+      },
+      "work_and_free_time": {
+        "headers": [
+          "Ilmoita työ- ja vapaa-ajan tasapainoon liittyvät tiedot:",
+          "Työntekijät (kokopäiväiset vastaavuudet tai henkilöstömäärä)"
+        ],
+        "rows": [
+          {
+            "title": "prosenttiosuus_tyontekijoista_joilla_on_oikeus_perhevapaaseen_miehet",
+            "type": "number"
+          },
+          {
+            "title": "prosenttiosuus_tyontekijoista_joilla_on_oikeus_perhevapaaseen_naiset",
+            "type": "number"
+          },
+          {
+            "title": "prosenttiosuus_tyontekijoista_jotka_ovat_kayttaneet_perhevapaata_miehet",
+            "type": "number"
+          },
+          {
+            "title": "prosenttiosuus_tyontekijoista_jotka_ovat_kayttaneet_perhevapaata_naiset",
+            "type": "number"
+          },
+          {
+            "title": "kuvaile_houkuttelevat_perhevapaajarjestelyt_seka_miehille_etta_naisille",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "section_id": "board_of_directions",
+      "title": "hallitus",
+      "tables": {
+        "corruption": [
+          {
+            "title": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
+            "type": "boolean"
+          },
+          {
+            "title": "Tuomioiden lukumäärä",
+            "type": "number"
+          },
+          {
+            "title": "Sakoista aiheutuneet kokonaiskulut",
+            "type": "number",
+            "currency": "EUR"
+          }
+        ],
+        "industry_income_reporting": [
+          {
+            "title": "Jos yritys toimii yhdellä tai useammalla seuraavista aloista, sen on ilmoitettava asiaan liittyvät tulonsa kyseiseltä alalta tai aloilta:",
+            "type": "boolean",
+            "follow_up_type_if_true": "number",
+            "currency": "EUR",
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+          },
+          {
+            "title": "Kiistanalaiset aseet (jalkaväkimiinat, rypäleammukset, kemialliset aseet ja biologiset aseet);",
+            "type": "boolean",
+            "follow_up_type_if_true": "number",
+            "currency": "EUR",
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+          },
+          {
+            "title": "Tupakan viljely ja tuotanto;",
+            "type": "boolean",
+            "follow_up_type_if_true": "number",
+            "currency": "EUR",
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+          },
+          {
+            "title": "Fossiilisten polttoaineiden (hiili, öljy ja kaasu) ala (eli yritys saa tuloja Euroopan parlamentin ja neuvoston asetuksen (EU) 2018/1999 17 2 artiklan 62 alakohdassa määriteltyjen fossiilisten polttoaineiden etsinnästä, kaivostoiminnasta, talteenotosta, tuotannosta, jalostuksesta, varastoinnista, jalostuksesta tai jakelusta, mukaan lukien kuljetus, varastointi ja kauppa), mukaan lukien hiilestä saatavien tulojen erittely, öljy ja kaasu; tai",
+            "type": "boolean",
+            "follow_up_type_if_true": "number",
+            "currency": "EUR",
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+          },
+          {
+            "title": "Kemikaalien tuotanto, jos yritys valmistaa torjunta-aineita ja muita maatalouskemikaaleja.",
+            "type": "boolean",
+            "follow_up_type_if_true": "number",
+            "currency": "EUR",
+            "follow_up_field": "Jos kyllä, ilmoita asiaan liittyvä tulot"
+          },
+          {
+            "title": "Yrityksen on ilmoitettava, onko se jätetty sellaisten EU:n viitevertailuarvojen ulkopuolelle, jotka on yhdenmukaistettu Pariisin sopimuksen kanssa ohjeiden kohdassa 241 kuvatulla tavalla.",
+            "type": "boolean"
+          }
+        ],
+        "gender_diversity_ratio": [
+          {
+            "title": "Jos yrityksellä on hallintoelin, sen on julkistettava asiaan liittyvä sukupuolten tasa-arvosuhde.",
+            "type": "number"
+          }
+        ]
+      }
+    }
+  ]
+}
+
