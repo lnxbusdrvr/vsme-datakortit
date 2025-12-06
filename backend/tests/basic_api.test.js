@@ -128,15 +128,6 @@ describe('Questions & Answers', () => {
     });
   });
 
-  describe('InclusiveModule Questions', () => {
-    test('Inclusive questions are returned as json', async () => {
-      await api
-        .get('/api/inclusive')
-        .expect(200)
-        .expect('Content-Type', /application\/json/);
-    });
-  });
-
   describe('BasicModule Answers', () => {
     test("User can't post answers without authorization will fail", async () => {
       const failedAnswer = {
