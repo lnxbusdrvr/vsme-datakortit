@@ -33,7 +33,6 @@ app.use(express.static('dist'));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-// TODO: make basic and inclusive see by only registered users
 app.use(tokenExtractor);
 app.use('/api/basic', basicQsRouter);
 app.use(tokenExtractor);

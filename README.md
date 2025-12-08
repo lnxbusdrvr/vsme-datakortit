@@ -50,5 +50,6 @@
 | 16.11   | 7     | All are almost done in backend, except inclusive questions |
 | 20.11   | 3,25  | Fix json's on planning_n_stuff -branch |
 | 08.12   | 0,5   | answers_api.test |
-| Total   | 104,25 | 69,75 h left. Goal: 175h (at least) |
+| 08.12   | 2,75  | 1st frontend implementation |
+| Total   | 107,5 | 67,5 h left. Goal: 175h (at least) |
 
