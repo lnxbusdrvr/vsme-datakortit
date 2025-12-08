@@ -49,6 +49,6 @@
 | 15.11   | 6     | Implement answers patch & delete, add some security tests |
 | 16.11   | 7     | All are almost done in backend, except inclusive questions |
 | 20.11   | 3,25  | Fix json's on planning_n_stuff -branch |
-| 06.12   | 0,5   | Remove soma garbage and make own inclusive_api.test |
-| Total   | 104,75 | 70,25 h left. Goal: 175h (at least) |
+| 08.12   | 0,5   | answers_api.test |
+| Total   | 104,25 | 69,75 h left. Goal: 175h (at least) |
 
