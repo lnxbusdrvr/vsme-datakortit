@@ -1,17 +1,29 @@
-//import { useState } from 'react'
+import { useDispatch, useSelector} from 'react-redux'
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import LoginForm from './components/LoginForm';
 
+import { setUser, clearUser } from './reducers/userReducer';
+
+import storage from './services/storageService';
+
 
 const App = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
-  return (
-    <div>
-      <h1>brggrtg</h1>
-      <LoginForm />
-    </div>
-  )//;
-  /*
+  useEffect(() => {
+    const storageUser = storage.loadUser();
+    if (storageUser)
+      dispatch(setUser(user));
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(clearUser());
+    storage.removeUser();
+  };
+
   return (
     <div>
       {!user ? (
@@ -19,13 +31,12 @@ const App = () => {
       ) : (
         <>
           <nav className="nav-expand-1g bg-light">
-            <Link className="navbar-brand" to="/">Questions</Link>
+            <Link className="navbar-brand" to="/">Kysymykset</Link><Link className="navbar-brand" to="/">Foo</Link> {user.name}<button onClick={handleLogout}>Kirjaudu ulos</button>
           </nav>
         </>
       )}
     </div>
   )
-  */
 };
 
 export default App;

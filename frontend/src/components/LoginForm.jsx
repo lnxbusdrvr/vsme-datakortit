@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-//import { setNotification } from '../reducers/notificationReducer';
-//import { setUser } from '../reducers/userReducer';
-//import { loginService } from '../services/loginService';
-//import storage from '../services/storageService';
-//import Notification from './Notification';
+import { Form, Button } from 'react-bootstrap';
+
+import { notify } from '../reducers/notificationReducer';
+import { setUser } from '../reducers/userReducer';
+import loginService from '../services/loginService';
+import storage from '../services/storageService';
+import Notification from './Notification';
 
 
 const LoginForm = ({ setUser }) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,43 +21,33 @@ const LoginForm = ({ setUser }) => {
     event.preventDefault();
 
     try {
-      const user = await loginService.login({ username, password });
+      const user = await loginService.login({ email, password });
       storage.saveUser(user);
-      dispatch(setNotification(`Tervetuloa takaisin,, ${user.name}!`, 5, false))
+      dispatch(notify(`Tervetuloa takaisin,, ${user.name}!`, 5, false))
       dispatch(setUser(user));
-      setUsername('');
+      setEmail('');
       setPassword('');
       navigate('/');
     } catch {
-      dispatch(setNotification( 'Väärä käyttäjätunnus tai salasana', 5, true ));
+      dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
     }
   };
-  /*
-      <Notification />
-  */
-
-  /*
-  return (
-    <>
-      <h2>Moi</h2>
-    </>
-  );
-  */
 
   return (
     <>
       <h2>Kirjaudu</h2>
-      <form>
+      <Notification />
+      <form onSubmit={handleLogin} >
         <div>
-          käyttäjänimi
+          sähköpostiosoite:
           <input
             type="text"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
           />
         </div>
         <div>
-          salasana
+          salasana:
           <input
             type="password"
             value={password}
