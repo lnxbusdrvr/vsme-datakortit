@@ -7,18 +7,18 @@ const slice = createSlice({
   name: 'users',
   initialState: [],
   reducers: {
-    set(state, { payload }) {
+    setUsers(state, { payload }) {
       return payload
     }
   }
 });
 
-const { set } = slice.actions;
+const { setUsers } = slice.actions;
 
 export const initializeUsers = () => {
   return async dispatch => {
     const data = await usersService.getAll()
-    dispatch(set(data))
+    dispatch(setUsers(data))
   }
 };
 
