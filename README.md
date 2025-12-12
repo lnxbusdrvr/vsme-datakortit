@@ -52,5 +52,6 @@
 | 08.12   | 0,5   | answers_api.test |
 | 08.12   | 2,75  | 1st frontend implementation |
 | 09.12   | 1,5   | Fix login |
-| Total   | 109   | 66 h left. Goal: 175h (at least) |
+| 12.12   | 2,75  | Fix login |
+| Total   | 111,75 | 63,25 h left. Goal: 175h (at least) |
 
