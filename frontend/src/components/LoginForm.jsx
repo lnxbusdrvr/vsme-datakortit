@@ -5,10 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 import { notify } from '../reducers/notificationReducer';
-import { setUser } from '../reducers/userReducer';
+
 import loginService from '../services/loginService';
 import storage from '../services/storageService';
+
 import Notification from './Notification';
+import Togglable from './Togglable';
+import NewUserForm from './NewUserForm';
 
 
 const LoginForm = ({ setUser }) => {
@@ -56,6 +59,9 @@ const LoginForm = ({ setUser }) => {
         </div>
         <button type="submit">Kirjaudu</button>
       </form>
+      <Togglable buttonLabel="Rekisteröi">
+        <NewUserForm />
+      </Togglable>
     </>
   );
 };
