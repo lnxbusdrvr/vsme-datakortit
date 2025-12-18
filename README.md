@@ -52,6 +52,7 @@
 | 08.12   | 0,5   | answers_api.test |
 | 08.12   | 2,75  | 1st frontend implementation |
 | 09.12   | 1,5   | Fix login |
-| 12.12   | 2,75  | Fix login |
-| Total   | 111,75 | 63,25 h left. Goal: 175h (at least) |
+| 12.12   | 2,75  | Make NewUserForm |
+| 18.12   | 3,75  | Can actually make new registered user on page |
+| Total   | 115,5 | 59,5 h left. Goal: 175h (at least) |
 

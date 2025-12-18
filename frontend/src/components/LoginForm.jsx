@@ -31,7 +31,7 @@ const LoginForm = ({ setUser }) => {
       setEmail('');
       setPassword('');
       navigate('/');
-    } catch {
+   } catch {
       dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
     }
   };
