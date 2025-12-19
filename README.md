@@ -54,5 +54,6 @@
 | 09.12   | 1,5   | Fix login |
 | 12.12   | 2,75  | Make NewUserForm |
 | 18.12   | 3,75  | Can actually make new registered user on page |
-| Total   | 115,5 | 59,5 h left. Goal: 175h (at least) |
+| 19.12   | 3,5   | Remove redundant file, verify email, businessIdCode in use |
+| Total   | 119   | 56 h left. Goal: 175h (at least) |
 
