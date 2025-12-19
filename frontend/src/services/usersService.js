@@ -13,4 +13,7 @@ const getAll = async () => {
   return request.data;
 };
 
-export default { createUser, getAll };
+export default {
+  createUser,
+  getAll
+};
