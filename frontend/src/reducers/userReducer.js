@@ -1,20 +1,52 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
-import storage from "../services/storageService";
+import loginService from '../services/loginService';
+import storageService from '../services/storageService';
+import { notify } from './notificationReducer'
 
+const initialState = null
 
-const userSlice = createSlice({
-  name: "user",
-  initialState: storage.loadUser(),
+const slice = createSlice({
+  name: 'user',
+  initialState,
   reducers: {
-    setUser(state, action) {
-      return action.payload;
+    set(state, action) {
+      return action.payload
     },
-    clearUser() {
-      return null;
+    clear() {
+      return initialState
+    }
+  },
+})
+
+export const { set, clear} = slice.actions
+
+export const loginUser = (credentials) => {
+  return async dispatch => {
+    try {
+      const user = await loginService.login(credentials)
+      storageService.saveUser(user)
+      dispatch(set(user))
+    } catch (e) {
+      dispatch(notify('wrong username or password', 'error'))
     }
   }
-});
+}
 
-export const { setUser, clearUser } = userSlice.actions;
-export default userSlice.reducer;
+export const initUser = () => {
+  return async dispatch => {
+    const user = storageService.loadUser()
+    dispatch(set(user))
+  }
+}
+
+export const clearUser = () => {
+  return async dispatch => {
+    storageService.removeUser()
+    dispatch(clear())
+  }
+}
+
+
+export default slice.reducer
+

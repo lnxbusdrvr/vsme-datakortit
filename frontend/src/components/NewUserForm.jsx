@@ -73,7 +73,7 @@ const NewUser = () => {
         businessIdentityCode,
         role: 'user'
       }
-      await dispatch(createUser(newUser));
+      dispatch(createUser(newUser));
       dispatch(notify('Käyttäjä luotu onnistuneesti', 12000, false ));
       setName('');
       setEmail('');
