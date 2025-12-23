@@ -5,16 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 import { notify } from '../reducers/notificationReducer';
-
-import loginService from '../services/loginService';
-import storage from '../services/storageService';
+import { loginUser } from '../reducers/userReducer';
 
 import Notification from './Notification';
 import Togglable from './Togglable';
 import NewUserForm from './NewUserForm';
 
 
-const LoginForm = ({ setUser }) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -24,15 +22,13 @@ const LoginForm = ({ setUser }) => {
     event.preventDefault();
 
     try {
-      const user = await loginService.login({ email, password });
-      storage.saveUser(user);
+      dispatch(loginUser({ email, password }));
       dispatch(notify(`Tervetuloa takaisin,, ${user.name}!`, 5, false))
-      dispatch(setUser(user));
       setEmail('');
       setPassword('');
       navigate('/');
-   } catch {
-      dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
+    } catch {
+     dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
     }
   };
 
