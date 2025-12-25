@@ -27,6 +27,7 @@ export const loginUser = (credentials) => {
       const user = await loginService.login(credentials)
       storageService.saveUser(user)
       dispatch(set(user))
+      return user
     } catch (e) {
       dispatch(notify('wrong username or password', 'error'))
     }
