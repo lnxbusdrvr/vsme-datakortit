@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,12 +17,13 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const newUserFormRef = useRef();
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
-      dispatch(loginUser({ email, password }));
+      const user = await dispatch(loginUser({ email, password }));
       dispatch(notify(`Tervetuloa takaisin,, ${user.name}!`, 5, false))
       setEmail('');
       setPassword('');
@@ -55,8 +56,8 @@ const LoginForm = () => {
         </div>
         <button type="submit">Kirjaudu</button>
       </form>
-      <Togglable buttonLabel="Rekisteröi">
-        <NewUserForm />
+      <Togglable buttonLabel="Rekisteröi" ref={newUserFormRef} >
+        <NewUserForm onUserCreatedToggle={() => newUserFormRef.current.toggleVisibility()} />
       </Togglable>
     </>
   );

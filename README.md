@@ -56,5 +56,6 @@
 | 18.12   | 3,75  | Can actually make new registered user on page |
 | 19.12   | 3,5   | Remove redundant file, verify email, businessIdCode in use |
 | 23.12   | 1     | Make login logic changesa |
-| Total   | 119   | 56 h left. Goal: 175h (at least) |
+| 25.12   | 3,5   | Fix NewUserForm user creation w/notify fix on dublicate email and busIdCode, Fixed toggle visibility when successfully create new user |
+| Total   | 123,5 | 51,5 h left. Goal: 175h (at least) |
 
