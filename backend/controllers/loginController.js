@@ -22,7 +22,7 @@ const loginUser = async (request, response) => {
 
   const token = jwt.sign(userForToken, SECRET);
 
-  response.status(200).send({ token, email: user.email, name: user.name });
+  response.status(200).send({ token, email: user.email, name: user.name, id: user.id });
 };
 
 module.exports = loginUser;
