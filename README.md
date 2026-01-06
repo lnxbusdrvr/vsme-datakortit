@@ -58,5 +58,5 @@
 | 23.12.2025 | 1     | Make login logic changesa |
 | 25.12.2025 | 3,5   | Fix NewUserForm user creation w/notify fix on dublicate email and busIdCode, Fixed toggle visibility when successfully create new user |
 | 06.01.2026 | 1,5   | Start questions form user-component and fix backend login to response user.id |
-| Total      | 123,5 | 51,5 h left. Goal: 175h (at least) |
+| Total      | 125   | 50 h left. Goal: 175h (at least) |
 
