@@ -1,18 +1,33 @@
 import { useDispatch, useSelector} from 'react-redux'
 import { Routes, Route, Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { useEffect } from 'react';
 
 import LoginForm from './components/LoginForm';
 import NewUserForm from './components/NewUserForm';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers';
 import User from './components/User';
 
-import { clear as clearUser } from './reducers/userReducer';
+import { initUser, clear as clearUser } from './reducers/userReducer';
+import { initializeUsers } from './reducers/usersReducer';
 
 
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(initUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(initializeUsers());
+    }
+  }, [dispatch, user]);
+
+
+  console.log(`user: ${user}`)
 
   const handleLogout = () => {
     dispatch(clearUser());

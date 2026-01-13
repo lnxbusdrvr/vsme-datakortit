@@ -1,6 +1,6 @@
 //import { useState, useRef } from 'react';
 //import { useDispatch } from 'react-redux';
-//import { useEffect } from 'react';
+import { useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 
 import { Form, Button } from 'react-bootstrap';
@@ -13,6 +13,7 @@ import { Form, Button } from 'react-bootstrap';
 const Questions = () => {
   //const dispatch = useDispatch();
   //const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState('');
 
   /*
   useEffect(() => {
@@ -21,7 +22,7 @@ const Questions = () => {
   const handleQuestions = async (event) => {
     event.preventDefault();
 
-    console.log('send questions')
+    console.log(`send questions\n${inputValue}`);
   };
   /*
       <Notification />
@@ -36,6 +37,7 @@ const Questions = () => {
           <input
             type="text"
             value="some teksti"
+            onChange={({ target }) => console.log(target.value)}
           />
         </div>
         <Button type="submit">Lähetä vastaukset</Button>
