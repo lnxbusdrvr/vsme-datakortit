@@ -1,4 +1,4 @@
-const KEY = 'vsmeappUser'
+const KEY = 'vsmeAppUser'
 
 const saveUser = (user) => {
   localStorage.setItem(KEY, JSON.stringify(user));

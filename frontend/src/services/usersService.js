@@ -8,6 +8,11 @@ const createUser = async (newUser) => {
   return request.data;
 };
 
+const getUserById = async (id) => {
+  const request = await axios.get(`${baseUrl}/${id}`)
+  return request.data
+}
+
 const getAll = async () => {
   const request = await axios.get(baseUrl);
   return request.data;
@@ -15,5 +20,6 @@ const getAll = async () => {
 
 export default {
   createUser,
-  getAll
+  getAll,
+  getUserById
 };

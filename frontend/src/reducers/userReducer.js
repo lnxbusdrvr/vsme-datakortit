@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import loginService from '../services/loginService';
+import usersService from '../services/usersService';
 import storageService from '../services/storageService';
 import { notify } from './notificationReducer'
 
@@ -19,12 +20,22 @@ const slice = createSlice({
   },
 })
 
-export const { set, clear} = slice.actions
+export const { set, clear } = slice.actions
 
 export const loginUser = (credentials) => {
   return async dispatch => {
     try {
-      const user = await loginService.login(credentials)
+      console.log('Sending login request with:', credentials);
+      // fetch token and id from login controller
+      const loginResponse = await loginService.login(credentials)
+      console.log('Login response:', loginResponse);
+      console.log(`Token set, fetching user details...`)
+
+      // fetch full user details from users controller
+      const fullUser = await usersService.getUserById(loginResponse.id)
+      console.log(`Full user data: ${fullUser}`)
+      const user = { ...fullUser, token: loginResponse.token }
+
       storageService.saveUser(user)
       dispatch(set(user))
       return user

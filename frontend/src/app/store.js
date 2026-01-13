@@ -8,6 +8,7 @@ import usersReducer from '../reducers/usersReducer';
 export default configureStore({
   reducer: {
     notification: notificationReducer,
+    //questions: questionsReducer,
     user: userReducer,
     users: usersReducer
   }
