@@ -1,4 +1,5 @@
 import axios from 'axios';
+import userService from './userService'
 
 const baseUrl = '/api/users';
 
@@ -9,7 +10,11 @@ const createUser = async (newUser) => {
 };
 
 const getUserById = async (id) => {
-  const request = await axios.get(`${baseUrl}/${id}`)
+  const token = userService.getToken();
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+  const request = await axios.get(`${baseUrl}/${id}`, config)
   return request.data
 }
 

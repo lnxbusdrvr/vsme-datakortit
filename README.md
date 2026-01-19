@@ -59,5 +59,6 @@
 | 25.12.2025 | 3,5   | Fix NewUserForm user creation w/notify fix on dublicate email and busIdCode, Fixed toggle visibility when successfully create new user |
 | 06.01.2026 | 1,5   | Start questions form user-component and fix backend login to response user.id |
 | 13.01.2026 | 3,5   | Made user un-undefined, but found that frontend needs to been semi-refactored |
-| Total      | 128,5   | 46,5 h left. Goal: 175h (at least) |
+| 19.01.2026 | 2,5   | Fixed login |
+| Total      | 131   | 44 h left. Goal: 175h (at least) |
 

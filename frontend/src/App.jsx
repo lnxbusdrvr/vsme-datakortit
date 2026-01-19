@@ -22,7 +22,10 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(initializeUsers());
+      // Force a small delay to ensure token is set before fetching users
+      setTimeout(() => {
+        dispatch(initializeUsers());
+      }, 1000);
     }
   }, [dispatch, user]);
 

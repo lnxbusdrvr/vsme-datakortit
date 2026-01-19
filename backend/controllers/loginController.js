@@ -7,11 +7,18 @@ const loginUser = async (request, response) => {
   const { email, password } = request.body;
 
   const user = await User.findOne({ email });
-  const passwordCorrect = user === null ? false : await bcrypt.compare(password, user.passwordHash);
 
-  if (!(user && passwordCorrect)) {
+  if (!user) {
     return response.status(401).json({
       error: 'invalid email or password',
+    });
+  }
+
+  const passwordCorrect = user === null ? false : await bcrypt.compare(password, user.passwordHash);
+
+  if (!passwordCorrect) {
+    return response.status(401).json({
+      error: 'invalid email or password'
     });
   }
 
@@ -22,7 +29,7 @@ const loginUser = async (request, response) => {
 
   const token = jwt.sign(userForToken, SECRET);
 
-  response.status(200).send({ token, id: user.id });
+  response.status(200).send({ token, id: user.id, name: user.name });
 };
 
 module.exports = loginUser;

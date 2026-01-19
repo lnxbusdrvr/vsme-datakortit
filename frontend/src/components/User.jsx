@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 
+import usersService from '../services/usersService';
+
 const User = () => {
   const id = useParams().id
   const [user, setUser] = useState(null)
@@ -12,7 +14,7 @@ const User = () => {
       try {
         const userData = await usersService.getUserById(id)
         setUser(userData)
-      } catch (err) {
+      } catch (error) {
         console.log('Error fetching user:', error)
       } finally {
         setLoading(false)

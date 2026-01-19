@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import loginService from '../services/loginService';
-import usersService from '../services/usersService';
+import userService from '../services/userService';
 import storageService from '../services/storageService';
 import { notify } from './notificationReducer'
+
 
 const initialState = null
 
@@ -26,21 +27,20 @@ export const loginUser = (credentials) => {
   return async dispatch => {
     try {
       console.log('Sending login request with:', credentials);
+
       // fetch token and id from login controller
       const loginResponse = await loginService.login(credentials)
-      console.log('Login response:', loginResponse);
-      console.log(`Token set, fetching user details...`)
 
-      // fetch full user details from users controller
-      const fullUser = await usersService.getUserById(loginResponse.id)
-      console.log(`Full user data: ${fullUser}`)
-      const user = { ...fullUser, token: loginResponse.token }
+      // Save to storage and to userService
+      storageService.saveUser(loginResponse)
+      // and to userService
+      userService.setUser(loginResponse)
 
-      storageService.saveUser(user)
-      dispatch(set(user))
-      return user
+      dispatch(set(loginResponse))
+      dispatch(notify(`Tervetuloa takaisin, ${loginResponse.name}!`, 5, false))
+      return loginResponse // return for the component
     } catch (e) {
-      dispatch(notify('wrong username or password', 'error'))
+      dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
     }
   }
 }
@@ -48,7 +48,10 @@ export const loginUser = (credentials) => {
 export const initUser = () => {
   return async dispatch => {
     const user = storageService.loadUser()
-    dispatch(set(user))
+    if (user) {
+      userService.setUser(user)
+      dispatch(set(user))
+    }
   }
 }
 

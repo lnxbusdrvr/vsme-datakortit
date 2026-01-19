@@ -1,4 +1,4 @@
-const KEY = 'vsmeAppUser'
+const KEY = 'vsmeDatakortitAppUser'
 
 const saveUser = (user) => {
   localStorage.setItem(KEY, JSON.stringify(user));
@@ -15,5 +15,5 @@ const removeUser = () => {
 export default {
   saveUser,
   loadUser,
-  removeUser,
+  removeUser
 };
