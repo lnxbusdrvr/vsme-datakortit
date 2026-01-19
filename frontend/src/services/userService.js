@@ -1,17 +1,16 @@
 let token = null;
 
-import { KEY as STORAGE_KEY } from './storageService';
-
+const KEY = 'loggedVsmeDatakortitAppUser'
 
 const setUser = (user) => {
-  window.localStorage.setItem(STORAGE_KEY, JSON.strigify(user))
+  window.localStorage.setItem(KEY, JSON.stringify(user))
   token = user.token
 }
 
 const getUser = () => {
   const loggedJsonformUser = window
     .localStorage
-    .getItem(STORAGE_KEY)
+    .getItem(KEY)
   if (loggedJsonformUser) {
     const user = JSON.parse(loggedJsonformUser)
     token = user.token

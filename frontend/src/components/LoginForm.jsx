@@ -21,16 +21,10 @@ const LoginForm = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
-    try {
-      const user = await dispatch(loginUser({ email, password }));
-      dispatch(notify(`Tervetuloa takaisin,, ${user.name}!`, 5, false))
-      setEmail('');
-      setPassword('');
-      navigate('/');
-    } catch {
-     dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
-    }
+    const user = await dispatch(loginUser({ email, password }));
+    setEmail('');
+    setPassword('');
+    navigate('/');
   };
 
   return (
