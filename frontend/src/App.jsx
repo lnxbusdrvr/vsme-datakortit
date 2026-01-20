@@ -21,16 +21,10 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (user) {
-      // Force a small delay to ensure token is set before fetching users
-      setTimeout(() => {
-        dispatch(initializeUsers());
-      }, 1000);
-    }
+    if (user)
+      dispatch(initializeUsers());
   }, [dispatch, user]);
 
-
-  console.log(`user: ${user}`)
 
   const handleLogout = () => {
     dispatch(clearUser());
