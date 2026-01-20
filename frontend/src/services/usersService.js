@@ -1,8 +1,8 @@
 import axios from 'axios';
 import userService from './userService'
 
-const baseUrl = '/api/users';
 
+const baseUrl = '/api/users';
 
 const createUser = async (newUser) => {
   const request = await axios.post(baseUrl, newUser);
@@ -10,16 +10,19 @@ const createUser = async (newUser) => {
 };
 
 const getUserById = async (id) => {
-  const token = userService.getToken();
+  // Do not do this globally, token won't be set yet
   const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
+    headers: { Authorization: `Bearer ${userService.getToken()}` }
+  }
   const request = await axios.get(`${baseUrl}/${id}`, config)
   return request.data
 }
 
 const getAll = async () => {
-  const request = await axios.get(baseUrl);
+  const config = {
+    headers: { Authorization: `Bearer ${userService.getToken()}` }
+  }
+  const request = await axios.get(baseUrl, config);
   return request.data;
 };
 
