@@ -60,6 +60,7 @@
 | 06.01.2026 | 1,5   | Start questions form user-component and fix backend login to response user.id |
 | 13.01.2026 | 3,5   | Made user un-undefined, but found that frontend needs to been semi-refactored |
 | 19.01.2026 | 2,5   | Fixed login |
-| 20.01.2026 | 5,5   | Fixed errors on site and implemented to show bacic module questions |
-| Total      | 136,5 | 38,5 h left. Goal: 175h (at least) |
+| 20.01.2026 | 5,5   | Implenented to choose between basic or inckusive module on site and added input-tags, not send action yet|
+| 26.01.2026 | 3,75   | |
+| Total      | 140,25 | 34,75 h left. Goal: 175h (at least) |
 
