@@ -17,6 +17,9 @@ const Basic = () => {
   if (!user || !basic)
     return <div>Loading...</div>
 
+/*
+        <div key={b.id || bIdx} >
+*/
   return (
     <div>
       {basic.map((b, bIdx) => (
@@ -28,23 +31,42 @@ const Basic = () => {
             <p>{s.header}</p>
             {s.questions.map((qs, qsIdx) => (
               <div key={`${bIdx}-${qs.id}-${qs.id}-${qsIdx}`} >
-                <p>{qs.question}</p>
+                {qs.id === 'basic_or_incl_module' ? (
+                  <>
+                    <p>{qs.question}</p>
+                    <input type="radio"  value={b.module_id} checked={true} disabled={true} />
+                    <label htmlFor={qs.id} >{b.module}</label>
+                    <input type="radio" checked={false} disabled={true} />
+                    <label>Kattava moduuli</label>
+                  </>
+                ) : (
+                  <label>{qs.question}
+                    <input type="text" name={qs.id} />
+                  </label>
+                )}
+
               {qs.sub_questions && (
                 <div>
                 {qs.sub_questions.map((subQs, subQsIdx) => (
                   <div key={`${bIdx}-${qs.id}-${subQs.id}-${subQsIdx}`}>
                     <p>{subQs.category}</p>
-                    <p>{subQs.renewable}</p>
-                    <p>{subQs.non_renewable}</p>
-                    <p>{subQs.total}</p>
+                    <label>{subQs.renewable}
+                      <input type="text" name={subQs.renewable} />
+                    </label>
+                    <label>{subQs.non_renewable}
+                      <input type="text" name={subQs.non_renewable} />
+                    </label>
+                    <label>{subQs.total}
+                      <input type="text" name={subQs.total} />
+                    </label>
                   </div>
                 ))}
                 </div>
               )}
               </div>
-            ))}
-          </div>
-        ))}
+              ))}
+            </div>
+          ))}
         </div>
       ))}
     </div>

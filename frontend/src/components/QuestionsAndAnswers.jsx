@@ -15,16 +15,16 @@ import Inclusive from './Inclusive';
 const Questions = () => {
   //const dispatch = useDispatch();
   //const navigate = useNavigate();
-  const [basicOrInclusive, setBasicOrInclusive] = useState('');
+  const [basicOrInclusive, setBasicOrInclusive] = useState(null);
 
   /*
   useEffect(() => {
   }, []);
   */
+    console.log(`basicOrInclusive: ${basicOrInclusive} `)
   const handleQuestions = async (event) => {
     event.preventDefault();
 
-    console.log(`send questions\n${basicOrInclusive}`);
   };
   /*
       <Notification />
@@ -32,34 +32,33 @@ const Questions = () => {
 
   return (
     <>
-      <h2>Kysmykset</h2>
-      <Form onSubmit={handleQuestions} >
-        <div>
-          <label htmlFor="basic">Perusmoduuli</label>
-          <input
-            type="radio"
-            name="basicOrInclusive"
-            value="basic_module"
-            onChange={({ target }) => setBasicOrInclusive(target.value)}
-            required
-          />
-          <label htmlFor="inclusive">Kattava moduuli</label>
-          <input
-            type="radio"
-            name="basicOrInclusive"
-            value="inclusive_module"
-            onChange={({ target }) => setBasicOrInclusive(target.value)}
-            required
-          />
+      {basicOrInclusive === null && (
+        <div>Valitse moduuli:</div>
+      )}
+      <input
+        type="radio"
+        name="basicOrInclusive"
+        value="basic_module"
+        onChange={({ target }) => setBasicOrInclusive(target.value)}
+        required
+      />
+      <label htmlFor="basic">Perusmoduuli</label>
+      <input
+        type="radio"
+        name="basicOrInclusive"
+        value="inclusive_module"
+        onChange={({ target }) => setBasicOrInclusive(target.value)}
+        required
+      />
+      <label htmlFor="inclusive">Kattava moduuli</label>
 
-          {basicOrInclusive === 'inclusive_module' ? (
-            <Inclusive />
-          ) : (
-            <Basic />
-          )}
-        </div>
-        <Button type="submit">Lähetä vastaukset</Button>
-      </Form>
+      {basicOrInclusive === 'basic_module' && (
+        <Basic />
+      )}
+
+      {basicOrInclusive === 'inclusive_module' && (
+        <Inclusive />
+      )}
     </>
   );
 };
