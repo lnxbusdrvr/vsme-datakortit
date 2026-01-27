@@ -484,8 +484,13 @@
         {
           "id": "management_01",
           "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
-          "type": "boolean",
-          "follow_up_if_true": [
+          "type": "boolean"
+        },
+        {
+          "id": "management_01_details",
+          "question": "Korruptio/lahjonta -tiedot",
+          "type": "group",
+          "sub_questions": [
             {
               "id": "management_01_01",
               "category": "Tuomioiden lukumäärä",
@@ -502,4 +507,5 @@
     }
   ]
 }
+
 
