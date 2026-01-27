@@ -60,7 +60,8 @@
 | 06.01.2026 | 1,5   | Start questions form user-component and fix backend login to response user.id |
 | 13.01.2026 | 3,5   | Made user un-undefined, but found that frontend needs to been semi-refactored |
 | 19.01.2026 | 2,5   | Fixed login |
-| 20.01.2026 | 5,5   | Implenented to choose between basic or inckusive module on site and added input-tags, not send action yet|
-| 26.01.2026 | 3,75   | |
-| Total      | 140,25 | 34,75 h left. Goal: 175h (at least) |
+| 20.01.2026 | 5,5   | Fixed errors on site and implemented to show bacic module questions |
+| 26.01.2026 | 3,75  | Fixed basic- or inclusive module changing and added answer field, but no actual answering possible yet |
+| 27.01.2026 | 8,75  | Fixed answering based on what type of answer, changed on MongoDB field types: integer, curency fields to numbers, Simplified basic-module-db no subsubquestions |
+| Total      | 149   | 26 h left. Total goal to implement: 175h (at least) |
 
