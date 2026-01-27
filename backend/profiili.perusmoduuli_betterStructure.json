@@ -479,12 +479,12 @@
             {
               "id": "management_01_01",
               "category": "Tuomioiden lukumäärä",
-              "type": "integer"
+              "type": "number"
             },
             {
               "id": "management_01_02",
               "category": "Sakoista aiheutuneet kokonaiskulut",
-              "type": "currency"
+              "type": "number"
             }
           ]
         }
