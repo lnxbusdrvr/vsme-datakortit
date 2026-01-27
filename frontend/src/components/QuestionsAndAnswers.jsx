@@ -21,7 +21,6 @@ const Questions = () => {
   useEffect(() => {
   }, []);
   */
-    console.log(`basicOrInclusive: ${basicOrInclusive} `)
   const handleQuestions = async (event) => {
     event.preventDefault();
 

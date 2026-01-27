@@ -70,20 +70,19 @@ const initialBasicModules = [
             type: 'group',
             sub_questions: [
               {
-                id: 'movie_genres',
-                category: 'Elokuvagenret (kpl)',
-                horror_movies: {
-                  category: 'Kauhuelokuvat',
-                  movie_pcs: 'Kappaleita',
-                },
-                scifi_movies: {
-                  category: 'Scifi- ja fantasiaelokuvat',
-                  movie_pcs: 'Kappaleita',
-                },
-                comedy_movies: {
-                  category: 'Komediaelokuvat',
-                  movie_pcs: 'Kappaleita',
-                },
+                id: 'movie_genres_horror_movies',
+                category: 'Elokuvagenret - Kauhuelokuvat (kpl)',
+                label: 'Kappaletta',
+              },
+              {
+                id: 'movie_genres_scifi_movies',
+                category: 'Elokuvagenret - Scifi- ja fantasiaelokuvat (kpl)',
+                label: 'Kappaletta',
+              },
+              {
+                id: 'movie_genres_',
+                category: 'Elokuvagenret - Komediaelokuvat (kpl)',
+                label: 'Kappaletta',
               },
             ],
           },
@@ -101,12 +100,12 @@ const initialBasicModules = [
               {
                 id: 'b5_total_seasons',
                 category: 'Montaako Babylon 5 kautta on?',
-                type: 'integer',
+                type: 'number',
               },
               {
                 id: 'b5_cost',
                 category: 'Montaako euroa Babylon 5 Blu-Ray maksaa?',
-                type: 'currency',
+                type: 'number',
               },
             ],
           },
