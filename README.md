@@ -63,5 +63,6 @@
 | 20.01.2026 | 5,5   | Fixed errors on site and implemented to show bacic module questions |
 | 26.01.2026 | 3,75  | Fixed basic- or inclusive module changing and added answer field, but no actual answering possible yet |
 | 27.01.2026 | 8,75  | Fixed answering based on what type of answer, changed on MongoDB field types: integer, curency fields to numbers, Simplified basic-module-db no subsubquestions |
-| Total      | 149   | 26 h left. Total goal to implement: 175h (at least) |
+| 31.01.2026 | 4     | Fixed basic-module-db. Added some css |
+| Total      | 153   | 22 h left. Total goal to implement: 175h (at least) |
 
