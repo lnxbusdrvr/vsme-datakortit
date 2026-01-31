@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
 import { initializeBasic } from '../reducers/basicReducer'
+import '../styles.css'
 
 const Basic = () => {
   const dispatch = useDispatch()
@@ -55,7 +56,8 @@ const Basic = () => {
           <h1>{b.module}</h1>
         {b.sections.map((s, sIdx) => (
           <div key={`${s.section_id}-${sIdx}`} >
-            <h2>{s.title}</h2>
+            {s.header && <h2>{s.header}</h2>}
+            <p className="title-box">{s.title}</p>
 
             {s.questions.map((qs, qsIdx) => (
               <div key={`${qs.id}-${qsIdx}`} >
@@ -160,12 +162,12 @@ const Basic = () => {
                     )}
                     {subQs.emission_kg && (
                       <Form.Label>{subQs.emission_kg}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control type="number" name={subQs.id} />
                       </Form.Label>
                     )}
                     {subQs.emission_release && (
                       <Form.Label>{subQs.emission_release}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control as="textarea" name={subQs.id} />
                       </Form.Label>
                     )}
                     {subQs.area && (
@@ -228,6 +230,11 @@ const Basic = () => {
                         <Form.Control type="text" name={subQs.id} />
                       </Form.Label>
                     )}
+                    {subQs.destroyable_waste && (
+                      <Form.Label>{subQs.destroyable_waste}
+                        <Form.Control type="text" name={subQs.id} />
+                      </Form.Label>
+                    )}
                   </div>
                 ))}
                 </div>
@@ -250,8 +257,8 @@ const Basic = () => {
           <h3>{b.module}</h3>
           {b.sections.map((s, sIdx) => (
             <div key={`${s.section_id}-${sIdx}`}>
-              <h4>{s.title}</h4>
-              {s.header && <p>{s.header}</p>}
+              <h4 className="title">{s.title}</h4>
+              {s.header && <p className="header">{s.header}</p>}
               
               {s.questions.map((qs, qsIdx) => (
                 <div key={`${qs.id}-${qsIdx}`}>
