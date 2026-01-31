@@ -107,6 +107,7 @@
     },
     {
       "section_id": "environment",
+      "header": "Ympäristö",
       "title": "B3 Energia",
       "questions": [
         {
@@ -252,72 +253,80 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_02_land_use_02",
+              "id": "location_land_use_02",
               "category": "maankäytön kokonaispinta-ala (hehtaareina);",
               "last_year": "Edellinen vuosi (alue hehtaari m²)",
               "reported_year": "Raportointi vuosi (alue hehtaari m²)",
               "percent_change": "% muutos (alue hehtaari m²)"
             },
             {
-              "id": "location_02_land_use_03",
+              "id": "location_land_use_03",
               "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
               "last_year": "Edellinen vuosi (alue hehtaari m²)",
               "reported_year": "Raportointi vuosi (alue hehtaari m²)",
               "percent_change": "% muutos (alue hehtaari m²)"
             },
             {
-              "id": "location_02_land_use_04",
+              "id": "location_land_use_04",
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
               "last_year": "Edellinen vuosi (alue hehtaari m²)",
               "reported_year": "Raportointi vuosi (alue hehtaari m²)",
               "percent_change": "% muutos (alue hehtaari m²)"
             },
             {
-              "id": "location_02_land_use_05",
+              "id": "location_land_use_05",
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
               "last_year": "Edellinen vuosi (alue hehtaari m²)",
               "reported_year": "Raportointi vuosi (alue hehtaari m²)",
               "percent_change": "% muutos (alue hehtaari m²)"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "section_id": "location_water",
+      "title": "B6 Vesi",
+      "questions": [
         {
           "id": "location_03",
           "question": "Yrityksen tulee raportoida kokonaisvedenkulutuksensa sekä erikseen niiden toimipaikkojen vedenkulutus, jotka sijaitsevat korkean vesistressin alueilla.",
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_03_all_offices",
+              "id": "location_water_all_offices",
               "category": "Kaikki toimipisteet",
               "water_take": "Vedenotto (esim... m3)",
               "water_used": "Vedenkulutus  (esim. m3) (jos sovellettavissa)"
             },
             {
-              "id": "location_03_waterstress_offices",
+              "id": "location_water_waterstress_offices",
               "category": "Kohteet alueilla, joilla on vesistressiä",
               "water_take": "Vedenotto (esim... m3)",
               "water_used": "Vedenkulutus  (esim. m3) (jos sovellettavissa)"
             },
             {
-              "id": "location_03_dropsy_production_process",
+              "id": "location_water_dropsy_production_process",
               "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
               "water_take": "Vedenotto (esim... m3)",
               "water_used": "Vedenkulutus  (esim. m3) (jos sovellettavissa)"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "section_id": "location_water",
+      "title": "B7 -Resurssien käyttö, kiertolous ja jätehuolto",
+      "question": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+      "questions": [
         {
-          "id": "location_04",
-          "question": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
-          "type": "text"
-        },
-        {
-          "id": "location_05",
+          "id": "location_water",
           "question": "Yrityksen on ilmoitettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_05_undangerous_waste",
+              "id": "location_waste_undangerous_waste",
               "category": "Vaaraton jäte",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -325,7 +334,7 @@
               "destroyable_waste": "Jätteet ohjataan häviteettäväksi"
             },
             {
-              "id": "location_05_waste_type1",
+              "id": "location_waste_type1",
               "category": "Jätteen tyyppi 1",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -333,7 +342,7 @@
               "destroyable_waste": "Jätteet ohjataan häviteettäväksi"
             },
             {
-              "id": "location_05_waste_type2",
+              "id": "location_waste_type2",
               "category": "Jätteen tyyppi 2",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -341,7 +350,7 @@
               "destroyable_waste": "Jätteet ohjataan häviteettäväksi"
             },
             {
-              "id": "location_05_etc",
+              "id": "location_waste_etc",
               "category": "jne.",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -349,7 +358,7 @@
               "destroyable_waste": "Jätteet ohjataan häviteettäväksi"
             },
             {
-              "id": "location_05_dangerous_waste",
+              "id": "location_waste_dangerous_waste",
               "category": "Vaarallinen jäte",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -357,7 +366,7 @@
               "destroyable_waste": "Jätteet ohjataan häviteettäväksi"
             },
             {
-              "id": "location_05_danger_waste_type1",
+              "id": "location_waste_danger_waste_type1",
               "category": "Jätteen tyyppi 1",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -365,7 +374,7 @@
               "destroyable_waste": "Jätteet ohjataan häviteettäväksi"
             },
             {
-              "id": "location_05_danger_etc",
+              "id": "location_waste_danger_etc",
               "category": "jne.",
               "all_waste": "Syntyneen jätteen kokonaismäärä",
               "recycled_waste": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
@@ -378,81 +387,85 @@
     },
     {
       "section_id": "social_responsibility",
-      "title": "Sosiaalinen vastuu",
+      "header": "Sosiaalinen vastuu",
+      "title": "B8 – Työvoima- yleiset ominaisuudet",
       "questions": [
         {
-          "id": "social_01",
+          "id": "social_responsibility_contract_type",
           "question": "Yrityksen on ilmoitettava työntekijöiden lukumäärä henkilöstömääränä tai kokopäiväiseksi muutettuna seuraavien mittareiden osalta:",
           "type": "group",
           "sub_questions": [
             {
-              "id": "social_01_fixed_contract",
-              "category": "Työsopimuksen tyyppi - Määräaikainen sopimus",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_contract_type_fixed_contract",
+              "title": "Työsopimuksen tyyppi",
+              "category": "Määräaikainen sopimus",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_permanent_contract",
-              "category": "Työsopimuksen tyyppi - Vakituinen / toistaiseksi voimassa oleva sopimus",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_contract_type_permanent_contract",
+              "category": "Vakituinen / toistaiseksi voimassa oleva sopimus",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_personnel_employees_total",
+              "id": "social_contract_type_personnel_employees_total",
               "category": "Henkilöstö / Työntekijät yhteensä",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_gender_male",
-              "category": "Sukupuoli - Mies",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_gender_male",
+              "title": "Sukupuoli",
+              "category": "Mies",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_gender_female",
-              "category": "Sukupuoli - Nainen",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_gender_female",
+              "category": "Nainen",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_gender_other",
-              "category": "Sukupuoli - Muu sukupuoli",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_gender_other",
+              "category": "Muu sukupuoli",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_gender_unreported",
-              "category": "Sukupuoli - Ei raportoitu",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_gender_unreported",
+              "category": "Ei raportoitu",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_gender_personnel_employees_total",
-              "category": "Sukupuoli - Henkilöstö / Työntekijät yhteensä",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "id": "social_gender_personnel_employees_total",
+              "category": "Henkilöstö / Työntekijät yhteensä",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
               "id": "social_01_country_a",
-              "category": "Maa (jos sovellettavissa) - Maa A",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "title": "Maa (jos sovellettavissa)",
+              "category": "Maa A",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
               "id": "social_01_country_b",
-              "category": "Maa (jos sovellettavissa) - Maa B",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "category": "Maa B",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
               "id": "social_01_country_personnel_employees_total",
               "category": "Henkilöstö / Työntekijät yhteensä",
-              "label": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
+              "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
             },
             {
-              "id": "social_01_minimum_wage",
+              "id": "social_01",
               "question": "Saavatko työntekijät palkkaa, joka on sama tai suurempi kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa?",
               "type": "text"
             },
