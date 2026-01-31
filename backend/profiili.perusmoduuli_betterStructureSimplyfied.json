@@ -137,52 +137,68 @@
               "total": "MWh"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "section_id": "b3_ghg",
+      "title": "B4 Kasvihuonekaasut (GHG)",
+      "questions": [
         {
-          "id": "environment_02",
+          "id": "environment_ghg",
           "question": "Yrityksen on ilmoitettava arvioidut kasvihuonekaasujen (GHG) bruttopäästönsä CO2  ekvivalenttitonneina (tCO2eq) ottaen huomioon GHG Protocol Corporate Standard (2004 versio) sisältö",
           "type": "group",
           "sub_questions": [
             {
-              "id": "environment_02_scope1",
+              "id": "environment_ghg_scope1",
               "category": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
               "greenhouse_gas_emission1": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
               "greenhouse_gas_emission2": "202(x) GHG emissions (tCO2e)",
               "greenhouse_gas_emission3": "202(x) GHG emissions (tCO2e)"
             },
             {
-              "id": "environment_02_scope2",
+              "id": "environment_ghg_scope2",
               "category": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
               "greenhouse_gas_emission1": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
               "greenhouse_gas_emission2": "202(x) GHG emissions (tCO2e)",
               "greenhouse_gas_emission3": "202(x) GHG emissions (tCO2e)"
             },
             {
-              "id": "environment_02_total",
+              "id": "environment_ghg_total",
               "category": "Yhteensä",
               "greenhouse_gas_emission1": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
               "greenhouse_gas_emission2": "202(x) GHG emissions (tCO2e)",
               "greenhouse_gas_emission3": "202(x) GHG emissions (tCO2e)"
+            },
+            {
+              "id": "environment_ghg_turnover",
+              "category": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
+              "greenhouse_gas_emission1": "(euroja)"
+            },
+            {
+              "id": "environment_ghg_sourca_and_method_use",
+              "category": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
+              "greenhouse_gas_emission1": "202(x) kasvihuonekaasupäästöt (teksti)",
+              "greenhouse_gas_emission2": "202(x) GHG emissions (teksti)",
+              "greenhouse_gas_emission3": "202(x) GHG emissions (teksti)"
+            },
+            {
+              "id": "environment_ghg_uncertainty",
+              "category": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
+              "greenhouse_gas_emission1": "202(x) kasvihuonekaasupäästöt (teksti)",
+              "greenhouse_gas_emission2": "202(x) GHG emissions (teksti)",
+              "greenhouse_gas_emission3": "202(x) GHG emissions (teksti)"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "section_id": "b4_pollution",
+      "title": "B4 Ilman, veden ja maaperän saastuminen",
+      "questions": [
         {
-          "id": "environment_03",
-          "question": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
-          "type": "text"
-        },
-        {
-          "id": "environment_04",
-          "question": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
-          "type": "text"
-        },
-        {
-          "id": "environment_05",
-          "question": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
-          "type": "text"
-        },
-        {
-          "id": "environment_06",
+          "id": "b4",
           "question": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
           "type": "group",
           "sub_questions": [
