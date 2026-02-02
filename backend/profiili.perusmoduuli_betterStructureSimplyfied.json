@@ -478,36 +478,69 @@
               "category": "Henkilöstö / Työntekijät yhteensä",
               "employee_count": "Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "type": "number"
-            },
-            {
-              "id": "social_01",
-              "question": "Saavatko työntekijät palkkaa, joka on sama tai suurempi kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa?",
-              "type": "text"
-            },
-            {
-              "id": "social_01_wage_between_m_f",
-              "category": "Nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
-              "type": "number",
-              "unit": "%"
-            },
-            {
-              "id": "social_01_collective_agreement",
-              "category": "Työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus;",
-              "type": "number",
-              "unit": "%"
-            },
-            {
-              "id": "social_01_avg_education",
-              "category": "Keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
-              "type": "text"
             }
           ]
         }
       ]
     },
     {
+      "section_id": "b9_health_and_safety",
+      "title": "B9 Työvoima - terveys ja turvallisuus",
+      "questions": [
+        {
+          "id": "health",
+          "question": "Yrityksen on julkistettava työntekijöistään seuraavat tiedot:",
+          "type": "group",
+          "sub_questions": [
+            {
+              "id": "health_accidents",
+              "category": "kirjattavien työtapaturmien lukumäärä ja osuus",
+              "type": "number"
+            },
+            {
+              "id": "health_deaths_due_work_related_healty_issues",
+              "category": "Työperäisistä vammoista ja työperäisistä terveysongelmista johtuvien kuolemantapausten lukumäärä.",
+              "type": "number"
+            },
+            {
+              "id": "health_training",
+              "category": "Kolmen viime vuoden aikana terveys- ja turvallisuuskoulutukseen osallistuneiden työntekijöiden määrä.",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "b10_collective_agreement",
+      "title": "B 10 Työvoima – Palkkaus, työehtosopimusneuvottelut ja koulutus",
+      "questions": [
+        {
+          "id": "collective_agreement_wage",
+          "question": "Saavatko työntekijät palkkaa, joka on sama tai suurempi kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa?",
+          "type": "text"
+        },
+        {
+          "id": "collective_agreement_wage_between_male_and_female",
+          "question": "Nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
+          "type": "number"
+        },
+        {
+          "id": "collective_agreement_procentual_share",
+          "question": "Työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus;",
+          "type": "number"
+        },
+        {
+          "id": "collective_agreement_procentual_share",
+          "question": "Keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
+          "type": "text"
+        }
+      ]
+    },
+    {
       "section_id": "management",
-      "title": "Hallinto",
+      "header": "Hallinto",
+      "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
         {
           "id": "management_01",
