@@ -235,6 +235,15 @@ const Basic = () => {
                         <Form.Control type="text" name={subQs.id} />
                       </Form.Label>
                     )}
+                    {subQs.id === 'health_accidents' && (
+                      <Form.Control type="number" name={subQs.id} />
+                    )}
+                    {subQs.id === 'health_deaths_due_work_related_healty_issues' && (
+                      <Form.Control type="number" name={subQs.id} />
+                    )}
+                    {subQs.id === 'health_training' && (
+                      <Form.Control type="number" name={subQs.id} />
+                    )}
                   </div>
                 ))}
                 </div>
@@ -248,97 +257,9 @@ const Basic = () => {
     </Form>
   );
 }
-
 /*
-  return (
-    <div>
-      {basic.map((b, bIdx) => (
-        <div key={b.id || bIdx}>
-          <h3>{b.module}</h3>
-          {b.sections.map((s, sIdx) => (
-            <div key={`${s.section_id}-${sIdx}`}>
-              <h4 className="title">{s.title}</h4>
-              {s.header && <p className="header">{s.header}</p>}
-              
-              {s.questions.map((qs, qsIdx) => (
-                <div key={`${qs.id}-${qsIdx}`}>
-                  
-                  {qs.id === 'basic_or_incl_module' ? (
-                    <>
-                      <p>{qs.question}</p>
-                      <Form.Check
-                        type="radio"
-                        label="Perusmoduuli"
-                        value={b.module_id}
-                        checked={true}
-                        disabled
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Kattava moduuli"
-                        checked={false}
-                        disabled
-                      />
-                    </>
-                  ) : qs.type === 'group' ? (
-                    <>
-                      <p><strong>{qs.question}</strong></p>
-                      {qs.sub_questions && qs.sub_questions.map((subQs, subIdx) => (
-                        <div key={`${subQs.id}-${subIdx}`} style={{marginLeft: '20px', marginBottom: '10px'}}>
-                          <Form.Label>
-                            {subQs.category || subQs.question}
-                            {subQs.unit && ` (${subQs.unit})`}
-                          </Form.Label>
-                          <Form.Control
-                            type={subQs.type === 'number' ? 'number' : 'text'}
-                            name={subQs.id}
-                            value={answers[subQs.id] || ''}
-                            onChange={(e) => handleAnswerChange(subQs.id, e.target.value)}
-                          />
-                        </div>
-                      ))}
-                    </>
-                  ) : qs.type === 'boolean' ? (
-                    <>
-                      <p>{qs.question}</p>
-                      <Form.Check
-                        type="radio"
-                        label="Kyllä"
-                        name={qs.id}
-                        checked={answers[qs.id] === true}
-                        onChange={() => handleAnswerChange(qs.id, true)}
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Ei"
-                        name={qs.id}
-                        checked={answers[qs.id] === false}
-                        onChange={() => handleAnswerChange(qs.id, false)}
-                      />
-                    </>
-                  ) : (
-                    <Form.Label>
-                      {qs.question}
-                      <Form.Control
-                        type={qs.type === 'number' ? 'number' : 'text'}
-                        name={qs.id}
-                        value={answers[qs.id] || ''}
-                        onChange={(e) => handleAnswerChange(qs.id, e.target.value)}
-                      />
-                    </Form.Label>
-                  )}
-                  
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      ))}
-      
-      <Button type="submit">Tallenna</Button>
-    </div>
-  );
-}
+                        || subQs.id === 'health_deaths_due_work_related_healty_issues'
+                        || subQs.id === 'health_training' && (
 */
 
 export default Basic
