@@ -543,22 +543,22 @@
       "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
         {
-          "id": "management_01",
+          "id": "management_if_corruption",
           "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
           "type": "boolean"
         },
         {
-          "id": "management_01_details",
+          "id": "management_corruption_details",
           "question": "Korruptio/lahjonta -tiedot",
           "type": "group",
           "sub_questions": [
             {
-              "id": "management_01_01",
+              "id": "management_number_of_convictions",
               "category": "Tuomioiden lukumäärä",
               "type": "number"
             },
             {
-              "id": "management_01_02",
+              "id": "management_total_costs_from_fines",
               "category": "Sakoista aiheutuneet kokonaiskulut",
               "type": "number"
             }
