@@ -11,6 +11,7 @@ const Basic = () => {
   const basic = useSelector(state => state.basic)
   const user = useSelector(state => state.user)
   const [answers, setAnswers] = useState({})
+  const [corruption, setCorruption] = useState(false)
 
   useEffect(() => {
     dispatch(initializeBasic())
@@ -19,31 +20,15 @@ const Basic = () => {
   if (!user || !basic)
     return <div>Loading...</div>
 
-  const handleAnswersChange = (questionId, value) => (
+  const handleAnswersChange = (questionId, value) => {
+    if (questionId === 'management_if_corruption')
+      setCorruption(value)
+
     setAnswers({ ...answers, [questionId]: value})
-  )
+  }
 
 
-/*
-                    <input type="radio"  value={b.module_id} checked={true} disabled={true} />
-                    <label htmlFor={qs.id} style={}>{b.module}</label>
-                    <input type="radio" checked={false} disabled={true} />
-                    <label>Kattava moduuli</label>
-
-                    <Form.Label htmlFor={qs.id} >{b.module}</Form.Label>
-
-                    <Form.Label>Kattava moduuli</Form.Label>
-
-
-                  <div key={`${qs.id}-${subQs.id}-${subQsIdx}`}>
-
-                  <label>{qs.question}
-                    <input type="text" name={qs.id} />
-                  </label>
-
-
-*/
-      console.log(`answers: ${JSON.stringify(answers)}`)
+      console.log(`answers: ${JSON.stringify(answers)}\ncorruption: ${corruption}`)
   return (
     <Form>
       <p>
@@ -121,11 +106,16 @@ const Basic = () => {
                   </>
                 )}
 
-              {qs.type === 'group' && qs.sub_questions && (
+              {qs.type === 'group' &&
+                  (qs.id !== 'management_if_corruption'
+                    && qs.id !== 'management_corruption_details') && (
                 <div>
                 <p>{qs.question}</p>
                 {qs.sub_questions.map((subQs, subQsIdx) => (
                   <div key={`${subQs.id}-${subQsIdx}`} >
+                    {subQs.title && (
+                      <b>{subQs.title}</b>
+                    )}
                     <p>{subQs.category}</p>
 
                     {subQs.renewable && (
@@ -235,6 +225,9 @@ const Basic = () => {
                         <Form.Control type="text" name={subQs.id} />
                       </Form.Label>
                     )}
+                    {qs.id === 'social_responsibility_contract_type' && (
+                      <Form.Control type="number" name={subQs.id} />
+                    )}
                     {subQs.id === 'health_accidents' && (
                       <Form.Control type="number" name={subQs.id} />
                     )}
@@ -248,6 +241,20 @@ const Basic = () => {
                 ))}
                 </div>
               )}
+              {/* Management -section */}
+              {(qs.type === 'group'
+                  && qs.id === 'management_corruption_details')
+              && ( corruption ? (
+                  <div>
+                    <p>{qs.question}</p>
+                    {qs.sub_questions.map((mgntSubQs, mgntSubQsIdx) => (
+                      <Form.Label key={mgntSubQs.id}>{mgntSubQs.category}
+                        <Form.Control type="number" name={mgntSubQs.id} />
+                      </Form.Label>
+                    ))}
+                  </div>
+                ) : null
+              )}
               </div>
               ))}
             </div>
@@ -257,10 +264,7 @@ const Basic = () => {
     </Form>
   );
 }
-/*
-                        || subQs.id === 'health_deaths_due_work_related_healty_issues'
-                        || subQs.id === 'health_training' && (
-*/
+
 
 export default Basic
 
