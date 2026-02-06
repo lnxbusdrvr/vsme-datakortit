@@ -65,5 +65,6 @@
 | 27.01.2026 | 8,75  | Fixed answering based on what type of answer, changed on MongoDB field types: integer, curency fields to numbers, Simplified basic-module-db no subsubquestions |
 | 31.01.2026 | 4     | Fixed basic-module-db. Added some css |
 | 02.02.2026 | 1,5   | Added basic module's b9 and b10. Fixed B9 and B10 answer-fields |
-| Total      | 154,5 | 20,5 h left. Total goal to implement: 175h (at least) |
+| 05.02.2026 | 3,75  | Rename few fields in Basic module db. Mad B11 Management -section swhos more field if clicked true/yes/kyllä |
+| Total      | 158,25 | 16,75 h left. Total goal to implement: 175h (at least) |
 
