@@ -553,7 +553,7 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "management_number_of_convictions",
+              "id": "management_number_of_penalties",
               "category": "Tuomioiden lukumäärä",
               "type": "number"
             },
