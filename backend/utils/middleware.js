@@ -24,14 +24,21 @@ const errorHandler = (error, req, res, next) => {
   else if (
     error.name === 'MongoServerError' &&
     error.message.includes('E11000 duplicate key error')
-  )
+  ) {
+    if (error.message.includes('user_1_questionId_1')) {
+      return res.status(400).json({
+        error: 'Answer already exists for this question',
+      });
+    }
+
     return res.status(400).json({
       error: 'Duplicate businessIdentityCode or email',
     });
-  else if (error.name === 'JsonWebTokenError')
+  } else if (error.name === 'JsonWebTokenError') {
     return res.status(401).json({ error: 'token missin or invalid' });
-  else if (error.name === 'TokenExpiredError')
+  } else if (error.name === 'TokenExpiredError') {
     return res.status(401).json({ error: 'token expired' });
+  }
 
   next(error);
 };
