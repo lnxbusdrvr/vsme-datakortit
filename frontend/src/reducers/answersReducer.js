@@ -8,33 +8,33 @@ const slice = createSlice({
   name: 'answers',
   initialState: [],
   reducers: {
-    setAnswers(state, { payload }) {
+    set(state, { payload }) {
       return payload
     },
-    addAnswer(state, { payload }) {
+    add(state, { payload }) {
       state.push(payload)
     }
   }
 });
 
-const { setAnswers, addAnswer } = slice.actions;
+const { set, add} = slice.actions;
 
 export const initializeAnswers = () => {
   return async dispatch => {
     const data = await answersService.getAll()
-    dispatch(setAnswers(data))
+    dispatch(set(data))
   }
 };
 
-export const addAnswer = (object) => {
+export const addAnswer = (answer) => {
   return async dispatch => {
     try {
-      const data = await answersService.addAnswer(object)
-      dispatch(addAnswer(data))
-      dispatch(notify(`Vastaus luotu!`, 5, false));
+      const data = await answersService.createAnswer(answer)
+      dispatch(add(data))
+      dispatch(notify(`Vastaukset luotu!`, 5, false));
       return true;
     } catch {
-      dispatch(notify('Vastauksen luominen onnistui', 10, true));
+      dispatch(notify('Vastauksien luominen epäonnistui', 10, true));
       return false;
     }
   }

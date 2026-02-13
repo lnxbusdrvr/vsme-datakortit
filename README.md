@@ -66,5 +66,6 @@
 | 31.01.2026 | 4     | Fixed basic-module-db. Added some css |
 | 02.02.2026 | 1,5   | Added basic module's b9 and b10. Fixed B9 and B10 answer-fields |
 | 06.02.2026 | 3,75  | Rename few fields in Basic module db. Mad B11 Management -section swhos more field if clicked true/yes/kyllä |
-| Total      | 158,25 | 16,75 h left. Total goal to implement: 175h (at least) |
+| 13.02.2026 | 6     | fixed duplicate on db. Add send answer -action to db. Set correct error message in backend middleware |
+| Total      | 164,25 | 10,75 h left. Total goal to implement: 175h (at least) |
 

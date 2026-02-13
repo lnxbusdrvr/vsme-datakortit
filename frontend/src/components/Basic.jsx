@@ -1,9 +1,12 @@
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { Routes, Route, Link } from 'react-router-dom';
+
 import { Form, Button } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
 
 import { initializeBasic } from '../reducers/basicReducer'
+import { addAnswer } from '../reducers/answersReducer';
+
 import '../styles.css'
 
 const Basic = () => {
@@ -12,25 +15,67 @@ const Basic = () => {
   const user = useSelector(state => state.user)
   const [answers, setAnswers] = useState({})
   const [corruption, setCorruption] = useState(false)
+  const [moduleId, setModuleId] = useState(false)
 
   useEffect(() => {
     dispatch(initializeBasic())
   }, [dispatch])
 
+  useEffect(() => {
+    if (basic && basic.length > 0)
+      setModuleId(basic[0].module_id)
+  }, [basic])
+
   if (!user || !basic)
     return <div>Loading...</div>
 
-  const handleAnswersChange = (questionId, value) => {
+  const handleAnswersChange = (sectionId, questionId, type, value) => {
     if (questionId === 'management_if_corruption')
       setCorruption(value)
 
-    setAnswers({ ...answers, [questionId]: value})
+    setAnswers({
+      ...answers,
+      [questionId]: {
+        sectionId,
+        type,
+        answer: value
+      }
+    })
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    console.log('All answers:', answers)
+
+    try {
+      for (const [questionId, data] of Object.entries(answers)) {
+        const payload = {
+          moduleId,
+          sectionId: data.sectionId,
+          questionId,
+          type: data.type || 'text',
+          answer: data.answer
+        }
+        console.log('Sending answer:', payload)
+        await dispatch(addAnswer(payload))
+      }
+    } catch (error) {
+      console.log('Error submitting answers:', error)
+    }
+
+
+  }
+
+  const handleClearAnswers = () => {
+    setAnswers({})
+    setCorruption(false)
   }
 
 
       console.log(`answers: ${JSON.stringify(answers)}\ncorruption: ${corruption}`)
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <p>
         Tämä raportti on laadittu VSME 17.12.2024 mukaisesti:
         <a href="https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf" target="_blank">https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf</a>
@@ -71,7 +116,7 @@ const Basic = () => {
                       <Form.Control
                         as="textarea"
                         name={qs.id}
-                        onChange={({ target }) => handleAnswersChange(qs.id, target.value)}
+                        onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, target.value)}
                       />
                     </Form.Label>
                   )}
@@ -249,7 +294,12 @@ const Basic = () => {
                     <p>{qs.question}</p>
                     {qs.sub_questions.map((mgntSubQs, mgntSubQsIdx) => (
                       <Form.Label key={mgntSubQs.id}>{mgntSubQs.category}
-                        <Form.Control type="number" name={mgntSubQs.id} />
+                        <Form.Control
+                          type="number"
+                          name={mgntSubQs.id}
+                          value={answers[mgntSubQs.id] || ''}
+                          onChange={({ target }) => handleAnswersChange(mgntSubQs.id, target.value)}
+                        />
                       </Form.Label>
                     ))}
                   </div>
@@ -259,6 +309,8 @@ const Basic = () => {
               ))}
             </div>
           ))}
+          <Button variant="contained" type="submit">Tallenna</Button>
+          <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
         </div>
       ))}
     </Form>

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { Form, Button } from 'react-bootstrap';
 
-import { notify } from '../reducers/notificationReducer';
 import { loginUser } from '../reducers/userReducer';
 
 import Notification from './Notification';

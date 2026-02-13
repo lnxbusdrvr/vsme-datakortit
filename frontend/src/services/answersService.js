@@ -10,8 +10,8 @@ const headers = {
   : null
 }
 
-const createAnswers = async (object) => {
-  const request = await axios.post(baseUrl, object, { header })
+const createAnswer = async (answer) => {
+  const request = await axios.post(baseUrl, answer, { headers })
   return request.data
 }
 
