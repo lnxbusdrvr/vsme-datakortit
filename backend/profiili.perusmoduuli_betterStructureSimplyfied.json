@@ -133,8 +133,7 @@
               "category": "Yhteensä",
               "renewable": "Uusiutuvan  Energian kulutus (MWh)",
               "non_renewable": "Ei Uusiutuvan Energian kulutus (MWh)",
-              "total": "Yhteensä 202(x) Energiankulutus (MWh)",
-              "total": "MWh"
+              "total": "Yhteensä 202(x) Energiankulutus (MWh)"
             }
           ]
         }
