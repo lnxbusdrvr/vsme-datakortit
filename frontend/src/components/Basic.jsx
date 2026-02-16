@@ -30,12 +30,26 @@ const Basic = () => {
     return <div>Loading...</div>
 
   const handleAnswersChange = (sectionId, questionId, type, value) => {
+    console.log(`handleAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tvalue: ${value}`)
     if (questionId === 'management_if_corruption')
       setCorruption(value)
 
     setAnswers({
       ...answers,
       [questionId]: {
+        sectionId,
+        type,
+        answer: value
+      }
+    })
+  }
+
+  const handleSubQsAnswersChange = (sectionId, questionId, subQuestionId, type, value) => {
+    console.log(`handleSubQuestionAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tsubQuestionId: ${subQuestionId}\n\tvalue: ${value}`)
+
+    setAnswers({
+      ...answers,
+      [subQuestionId]: {
         sectionId,
         type,
         answer: value
@@ -74,6 +88,7 @@ const Basic = () => {
 
 
       console.log(`answers: ${JSON.stringify(answers)}\ncorruption: ${corruption}`)
+console.log('corruption state:', corruption, 'type:', typeof corruption)
   return (
     <Form onSubmit={handleSubmit}>
       <p>
@@ -113,9 +128,11 @@ const Basic = () => {
                   <>
                   {qs.type === 'text' && (
                     <Form.Label>{qs.question}
+                      {/* value's value is needed to get clear button to work */}
                       <Form.Control
                         as="textarea"
                         name={qs.id}
+                        value={answers[qs.id]?.answer || ''}
                         onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, target.value)}
                       />
                     </Form.Label>
@@ -125,26 +142,28 @@ const Basic = () => {
                       <Form.Control
                         type="number"
                         name={qs.id}
-                        onChange={({ target }) => handleAnswersChange(qs.id, target.value)}
+                        value={answers[qs.id]?.answer || ''}
+                        onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, target.value)}
                       />
                     </Form.Label>
                   )}
                   {qs.type === 'boolean' && (
                     <>
                       <Form.Label>{qs.question}</Form.Label>
+                      {/* checked's value is needed to get clear button to work */}
                       <Form.Check
                         label="Kyllä"
                         type="radio"
                         name={qs.id}
-                        value="true"
-                        onChange={({ target }) => handleAnswersChange(qs.id, target.value)}
+                        checked={answers[qs.id]?.answer === true}
+                        onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, true)}
                       />
                       <Form.Check
                         label="Ei"
                         type="radio"
                         name={qs.id}
-                        value="false"
-                        onChange={({ target }) => handleAnswersChange(qs.id, target.value)}
+                        checked={answers[qs.id]?.answer === false}
+                        onChange={({ target }) => handleAnswersChange(s.section_id, qs.id,qs. type, false)}
                       />
                     </>
                   )}
@@ -166,121 +185,246 @@ const Basic = () => {
                     {subQs.renewable && (
                       <>
                       <Form.Label>{subQs.renewable}
-                        <Form.Control type="text" name={subQs.renewable} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.renewable}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                       </>
                     )}
                     {subQs.non_renewable && (
                       <Form.Label>{subQs.non_renewable}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.non_renewable}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.total && (
                       <Form.Label>{subQs.total}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.total}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.greenhouse_gas_emission1 && (
                       <Form.Label>{subQs.greenhouse_gas_emission1}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.greenhouse_gas_emission1}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.greenhouse_gas_emission2 && (
                       <Form.Label>{subQs.greenhouse_gas_emission2}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.greenhouse_gas_emission2}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.greenhouse_gas_emission3 && (
                       <Form.Label>{subQs.greenhouse_gas_emission3}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.greenhouse_gas_emission3}
+                          value={answers[subQs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.emission_kg && (
                       <Form.Label>{subQs.emission_kg}
-                        <Form.Control type="number" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.emission_kg}
+                          value={answers[subQs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.emission_release && (
                       <Form.Label>{subQs.emission_release}
-                        <Form.Control as="textarea" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.emission_release}
+                          value={answers[subQs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.area && (
                       <Form.Label>{subQs.area}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.area}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.biological_polymorph && (
                       <Form.Label>{subQs.biological_polymorph}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.biological_polymorph}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.breakdown && (
                       <Form.Label>{subQs.breakdown}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.breakdown}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.last_year && (
                       <Form.Label>{subQs.last_year}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.last_year}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.reported_year && (
                       <Form.Label>{subQs.reported_year}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.reported_year}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.percent_change && (
                       <Form.Label>{subQs.percent_change}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.percent_change}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.water_take && (
                       <Form.Label>{subQs.water_take}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.water_take}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.water_used && (
                       <Form.Label>{subQs.water_used}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.water_used}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.all_waste && (
                       <Form.Label>{subQs.all_waste}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.all_waste}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.recycled_waste && (
                       <Form.Label>{subQs.recycled_waste}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.recycled_waste}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.recycled_waste_to_energy && (
                       <Form.Label>{subQs.recycled_waste_to_energy}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.recycled_waste_to_energy}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.destroyable_waste && (
                       <Form.Label>{subQs.destroyable_waste}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.destroyable_waste}
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {subQs.destroyable_waste && (
                       <Form.Label>{subQs.destroyable_waste}
-                        <Form.Control type="text" name={subQs.id} />
+                        <Form.Control
+                          as="textarea"
+                          name={subQs.destroyable_waste }
+                          value={answers[qs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                        />
                       </Form.Label>
                     )}
                     {qs.id === 'social_responsibility_contract_type' && (
-                      <Form.Control type="number" name={subQs.id} />
+                      <Form.Control
+                        type="number"
+                        name={subQs.id}
+                        value={answers[qs.id]?.answer || ''}
+                        onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                      />
                     )}
                     {subQs.id === 'health_accidents' && (
-                      <Form.Control type="number" name={subQs.id} />
+                      <Form.Control
+                        type="number"
+                        name={subQs.id}
+                        value={answers[qs.id]?.answer || ''}
+                        onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                      />
                     )}
                     {subQs.id === 'health_deaths_due_work_related_healty_issues' && (
-                      <Form.Control type="number" name={subQs.id} />
+                      <Form.Control
+                        type="number"
+                        name={subQs.id}
+                        value={answers[qs.id]?.answer || ''}
+                        onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                      />
                     )}
                     {subQs.id === 'health_training' && (
-                      <Form.Control type="number" name={subQs.id} />
+                      <Form.Control
+                        type="number"
+                        name={subQs.id}
+                        value={answers[qs.id]?.answer || ''}
+                        onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                      />
                     )}
                   </div>
                 ))}
@@ -297,8 +441,8 @@ const Basic = () => {
                         <Form.Control
                           type="number"
                           name={mgntSubQs.id}
-                          value={answers[mgntSubQs.id] || ''}
-                          onChange={({ target }) => handleAnswersChange(mgntSubQs.id, target.value)}
+                          value={answers[mgntSubQs.id]?.answer || ''}
+                          onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, mgntSubQs.id, mgntSubQs.type, target.value)}
                         />
                       </Form.Label>
                     ))}
