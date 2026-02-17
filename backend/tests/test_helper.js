@@ -9,110 +9,87 @@ const mongoose = require('mongoose');
 const initialBasicModules = [
   {
     _id: new mongoose.Types.ObjectId('688639b533545dffe4168751'),
-    module: 'Perusmoduuli',
-    module_id: 'basic_module',
-    sections: [
+    "module": "Perusmoduuli",
+    "module_id": "basic_module",
+    "sections": [
       {
-        section_id: 'test1',
-        title: 'Testi yksi mitä',
-        questions: [
+        "section_id": "test1",
+        "title": "Testi yksi mitä",
+        "questions": [
           {
-            id: 'test1_01',
-            question: 'Kuka. mitä, häh?',
-            type: 'text',
+            "id": "test1_01",
+            "question": "Kuka. mitä, häh?",
+            "type": "text",
           },
           {
-            id: 'test1_02',
-            question: 'Euroa',
-            type: 'number',
+            "id": "test1_02",
+            "question": "Euroa",
+            "type": "number",
           },
           {
-            id: 'test1_03',
-            question: 'Ollako vai ei?',
-            type: 'boolean',
+            "id": "test1_03",
+            "question": "Ollako vai ei?",
+            "type": "boolean",
           },
         ],
       },
       {
-        section_id: 'subquestion',
-        title: 'Limuympärisstö',
-        questions: [
+        "section_id": "subquestion",
+        "title": "Limuympärisstö",
+        "questions": [
           {
-            id: 'softdrinks_use',
-            question: 'Limujen käyttöympäristö eri kulkuvälineissä moottorin ominaisuuden mukaan',
-            type: 'group',
-            sub_questions: [
+            "id": "softdrinks_use",
+            "question": "Limujen käyttöympäristö eri kulkuvälineissä moottorin ominaisuuden mukaan",
+            "type": "group",
+            "sub_questions": [
               {
-                id: 'softdrinks_in_electric_vehicles',
-                category: 'Sähköajoneuvoissa käytettävien limujen määrä (kpl)',
-                softdrinks_w_sugar: 'Sokeriset limut (kpl)',
-                softdrinks_no_sugar: 'Sokerittomat limut (kpl)',
-                total: 'Sähköajoneuvojen limut yhteensä (kpl)',
+                "id": "softdrinks_in_electric_vehicles",
+                "category": "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
+                "fields": [
+                  {
+                    "key": "elactric_softdrinks_w_sugar",
+                    "label": "Sähköautoissa sokeriset limut (kpl)",
+                    "type": "number"
+                  },
+                  {
+                    "key": "elactric_softdrinks_no_sugar",
+                    "label": "Sähköautoissa Sokerittomat limut (kpl)",
+                    "type": "number"
+                  },
+                  {
+                    "key": "elactric_softdrinks_total",
+                    "label": "Sähköajoneuvojen limut yhteensä (kpl)",
+                    "type": "number"
+                  }
+                ]
               },
               {
-                id: 'softdrinks_in_diesel_vehicles',
-                category: 'Dieselajoneuvoissa käytettävien limujen määrä (kpl)',
-                softdrinks_w_sugar: 'Sokeriset limut (kpl)',
-                softdrinks_no_sugar: 'Sokerittomat limut (kpl)',
-                total: 'Dieselajoneuvojen limut yhteensä (kpl)',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        section_id: 'subquestion_type_two',
-        title: 'Elokuvat',
-        questions: [
-          {
-            id: 'movies_in_collection_by_genre',
-            question: 'Elokuvat kokoelmassa genrettäin',
-            type: 'group',
-            sub_questions: [
-              {
-                id: 'movie_genres_horror_movies',
-                category: 'Elokuvagenret - Kauhuelokuvat (kpl)',
-                label: 'Kappaletta',
-              },
-              {
-                id: 'movie_genres_scifi_movies',
-                category: 'Elokuvagenret - Scifi- ja fantasiaelokuvat (kpl)',
-                label: 'Kappaletta',
-              },
-              {
-                id: 'movie_genres_',
-                category: 'Elokuvagenret - Komediaelokuvat (kpl)',
-                label: 'Kappaletta',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        section_id: 'boolean_w_follow_up',
-        title: 'Kysymykset seurannalla',
-        questions: [
-          {
-            id: 'question_w_if',
-            question: 'Babylon 5 on parempi, kuin Star Trek?',
-            type: 'boolean',
-            follow_up_if_true: [
-              {
-                id: 'b5_total_seasons',
-                category: 'Montaako Babylon 5 kautta on?',
-                type: 'number',
-              },
-              {
-                id: 'b5_cost',
-                category: 'Montaako euroa Babylon 5 Blu-Ray maksaa?',
-                type: 'number',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+                "id": "softdrinks_in_diesel_vehicles",
+                "category": "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
+                "fields": [
+                  {
+                    "key": "diesel_softdrinks_w_sugar",
+                    "label": "Dieselajoneuvoissa Sokeriset limut (kpl)",
+                    "type": "number"
+                  },
+                  {
+                    "key": "diesel_softdrinks_no_sugar",
+                    "label": "Dieselajoneuvoissa Sokerittomat limut (kpl)",
+                    "type": "number"
+                  },
+                  {
+                    "key": "diesel_softdrinks_total",
+                    "label": "Dieselajoneuvojen limut yhteensä (kpl)",
+                    "type": "number"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 const getAnswers = moduleId => {

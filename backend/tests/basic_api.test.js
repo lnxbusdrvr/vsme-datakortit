@@ -69,10 +69,11 @@ describe('Questions', () => {
       const electricSubQuestion = sofdrinksQuestions.sub_questions.find(
         q => q.id === 'softdrinks_in_electric_vehicles'
       );
+
       assert.strictEqual(
         electricSubQuestion.id,
         'softdrinks_in_electric_vehicles',
-        "Subquestion 'softdrinks_in_electric_vehicles' should exist"
+        'Subquestion "softdrinks_in_electric_vehicles" should exist'
       );
 
       assert.strictEqual(
@@ -80,18 +81,23 @@ describe('Questions', () => {
         'Sähköajoneuvoissa käytettävien limujen määrä (kpl)',
         "Question don't match"
       );
+
+      const electricSugarField = electricSubQuestion.fields.find(f => f.key === 'elactric_softdrinks_w_sugar');
+      const electricNoSugarField = electricSubQuestion.fields.find(f => f.key === 'elactric_softdrinks_no_sugar');
+      const electricSoftdrinksTotalrField = electricSubQuestion.fields.find(f => f.key === 'elactric_softdrinks_total');
+
       assert.strictEqual(
-        electricSubQuestion.softdrinks_w_sugar,
-        'Sokeriset limut (kpl)',
-        "Question 'Sokeriset lumut (kpl)' don't match"
+        electricSugarField.label,
+        'Sähköautoissa sokeriset limut (kpl)',
+        'Question "Sähköautoissa sokeriset limut (kpl)" don\'t match'
       );
       assert.strictEqual(
-        electricSubQuestion.softdrinks_no_sugar,
-        'Sokerittomat limut (kpl)',
-        "Question 'Sokerittomat lumut (kpl)' don't match"
+        electricNoSugarField.label,
+        'Sähköautoissa Sokerittomat limut (kpl)',
+        'Question "Sähköautoissa Sokerittomat limut (kpl)" don\'t match'
       );
       assert.strictEqual(
-        electricSubQuestion.total,
+        electricSoftdrinksTotalrField.label,
         'Sähköajoneuvojen limut yhteensä (kpl)',
         "Question 'Sähköajoneuvojen limut yhteensä (kpl)' don't match"
       );
@@ -99,30 +105,36 @@ describe('Questions', () => {
       const dieselSubQuestion = sofdrinksQuestions.sub_questions.find(
         q => q.id === 'softdrinks_in_diesel_vehicles'
       );
-      assert.notStrictEqual(
-        dieselSubQuestion,
-        undefined,
-        "Subquestion 'softdrinks_in_diesel_vehicles' should exist"
+
+      assert.strictEqual(
+        dieselSubQuestion.id,
+        'softdrinks_in_diesel_vehicles',
+        'Subquestion "softdrinks_in_diesel_vehicles" should exist'
       );
       assert.strictEqual(
         dieselSubQuestion.category,
         'Dieselajoneuvoissa käytettävien limujen määrä (kpl)',
-        "Question don't match"
+        'Question "Dieselajoneuvoissa käytettävien limujen määrä (kpl)" don\'t match'
+      );
+
+      const dieselSugarField = dieselSubQuestion.fields.find(f => f.key === 'diesel_softdrinks_w_sugar');
+      const dieselNoSugarField = dieselSubQuestion.fields.find(f => f.key === 'diesel_softdrinks_no_sugar');
+      const dieselSoftdrinksTotalrField = dieselSubQuestion.fields.find(f => f.key === 'diesel_softdrinks_total');
+
+      assert.strictEqual(
+        dieselSugarField .label,
+        'Dieselajoneuvoissa Sokeriset limut (kpl)',
+        'Question "Dieselajoneuvoissa Sokeriset limut (kpl)" don\'t match'
       );
       assert.strictEqual(
-        dieselSubQuestion.softdrinks_w_sugar,
-        'Sokeriset limut (kpl)',
-        "Question 'Sokeriset limut (kpl)' don't match"
+        dieselNoSugarField.label,
+        'Dieselajoneuvoissa Sokerittomat limut (kpl)',
+        'Question "Dieselajoneuvoissa Sokerittomat limut (kpl)" don\'t match'
       );
       assert.strictEqual(
-        dieselSubQuestion.softdrinks_no_sugar,
-        'Sokerittomat limut (kpl)',
-        "Question 'Sokerittomat limut (kpl)' don't match"
-      );
-      assert.strictEqual(
-        dieselSubQuestion.total,
+        dieselSoftdrinksTotalrField.label,
         'Dieselajoneuvojen limut yhteensä (kpl)',
-        "Question 'Dieselajoneuvojen limut yhteensä (kpl)' don't match"
+        'Question "Dieselajoneuvojen limut yhteensä (kpl)" don\'t match'
       );
     });
   });
