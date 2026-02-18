@@ -75,11 +75,11 @@ describe('BasicModule Answers', () => {
         .expect('Content-Type', /application\/json/);
 
       const body = response.body;
-      assert.strictEqual(body.questionId, answer.questionId, "questionId won't match");
-      assert.strictEqual(body.answer, answer.answer, "Answered answer won't match");
+      assert.strictEqual(body.questionId, answer.questionId, "questionId don't match");
+      assert.strictEqual(body.answer, answer.answer, "Answered answer don't match");
     });
 
-    test('Question can be answered by userTwo and it return json', async () => {
+    test('Text-question can be answered by userTwo and it return json', async () => {
       const answer = answers[0];
 
       const response = await api
@@ -90,8 +90,170 @@ describe('BasicModule Answers', () => {
         .expect('Content-Type', /application\/json/);
 
       const body = response.body;
-      assert.strictEqual(body.questionId, answer.questionId, "questionId won't match");
-      assert.strictEqual(body.answer, answer.answer, "Answered answer won't match");
+      assert.strictEqual(body.questionId, answer.questionId, "questionId don't match");
+      assert.strictEqual(body.answer, answer.answer, "Answered answer don't match");
+    });
+
+    test('Number-question can be answered by userTwo and it return json', async () => {
+      const answer = answers[1];
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(answer)
+        .expect(201)
+        .expect('Content-Type', /application\/json/);
+
+      const body = response.body;
+      assert.strictEqual(body.questionId, answer.questionId, "questionId don't match");
+      assert.strictEqual(body.answer, answer.answer, "Answered answer don't match");
+    });
+
+    test('Boolean-question can be answered by userTwo and it return json', async () => {
+      const answer = answers[2];
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(answer)
+        .expect(201)
+        .expect('Content-Type', /application\/json/);
+
+      const body = response.body;
+      assert.strictEqual(body.questionId, answer.questionId, "questionId don't match");
+      assert.strictEqual(body.answer, answer.answer, "Answered answer don't match");
+    });
+
+    test('Boolean-answer to number question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "test1",
+        "questionId": "test1_02_number",
+        "type": "number",
+        "answer": true
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /boolean/i,
+        "Error message should mention boolean type validation"
+      );
+    });
+
+    test('Boolean-answer to text-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "test1",
+        "questionId": "test1_01_text",
+        "type": "text",
+        "answer": true
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /boolean/i,
+        "Error message should mention boolean type validation"
+      );
+    });
+
+    test('Number-answering to text-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "test1",
+        "questionId": "test1_01_text",
+        "type": "text",
+        "answer": 87 
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /number/i,
+        "Error message should mention number type validation"
+      );
+    });
+
+    test('Number-answering to boolean-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "test1",
+        "questionId": "test1_03_boolean",
+        "type": "boolean",
+        "answer": 87 
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /number/i,
+        "Error message should mention number type validation"
+      );
+    });
+
+    test('Text-answer to number-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "test1",
+        "questionId": "test1_02_number",
+        "type": "number",
+        "answer": "Tämä teksti ei sovi numero-kenttään."
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /string/i,
+        "Error message should mention text type validation"
+      );
+    });
+
+    test('Text-answer to boolean-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "test1",
+        "questionId": "test1_03_boolean",
+        "type": "boolean",
+        "answer": "Tämä teksti ei sovi numero-kenttään."
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /string/i,
+        "Error message should mention text type validation"
+      );
     });
 
     test('Multiple question can be answered', async () => {

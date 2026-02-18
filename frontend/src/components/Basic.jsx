@@ -48,16 +48,22 @@ const Basic = () => {
     })
   }
 
-  const handleSubQsAnswersChange = (sectionId, questionId, fieldKey, type, value) => {
-    console.log(`handleSubQuestionAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tsubQuestionId: ${subQuestionId}\n\tvalue: ${value}`)
+  const handleSubQsAnswersChange = (sectionId, questionId, subQuestionId, type, fieldId, fieldType, value) => {
+    console.log(`handleSubQuestionAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tfieldId: ${fieldId}\n\tvalue: ${value}`)
 
     setAnswers({
       ...answers,
-      [fieldKey]: {
-        sectionId,
-        questionId,
-        type,
-        answer: value
+      sectionId,
+      questionId,
+      type,
+      groupAnswers: {
+        subQuestionsId,
+        values: {
+          [fieldId]: {
+            value,
+            fieldType
+          }
+        }
       }
     })
   }
@@ -94,6 +100,7 @@ const Basic = () => {
 
       console.log(`answers: ${JSON.stringify(answers)}\ncorruption: ${corruption}`)
 console.log('corruption state:', corruption, 'type:', typeof corruption)
+
   return (
     <Form onSubmit={handleSubmit}>
       <p>
@@ -112,7 +119,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
               {s.questions.map((qs, qsIdx) => (
                 <div key={`${qs.id}-${qsIdx}`} >
                   {qs.id === 'basic_or_incl_module' ? (
-                    <div key="basic_or_incl_module">
+                    <div key={`disabled_basic_or_incl_module-${qsIdx}`} >
                       <p>{qs.question}</p>
                       <Form.Check
                         type="radio"
@@ -129,7 +136,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                       />
                     </div>
                   ) : (
-                    <div key="other_questions">
+                    <div key={`other_questions-${qsIdx}`}>
                       {qs.type === 'text' && (
                         <Form.Label>{qs.question}
                           {/* value's value is needed to get clear button to work */}
@@ -186,14 +193,14 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                         )}
                         <p>{subQs.category}</p>
                         {subQs.fields.map((f, fIdx) => (
-                          <div key={`${f.key}-${fIdx}`} >
+                          <div key={`${f.id}-${fIdx}`} >
                             {f.type === 'number' && (
                               <Form.Label>{f.label}
                                 <Form.Control
                                   type="number"
                                   name={f.id}
                                   value={answers[f.id]?.answer || ''}
-                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, f.id, f.type, target.value)}
                                 />
                               </Form.Label>
                             )}
@@ -203,7 +210,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                                   as="textarea"
                                   name={f.id}
                                   value={answers[f.id]?.answer || ''}
-                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, target.value)}
+                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, f.id, f.type, target.value)}
                                 />
                               </Form.Label>
                             )}
@@ -221,12 +228,12 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                     {qs.sub_questions.map((mgntSubQs, mgntSubQsIdx) => (
                       <div key={`${mgntSubQs.id}-${mgntSubQsIdx}`} >
                         {mgntSubQs.fields.map((f, fIdx) => (
-                          <Form.Label key={`${f.key}-${fIdx}`}>{mgntSubQs.category} {f.label}
+                          <Form.Label id={`${f.id}-${fIdx}`}>{mgntSubQs.category} {f.label}
                             <Form.Control
                               type="number"
-                              name={f.key}
-                              value={answers[f.key]?.answer || ''}
-                              onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, f.key, f.type, target.value)}
+                              name={f.id}
+                              value={answers[f.id]?.answer || ''}
+                              onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, f.id, f.type, target.value)}
                               />
                           </Form.Label>
                         ))}

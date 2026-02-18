@@ -82,9 +82,9 @@ describe('Questions', () => {
         "Question don't match"
       );
 
-      const electricSugarField = electricSubQuestion.fields.find(f => f.key === 'elactric_softdrinks_w_sugar');
-      const electricNoSugarField = electricSubQuestion.fields.find(f => f.key === 'elactric_softdrinks_no_sugar');
-      const electricSoftdrinksTotalrField = electricSubQuestion.fields.find(f => f.key === 'elactric_softdrinks_total');
+      const electricSugarField = electricSubQuestion.fields.find(f => f.id=== 'elactric_softdrinks_w_sugar');
+      const electricNoSugarField = electricSubQuestion.fields.find(f => f.id=== 'elactric_softdrinks_no_sugar');
+      const electricSoftdrinksTotalrField = electricSubQuestion.fields.find(f => f.id=== 'elactric_softdrinks_total');
 
       assert.strictEqual(
         electricSugarField.label,
@@ -117,9 +117,9 @@ describe('Questions', () => {
         'Question "Dieselajoneuvoissa käytettävien limujen määrä (kpl)" don\'t match'
       );
 
-      const dieselSugarField = dieselSubQuestion.fields.find(f => f.key === 'diesel_softdrinks_w_sugar');
-      const dieselNoSugarField = dieselSubQuestion.fields.find(f => f.key === 'diesel_softdrinks_no_sugar');
-      const dieselSoftdrinksTotalrField = dieselSubQuestion.fields.find(f => f.key === 'diesel_softdrinks_total');
+      const dieselSugarField = dieselSubQuestion.fields.find(f => f.id === 'diesel_softdrinks_w_sugar');
+      const dieselNoSugarField = dieselSubQuestion.fields.find(f => f.id === 'diesel_softdrinks_no_sugar');
+      const dieselSoftdrinksTotalrField = dieselSubQuestion.fields.find(f => f.id === 'diesel_softdrinks_total');
 
       assert.strictEqual(
         dieselSugarField .label,

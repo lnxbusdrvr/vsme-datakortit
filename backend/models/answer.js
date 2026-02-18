@@ -20,14 +20,14 @@ const answerSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['text', 'number', 'boolean', 'group', 'integer', 'currency'],
+    enum: ['text', 'number', 'boolean', 'group' ],
     required: true,
   },
   answer: {
     type: mongoose.Schema.Types.Mixed,
     required: function () {
       return this.type !== 'group';
-    },
+    }
   },
   groupAnswers: [
     {
@@ -41,10 +41,20 @@ const answerSchema = new mongoose.Schema({
       // Use Map-type for dynamic fields
       values: {
         type: Map,
-        of: mongoose.Schema.Types.Mixed,
+        of: mongoose.Schema({
+          value: {
+            type: mongoose.Schema.Types.Mixed,
+            required: true,
+          },
+          fieldType: {
+            type: String,
+            enum: ['text', 'number'],
+            required: true,
+          },
+        }, { _id: false }),
         required: true,
-      },
-    },
+      }
+    }
   ],
   createdAt: {
     type: Date,
