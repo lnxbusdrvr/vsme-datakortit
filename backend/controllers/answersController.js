@@ -14,6 +14,23 @@ const createAnswer = async (req, res) => {
   else if (type !== 'group' && typeof answer === 'undefined')
     return res.status(400).json({ error: "Requires 'answer' field" });
 
+  // Validate answer type matches
+  if (type === 'number' && (typeof answer !== 'number' || isNaN(answer)))
+    return res.status(400).json({
+      error: `Answer must be a valid number for type 'number', got ${typeof answer}: ${answer}`
+    });
+
+  if (type === 'boolean' && typeof answer !== 'boolean')
+    return res.status(400).json({
+      error: `Answer must be a boolean for type 'boolean', got ${typeof answer}: ${answer}`
+    });
+
+  if (type === 'text' && typeof answer !== 'string')
+    return res.status(400).json({
+      error: `Answer must be a string for type 'text', got ${typeof answer}: ${answer}`
+    });
+
+
   const newAnswer = new Answer({
     user: req.user.id,
     moduleId,
@@ -74,7 +91,8 @@ const updateAnswer = async (req, res) => {
   // Only these fields can be updated
   const { answer, groupAnswers } = req.body;
 
-  if (!answerToUpdate) return res.status(404).json({ error: 'Updatable answer not found' });
+  if (!answerToUpdate)
+    return res.status(404).json({ error: 'Updatable answer not found' });
 
   const user = req.user;
 
@@ -84,12 +102,11 @@ const updateAnswer = async (req, res) => {
 
   if (!canUpdate) return res.status(403).json({ error: 'Updating permission denied' });
 
-  if (answerToUpdate.type === 'group') {
-    // To ensure fields are not empty
-    if (groupAnswers) answerToUpdate.groupAnswers = groupAnswers;
-  } else {
-    if (typeof answer !== 'undefined') answerToUpdate.answer = answer;
-  }
+  // To ensure fields are not empty
+  if (answerToUpdate.type === 'group' && groupAnswers)
+    answerToUpdate.groupAnswers = groupAnswers;
+  else if (typeof answer !== 'undefined')
+    answerToUpdate.answer = answer;
 
   answerToUpdate.updatedAt = new Date();
 

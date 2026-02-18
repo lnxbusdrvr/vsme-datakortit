@@ -17,17 +17,17 @@ const initialBasicModules = [
         "title": "Testi yksi mitä",
         "questions": [
           {
-            "id": "test1_01",
+            "id": "test1_01_text",
             "question": "Kuka. mitä, häh?",
             "type": "text",
           },
           {
-            "id": "test1_02",
+            "id": "test1_02_number",
             "question": "Euroa",
             "type": "number",
           },
           {
-            "id": "test1_03",
+            "id": "test1_03_boolean",
             "question": "Ollako vai ei?",
             "type": "boolean",
           },
@@ -47,17 +47,17 @@ const initialBasicModules = [
                 "category": "Sähköajoneuvoissa käytettävien limujen määrä (kpl)",
                 "fields": [
                   {
-                    "key": "elactric_softdrinks_w_sugar",
+                    "id": "elactric_softdrinks_w_sugar",
                     "label": "Sähköautoissa sokeriset limut (kpl)",
                     "type": "number"
                   },
                   {
-                    "key": "elactric_softdrinks_no_sugar",
+                    "id": "elactric_softdrinks_no_sugar",
                     "label": "Sähköautoissa Sokerittomat limut (kpl)",
-                    "type": "number"
+                    "type": "text"
                   },
                   {
-                    "key": "elactric_softdrinks_total",
+                    "id": "elactric_softdrinks_total",
                     "label": "Sähköajoneuvojen limut yhteensä (kpl)",
                     "type": "number"
                   }
@@ -68,17 +68,17 @@ const initialBasicModules = [
                 "category": "Dieselajoneuvoissa käytettävien limujen määrä (kpl)",
                 "fields": [
                   {
-                    "key": "diesel_softdrinks_w_sugar",
+                    "id": "diesel_softdrinks_w_sugar",
                     "label": "Dieselajoneuvoissa Sokeriset limut (kpl)",
                     "type": "number"
                   },
                   {
-                    "key": "diesel_softdrinks_no_sugar",
+                    "id": "diesel_softdrinks_no_sugar",
                     "label": "Dieselajoneuvoissa Sokerittomat limut (kpl)",
-                    "type": "number"
+                    "type": "text"
                   },
                   {
-                    "key": "diesel_softdrinks_total",
+                    "id": "diesel_softdrinks_total",
                     "label": "Dieselajoneuvojen limut yhteensä (kpl)",
                     "type": "number"
                   }
@@ -97,9 +97,23 @@ const getAnswers = moduleId => {
     {
       moduleId,
       sectionId: 'test1',
-      questionId: 'test1_01',
+      questionId: 'test1_01_text',
       type: 'text',
       answer: 'Vastasin tekstikentään',
+    },
+    {
+      moduleId,
+      sectionId: 'test1',
+      questionId: 'test1_02_number',
+      type: 'number',
+      answer: 123,
+    },
+    {
+      moduleId,
+      sectionId: 'test1',
+      questionId: 'test1_03_boolean',
+      type: 'boolean',
+      answer: true,
     },
     {
       moduleId,
@@ -108,48 +122,47 @@ const getAnswers = moduleId => {
       type: 'group',
       groupAnswers: [
         {
-          id: 'softdrinks_in_electric_vehicles',
+          subQuestionsId: 'softdrinks_in_electric_vehicles',
           values: {
-            softdrinks_w_sugar: 15,
-            softdrinks_no_sugar: 5,
-          },
+            "elactric_softdrinks_w_sugar": {
+              "value": 15,
+              "fieldType": "number"
+            },
+            "elactric_softdrinks_no_sugar": {
+              "value": "viisi",
+              "fieldType": "text"
+            },
+            "elactric_softdrinks_total": {
+              "value": 20,
+              "fieldType": "number"
+            }
+          }
         },
         {
-          id: 'softdrinks_in_diesel_vehicles',
+          subQuestionsId: 'softdrinks_in_diesel_vehicles',
           values: {
-            softdrinks_w_sugar: 1,
-            softdrinks_no_sugar: 21,
-          },
-        },
-      ],
-    },
-    {
-      moduleId,
-      sectionId: 'boolean_w_follow_up',
-      questionId: 'question_w_if',
-      type: 'boolean',
-      answer: true,
-    },
-    {
-      moduleId,
-      sectionId: 'boolean_w_follow_up',
-      questionId: 'b5_total_seasons',
-      type: 'integer',
-      answer: 5,
-    },
-    {
-      moduleId,
-      sectionId: 'boolean_w_follow_up',
-      questionId: 'b5_cost',
-      type: 'currency',
-      answer: 99.95,
-    },
-  ];
+            "diesel_softdrinks_w_sugar": {
+              "value": 1,
+              "fieldType": "number"
+            },
+            "diesel_softdrinks_no_sugar": {
+              "value": "kaksikymmentäkolme",
+              "fieldType": "text"
+            },
+            "diesel_softdrinks_total": {
+              "value": 24,
+              "fieldType": "number"
+            }
+          }
+        }
+      ]
+    }
+  ]
 };
 
 const initialInclusiveModule = [
   {
-    module: 'Perusmoduuli',
+    module: 'Kattava moduuli',
     sections: [
       {
         section_id: 'frofile',
