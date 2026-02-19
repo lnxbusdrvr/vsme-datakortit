@@ -31,10 +31,12 @@ export const addAnswer = (answer) => {
     try {
       const data = await answersService.createAnswer(answer)
       dispatch(add(data))
-      dispatch(notify(`Vastaukset luotu!`, 5, false));
+      dispatch(notify(`Vastaukset lähetetty onnistuneesti!`, 20, false));
       return true;
-    } catch {
-      dispatch(notify('Vastauksien luominen epäonnistui', 10, true));
+    } catch (error) {
+      // Handle backend error responses
+      const errorMessage = error.response?.data?.error || error.message || 'Vastauksien luominen epäonnistui';
+      dispatch(notify(errorMessage, 20, true));
       return false;
     }
   }

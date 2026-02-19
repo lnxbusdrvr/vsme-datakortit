@@ -7,6 +7,8 @@ import { Form, Button } from 'react-bootstrap';
 import { initializeBasic } from '../reducers/basicReducer'
 import { addAnswer } from '../reducers/answersReducer';
 
+import Notification from './Notification';
+
 import '../styles.css'
 
 const Basic = () => {
@@ -16,6 +18,7 @@ const Basic = () => {
   const [answers, setAnswers] = useState({})
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
+  const [fieldErrors, setFieldErrors] = useState({})
 
   useEffect(() => {
     dispatch(initializeBasic())
@@ -48,24 +51,26 @@ const Basic = () => {
     })
   }
 
-  const handleSubQsAnswersChange = (sectionId, questionId, subQuestionId, type, fieldId, fieldType, value) => {
+  const handleSubQsAnswersChange = (sectionId, questionId, type, subQuestionId, fieldId, fieldType, value) => {
     console.log(`handleSubQuestionAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tfieldId: ${fieldId}\n\tvalue: ${value}`)
 
     setAnswers({
       ...answers,
-      sectionId,
-      questionId,
-      type,
-      groupAnswers: {
-        subQuestionsId,
-        values: {
-          [fieldId]: {
-            value,
-            fieldType
+      [questionId]: {
+        sectionId,
+        type,
+        groupAnswers: {
+          subQuestionId,
+          values: {
+            [fieldId]: {
+              value,
+              fieldType
+            }
           }
         }
       }
     })
+    
   }
 
   const handleSubmit = async (event) => {
@@ -80,10 +85,10 @@ const Basic = () => {
           sectionId: data.sectionId,
           questionId,
           type: data.type || 'text',
-          answer: data.answer
+          answer: data.type === 'number' ? Number(data.answer) : data.answer
         }
-        console.log('Sending answer:', payload)
         await dispatch(addAnswer(payload))
+        console.log('Answer have sended:', payload)
       }
     } catch (error) {
       console.log('Error submitting answers:', error)
@@ -156,7 +161,21 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                             name={qs.id}
                             value={answers[qs.id]?.answer || ''}
                             onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, target.value)}
+                            onKeyDown={(e) => {
+                              const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft',
+                                'ArrowRight', 'ArrowUp', 'ArrowDown']
+
+                              if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
+                                return
+
+                              if (!/^[0-9]$/.test(e.key)) {
+                                e.preventDefault()
+                                setFieldErrors({...fieldErrors, [qs.id]: 'Vain numerot ovat sallittuja'})
+                                setTimeout(() => setFieldErrors({...fieldErrors, [qs.id]: null}), 3000)
+                              }
+                            }}
                           />
+                          {fieldErrors[qs.id] && <span className="field-error">{fieldErrors[qs.id]}</span>}
                         </Form.Label>
                       )}
                       {qs.type === 'boolean' && (
@@ -168,14 +187,14 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                             type="radio"
                             name={qs.id}
                             checked={answers[qs.id]?.answer === true}
-                            onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, true)}
+                            onChange={() => handleAnswersChange(s.section_id, qs.id, qs.type, true)}
                           />
                           <Form.Check
                             label="Ei"
                             type="radio"
                             name={qs.id}
                             checked={answers[qs.id]?.answer === false}
-                            onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, true)}
+                            onChange={() => handleAnswersChange(s.section_id, qs.id, qs.type, false)}
                           />
                         </>
                       )}
@@ -199,9 +218,24 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                                 <Form.Control
                                   type="number"
                                   name={f.id}
-                                  value={answers[f.id]?.answer || ''}
-                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, f.id, f.type, target.value)}
+                                  value={answers[qs.id]?.groupAnswers?.values?.[f.id]?.value ?? ''}
+                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id,
+                                    qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
+                                  onKeyDown={(e) => {
+                                    const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
+                                      'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
+                                    
+                                    if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
+                                      return
+
+                                    if (!/^[0-9]$/.test(e.key)) {
+                                      e.preventDefault()
+                                      setFieldErrors({...fieldErrors, [f.id]: 'Vain numerot ovat sallittuja'})
+                                      setTimeout(() => setFieldErrors({...fieldErrors, [f.id]: null}), 3000)
+                                    }
+                                  }}
                                 />
+                              {fieldErrors[f.id] && <span className="field-error">{fieldErrors[f.id]}</span>}
                               </Form.Label>
                             )}
                             {f.type === 'text' && (
@@ -210,7 +244,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                                   as="textarea"
                                   name={f.id}
                                   value={answers[f.id]?.answer || ''}
-                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, subQs.id, f.id, f.type, target.value)}
+                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
                                 />
                               </Form.Label>
                             )}
@@ -228,13 +262,27 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                     {qs.sub_questions.map((mgntSubQs, mgntSubQsIdx) => (
                       <div key={`${mgntSubQs.id}-${mgntSubQsIdx}`} >
                         {mgntSubQs.fields.map((f, fIdx) => (
-                          <Form.Label id={`${f.id}-${fIdx}`}>{mgntSubQs.category} {f.label}
+                          <Form.Label key={`${f.id}-${fIdx}`}>{mgntSubQs.category} {f.label}
                             <Form.Control
                               type="number"
                               name={f.id}
-                              value={answers[f.id]?.answer || ''}
-                              onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, f.id, f.type, target.value)}
+                              value={answers[qs.id]?.groupAnswers?.values?.[f.id]?.value ?? ''}
+                              onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, mgntSubQs.id, f.id, f.type, target.value)}
+                              onKeyDown={(e) => {
+                                const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
+                                  'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
+
+                                if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
+                                  return
+
+                                if (!/^[0-9]$/.test(e.key)) {
+                                  e.preventDefault()
+                                  setFieldErrors({...fieldErrors, [f.id]: 'Vain numerot ovat sallittuja'})
+                                  setTimeout(() => setFieldErrors({...fieldErrors, [f.id]: null}), 3000)
+                                }
+                              }}
                               />
+                              {fieldErrors[f.id] && <span className="field-error">{fieldErrors[f.id]}</span>}
                           </Form.Label>
                         ))}
                       </div>
@@ -246,6 +294,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
               ))}
               </div>
             ))}
+            <Notification />
             <Button variant="contained" type="submit">Tallenna</Button>
             <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
         </div>
@@ -254,7 +303,9 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
   )
 }
 
-
+/*
+                              value={answers[f.id]?.answer || ''}
+ */
 
 export default Basic
 

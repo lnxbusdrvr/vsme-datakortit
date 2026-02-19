@@ -70,5 +70,6 @@
 | 16.02.2026 | 7     | Fixed fields that clear button will work. Refactored sub_qiestions on basic db. |
 | 17.02.2026 | 5,75  | Refactor backend questions tests and frontends form for new basic db. |
 | 18.02.2026 | 7     | Fixed tests on backend, added validation on answering TODO validating also subQs |
-| Total      | 184   |
+| 19.02.2026 | 4,25  | Validated numbers in front |
+| Total      | 188,25 |
 
