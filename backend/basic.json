@@ -955,7 +955,7 @@
         {
           "id": "collective_agreement_wage",
           "question": "Saavatko työntekijät palkkaa, joka on sama tai suurempi kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa?",
-          "type": "text"
+          "type": "boolean"
         },
         {
           "id": "collective_agreement_wage_between_male_and_female",
@@ -970,7 +970,7 @@
         {
           "id": "collective_agreement_training_hours",
           "question": "Keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
-          "type": "text"
+          "type": "number"
         }
       ]
     },
@@ -1017,5 +1017,3 @@
     }
   ]
 }
-
-
