@@ -2,17 +2,23 @@
   background-color: #337ab7;
   color: white;
 
-  /* Skaalautuva fonttikoko (esim. 1.1 kertaa peruskoko) */
   font-size: 1.1rem;
   font-weight: bold;
   font-family: sans-serif;
 
   /* Padding suhteessa fontin kokoon (em) */
   /* 0.4em pystysuunnassa, 0.8em vaakasuunnassa */
-  padding: 0.1em;
+  padding: 0.1rem;
 
-  /* Varmistaa, että laatikko täyttää leveyden */
+  /* Be sure, that box fills the height */
   width: 100%;
   box-sizing: border-box;
 }
-
+/* For validating numbers on fields */
+.field-error {
+  color: red;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.2rem;
+}

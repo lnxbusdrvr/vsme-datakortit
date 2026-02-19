@@ -28,12 +28,12 @@ const errorHandler = (error, req, res, next) => {
   ) {
     if (error.message.includes('user_1_questionId_1')) {
       return res.status(400).json({
-        error: 'Answer already exists for this question',
+        error: 'Tähän vastaukseen on jo vastattu',
       });
     }
 
     return res.status(400).json({
-      error: 'Duplicate businessIdentityCode or email',
+      error: 'Y-tunnus, tai sähköpostiosoite on jo käytössä',
     });
   } else if (error.name === 'JsonWebTokenError') {
     return res.status(401).json({ error: 'token missin or invalid' });
