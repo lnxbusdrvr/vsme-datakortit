@@ -71,5 +71,6 @@
 | 17.02.2026 | 5,75  | Refactor backend questions tests and frontends form for new basic db. |
 | 18.02.2026 | 7     | Fixed tests on backend, added validation on answering TODO validating also subQs |
 | 19.02.2026 | 4,25  | Validated numbers in front |
-| Total      | 188,25 |
+| 20.02.2026 | 5     | validate sub_question numbers and fix backend tests also all questions can be answered and send |
+| Total      | 193,25 |
 

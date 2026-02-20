@@ -1,51 +1,84 @@
 const Answer = require('../models/answer');
 
+// Validation helpers
+const validateRequiredFields = (moduleId, sectionId, questionId, type) => {
+  if (!moduleId || !sectionId || !questionId || !type)
+    return 'Missing required fields: moduleId, sectionId, questionId, or type-fields.';
+
+  return null;
+}
+
+const validateAnswerOrGroupAnswers = (type, answer, groupAnswers) => {
+  if (type === 'group' && (!groupAnswers || groupAnswers.length === 0))
+    return 'Requires non-empty groupAnswers';
+
+  if (type !== 'group' && typeof answer === 'undefined')
+    return "Requires 'answer' field";
+
+  return null;
+}
+
+const validateSimpleAnswerType = (type, answer) => {
+  if (type === 'number' && (typeof answer !== 'number' || isNaN(answer)))
+    return `Answer must be a valid number for type 'number', got ${typeof answer}: ${answer}`;
+
+  if (type === 'boolean' && typeof answer !== 'boolean')
+    return `Answer must be a boolean for type 'boolean', got ${typeof answer}: ${answer}`;
+
+  if (type === 'text' && typeof answer !== 'string')
+    return `Answer must be a string for type 'text', got ${typeof answer}: ${answer}`;
+
+  return null;
+}
+
+const validateGroupAnswers = (groupAnswers) => {
+  for (const grpAnswer of groupAnswers) {
+    if (!grpAnswer.values)
+      continue;
+
+    for (const [fieldKey, value] of Object.entries(grpAnswer.values) ) {
+      const errorMsg = validateSimpleAnswerType(value.fieldType, value.value);
+      if (errorMsg)
+        return errorMsg;
+    }
+  }
+  return null;
+}
+
 const createAnswer = async (req, res) => {
   const { moduleId, sectionId, questionId, type, answer, groupAnswers } = req.body;
 
-  if (!moduleId || !sectionId || !questionId || !type)
-    return res.status(400).json({
-      error: 'Missing required fields: moduleId, sectionId, questionId, and type.',
+
+  try {
+
+    // Run validations
+    const validationError =
+      validateRequiredFields(moduleId, sectionId, questionId, type) ||
+      validateAnswerOrGroupAnswers(type, answer, groupAnswers) ||
+      (type !== 'group' && validateSimpleAnswerType(type, answer)) ||
+      (type === 'group' && validateGroupAnswers(groupAnswers));
+
+    if (validationError)
+      return res.status(400).json({ error: validationError });
+
+    const newAnswer = new Answer({
+      user: req.user.id,
+      moduleId,
+      sectionId,
+      questionId,
+      type,
+      answer: type !== 'group' ? answer : undefined,
+      groupAnswers: type === 'group' ? groupAnswers : undefined,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
-  // Check if answer or groupAnswers
-  if (type === 'group' && (!groupAnswers || groupAnswers.length === 0))
-    return res.status(400).json({ error: 'Requires non-empty groupAnswers' });
-  else if (type !== 'group' && typeof answer === 'undefined')
-    return res.status(400).json({ error: "Requires 'answer' field" });
-
-  // Validate answer type matches
-  if (type === 'number' && (typeof answer !== 'number' || isNaN(answer)))
-    return res.status(400).json({
-      error: `Answer must be a valid number for type 'number', got ${typeof answer}: ${answer}`
-    });
-
-  if (type === 'boolean' && typeof answer !== 'boolean')
-    return res.status(400).json({
-      error: `Answer must be a boolean for type 'boolean', got ${typeof answer}: ${answer}`
-    });
-
-  if (type === 'text' && typeof answer !== 'string')
-    return res.status(400).json({
-      error: `Answer must be a string for type 'text', got ${typeof answer}: ${answer}`
-    });
-
-
-  const newAnswer = new Answer({
-    user: req.user.id,
-    moduleId,
-    sectionId,
-    questionId,
-    type,
-    answer: type !== 'group' ? answer : undefined,
-    groupAnswers: type === 'group' ? groupAnswers : undefined,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
-
-  const savedAnswer = await newAnswer.save();
-  await savedAnswer.populate('user', { name: 1, companyName: 1 });
-  res.status(201).json(savedAnswer);
+    const savedAnswer = await newAnswer.save();
+    await savedAnswer.populate('user', { name: 1, companyName: 1 });
+    res.status(201).json(savedAnswer);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
 };
 
 const getAllAnswers = async (req, res) => {

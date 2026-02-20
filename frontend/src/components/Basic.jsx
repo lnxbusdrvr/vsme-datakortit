@@ -33,13 +33,8 @@ const Basic = () => {
     return <div>Loading...</div>
 
   const handleAnswersChange = (sectionId, questionId, type, value) => {
-    console.log(`handleAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tvalue: ${value}`)
     if (questionId === 'management_if_corruption')
       setCorruption(value)
-    /*
-     * TODO:
-     * only one handler for all questions
-     ************************************/
 
     setAnswers({
       ...answers,
@@ -52,7 +47,6 @@ const Basic = () => {
   }
 
   const handleSubQsAnswersChange = (sectionId, questionId, type, subQuestionId, fieldId, fieldType, value) => {
-    console.log(`handleSubQuestionAnswersChange:\n\tsectionId: ${sectionId}\n\tquestionId: ${questionId}\n\tfieldId: ${fieldId}\n\tvalue: ${value}`)
 
     setAnswers({
       ...answers,
@@ -76,8 +70,6 @@ const Basic = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log('All answers:', answers)
-
     try {
       for (const [questionId, data] of Object.entries(answers)) {
         const payload = {
@@ -85,15 +77,28 @@ const Basic = () => {
           sectionId: data.sectionId,
           questionId,
           type: data.type || 'text',
-          answer: data.type === 'number' ? Number(data.answer) : data.answer
+        }
+        if (data.type !== 'group') {
+          payload.answer = data.type === 'number' ? Number(data.answer) : data.answer
+        } else {
+          // Cast numbers in groupAnswers
+          payload.groupAnswers = Object
+            .entries(data.groupAnswers.values)
+            .map(([fieldId, field]) => ({
+              subQuestionId: data.groupAnswers.subQuestionId,
+              values: {
+                [fieldId]: {
+                  value: field.fieldType === 'number' ? Number(field.value) : field.value,
+                  fieldType: field.fieldType
+                }
+              }
+            }))
         }
         await dispatch(addAnswer(payload))
-        console.log('Answer have sended:', payload)
       }
     } catch (error) {
       console.log('Error submitting answers:', error)
     }
-
 
   }
 
@@ -102,9 +107,6 @@ const Basic = () => {
     setCorruption(false)
   }
 
-
-      console.log(`answers: ${JSON.stringify(answers)}\ncorruption: ${corruption}`)
-console.log('corruption state:', corruption, 'type:', typeof corruption)
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -156,6 +158,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                       {qs.type === 'number' && (
                         <Form.Label>{qs.question}
                           {/* value's value is needed to get clear button to work */}
+                          {/* onKeyDown for number validation */}
                           <Form.Control
                             type="number"
                             name={qs.id}
@@ -175,6 +178,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                               }
                             }}
                           />
+                          {/* Show error message */}
                           {fieldErrors[qs.id] && <span className="field-error">{fieldErrors[qs.id]}</span>}
                         </Form.Label>
                       )}
@@ -243,7 +247,7 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
                                 <Form.Control
                                   as="textarea"
                                   name={f.id}
-                                  value={answers[f.id]?.answer || ''}
+                                  value={answers[qs.id]?.groupAnswers?.values?.[f.id]?.value || ''}
                                   onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
                                 />
                               </Form.Label>
@@ -303,9 +307,6 @@ console.log('corruption state:', corruption, 'type:', typeof corruption)
   )
 }
 
-/*
-                              value={answers[f.id]?.answer || ''}
- */
 
 export default Basic
 

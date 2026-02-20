@@ -36,24 +36,26 @@ const answerSchema = new mongoose.Schema({
         required: function () {
           return this.type === 'group';
         },
+        values: {
+          type: Map,
+          of: mongoose.Schema({
+            fieldId: {
+              type: String,
+              required: true,
+              value: {
+                type: mongoose.Schema.Types.Mixed,
+                required: true,
+              },
+              fieldType: {
+                type: String,
+                enum: ['text', 'number'],
+                required: true,
+              },
+            },
+          }, { _id: false }),
+          required: true,
+        }
       },
-      // eg. { "renewable_title": 100, "non_renewable_title": 50 })
-      // Use Map-type for dynamic fields
-      values: {
-        type: Map,
-        of: mongoose.Schema({
-          value: {
-            type: mongoose.Schema.Types.Mixed,
-            required: true,
-          },
-          fieldType: {
-            type: String,
-            enum: ['text', 'number'],
-            required: true,
-          },
-        }, { _id: false }),
-        required: true,
-      }
     }
   ],
   createdAt: {
