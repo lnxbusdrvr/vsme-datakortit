@@ -122,7 +122,7 @@ const getAnswers = moduleId => {
       type: 'group',
       groupAnswers: [
         {
-          subQuestionsId: 'softdrinks_in_electric_vehicles',
+          "subQuestionId": "softdrinks_in_electric_:vehicles",
           values: {
             "elactric_softdrinks_w_sugar": {
               "value": 15,
@@ -139,7 +139,7 @@ const getAnswers = moduleId => {
           }
         },
         {
-          subQuestionsId: 'softdrinks_in_diesel_vehicles',
+          "subQuestionId": "softdrinks_in_diesel_vehicles",
           values: {
             "diesel_softdrinks_w_sugar": {
               "value": 1,
@@ -147,8 +147,7 @@ const getAnswers = moduleId => {
             },
             "diesel_softdrinks_no_sugar": {
               "value": "kaksikymmentäkolme",
-              "fieldType": "text"
-            },
+              "fieldType": "text" },
             "diesel_softdrinks_total": {
               "value": 24,
               "fieldType": "number"

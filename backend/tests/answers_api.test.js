@@ -256,7 +256,7 @@ describe('BasicModule Answers', () => {
       );
     });
 
-    test('Multiple question can be answered', async () => {
+    test('Multiple question and subquestions can be answered', async () => {
       for (const answer of answers) {
         await api
           .post('/api/answers')
@@ -266,36 +266,16 @@ describe('BasicModule Answers', () => {
       }
 
       const answersAtEnd = await Answer.find({});
+
       assert.strictEqual(
         answersAtEnd.length,
         answers.length,
         'The number of saved answers should match the number of sent answers'
       );
 
-      // Check if groupAnswer
-      const groupAnswer = answersAtEnd.find(a => a.type === 'group');
-      assert.notStrictEqual(
-        groupAnswer.groupAnswers,
-        undefined,
-        'groupanswerTest answer should exist'
-      );
-      assert.strictEqual(
-        groupAnswer.answer,
-        undefined,
-        'groupAnswerTest answer-field should be undefined'
-      );
-
-      // Check if answer-field is answered
-      const answerField = answersAtEnd.find(a => a.type !== 'group');
-      assert.notStrictEqual(answerField.answer, undefined, 'answerTest should exist');
-      assert.strictEqual(
-        answerField.groupAnswers.length,
-        0,
-        'answerTest groupAnswers-field should be undefined'
-      );
     });
 
-    test('Multiple question can be answered by userTwo', async () => {
+    test('Multiple question and subquestions can be answered by userTwo', async () => {
       for (const answer of answers) {
         await api
           .post('/api/answers')
@@ -305,30 +285,75 @@ describe('BasicModule Answers', () => {
       }
 
       const answersAtEnd = await Answer.find({});
+
       assert.strictEqual(
         answersAtEnd.length,
         answers.length,
         'The number of saved answers should match the number of sent answers'
       );
+    });
 
-      const groupAnswer = answersAtEnd.find(a => a.type === 'group');
-      assert.notStrictEqual(
-        groupAnswer.groupAnswers,
-        undefined,
-        'groupanswerTest answer should exist'
-      );
-      assert.strictEqual(
-        groupAnswer.answer,
-        undefined,
-        'groupAnswerTest answer-field should be undefined'
-      );
+    test('Text-answer to subquestions number-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "subquestion",
+        "questionId": "softdrinks_use",
+        "type": "group",
+        "groupAnswers": [
+          {
+            "subQuestionId": "softdrinks_in_electric_",
+            "values": {
+              "elactric_softdrinks_no_sugar": {
+                "value": "Tämä teksti ei sovi numero-kenttään.",
+                "fieldType": "number"
+              }
+            }
+          }
+        ]
+      };
 
-      const answerField = answersAtEnd.find(a => a.type !== 'group');
-      assert.notStrictEqual(answerField.answer, undefined, 'answerTest should exist');
-      assert.strictEqual(
-        answerField.groupAnswers.length,
-        0,
-        'answerTest groupAnswers-field should be undefined'
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /string/i,
+        "Error message should mention text type validation"
+      );
+    });
+
+    test('Number-answer to subquestions text-question will fail', async () => {
+      const invalidAnswer = {
+        "moduleId": "basic_module",
+        "sectionId": "subquestion",
+        "questionId": "softdrinks_use",
+        "type": "group",
+        "groupAnswers": [
+          {
+            "subQuestionId": "softdrinks_in_electric_",
+            "values": {
+              "elactric_softdrinks_no_sugar": {
+                "value": 345,
+                "fieldType": "text"
+              }
+            }
+          }
+        ]
+      };
+
+      const response = await api
+        .post('/api/answers')
+        .set(`Authorization`, `Bearer ${userTwoToken}`)
+        .send(invalidAnswer)
+        .expect(400)
+
+      assert.match(
+        response.body.error,
+        /string/i,
+        "Error message should mention text type validation"
       );
     });
 

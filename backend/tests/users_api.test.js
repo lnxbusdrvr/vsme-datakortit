@@ -77,7 +77,7 @@ describe('users', () => {
 
     const duplicateUserRes = await api.post('/api/users').send(duplicatedUser).expect(400);
 
-    assert.strictEqual(duplicateUserRes.body.error, 'Duplicate businessIdentityCode or email');
+    assert.strictEqual(duplicateUserRes.body.error, 'Y-tunnus, tai sähköpostiosoite on jo käytössä');
     const usersAtEnd = await helper.usersInDb();
 
     assert.strictEqual(usersAtEnd.length, usersAtStart.length);
@@ -104,7 +104,7 @@ describe('users', () => {
 
     const duplicateUserRes = await api.post('/api/users').send(duplicatedUser).expect(400);
 
-    assert.strictEqual(duplicateUserRes.body.error, 'Duplicate businessIdentityCode or email');
+    assert.strictEqual(duplicateUserRes.body.error, 'Y-tunnus, tai sähköpostiosoite on jo käytössä');
     const usersAtEnd = await helper.usersInDb();
 
     assert.strictEqual(usersAtEnd.length, usersAtStart.length);
