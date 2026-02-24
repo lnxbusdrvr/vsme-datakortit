@@ -15,6 +15,12 @@ const createAnswer = async (answer) => {
   return request.data
 }
 
+const getAll = async () => {
+  const request = await axios.get(baseUrl, { headers })
+  return request.data
+}
+
 export default {
-  createAnswer
+  createAnswer,
+  getAll
 }

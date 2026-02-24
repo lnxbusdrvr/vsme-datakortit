@@ -17,7 +17,6 @@ const { set } = slice.actions
 export const initializeBasic = () => {
   return async dispatch => {
     const data = await basicService.getAll()
-    console.log(`basReducer: data: ${data}`)
     dispatch(set(data))
   }
 }

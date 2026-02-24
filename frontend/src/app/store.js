@@ -4,6 +4,7 @@ import notificationReducer from '../reducers/notificationReducer';
 import userReducer from '../reducers/userReducer';
 import usersReducer from '../reducers/usersReducer';
 import basicReducer from '../reducers/basicReducer';
+import answersReducer from '../reducers/answersReducer';
 
 
 export default configureStore({
@@ -11,6 +12,7 @@ export default configureStore({
     notification: notificationReducer,
     basic: basicReducer,
     user: userReducer,
-    users: usersReducer
+    users: usersReducer,
+    answers: answersReducer
   }
 });
