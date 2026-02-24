@@ -72,5 +72,6 @@
 | 18.02.2026 | 7     | Fixed tests on backend, added validation on answering TODO validating also subQs |
 | 19.02.2026 | 4,25  | Validated numbers in front |
 | 20.02.2026 | 5     | validate sub_question numbers and fix backend tests also all questions can be answered and send |
-| Total      | 193,25 |
+| 24.02.2026 | 1,5   | Add component Answers to see what answers were submitted |
+| Total      | 194,75 |
 

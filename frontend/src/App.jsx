@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 
 import LoginForm from './components/LoginForm';
 import NewUserForm from './components/NewUserForm';
-import QuestionsAndAnswers from './components/QuestionsAndAnswers';
+import Questions from './components/Questions';
+import Answers from './components/Answers';
 import User from './components/User';
 
 import { initUser, clear as clearUser } from './reducers/userReducer';
@@ -37,12 +38,13 @@ const App = () => {
       ) : (
         <>
           <nav className="nav-expand-1g bg-light">
-            <Link className="navbar-brand" to="/">Kysymykset</Link> <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link> <Button onClick={handleLogout}>Kirjaudu ulos</Button>
+             <Link className="navbar-brand" to="/">Kysymykset</Link> <Link className="navbar-brand" to="/Answers">Vastatut vastaukset</Link> <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link> <Button onClick={handleLogout}>Kirjaudu ulos</Button>
           </nav>
           <h2>vsme-datakoritit</h2>
 
           <Routes>
-            <Route path="/" element={<QuestionsAndAnswers />} />
+            <Route path="/" element={<Questions />} />
+            <Route path="/Answers" element={<Answers />} />
             <Route path="/users/:id" element={<User />} />
           </Routes>
         </>

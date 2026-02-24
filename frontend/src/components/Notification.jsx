@@ -6,21 +6,7 @@ const Notification = () => {
   if (!notification)
     return null;
 
-  /*
-  const notificationStyle = {
-    color: notification.isErrorMessage ? 'red' : 'green',
-    background: 'lightgrey',
-    fontSize: '1.25rem',
-    position: 'fixed',
-    borderStyle: 'solid',
-    borderRadius: '0.3rem',
-    padding: '0.6rem',
-    marginBottom: '1.25rem'r
-  };
-  *r
-
-
-cons4 notificationStyle = {
+const notificationStyle = {
   color: notification.isErrorMessage ? 'red' : 'green',
   background: 'lightgrey',
   fontSize: '1.25rem',

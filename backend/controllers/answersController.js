@@ -86,7 +86,8 @@ const getAllAnswers = async (req, res) => {
   let answersQuery = {};
 
   // excpect if not admin or vieweer: get own answers
-  if (req.user.role !== 'admin' && req.user.role !== 'viewer') answersQuery = { user: req.user.id };
+  if (req.user.role !== 'admin' && req.user.role !== 'viewer')
+    answersQuery = { user: req.user.id };
 
   const answers = await Answer.find(answersQuery).populate('user', {
     name: 1,

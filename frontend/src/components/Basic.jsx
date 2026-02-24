@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 
 import { Form, Button } from 'react-bootstrap';
 
@@ -8,6 +8,7 @@ import { initializeBasic } from '../reducers/basicReducer'
 import { addAnswer } from '../reducers/answersReducer';
 
 import Notification from './Notification';
+import Answers from './Answers'
 
 import '../styles.css'
 
@@ -19,6 +20,7 @@ const Basic = () => {
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldErrors, setFieldErrors] = useState({})
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(initializeBasic())
@@ -95,6 +97,7 @@ const Basic = () => {
             }))
         }
         await dispatch(addAnswer(payload))
+        handleClearAnswers() 
       }
     } catch (error) {
       console.log('Error submitting answers:', error)
