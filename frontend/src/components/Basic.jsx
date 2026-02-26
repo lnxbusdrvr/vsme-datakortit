@@ -98,6 +98,7 @@ const Basic = () => {
         }
         await dispatch(addAnswer(payload))
         handleClearAnswers() 
+        navigate('/Answers')
       }
     } catch (error) {
       console.log('Error submitting answers:', error)
@@ -301,7 +302,6 @@ const Basic = () => {
               ))}
               </div>
             ))}
-            <Notification />
             <Button variant="contained" type="submit">Tallenna</Button>
             <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
         </div>

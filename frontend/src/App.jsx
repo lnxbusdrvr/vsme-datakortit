@@ -9,27 +9,20 @@ import Questions from './components/Questions';
 import Answers from './components/Answers';
 import User from './components/User';
 
-import { initUser, clear as clearUser } from './reducers/userReducer';
-import { initializeUsers } from './reducers/usersReducer';
+import { initializeUser, clear as clearUser } from './reducers/userReducer';
+
+import Notification from './components/Notification';
 
 
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(initUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (user)
-      dispatch(initializeUsers());
-  }, [dispatch, user]);
-
 
   const handleLogout = () => {
     dispatch(clearUser());
   };
+
 
   return (
     <div>
@@ -38,9 +31,9 @@ const App = () => {
       ) : (
         <>
           <nav className="nav-expand-1g bg-light">
-             <Link className="navbar-brand" to="/">Kysymykset</Link> <Link className="navbar-brand" to="/Answers">Vastatut vastaukset</Link> <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link> <Button onClick={handleLogout}>Kirjaudu ulos</Button>
+             <Link className="navbar-brand" to="/">Kysymykset</Link> <Link className="navbar-brand" to="/Answers">Vastaukset</Link> <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link> <Button onClick={handleLogout}>Kirjaudu ulos</Button>
           </nav>
-          <h2>vsme-datakoritit</h2>
+          <h2>VSME-datakoritit</h2>
 
           <Routes>
             <Route path="/" element={<Questions />} />
@@ -49,6 +42,7 @@ const App = () => {
           </Routes>
         </>
       )}
+      <Notification />
     </div>
   )
 };
