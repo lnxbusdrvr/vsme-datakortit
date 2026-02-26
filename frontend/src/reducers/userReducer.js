@@ -45,7 +45,7 @@ export const loginUser = (credentials) => {
   }
 }
 
-export const initUser = () => {
+export const initializeUser = () => {
   return async dispatch => {
     const user = storageService.loadUser()
     if (user) {
@@ -58,6 +58,7 @@ export const initUser = () => {
 export const clearUser = () => {
   return async dispatch => {
     storageService.removeUser()
+    userService.clearUser()
     dispatch(clear())
   }
 }
