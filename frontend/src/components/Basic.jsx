@@ -58,6 +58,7 @@ const Basic = () => {
         groupAnswers: {
           subQuestionId,
           values: {
+            ...(answers[questionId]?.groupAnswers?.values || {}),
             [fieldId]: {
               value,
               fieldType

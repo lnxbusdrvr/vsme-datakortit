@@ -74,5 +74,6 @@
 | 20.02.2026 | 5     | validate sub_question numbers and fix backend tests also all questions can be answered and send |
 | 24.02.2026 | 1,5   | Add component Answers to see what answers were submitted |
 | 26.02.2026 | 4,25  | On Answers-page shows answer and question |
-| Total      | 199   |
+| 26.02.2026 | 1     | Fix input on subQs and mgntSubQs. Fix log out issue, now log out is keeping  userlogged out|
+| Total      | 200   |
 
