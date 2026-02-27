@@ -5,7 +5,7 @@ const saveUser = (user) => {
 };
 
 const loadUser = () => {
-  return JSON.parse(window.localStorage.getItem(KEY));
+  return JSON.parse(localStorage.getItem(KEY));
 };
 
 const removeUser = () => {

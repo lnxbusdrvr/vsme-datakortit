@@ -9,7 +9,7 @@ import Questions from './components/Questions';
 import Answers from './components/Answers';
 import User from './components/User';
 
-import { initializeUser, clear as clearUser } from './reducers/userReducer';
+import { initializeUser, clearUser } from './reducers/userReducer';
 
 import Notification from './components/Notification';
 
@@ -18,6 +18,9 @@ const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
+  useEffect(() => {
+    dispatch(initializeUser());
+  }, [dispatch]);
 
   const handleLogout = () => {
     dispatch(clearUser());
