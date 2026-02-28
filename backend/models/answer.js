@@ -35,27 +35,23 @@ const answerSchema = new mongoose.Schema({
         type: String,
         required: function () {
           return this.type === 'group';
-        },
-        values: {
-          type: Map,
-          of: mongoose.Schema({
-            fieldId: {
-              type: String,
-              required: true,
-              value: {
-                type: mongoose.Schema.Types.Mixed,
-                required: true,
-              },
-              fieldType: {
-                type: String,
-                enum: ['text', 'number'],
-                required: true,
-              },
-            },
-          }, { _id: false }),
-          required: true,
         }
       },
+      values: {
+        type: Map,
+        of: new mongoose.Schema({
+          value: {
+            type: mongoose.Schema.Types.Mixed,
+            required: true,
+          },
+          fieldType: {
+            type: String,
+            enum: ['text', 'number'],
+            required: true,
+          },
+        }, { _id: false }),
+        required: true,
+      }
     }
   ],
   createdAt: {
@@ -77,6 +73,17 @@ answerSchema.set('toJSON', {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
     delete returnedObject.__v;
+
+    // If groupAnswers.values is Map convert to Object
+    // for better handling on frontend
+    if (returnedObject.groupAnswers) {
+      returnedObject.groupAnswers = returnedObject.groupAnswers.map(ga => ({
+        ...ga,
+        values: ga.values instanceof Map
+          ? Object.fromEntries(ga.values)
+          : ga.values
+      }));
+    }
   },
 });
 

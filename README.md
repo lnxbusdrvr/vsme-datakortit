@@ -75,5 +75,6 @@
 | 24.02.2026 | 1,5   | Add component Answers to see what answers were submitted |
 | 26.02.2026 | 4,25  | On Answers-page shows answer and question |
 | 26.02.2026 | 1     | Fix input on subQs and mgntSubQs. Fix log out issue, now log out is keeping  userlogged out|
-| Total      | 200   |
+| 28.02.2026 | 6,5   | When sending subQs label and questions can see on <Answers /> TODO: Show subQs value |
+| Total      | 206,5 |
 

@@ -32,9 +32,8 @@ const Answers = () => {
 
   return (
     <div>
-      <h2>Vastaukset</h2>
+      <h2>{user.name} vastaukset:</h2>
 
-      <p>{user.name}</p>
       {answers.map((a, idx) => {
         if (a.moduleId === 'basic_module') {
           const question = basic
@@ -45,15 +44,62 @@ const Answers = () => {
           return (
             <div key={`basic-${idx}`}>
               <p>Kysymys: <strong>{question?.question || a.questionId}</strong></p>
-              <p>Vastaus: {a.answer}</p>
+              {a.type !== 'group' ? (
+                <p>Vastaus: {a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei' ) : a.answer}</p>
+              ) : (
+                <>
+                  {question?.sub_questions.map((subQs, subQsIdx) => {
+                    const groupAnswer = a.groupAnswers
+                      .map(ga => ga.subQuestionId === subQs.id)
+
+                    if (!groupAnswer) return null;
+
+                    return (
+                      <div key={`subQs-${subQsIdx}`}>
+                        <p>Alakysymys: <strong>{subQs.category}</strong></p>
+                        {subQs.fields.map((f, fIdx) => {
+                          const fieldValue = groupAnswer.values?.[f.id]?.value;
+                          return (
+                            <div key={`subQsField-${fIdx}`}>
+                              <p>{f.label}: {fieldValue}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )
+                  })}
+                </>
+              )}
             </div>
-          )
-        }
+            )
+          }
       })}
     </div>
-  );
+  )
 
 }
 
+/*
+ * p
+                  <p>Alakysymykset:</p>
+                  {a.groupAnswers.map((ga, gaIdx) => (
+                    <div key={`ga-${gaIdx}`}>
+                    {question?.sub_questions.map((subQs, subQsIdx) => (
+                      ga.subQuestionId === subQs.id && (
+                        <div key={`subQs-${subQsIdx}`}>
+                          <p>Alakysymys: <strong>{subQs.category}</strong></p>
+                          {subQs.fields.map((f, fIdx) => {
+                            const fieldValue = ga.values?.[f.id]?.value;
+                            return (
+                              <div key={`subQsField-${fIdx}`}>
+                                <p>{f.label}: {fieldValue}</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )))}
+                    </div>
+                  ))}
+                          */
 
 export default Answers

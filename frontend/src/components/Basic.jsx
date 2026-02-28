@@ -49,22 +49,36 @@ const Basic = () => {
   }
 
   const handleSubQsAnswersChange = (sectionId, questionId, type, subQuestionId, fieldId, fieldType, value) => {
+    const existingGroupAnswers = answers[questionId]?.groupAnswers || []
+    const subQsIdx = existingGroupAnswers.findIndex(ga => ga.subQuestionId === subQuestionId)
+
+    let updatedGroupAnswers
+    if (subQsIdx >= 0) {
+      // update data
+      updatedGroupAnswers = [...existingGroupAnswers]
+      updatedGroupAnswers[subQsIdx] = {
+        ...updatedGroupAnswers[subQsIdx],
+        values: {
+          ...updatedGroupAnswers[subQsIdx].values,
+          [fieldId]: { value, fieldType }
+        }
+      }
+    } else {
+      // create new
+      updatedGroupAnswers = [...existingGroupAnswers, {
+        subQuestionId,
+        values: {
+          [fieldId]: { value, fieldType }
+        }
+      }]
+    }
 
     setAnswers({
       ...answers,
       [questionId]: {
         sectionId,
         type,
-        groupAnswers: {
-          subQuestionId,
-          values: {
-            ...(answers[questionId]?.groupAnswers?.values || {}),
-            [fieldId]: {
-              value,
-              fieldType
-            }
-          }
-        }
+        groupAnswers: updatedGroupAnswers
       }
     })
     
@@ -85,22 +99,25 @@ const Basic = () => {
           payload.answer = data.type === 'number' ? Number(data.answer) : data.answer
         } else {
           // Cast numbers in groupAnswers
-          payload.groupAnswers = Object
-            .entries(data.groupAnswers.values)
-            .map(([fieldId, field]) => ({
-              subQuestionId: data.groupAnswers.subQuestionId,
-              values: {
-                [fieldId]: {
-                  value: field.fieldType === 'number' ? Number(field.value) : field.value,
+          payload.groupAnswers = data.groupAnswers.map(ga => ({
+            subQuestionId: ga.subQuestionId,
+            values: Object.fromEntries(
+              Object.entries(ga.values).map(([fieldId, field]) => [
+                fieldId,
+                {
+                  value: field.fieldType === 'number'
+                    ? Number(field.value)
+                    : field.value,
                   fieldType: field.fieldType
                 }
-              }
-            }))
+              ])
+            )
+          }))
         }
         await dispatch(addAnswer(payload))
-        handleClearAnswers() 
-        navigate('/Answers')
       }
+      handleClearAnswers()
+      navigate('/Answers')
     } catch (error) {
       console.log('Error submitting answers:', error)
     }
@@ -227,7 +244,7 @@ const Basic = () => {
                                 <Form.Control
                                   type="number"
                                   name={f.id}
-                                  value={answers[qs.id]?.groupAnswers?.values?.[f.id]?.value ?? ''}
+                                  value={answers[qs.id]?.groupAnswers?.find(ga => ga.subQuestionId === subQs.id)?.values?.[f.id]?.value  ?? ''}
                                   onChange={({ target }) => handleSubQsAnswersChange(s.section_id,
                                     qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
                                   onKeyDown={(e) => {
@@ -252,7 +269,7 @@ const Basic = () => {
                                 <Form.Control
                                   as="textarea"
                                   name={f.id}
-                                  value={answers[qs.id]?.groupAnswers?.values?.[f.id]?.value || ''}
+                                  value={answers[qs.id]?.groupAnswers?.find(ga => ga.subQuestionId === subQs.id)?.values?.[f.id]?.value ?? ''}
                                   onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
                                 />
                               </Form.Label>
@@ -275,7 +292,7 @@ const Basic = () => {
                             <Form.Control
                               type="number"
                               name={f.id}
-                              value={answers[qs.id]?.groupAnswers?.values?.[f.id]?.value ?? ''}
+                              value={answers[qs.id]?.groupAnswers?.find(ga => ga.subQuestionId === mgntSubQs.id)?.values?.[f.id]?.value ?? ''}
                               onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, mgntSubQs.id, f.id, f.type, target.value)}
                               onKeyDown={(e) => {
                                 const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
