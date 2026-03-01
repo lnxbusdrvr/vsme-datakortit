@@ -115,21 +115,21 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "environment_01_electer",
+              "id": "environment_01_electricity",
               "category": "Sähkö (näkyy sähkölaskutuksessa)",
               "fields": [
                 {
-                  "id": "electric_renewable",
+                  "id": "electricity_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "electric_non_renewable",
+                  "id": "electricity_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "electric_total",
+                  "id": "electricity_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
