@@ -76,6 +76,7 @@ answerSchema.set('toJSON', {
 
     // If groupAnswers.values is Map convert to Object
     // for better handling on frontend
+    /*
     if (returnedObject.groupAnswers) {
       returnedObject.groupAnswers = returnedObject.groupAnswers.map(ga => ({
         ...ga,
@@ -84,6 +85,7 @@ answerSchema.set('toJSON', {
           : ga.values
       }));
     }
+    */
   },
 });
 

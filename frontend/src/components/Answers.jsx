@@ -25,8 +25,6 @@ const Answers = () => {
       setBasicOrInclusive(answers[0].moduleId)
   }, [dispatch])
 
-  console.log(`Answers: ${answers}\nbasicOrInclusive: ${basicOrInclusive}`)
-
   if (!answers)
     return <div>Loading...</div>
 
@@ -50,20 +48,23 @@ const Answers = () => {
                 <>
                   {question?.sub_questions.map((subQs, subQsIdx) => {
                     const groupAnswer = a.groupAnswers
-                      .map(ga => ga.subQuestionId === subQs.id)
+                      .find(ga => ga.subQuestionId === subQs.id)
 
                     if (!groupAnswer) return null;
 
                     return (
                       <div key={`subQs-${subQsIdx}`}>
                         <p>Alakysymys: <strong>{subQs.category}</strong></p>
-                        {subQs.fields.map((f, fIdx) => {
-                          const fieldValue = groupAnswer.values?.[f.id]?.value;
+                        {Object.entries(groupAnswer.values).map(([fieldId, fieldData], fIdx) => {
+                          const field = subQs.fields.find(f => f.id === fieldId)
+                          if (!field)
+                            return null
+
                           return (
                             <div key={`subQsField-${fIdx}`}>
-                              <p>{f.label}: {fieldValue}</p>
+                              <p>{field.label}: {fieldData.value}</p>
                             </div>
-                          );
+                          )
                         })}
                       </div>
                     )
