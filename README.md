@@ -76,5 +76,6 @@
 | 26.02.2026 | 4,25  | On Answers-page shows answer and question |
 | 26.02.2026 | 1     | Fix input on subQs and mgntSubQs. Fix log out issue, now log out is keeping  userlogged out|
 | 28.02.2026 | 6,5   | When sending subQs label and questions can see on <Answers /> TODO: Show subQs value |
-| Total      | 206,5 |
+| 01.03.2026 | 2     | Fix electer > electricity in db. Show subQs values on Answers |
+| Total      | 208,5 |
 
