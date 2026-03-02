@@ -1,6 +1,6 @@
 {
-  "module": "Perusmoduuli",
-  "module_id": "basic_module",
+  "module": "Kattava Moduuli",
+  "module_id": "inclusive_module",
   "sections": [
     {
       "section_id": "b1",
@@ -93,6 +93,11 @@
           "type": "boolean"
         },
         {
+          "id": "plicies_all_future_iniatives",
+          "question": "kaikki tulevat aloitteet tai tulevaisuuteen suuntautuvat suunnitelmat, joita toteutetaan kestävyyskysymyksissä; ja",
+          "type": "boolean"
+        },
+        {
           "id": "policy_scope_and_referrals",
           "question": "Tällaisiin käytäntöihin, politiikkoihin ja tuleviin aloitteisiin kuuluu se, mitä yritys tekee vähentääkseen kielteisiä vaikutuksiaan ja lisätäkseen myönteisiä vaikutuksiaan ihmisiin ja ympäristöön edistääkseen kestävämpää taloutta. Liitteessä B on luettelo mahdollisista kestävyyskysymyksistä, joita voitaisiin käsitellä näissä tiedoissa. Yritys voi käyttää kappaleessa 78 esitettyä mallia näiden tietojen ilmoittamiseen.",
           "type": "text"
@@ -101,6 +106,268 @@
           "id": "if_company_inclusive_module",
           "question": "Jos yritys raportoi myös kattavasta moduulista, sen on täydennettävä B2 kohdassa annettuja tietoja kohdassa C2 olevilla tietopisteillä.",
           "type": "text"
+        }
+      ]
+    },
+    {
+      "section_id": "c1_strategy_sustainability_initiative_related_matters",
+      "title": "C1 – Strategia: liiketoimintamalli ja kestävä kehitys – asiaan liittyvät aloitteet",
+      "instruction": "Yrityksen on julkistettava liiketoimintamallinsa ja strategiansa keskeiset osatekijät, mukaan lukien seuraavat:",
+      "questions": [
+        {
+          "id": "c1_description_of_significant_product_groups",
+          "question": "kuvaus merkittävistä tarjottavien tuotteiden ja/tai palvelujen ryhmistä;",
+          "type": "text"
+        },
+        {
+          "id": "c1_description_of_significant_markets",
+          "question": "kuvaus merkittävistä markkinoista, joilla yritys toimii (esim. B2B, vähittäiskauppa, tukkukauppa, maat);",
+          "type": "text"
+        },
+        {
+          "id": "c1_description_of_significant_business_partnerships",
+          "question": "kuvaus tärkeimmistä liikekumppaneista (esim. tärkeimmät toimittajat, asiakkaat, jakelukanavat ja kuluttajat); ja",
+          "type": "text"
+        },
+        {
+          "id": "c1_if_strategy_has_key_elements_related_to_sustainability",
+          "question": "Jos strategiassa on keskeisiä osatekijöitä, jotka liittyvät kestävyyskysymyksiin tai vaikuttavat niihin, lyhyt kuvaus näistä keskeisistä osatekijöistä.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "section_id": "c2_practices_politics_initiative_to_move_towards_more_sustainable_economy",
+      "title": "C2 – Kuvaus käytännöistä, politiikoista ja tulevista aloitteista siirtymiseksi kohti kestävämpää taloutta",
+      "instruction": "Jos yritys on ottanut kestävämpään talouteen siirtymiseksi käyttöön erityisiä käytäntöjä, toimintalinjoja tai tulevia aloitteita, jotka se on jo raportoinut perusmoduulin tietojen B2 yhteydessä, sen on kuvattava ne lyhyesti myös tässä. Yritys voi käyttää tähän tarkoitukseen kappaleessa 213 esitettyä mallia.",
+      "questions": [
+        {
+          "id": "",
+          "instruction": "Jos yritys on ottanut kestävämpään talouteen siirtymiseksi käyttöön erityisiä käytäntöjä, toimintalinjoja tai tulevia aloitteita, jotka se on jo raportoinut perusmoduulin tietojen B2 yhteydessä, sen on kuvattava ne lyhyesti myös tässä. Yritys voi käyttää tähän tarkoitukseen kappaleessa 213 esitettyä mallia.",
+          "type": "group",
+          "sub_questions": [
+            {
+              "id": "c2_climate_change_if_yes_in_b2",
+              "category": "Ilmastomuutos",
+              "fields": [
+                {
+                  "id": "c2_climate_change_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_climate_change_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_climate_change_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_pollution_if_yes_in_b2",
+              "category": "Pilaantuminen",
+              "fields": [
+                {
+                  "id": "c2_pollution_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_pollution_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_pollution_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_water_sea_resources_if_yes_in_b2",
+              "category": "Vesivarat ja merten luonnovarat",
+              "fields": [
+                {
+                  "id": "c2_water_sea_resources_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_water_sea_resources_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_water_sea_resources_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_Biodiversity_and_ecosystems_if_yes_in_b2",
+              "category": "Biologinen monimuotoisuuus ja ekosysteemit",
+              "fields": [
+                {
+                  "id": "c2_Biodiversity_and_ecosystems_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_Biodiversity_and_ecosystems_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_Biodiversity_and_ecosystems_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_circular_economy_if_yes_in_b2",
+              "category": "Kiertotalous",
+              "fields": [
+                {
+                  "id": "c2_circular_economy_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_circular_economy_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_circular_economy_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_own_workforce_if_yes_in_b2",
+              "category": "Oma työvoima",
+              "fields": [
+                {
+                  "id": "c2_own_workforce_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_own_workforce_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_own_workforce_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_value_chain_employees_if_yes_in_b2",
+              "category": "Arvoketjun työntekijät",
+              "fields": [
+                {
+                  "id": "c2_value_chain_employees_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_value_chain_employees_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_value_chain_employees_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_affected_communities_if_yes_in_b2",
+              "category": "Vaikutusten kohteena olevat yhteisöt",
+              "fields": [
+                {
+                  "id": "c2_affected_communities_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_affected_communities_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_affected_communities_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_consumers_and_end_users_if_yes_in_b2",
+              "category": "Kuluttajat ja loppukäyttäjät",
+              "fields": [
+                {
+                  "id": "c2_consumers_and_end_users_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_consumers_and_end_users_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_consumers_and_end_users_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c2_doing_business_if_yes_in_b2",
+              "category": "Liiketoiminnan harjottaminen",
+              "fields": [
+                {
+                  "id": "c2_doing_business_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_doing_business_supplement",
+                  "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
+                  "type": "text"
+                },
+                {
+                  "id": "c2_doing_business_implementation",
+                  "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
+                  "type": "text"
+                }
+              ]
+            },
+            {",
+              "id": "c2_highest_level_corporate_execution_if_yes_in_b2",
+              "category": "Yritys voi ilmoittaa niiden täytäntöönpanosta vastaavan yrityksen ylimmän tason, jos sellainen on.",
+              "fields": [
+                {
+                  "id": "c2_highest_level_corporate_execution_short_description",
+                  "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -233,6 +500,27 @@
               ]
             },
             {
+              "id": "environment_ghg_scope3",
+              "category": "Scope 3, jos olennainen",
+              "fields": [
+                {
+                  "id": "scope_3_greenhouse_gas_emission1",
+                  "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
+                  "type": "number"
+                },
+                {
+                  "id": "scope_3_greenhouse_gas_emission2",
+                  "label": "202(x) GHG emissions (tCO2e)",
+                  "type": "number"
+                },
+                {
+                  "id": "scope_3_greenhouse_gas_emission3",
+                  "label": "202(x) GHG emissions (tCO2e)",
+                  "type": "number"
+                }
+              ]
+            },
+            {
               "id": "environment_ghg_total",
               "category": "Yhteensä",
               "fields": [
@@ -258,8 +546,18 @@
               "category": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
               "fields": [
                 {
-                  "id": "greenhouse_gas_emission1",
+                  "id": "turnover_greenhouse_gas_emission1",
                   "label": "(euroja)",
+                  "type": "number"
+                },
+                {
+                  "id": "turnover_greenhouse_gas_emission2",
+                  "label": "202(x) GHG emissions (tCO2e)",
+                  "type": "number"
+                },
+                {
+                  "id": "turnover_greenhouse_gas_emission3",
+                  "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
               ]
@@ -272,16 +570,6 @@
                   "id": "sourca_and_method_greenhouse_gas_emission1",
                   "label": "202(x) kasvihuonekaasupäästöt (teksti)",
                   "type": "text"
-                },
-                {
-                  "id": "sourca_and_method_greenhouse_gas_emission2",
-                  "label": "202(x) GHG emissions (teksti)",
-                  "type": "text"
-                },
-                {
-                  "id": "sourca_and_method_greenhouse_gas_emission3",
-                  "label": "202(x) GHG emissions (teksti)",
-                  "type": "text"
                 }
               ]
             },
@@ -292,16 +580,6 @@
                 {
                   "id": "uncertainty_greenhouse_gas_emission1",
                   "label": "202(x) kasvihuonekaasupäästöt (teksti)",
-                  "type": "text"
-                },
-                {
-                  "id": "uncertainty_greenhouse_gas_emission2",
-                  "label": "202(x) GHG emissions (teksti)",
-                  "type": "text"
-                },
-                {
-                  "id": "uncertainty_greenhouse_gas_emission3",
-                  "label": "202(x) GHG emissions (teksti)",
                   "type": "text"
                 }
               ]
@@ -390,6 +668,7 @@
     {
       "section_id": "location",
       "title": "B5 Biodiversity - Biologinen monimuotoisuus",
+      "instruction": "Yrityksen on julkistettava  biologisesti herkällä alueella tai sen läheisyydessä omistamiensa, vuokraamiensa tai hallinnoimiensa alueiden lukumäärä ja pinta-ala (hehtaareina).",
       "questions": [
         {
           "id": "location_01",
@@ -811,6 +1090,199 @@
                 }
               ]
             }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "c4",
+      "title": "C4 – Ilmastoriskit",
+      "questions": [
+        {
+          "id": "c4_climate_risks",
+          "instruction": "Jos yritys on havainnut ilmastoon liittyviä uhkia ja siirtymätapahtumia, jotka aiheuttavat merkittäviä ilmastoriskejä yritykselle, sen on",
+          "type": "group",
+          "sub_questions": [
+            {
+              "id": "c4_climate_risks_threats_transition_events",
+              "category": "",
+              "fields": [
+                {
+                  "id": "threats_transition_events_short_time_interval_value",
+                  "label": "",
+                  "type": "text"
+                },
+                {
+                  "id": "threats_transition_events_short_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "threats_transition_events_medium_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "threats_transition_events_medium_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "threats_transition_events_long_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "threats_transition_events_long_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "id": "c4_climate_risks_assessed_exposure_to_threats_transition",
+              "category": "ilmoitettava, miten se on arvioinut omaisuutensa, toimintojensa ja arvoketjunsa altistumisen ja herkkyyden näille uhille ja siirtymätapahtumille;",
+              "fields": [
+                {
+                  "id": "assessed_exposure_to_threats_transition_short_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "assessed_exposure_to_threats_transition_short_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "assessed_exposure_to_threats_transition_medium_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "assessed_exposure_to_threats_transition_medium_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "assessed_exposure_to_threats_transition_long_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "assessed_exposure_to_threats_transition_long_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "id": "c4_climate_risks_TODO",
+              "category": "",
+              "fields": [
+                {
+                  "id": "_short_time_interval_value",
+                  "label": "",
+                  "type": "text"
+                },
+                {
+                  "id": "_short_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_medium_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_medium_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_long_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_long_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "id": "c4_climate_risks_",
+              "category": "",
+              "fields": [
+                {
+                  "id": "_short_time_interval_value",
+                  "label": "",
+                  "type": "text"
+                },
+                {
+                  "id": "_short_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_medium_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_medium_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_long_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_long_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "id": "c4_climate_risks_",
+              "category": "",
+              "fields": [
+                {
+                  "id": "_short_time_interval_value",
+                  "label": "",
+                  "type": "text"
+                },
+                {
+                  "id": "_short_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_medium_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_medium_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_long_time_interval_value",
+                  "label": "",
+                  "type": "number"
+                },
+                {
+                  "id": "_long_time_interval_procentage",
+                  "label": "",
+                  "type": "number"
+                }
+              ]
+            },
           ]
         }
       ]
