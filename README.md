@@ -77,5 +77,6 @@
 | 26.02.2026 | 1     | Fix input on subQs and mgntSubQs. Fix log out issue, now log out is keeping  userlogged out|
 | 28.02.2026 | 6,5   | When sending subQs label and questions can see on <Answers /> TODO: Show subQs value |
 | 01.03.2026 | 2     | Fix electer > electricity in db. Show subQs values on Answers |
-| Total      | 208,5 |
+| 02.03.2026 | 5,75  | Make Inclusive module db and instruction-key to both db, implement chenges to code |
+| Total      | 214,25 |
 
