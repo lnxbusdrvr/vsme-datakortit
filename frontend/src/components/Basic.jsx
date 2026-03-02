@@ -144,6 +144,7 @@ const Basic = () => {
             <div key={`${s.section_id}-${sIdx}`} >
               {s.header && <h2>{s.header}</h2>}
               <p className="title-box">{s.title}</p>
+              {s.instruction && <p><strong>{s.instruction}</strong></p>}
 
               {s.questions.map((qs, qsIdx) => (
                 <div key={`${qs.id}-${qsIdx}`} >
@@ -230,7 +231,7 @@ const Basic = () => {
                     (qs.id !== 'management_if_corruption' &&
                       qs.id !== 'management_corruption_details') && (
                   <div key={`${qs.id}-${qsIdx}`} >
-                    <p>{qs.question}</p>
+                    <p>{qs.instruction}</p>
                     {qs.sub_questions.map((subQs, subQsIdx) => (
                       <div key={`${subQs.id}-${subQsIdx}`} >
                         {subQs.title && (
