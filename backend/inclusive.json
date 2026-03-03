@@ -137,12 +137,12 @@
       ]
     },
     {
-      "section_id": "c2_practices_politics_initiative_to_move_towards_more_sustainable_economy",
+      "section_id": "c2",
       "title": "C2 – Kuvaus käytännöistä, politiikoista ja tulevista aloitteista siirtymiseksi kohti kestävämpää taloutta",
       "instruction": "Jos yritys on ottanut kestävämpään talouteen siirtymiseksi käyttöön erityisiä käytäntöjä, toimintalinjoja tai tulevia aloitteita, jotka se on jo raportoinut perusmoduulin tietojen B2 yhteydessä, sen on kuvattava ne lyhyesti myös tässä. Yritys voi käyttää tähän tarkoitukseen kappaleessa 213 esitettyä mallia.",
       "questions": [
         {
-          "id": "",
+          "id": "c2_practices_politics_initiative_to_move_towards_more_sustainable_economy",
           "instruction": "Jos yritys on ottanut kestävämpään talouteen siirtymiseksi käyttöön erityisiä käytäntöjä, toimintalinjoja tai tulevia aloitteita, jotka se on jo raportoinut perusmoduulin tietojen B2 yhteydessä, sen on kuvattava ne lyhyesti myös tässä. Yritys voi käyttää tähän tarkoitukseen kappaleessa 213 esitettyä mallia.",
           "type": "group",
           "sub_questions": [
@@ -372,7 +372,7 @@
       ]
     },
     {
-      "section_id": "environment",
+      "section_id": "b3_environment",
       "header": "Ympäristö",
       "title": "B3 Energia",
       "questions": [
@@ -589,11 +589,11 @@
       ]
     },
     {
-      "section_id": "b4_pollution",
+      "section_id": "b4",
       "title": "B4 Ilman, veden ja maaperän saastuminen",
       "questions": [
         {
-          "id": "b4",
+          "id": "b4_pollution",
           "instruction": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
           "type": "group",
           "sub_questions": [
@@ -666,7 +666,7 @@
       ]
     },
     {
-      "section_id": "location",
+      "section_id": "b5",
       "title": "B5 Biodiversity - Biologinen monimuotoisuus",
       "instruction": "Yrityksen on julkistettava  biologisesti herkällä alueella tai sen läheisyydessä omistamiensa, vuokraamiensa tai hallinnoimiensa alueiden lukumäärä ja pinta-ala (hehtaareina).",
       "questions": [
@@ -697,7 +697,7 @@
               ]
             },
             {
-              "id": "location_01_2",
+              "id": "b5_location_01_2",
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
@@ -718,7 +718,7 @@
               ]
             },
             {
-              "id": "location_01_3",
+              "id": "b5_location_01_3",
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
@@ -741,7 +741,7 @@
           ]
         },
         {
-          "id": "location_02",
+          "id": "b5_location_02_TODO",
           "instruction": "Yritys voi julkaista Maankäyttöön liittyviä mittareita Tyyppi",
           "type": "group",
           "sub_questions": [
@@ -1105,36 +1105,36 @@
           "sub_questions": [
             {
               "id": "c4_climate_risks_threats_transition_events",
-              "category": "",
+              "category": "kuvattava lyhyesti tällaisia ilmastoon liittyviä uhkia ja ilmastoon liittyviä siirtymätapahtumia;",
               "fields": [
                 {
                   "id": "threats_transition_events_short_time_interval_value",
-                  "label": "",
+                  "label": "Lyhyt aikaväli: arvo",
                   "type": "text"
                 },
                 {
                   "id": "threats_transition_events_short_time_interval_procentage",
-                  "label": "",
+                  "label": "Lyhyt aikaväli: prosenttiosuus",
                   "type": "number"
                 },
                 {
                   "id": "threats_transition_events_medium_time_interval_value",
-                  "label": "",
+                  "label": "Keskipitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
                   "id": "threats_transition_events_medium_time_interval_procentage",
-                  "label": "",
+                  "label": "Keskipitkä aikaväli prosenttiosuus",
                   "type": "number"
                 },
                 {
                   "id": "threats_transition_events_long_time_interval_value",
-                  "label": "",
+                  "label": "Pitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
                   "id": "threats_transition_events_long_time_interval_procentage",
-                  "label": "",
+                  "label": "Pitkä aikaväli prosenttiosuus",
                   "type": "number"
                 }
               ]
@@ -1145,144 +1145,94 @@
               "fields": [
                 {
                   "id": "assessed_exposure_to_threats_transition_short_time_interval_value",
-                  "label": "",
+                  "label": "Lyhyt aikaväli: arvo",
                   "type": "number"
                 },
                 {
                   "id": "assessed_exposure_to_threats_transition_short_time_interval_procentage",
-                  "label": "",
+                  "label": "Lyhyt aikaväli: prosenttiosuus",
                   "type": "number"
                 },
                 {
                   "id": "assessed_exposure_to_threats_transition_medium_time_interval_value",
-                  "label": "",
+                  "label": "Keskipitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
                   "id": "assessed_exposure_to_threats_transition_medium_time_interval_procentage",
-                  "label": "",
+                  "label": "Keskipitkä aikaväli prosenttiosuus",
                   "type": "number"
                 },
                 {
                   "id": "assessed_exposure_to_threats_transition_long_time_interval_value",
-                  "label": "",
+                  "label": "Pitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
                   "id": "assessed_exposure_to_threats_transition_long_time_interval_procentage",
-                  "label": "",
+                  "label": "Pitkä aikaväli prosenttiosuus",
                   "type": "number"
                 }
               ]
             },
             {
-              "id": "c4_climate_risks_TODO",
-              "category": "",
+              "id": "c4_climate_risks_assessed_exposure_to_threats_transition_time_horizon",
+              "category": "julkistettava tunnistettujen ilmastoon liittyvien uhkien ja siirtymätapahtumien aikahorisontti (lyhyt, keskipitkä, pitkä)",
+              "fields": [
+                {
+                  "id": "assessed_exposure_to_threats_transition_time_horizon_short_time_interval_value",
+                  "label": "Lyhyt aikaväli: arvo",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "id": "c4_climate_risks_",
+              "category": "ilmoitettava, onko se toteuttanut  toimia ilmastonmuutokseen sopeutumiseksi ilmastoon liittyvien uhkien ja siirtymätapahtumien varalta.",
               "fields": [
                 {
                   "id": "_short_time_interval_value",
-                  "label": "",
-                  "type": "text"
+                  "label": "Lyhyt aikaväli: arvo",
+                  "type": "number"
                 },
                 {
                   "id": "_short_time_interval_procentage",
-                  "label": "",
+                  "label": "Lyhyt aikaväli: prosenttiosuus",
                   "type": "number"
                 },
                 {
                   "id": "_medium_time_interval_value",
-                  "label": "",
+                  "label": "Keskipitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
                   "id": "_medium_time_interval_procentage",
-                  "label": "",
+                  "label": "Keskipitkä aikaväli prosenttiosuus",
                   "type": "number"
                 },
                 {
                   "id": "_long_time_interval_value",
-                  "label": "",
+                  "label": "Pitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
                   "id": "_long_time_interval_procentage",
-                  "label": "",
+                  "label": "Pitkä aikaväli prosenttiosuus",
                   "type": "number"
                 }
               ]
             },
             {
               "id": "c4_climate_risks_",
-              "category": "",
+              "category": "Yritys voi julkistaa ilmastoriskien mahdolliset haitalliset vaikutukset, jotka voivat vaikuttaa sen taloudelliseen tulokseen tai liiketoimintaan lyhyellä, keskipitkällä tai pitkällä aikavälillä, ja ilmoittaa, arvioiko se riskit suuriksi, keskisuuriksi vai alhaisiksi.",
               "fields": [
                 {
                   "id": "_short_time_interval_value",
-                  "label": "",
+                  "label": "Lyhyt aikaväli: arvo",
                   "type": "text"
-                },
-                {
-                  "id": "_short_time_interval_procentage",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_medium_time_interval_value",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_medium_time_interval_procentage",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_long_time_interval_value",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_long_time_interval_procentage",
-                  "label": "",
-                  "type": "number"
                 }
               ]
-            },
-            {
-              "id": "c4_climate_risks_",
-              "category": "",
-              "fields": [
-                {
-                  "id": "_short_time_interval_value",
-                  "label": "",
-                  "type": "text"
-                },
-                {
-                  "id": "_short_time_interval_procentage",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_medium_time_interval_value",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_medium_time_interval_procentage",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_long_time_interval_value",
-                  "label": "",
-                  "type": "number"
-                },
-                {
-                  "id": "_long_time_interval_procentage",
-                  "label": "",
-                  "type": "number"
-                }
-              ]
-            },
+            }
           ]
         }
       ]
@@ -1367,6 +1317,11 @@
                   "id": "countrys_total_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä",
                   "type": "number"
+                },
+                {
+                  "id": "countrys_over_50_employee_turnover_rate",
+                  "label": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, sen on ilmoitettava työntekijöiden vaihtuvuus raportointikaudelta.",
+                  "type": "number"
                 }
               ]
             }
@@ -1399,6 +1354,7 @@
     {
       "section_id": "b10_collective_agreement",
       "title": "B 10 Työvoima – Palkkaus, työehtosopimusneuvottelut ja koulutus",
+      "instruction": "Yrityksen on julkistettava",
       "questions": [
         {
           "id": "collective_agreement_wage",

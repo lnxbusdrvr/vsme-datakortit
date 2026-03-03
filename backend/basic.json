@@ -105,7 +105,7 @@
       ]
     },
     {
-      "section_id": "environment",
+      "section_id": "b3_environment",
       "header": "Ympäristö",
       "title": "B3 Energia",
       "questions": [
@@ -311,11 +311,11 @@
       ]
     },
     {
-      "section_id": "b4_pollution",
+      "section_id": "b4",
       "title": "B4 Ilman, veden ja maaperän saastuminen",
       "questions": [
         {
-          "id": "b4",
+          "id": "b4_pollution",
           "instruction": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
           "type": "group",
           "sub_questions": [
@@ -388,11 +388,11 @@
       ]
     },
     {
-      "section_id": "location",
+      "section_id": "b5",
       "title": "B5 Biodiversity - Biologinen monimuotoisuus",
       "questions": [
         {
-          "id": "location_01",
+          "id": "b5_location_01",
           "instruction": "Sijainti",
           "type": "group",
           "sub_questions": [
@@ -418,7 +418,7 @@
               ]
             },
             {
-              "id": "location_01_2",
+              "id": "b5_location_01_2",
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
@@ -439,7 +439,7 @@
               ]
             },
             {
-              "id": "location_01_3",
+              "id": "b5_location_01_3",
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
@@ -462,7 +462,7 @@
           ]
         },
         {
-          "id": "location_02",
+          "id": "b5_location_02",
           "instruction": "Yritys voi julkaista Maankäyttöön liittyviä mittareita Tyyppi",
           "type": "group",
           "sub_questions": [
@@ -488,7 +488,7 @@
               ]
             },
             {
-              "id": "location_waterproof_ha",
+              "id": "b5_location_waterproof_ha",
               "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
               "fields": [
                 {
@@ -509,7 +509,7 @@
               ]
             },
             {
-              "id": "location_nature_conservation_oriented_area",
+              "id": "b5_location_nature_conservation_oriented_area",
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
               "fields": [
                 {
@@ -530,7 +530,7 @@
               ]
             },
             {
-              "id": "location_nature_conservation_oriented_outside_of_area",
+              "id": "b5_location_nature_conservation_oriented_outside_of_area",
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
               "fields": [
                 {
@@ -816,12 +816,12 @@
       ]
     },
     {
-      "section_id": "social_responsibility",
+      "section_id": "b8",
       "header": "Sosiaalinen vastuu",
       "title": "B8 – Työvoima- yleiset ominaisuudet",
       "questions": [
         {
-          "id": "social_responsibility_contract_type",
+          "id": "b5_social_responsibility_contract_type",
           "instruction": "Yrityksen on ilmoitettava työntekijöiden lukumäärä henkilöstömääränä tai kokopäiväiseksi muutettuna seuraavien mittareiden osalta:",
           "type": "group",
           "sub_questions": [
@@ -903,12 +903,12 @@
       ]
     },
     {
-      "section_id": "b9_health_and_safety",
+      "section_id": "b9",
       "title": "B9 Työvoima - terveys ja turvallisuus",
       "instruction": "Yrityksen on julkistettava työntekijöistään seuraavat tiedot:",
       "questions": [
         {
-          "id": "health_accidents",
+          "id": "b9_health_and_safety",
           "question": "kirjattavien työtapaturmien lukumäärä ja osuus",
           "type": "number"
         },
@@ -925,11 +925,11 @@
       ]
     },
     {
-      "section_id": "b10_collective_agreement",
+      "section_id": "b10",
       "title": "B 10 Työvoima – Palkkaus, työehtosopimusneuvottelut ja koulutus",
       "questions": [
         {
-          "id": "collective_agreement_wage",
+          "id": "b10_collective_agreement_wage",
           "question": "Saavatko työntekijät palkkaa, joka on sama tai suurempi kuin raportointimaassa sovellettava vähimmäispalkka, joka määritetään suoraan kansallisessa vähimmäispalkkalainsäädännössä tai työehtosopimuksessa?",
           "type": "boolean"
         },
@@ -951,7 +951,7 @@
       ]
     },
     {
-      "section_id": "management",
+      "section_id": "b11",
       "header": "Hallinto",
       "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
