@@ -78,5 +78,6 @@
 | 28.02.2026 | 6,5   | When sending subQs label and questions can see on <Answers /> TODO: Show subQs value |
 | 01.03.2026 | 2     | Fix electer > electricity in db. Show subQs values on Answers |
 | 02.03.2026 | 5,75  | Make Inclusive module db and instruction-key to both db, implement chenges to code |
-| Total      | 214,25 |
+| 03.03.2026 | 0,75  | Continue editing db's |
+| Total      | 215   |
 
