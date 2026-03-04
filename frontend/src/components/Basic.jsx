@@ -143,7 +143,7 @@ const Basic = () => {
           {b.sections.map((s, sIdx) => (
             <div key={`${s.section_id}-${sIdx}`} >
               {s.header && <h2>{s.header}</h2>}
-              <p className="title-box">{s.title}</p>
+              {s.title && <p className="title-box">{s.title}</p>}
               {s.instruction && <p><strong>{s.instruction}</strong></p>}
 
               {s.questions.map((qs, qsIdx) => (
@@ -238,7 +238,7 @@ const Basic = () => {
                           <b>{subQs.title}</b>
                         )}
                         <p>{subQs.category}</p>
-                        {subQs.fields.map((f, fIdx) => (
+                        {!subQs.title && subQs.fields.map((f, fIdx) => (
                           <div key={`${f.id}-${fIdx}`} >
                             {f.type === 'number' && (
                               <Form.Label>{f.label}
