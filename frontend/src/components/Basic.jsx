@@ -7,7 +7,6 @@ import { Form, Button } from 'react-bootstrap';
 import { initializeBasic } from '../reducers/basicReducer'
 import { addAnswer } from '../reducers/answersReducer';
 
-import Notification from './Notification';
 import Answers from './Answers'
 
 import '../styles.css'
@@ -19,7 +18,7 @@ const Basic = () => {
   const [answers, setAnswers] = useState({})
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
-  const [fieldErrors, setFieldErrors] = useState({})
+  const [fieldError, setFieldError] = useState({})
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +32,45 @@ const Basic = () => {
 
   if (!user || !basic)
     return <div>Loading...</div>
+
+  const numberField = (idForNameAndFieldError, sectionId, questionId, type, fieldType, subQuestionId) => {
+    // value's value is needed to get clear button to work 
+    // onKeyDown for number validation 
+    return (
+      <>
+        <Form.Control
+          type="number"
+          name={idForNameAndFieldError}
+          value={!subQuestionId
+            ? (answers[questionId]?.answer || '')
+            : (answers[questionId]?.groupAnswers?.find(ga => ga.subQuestionId === subQuestionId)?.values?.[idForNameAndFieldError]?.value  ?? '')
+          }
+          onChange={({ target }) => !fieldType
+            ? handleAnswersChange(sectionId, questionId, type, target.value)
+            : handleSubQsAnswersChange(sectionId, questionId, type, subQuestionId, 
+              idForNameAndFieldError, fieldType, target.value)
+          }
+          onKeyDown={(e) => {
+            const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
+              'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
+
+            if (allowedKeys.includes(e.key)
+              || e.ctrlKey
+              || e.metaKey) {
+              return
+            }
+
+            if (!/^[0-9]$/.test(e.key)) {
+              e.preventDefault()
+              setFieldError({...fieldError, [idForNameAndFieldError]: 'Vain numerot ovat sallittuja'})
+              setTimeout(() => setFieldError({...fieldError, [idForNameAndFieldError]: null}), 3000)
+            }
+          }}
+        />
+        {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
+      </>
+    )
+  }
 
   const handleAnswersChange = (sectionId, questionId, type, value) => {
     if (questionId === 'management_if_corruption')
@@ -180,29 +218,7 @@ const Basic = () => {
                       )}
                       {qs.type === 'number' && (
                         <Form.Label>{qs.question}
-                          {/* value's value is needed to get clear button to work */}
-                          {/* onKeyDown for number validation */}
-                          <Form.Control
-                            type="number"
-                            name={qs.id}
-                            value={answers[qs.id]?.answer || ''}
-                            onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, target.value)}
-                            onKeyDown={(e) => {
-                              const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft',
-                                'ArrowRight', 'ArrowUp', 'ArrowDown']
-
-                              if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
-                                return
-
-                              if (!/^[0-9]$/.test(e.key)) {
-                                e.preventDefault()
-                                setFieldErrors({...fieldErrors, [qs.id]: 'Vain numerot ovat sallittuja'})
-                                setTimeout(() => setFieldErrors({...fieldErrors, [qs.id]: null}), 3000)
-                              }
-                            }}
-                          />
-                          {/* Show error message */}
-                          {fieldErrors[qs.id] && <span className="field-error">{fieldErrors[qs.id]}</span>}
+                          {numberField(qs.id, s.section_id, qs.id, qs.type, null, null)}
                         </Form.Label>
                       )}
                       {qs.type === 'boolean' && (
@@ -238,31 +254,11 @@ const Basic = () => {
                           <b>{subQs.title}</b>
                         )}
                         <p>{subQs.category}</p>
-                        {!subQs.title && subQs.fields.map((f, fIdx) => (
+                        {!subQs.title && subQs.fields && subQs.fields.map((f, fIdx) => (
                           <div key={`${f.id}-${fIdx}`} >
                             {f.type === 'number' && (
                               <Form.Label>{f.label}
-                                <Form.Control
-                                  type="number"
-                                  name={f.id}
-                                  value={answers[qs.id]?.groupAnswers?.find(ga => ga.subQuestionId === subQs.id)?.values?.[f.id]?.value  ?? ''}
-                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id,
-                                    qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
-                                  onKeyDown={(e) => {
-                                    const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
-                                      'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
-                                    
-                                    if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
-                                      return
-
-                                    if (!/^[0-9]$/.test(e.key)) {
-                                      e.preventDefault()
-                                      setFieldErrors({...fieldErrors, [f.id]: 'Vain numerot ovat sallittuja'})
-                                      setTimeout(() => setFieldErrors({...fieldErrors, [f.id]: null}), 3000)
-                                    }
-                                  }}
-                                />
-                              {fieldErrors[f.id] && <span className="field-error">{fieldErrors[f.id]}</span>}
+                                {numberField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
                               </Form.Label>
                             )}
                             {f.type === 'text' && (
@@ -290,26 +286,7 @@ const Basic = () => {
                       <div key={`${mgntSubQs.id}-${mgntSubQsIdx}`} >
                         {mgntSubQs.fields.map((f, fIdx) => (
                           <Form.Label key={`${f.id}-${fIdx}`}>{mgntSubQs.category} {f.label}
-                            <Form.Control
-                              type="number"
-                              name={f.id}
-                              value={answers[qs.id]?.groupAnswers?.find(ga => ga.subQuestionId === mgntSubQs.id)?.values?.[f.id]?.value ?? ''}
-                              onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, mgntSubQs.id, f.id, f.type, target.value)}
-                              onKeyDown={(e) => {
-                                const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
-                                  'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
-
-                                if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
-                                  return
-
-                                if (!/^[0-9]$/.test(e.key)) {
-                                  e.preventDefault()
-                                  setFieldErrors({...fieldErrors, [f.id]: 'Vain numerot ovat sallittuja'})
-                                  setTimeout(() => setFieldErrors({...fieldErrors, [f.id]: null}), 3000)
-                                }
-                              }}
-                              />
-                              {fieldErrors[f.id] && <span className="field-error">{fieldErrors[f.id]}</span>}
+                            {numberField(f.id, s.section_id, qs.id, qs.type, f.type, mgntSubQs.id)}
                           </Form.Label>
                         ))}
                       </div>
