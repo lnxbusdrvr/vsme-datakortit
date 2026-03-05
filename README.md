@@ -80,5 +80,6 @@
 | 02.03.2026 | 5,75  | Make Inclusive module db and instruction-key to both db, implement chenges to code |
 | 03.03.2026 | 0,75  | Continue editing db's |
 | 04.03.2026 | 7     | Finish editing db's |
-| Total      | 222   |
+| 05.03.2026 | 6,5   | Name change inclusive -> comprehensive, refactoring db-components, add if_this_q_yes to few booleans in dbs so next time can make better logic |
+| Total      | 228,5 |
 
