@@ -9,13 +9,13 @@ import { Form, Button } from 'react-bootstrap';
 
 //import Notification from './Notification';
 import Basic from './Basic';
-import Inclusive from './Inclusive';
+import Comprehensive from './Comprehensive';
 
 
 const Questions = () => {
   //const dispatch = useDispatch();
   //const navigate = useNavigate();
-  const [basicOrInclusive, setBasicOrInclusive] = useState(null);
+  const [basicOrComprehensive, setBasicOrComprehensive] = useState(null);
 
   /*
   useEffect(() => {
@@ -25,38 +25,36 @@ const Questions = () => {
     event.preventDefault();
 
   };
-  /*
-      <Notification />
-  */
+
 
   return (
     <>
-      {basicOrInclusive === null && (
+      {basicOrComprehensive === null && (
         <div>Valitse moduuli:</div>
       )}
       <input
         type="radio"
-        name="basicOrInclusive"
+        name="basicOrComprehensive"
         value="basic_module"
-        onChange={({ target }) => setBasicOrInclusive(target.value)}
+        onChange={({ target }) => setBasicOrComprehensive(target.value)}
         required
       />
       <label htmlFor="basic">Perusmoduuli</label>
       <input
         type="radio"
-        name="basicOrInclusive"
-        value="inclusive_module"
-        onChange={({ target }) => setBasicOrInclusive(target.value)}
+        name="basicOrComprehensive"
+        value="comprehensive_module"
+        onChange={({ target }) => setBasicOrComprehensive(target.value)}
         required
       />
-      <label htmlFor="inclusive">Kattava moduuli</label>
+      <label htmlFor="comprehensive">Kattava moduuli</label>
 
-      {basicOrInclusive === 'basic_module' && (
+      {basicOrComprehensive === 'basic_module' && (
         <Basic />
       )}
 
-      {basicOrInclusive === 'inclusive_module' && (
-        <Inclusive />
+      {basicOrComprehensive === 'comprehensive_module' && (
+        <Comprehensive />
       )}
     </>
   );
