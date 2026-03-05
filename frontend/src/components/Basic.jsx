@@ -19,6 +19,7 @@ const Basic = () => {
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldError, setFieldError] = useState({})
+  const [showSubQuestions, setShowSubQuestions] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,7 +44,9 @@ const Basic = () => {
           name={idForNameAndFieldError}
           value={!subQuestionId
             ? (answers[questionId]?.answer || '')
-            : (answers[questionId]?.groupAnswers?.find(ga => ga.subQuestionId === subQuestionId)?.values?.[idForNameAndFieldError]?.value  ?? '')
+            : (answers[questionId]?.groupAnswers
+              ?.find(ga => ga.subQuestionId === subQuestionId)
+              ?.values?.[idForNameAndFieldError]?.value  ?? '')
           }
           onChange={({ target }) => !fieldType
             ? handleAnswersChange(sectionId, questionId, type, target.value)
@@ -72,9 +75,14 @@ const Basic = () => {
     )
   }
 
+
+
   const handleAnswersChange = (sectionId, questionId, type, value) => {
     if (questionId === 'management_if_corruption')
       setCorruption(value)
+
+    if (type === 'boolean' && value === true)
+      setShowSubQuestions(true)
 
     setAnswers({
       ...answers,
@@ -239,13 +247,31 @@ const Basic = () => {
                             checked={answers[qs.id]?.answer === false}
                             onChange={() => handleAnswersChange(s.section_id, qs.id, qs.type, false)}
                           />
+                          {showSubQuestions && qs.type === 'group' && qs.sub_questions && (
+                            <div key={`${qs.id}-${qsIdx}`} >
+                              <p>{qs.instruction}</p>
+                              {qs.sub_questions.map((subQs, subQsIdx) => (
+                                <div key={`${subQs.id}-${subQsIdx}`} >
+                                  {subQs.title && (
+                                    <b>{subQs.title}</b>
+                                  )}
+                                  <p>{subQs.category}</p>
+                                  {!subQs.title && subQs.fields && subQs.fields.map((f, fIdx) => (
+                                    <div key={`${f.id}-${fIdx}`} >
+                                      <Form.Label>{f.label}
+                                        {numberField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
+                                      </Form.Label>
+                                    </div>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </>
                       )}
                   </div>
                 )}
-                {qs.type === 'group' &&
-                    (qs.id !== 'management_if_corruption' &&
-                      qs.id !== 'management_corruption_details') && (
+                {!showSubQuestions && qs.type === 'group' && (
                   <div key={`${qs.id}-${qsIdx}`} >
                     <p>{qs.instruction}</p>
                     {qs.sub_questions.map((subQs, subQsIdx) => (
@@ -278,6 +304,7 @@ const Basic = () => {
                    </div>
                   )}
                 {/* Management -section */}
+                {/*}
                 {qs.type === 'group' &&
                   (qs.id === 'management_corruption_details') &&
                   ( corruption ? (
@@ -294,6 +321,7 @@ const Basic = () => {
                   </>
                 ) : null )
                 }
+                {*/}
                  </div>
               ))}
               </div>
@@ -305,6 +333,10 @@ const Basic = () => {
     </Form>
   )
 }
+/*
+                    (qs.id !== 'management_if_corruption' &&
+                      qs.id !== 'management_corruption_details') && (
+ */
 
 
 export default Basic
