@@ -918,7 +918,7 @@
       "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
         {
-          "id": "management_if_corruption",
+          "id": "management_if_this_q_yes_corruption",
           "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
           "type": "boolean"
         },

@@ -1512,9 +1512,20 @@
           "type": "boolean"
         },
         {
-          "id": "c6_human_rights_else",
-          "question": "muuta? (jos kyllä, täsmennettävä)",
-          "type": "text"
+          "id": "c6_if_this_q_yes_human_rights_else",
+          "question": "muuta?",
+          "type": "boolean"
+        },
+        {
+          "id": "c7_if_else_severe_human_rights_abuses",
+          "category": "jos kyllä",
+          "fields": [
+            {
+              "id": "else_severe_human_rights_abuses_describe",
+              "label": "(täsmennettävä)",
+              "type": "number"
+            }
+          }
         },
         {
           "id": "c6_human_rights_does_company_have_feedback_for_incident_mechanism",
@@ -1553,14 +1564,30 @@
           "type": "boolean"
         },
         {
-          "id": "c7_severe_human_rights_abuses_else",
-          "question": "muuta? (jos kyllä, täsmennettävä)",
+          "id": "c7_if_this_q_yes_severe_human_rights_abuses_else",
+          "question": "muuta? ",
           "type": "boolean"
         },
         {
-          "id": "c7_severe_human_rights_abuses_actions_taken",
+          "id": "c7_if_else_severe_human_rights_abuses",
+          "category": "jos kyllä",
+          "fields": [
+            {
+              "id": "else_severe_human_rights_abuses_describe",
+              "label": "(täsmennettävä)",
+              "type": "number"
+            },
+            {
+              "id": "else_severe_human_rights_abuses_describe",
+              "label": "Jos vastasitte myöntävästi, yritys voi kuvailla toimia, joihin on ryhdytty edellä kuvattujen tapausten ratkaisemiseksi.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "id": "c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
           "question": "Jos vastasitte myöntävästi, yritys voi kuvailla toimia, joihin on ryhdytty edellä kuvattujen tapausten ratkaisemiseksi.",
-          "type": "text"
+          "type": "boolean"
         },
         {
           "id": "c7_severe_human_rights_abuses_confirmed_cases",
@@ -1659,7 +1686,7 @@
       "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
         {
-          "id": "management_if_corruption",
+          "id": "management_if_this_q_yes_corruption",
           "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
           "type": "boolean"
         },
@@ -1699,7 +1726,7 @@
       "title": "C8 – Tulot tietyiltä aloilta ja poissulkeminen EU:n viitevertailuarvoista",
       "questions": [
         {
-          "id": "c8_if_company_operates_in_sector",
+          "id": "c8_if_this_q_yes_company_operates_in_sector",
           "question": "Jos yritys toimii yhdellä tai useammalla seuraavista aloista, sen on ilmoitettava asiaan liittyvät tulonsa kyseiseltä alalta tai aloilta:",
           "type": "boolean"
         },
@@ -1715,7 +1742,7 @@
           ]
         },
         {
-          "id": "c8_if_company_operates_in_sector_arms",
+          "id": "c8_if_this_q_yes_company_operates_in_sector_arms",
           "question": "kiistanalaiset aseet (jalkaväkimiinat, rypäleammukset, kemialliset aseet ja biologiset aseet);",
           "type": "boolean"
         },
@@ -1731,7 +1758,7 @@
           ]
         },
         {
-          "id": "c8_if_tobacco_production",
+          "id": "c8_if_this_q_yes_tobacco_production",
           "question": "tupakan viljely ja tuotanto;   ",
           "type": "boolean"
         },
@@ -1747,7 +1774,7 @@
           ]
         },
         {
-          "id": "c8_fossil_fuel_production",
+          "id": "c8_if_this_q_yes_fossil_fuel_production",
           "question": "fossiilisten polttoaineiden (hiili, öljy ja kaasu) ala (eli yritys saa tuloja Euroopan parlamentin ja neuvoston asetuksen (EU) 2018/1999 17 2 artiklan 62 alakohdassa määriteltyjen fossiilisten polttoaineiden etsinnästä, kaivostoiminnasta, talteenotosta, tuotannosta, jalostuksesta, varastoinnista, jalostuksesta tai jakelusta, mukaan lukien kuljetus, varastointi ja kauppa), mukaan lukien hiilestä saatavien tulojen erittely,  öljy ja kaasu; tai",
           "type": "boolean"
         },
@@ -1763,7 +1790,7 @@
           ]
         },
         {
-          "id": "c8_cemicals_production",
+          "id": "c8_if_this_q_yes_cemicals_production",
           "question": "kemikaalien tuotanto, jos yritys valmistaa torjunta-aineita ja muita maatalouskemikaaleja.",
           "type": "boolean"
         },
@@ -1779,7 +1806,7 @@
           ]
         },
         {
-          "id": "c8_if_paris_agreement",
+          "id": "c8_if_this_q_yes_paris_agreement",
           "question": "Yrityksen on ilmoitettava, onko se jätetty sellaisten EU:n viitevertailuarvojen ulkopuolelle, jotka on yhdenmukaistettu Pariisin sopimuksen kanssa ohjeiden kohdassa 241 kuvatulla tavalla.",
           "type": "boolean"
         },
