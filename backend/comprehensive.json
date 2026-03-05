@@ -1,13 +1,13 @@
 {
   "module": "Kattava Moduuli",
-  "module_id": "inclusive_module",
+  "module_id": "comprehensive_module",
   "sections": [
     {
       "section_id": "b1",
       "title": "B1 - Raprtoinin valmistelun perusteet",
       "questions": [
         {
-          "id": "b1_basic_or_incl_module",
+          "id": "b1_basic_or_comprehensive_module",
           "question": "Minkä seuraavista vaihtoehdoista on valinnut: a) Perusmoduulin b) perusmoduulin ja kattavan moduulin mukaisesti.",
           "type": "text"
         },
