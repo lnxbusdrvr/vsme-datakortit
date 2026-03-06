@@ -923,28 +923,22 @@
           "type": "boolean"
         },
         {
-          "id": "management_corruption_details",
+          "id": "if_prev_yes_management_if_this_q_yes_corruption",
           "instruction": "Korruptio/lahjonta -tiedot",
           "type": "group",
           "sub_questions": [
             {
-              "id": "management_number_of_penalties",
-              "category": "Tuomioiden lukumäärä",
+              "id": "management_number_of_penalties_and_costs",
+              "category": "Tuomioiden lukumäärä ja aiheutuneet kulut",
               "fields": [
                 {
-                  "id": "penalty_count",
-                  "label": "(lkm)",
+                  "id": "management_number_of_penalties",
+                  "label": "Tuomioiden lukumäärä",
                   "type": "number"
-                }
-              ]
-            },
-            {
-              "id": "management_total_costs_from_fines",
-              "category": "Sakoista aiheutuneet kokonaiskulut",
-              "fields": [
+                },
                 {
-                  "id": "costs_from_fines",
-                  "label": "(euroa)",
+                  "id": "management_total_costs_from_fines",
+                  "label": "Sakoista aiheutuneet kokonaiskulut",
                   "type": "number"
                 }
               ]

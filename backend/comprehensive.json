@@ -1517,13 +1517,13 @@
           "type": "boolean"
         },
         {
-          "id": "c7_if_else_severe_human_rights_abuses",
+          "id": "if_prev_yes_c6_if_this_q_yes_human_rights_else",
           "category": "jos kyllä",
           "fields": [
             {
               "id": "else_severe_human_rights_abuses_describe",
               "label": "(täsmennettävä)",
-              "type": "number"
+              "type": "text"
             }
           ]
         },
@@ -1569,13 +1569,13 @@
           "type": "boolean"
         },
         {
-          "id": "c7_if_else_severe_human_rights_abuses",
+          "id": "if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_else",
           "category": "jos kyllä",
           "fields": [
             {
               "id": "else_severe_human_rights_abuses_describe",
               "label": "(täsmennettävä)",
-              "type": "number"
+              "type": "text"
             },
             {
               "id": "else_severe_human_rights_abuses_describe",
@@ -1588,6 +1588,17 @@
           "id": "c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
           "question": "Jos vastasitte myöntävästi, yritys voi kuvailla toimia, joihin on ryhdytty edellä kuvattujen tapausten ratkaisemiseksi.",
           "type": "boolean"
+        },
+        {
+          "id": "if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
+          "category": "jos kyllä",
+          "fields": [
+            {
+              "id": "else_severe_human_rights_abuses_actions_taken_describe",
+              "label": "(voi kuvailla)",
+              "type": "text"
+            }
+          ]
         },
         {
           "id": "c7_severe_human_rights_abuses_confirmed_cases",
@@ -1691,28 +1702,22 @@
           "type": "boolean"
         },
         {
-          "id": "management_corruption_details",
+          "id": "if_prev_yes_management_if_this_q_yes_corruption",
           "instruction": "Korruptio/lahjonta -tiedot",
           "type": "group",
           "sub_questions": [
             {
-              "id": "management_number_of_penalties",
-              "category": "Tuomioiden lukumäärä",
+              "id": "management_number_of_penalties_and_costs",
+              "category": "Tuomioiden lukumäärä ja aiheutuneet kulut",
               "fields": [
                 {
-                  "id": "penalty_count",
-                  "label": "(lkm)",
+                  "id": "management_number_of_penalties",
+                  "label": "Tuomioiden lukumäärä",
                   "type": "number"
-                }
-              ]
-            },
-            {
-              "id": "management_total_costs_from_fines",
-              "category": "Sakoista aiheutuneet kokonaiskulut",
-              "fields": [
+                },
                 {
-                  "id": "costs_from_fines",
-                  "label": "(euroa)",
+                  "id": "management_total_costs_from_fines",
+                  "label": "Sakoista aiheutuneet kokonaiskulut",
                   "type": "number"
                 }
               ]
@@ -1731,7 +1736,7 @@
           "type": "boolean"
         },
         {
-          "id": "if_company_operates_in_sector",
+          "id": "if_prev_yes_c8_if_this_q_yes_company_operates_in_sector",
           "category": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "fields": [
             {
@@ -1747,7 +1752,7 @@
           "type": "boolean"
         },
         {
-          "id": "if_company_operates_in_sector_arms",
+          "id": "if_prev_yes_c8_if_this_q_yes_paris_agreement",
           "category": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "fields": [
             {
@@ -1763,7 +1768,7 @@
           "type": "boolean"
         },
         {
-          "id": "tobacco_production",
+          "id": "if_prev_yes_c8_if_this_q_yes_tobacco_production",
           "category": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "fields": [
             {
@@ -1779,7 +1784,7 @@
           "type": "boolean"
         },
         {
-          "id": "fossil_fuel_production",
+          "id": "if_prev_yes_c8_if_this_q_yes_fossil_fuel_production",
           "category": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "fields": [
             {
@@ -1795,7 +1800,7 @@
           "type": "boolean"
         },
         {
-          "id": "cemicals_production",
+          "id": "if_prev_yes_c8_if_this_q_yes_cemicals_production",
           "category": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "fields": [
             {
@@ -1811,7 +1816,7 @@
           "type": "boolean"
         },
         {
-          "id": "if_paris_agreement",
+          "id": "if_prev_yes_c8_if_this_q_yes_paris_agreement",
           "category": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "fields": [
             {
