@@ -19,7 +19,7 @@ const Basic = () => {
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldError, setFieldError] = useState({})
-  const [showSubQuestions, setShowSubQuestions] = useState(false)
+  const [lastControllingQuestionId, setLastControllingQuestionId] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,13 +34,15 @@ const Basic = () => {
   if (!user || !basic)
     return <div>Loading...</div>
 
-  const numberField = (idForNameAndFieldError, sectionId, questionId, type, fieldType, subQuestionId) => {
+  const inputField = (idForNameAndFieldError, sectionId, questionId, type, fieldType, subQuestionId) => {
+    const isNumber = type === 'number' || fieldType === 'number'
     // value's value is needed to get clear button to work 
     // onKeyDown for number validation 
+
     return (
       <>
         <Form.Control
-          type="number"
+          {...(isNumber ? { type: 'number' } : { as: 'textarea' })}
           name={idForNameAndFieldError}
           value={!subQuestionId
             ? (answers[questionId]?.answer || '')
@@ -53,37 +55,35 @@ const Basic = () => {
             : handleSubQsAnswersChange(sectionId, questionId, type, subQuestionId, 
               idForNameAndFieldError, fieldType, target.value)
           }
-          onKeyDown={(e) => {
-            const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
-              'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
+          {...(isNumber && {
+            onKeyDown: (e) => {
+              const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
+                'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
 
-            if (allowedKeys.includes(e.key)
-              || e.ctrlKey
-              || e.metaKey) {
-              return
-            }
+              if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
+                return
 
-            if (!/^[0-9]$/.test(e.key)) {
-              e.preventDefault()
-              setFieldError({...fieldError, [idForNameAndFieldError]: 'Vain numerot ovat sallittuja'})
-              setTimeout(() => setFieldError({...fieldError, [idForNameAndFieldError]: null}), 3000)
+              if (!/^[0-9]$/.test(e.key)) {
+                e.preventDefault()
+                setFieldError({...fieldError, [idForNameAndFieldError]: 'Vain numerot ovat sallittuja'})
+                setTimeout(() => setFieldError({...fieldError, [idForNameAndFieldError]: null}), 3000)
+              }
             }
-          }}
-        />
-        {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
+          })} 
+      />
+      {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
       </>
     )
   }
 
+  const getControllingQuestionId= (questionId) => {
+    if (questionId.startsWith('if_prev_yes_'))
+      return questionId.replace('if_prev_yes_', '')
 
+    return null
+  }
 
   const handleAnswersChange = (sectionId, questionId, type, value) => {
-    if (questionId === 'management_if_corruption')
-      setCorruption(value)
-
-    if (type === 'boolean' && value === true)
-      setShowSubQuestions(true)
-
     setAnswers({
       ...answers,
       [questionId]: {
@@ -177,56 +177,50 @@ const Basic = () => {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <p>
-        Tämä raportti on laadittu VSME 17.12.2024 mukaisesti:
-        <a href="https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf" target="_blank">https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf</a>
-      </p>
+    <div key="basic_module-div">
+      <Form onSubmit={handleSubmit}>
+        <p>
+          Tämä raportti on laadittu VSME 17.12.2024 mukaisesti:
+          <a href="https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf" target="_blank">https:\/\/www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf</a>
+        </p>
 
-      {basic.map((b, bIdx) => (
-        <div key={b.id || bIdx} >
-          <h1>{b.module}</h1>
-          {b.sections.map((s, sIdx) => (
-            <div key={`${s.section_id}-${sIdx}`} >
-              {s.header && <h2>{s.header}</h2>}
-              {s.title && <p className="title-box">{s.title}</p>}
-              {s.instruction && <p><strong>{s.instruction}</strong></p>}
-
-              {s.questions.map((qs, qsIdx) => (
-                <div key={`${qs.id}-${qsIdx}`} >
-                  {qs.id === 'basic_or_incl_module' ? (
-                    <div key={`disabled_basic_or_incl_module-${qsIdx}`} >
-                      <p>{qs.question}</p>
-                      <Form.Check
-                        type="radio"
-                        label="Perusmoduuli"
-                        value={b.module_id}
-                        checked={true}
-                        disabled
-                      />
-                      <Form.Check
-                        type="radio"
-                        label="Kattava moduuli"
-                        checked={false}
-                        disabled
-                      />
-                    </div>
-                  ) : (
-                    <div key={`other_questions-${qsIdx}`}>
-                      {qs.type === 'text' && (
-                        <Form.Label>{qs.question}
-                          {/* value's value is needed to get clear button to work */}
-                          <Form.Control
-                            as="textarea"
-                            name={qs.id}
-                            value={answers[qs.id]?.answer || ''}
-                            onChange={({ target }) => handleAnswersChange(s.section_id, qs.id, qs.type, target.value)}
-                          />
-                        </Form.Label>
-                      )}
+        {basic.map((b, bIdx) => (
+          <div key={b.id || bIdx} >
+            <h1>{b.module}</h1>
+            {b.sections.map((s, sIdx) => (
+              <div key={`${s.section_id}-${sIdx}`} >
+                {s.header && <h2>{s.header}</h2>}
+                {s.title && <p className="title-box">{s.title}</p>}
+                {s.instruction && <p><strong>{s.instruction}</strong></p>}
+                {s.questions.map((qs, qsIdx) => (
+                  <div key={`${qs.id}-${qsIdx}`} >
+                    {qs.id === 'basic_or_incl_module' ? (
+                      <div key={`disabled_basic_or_incl_module-${qsIdx}`} >
+                        <p>{qs.question}</p>
+                        <Form.Check
+                          type="radio"
+                          label="Perusmoduuli"
+                          value={b.module_id}
+                          checked={true}
+                          disabled
+                        />
+                        <Form.Check
+                          type="radio"
+                          label="Kattava moduuli"
+                          checked={false}
+                          disabled
+                        />
+                      </div>
+                    ) : (
+                      <div key={`other_questions-${qsIdx}`}>
+                        {qs.type === 'text' && (
+                          <Form.Label>{qs.question}
+                            {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
+                          </Form.Label>
+                        )}
                       {qs.type === 'number' && (
                         <Form.Label>{qs.question}
-                          {numberField(qs.id, s.section_id, qs.id, qs.type, null, null)}
+                          {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
                         </Form.Label>
                       )}
                       {qs.type === 'boolean' && (
@@ -238,105 +232,101 @@ const Basic = () => {
                             type="radio"
                             name={qs.id}
                             checked={answers[qs.id]?.answer === true}
-                            onChange={() => handleAnswersChange(s.section_id, qs.id, qs.type, true)}
+                            onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
+                              if (qs.id.match(/^(.+?)_(if_this_q_yes)_(.+)$/))
+                                setLastControllingQuestionId({...lastControllingQuestionId, [qs.id]: true})
+                            }}
                           />
                           <Form.Check
                             label="Ei"
                             type="radio"
                             name={qs.id}
                             checked={answers[qs.id]?.answer === false}
-                            onChange={() => handleAnswersChange(s.section_id, qs.id, qs.type, false)}
+                            onChange={() => {
+                              handleAnswersChange(s.section_id, qs.id, qs.type, false)
+                              if (qs.id.match(/^(.+?)_(if_this_q_yes)_(.+)$/))
+                                setLastControllingQuestionId({...lastControllingQuestionId, [qs.id]: false})
+                            }}
                           />
-                          {showSubQuestions && qs.type === 'group' && qs.sub_questions && (
-                            <div key={`${qs.id}-${qsIdx}`} >
-                              <p>{qs.instruction}</p>
-                              {qs.sub_questions.map((subQs, subQsIdx) => (
-                                <div key={`${subQs.id}-${subQsIdx}`} >
-                                  {subQs.title && (
-                                    <b>{subQs.title}</b>
-                                  )}
-                                  <p>{subQs.category}</p>
-                                  {!subQs.title && subQs.fields && subQs.fields.map((f, fIdx) => (
-                                    <div key={`${f.id}-${fIdx}`} >
-                                      <Form.Label>{f.label}
-                                        {numberField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
-                                      </Form.Label>
-                                    </div>
-                                  ))}
-                                </div>
-                              ))}
-                            </div>
-                          )}
                         </>
                       )}
-                  </div>
+                    </div>
                 )}
-                {!showSubQuestions && qs.type === 'group' && (
-                  <div key={`${qs.id}-${qsIdx}`} >
-                    <p>{qs.instruction}</p>
-                    {qs.sub_questions.map((subQs, subQsIdx) => (
-                      <div key={`${subQs.id}-${subQsIdx}`} >
-                        {subQs.title && (
-                          <b>{subQs.title}</b>
-                        )}
-                        <p>{subQs.category}</p>
-                        {!subQs.title && subQs.fields && subQs.fields.map((f, fIdx) => (
-                          <div key={`${f.id}-${fIdx}`} >
-                            {f.type === 'number' && (
-                              <Form.Label>{f.label}
-                                {numberField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
-                              </Form.Label>
+                {qs.type === 'group' && (() => {
+                  const controllingId = getControllingQuestionId(qs.id)
+
+                  if (!controllingId) {
+                    return (
+                      <div key={`${qs.id}-${qsIdx}`} >
+                        <p>{qs.instruction}</p>
+                        {qs.sub_questions.map((subQs, subQsIdx) => (
+                          <div key={`${subQs.id}-${subQsIdx}`} >
+                            {subQs.title && (
+                              <b>{subQs.title}</b>
                             )}
-                            {f.type === 'text' && (
-                              <Form.Label>{f.label}
-                                <Form.Control
-                                  as="textarea"
-                                  name={f.id}
-                                  value={answers[qs.id]?.groupAnswers?.find(ga => ga.subQuestionId === subQs.id)?.values?.[f.id]?.value ?? ''}
-                                  onChange={({ target }) => handleSubQsAnswersChange(s.section_id, qs.id, qs.type, subQs.id, f.id, f.type, target.value)}
-                                />
-                              </Form.Label>
-                            )}
+                            <p>{subQs.category}</p>
+                            {!subQs.title && subQs.fields && subQs.fields
+                              .map((f, fIdx) => (
+                                <div key={`${f.id}-${fIdx}`} >
+                                  {f.type === 'number' && (
+                                    <Form.Label>{f.label}
+                                      {inputField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
+                                    </Form.Label>
+                                  )}
+                                  {f.type === 'text' && (
+                                    <Form.Label>{f.label}
+                                      {inputField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
+                                    </Form.Label>
+                                  )}
+                                </div>
+                              ))}
                           </div>
                         ))}
                       </div>
-                    ))}
-                   </div>
-                  )}
-                {/* Management -section */}
-                {/*}
-                {qs.type === 'group' &&
-                  (qs.id === 'management_corruption_details') &&
-                  ( corruption ? (
-                  <>
-                    {qs.sub_questions.map((mgntSubQs, mgntSubQsIdx) => (
-                      <div key={`${mgntSubQs.id}-${mgntSubQsIdx}`} >
-                        {mgntSubQs.fields.map((f, fIdx) => (
-                          <Form.Label key={`${f.id}-${fIdx}`}>{mgntSubQs.category} {f.label}
-                            {numberField(f.id, s.section_id, qs.id, qs.type, f.type, mgntSubQs.id)}
-                          </Form.Label>
-                        ))}
-                      </div>
-                    ))}
-                  </>
-                ) : null )
-                }
-                {*/}
-                 </div>
-              ))}
+                    )
+                  }
+
+                  if (!lastControllingQuestionId[controllingId])
+                    return null
+
+                  {/* if certain booleans was true show more questions */}
+                  return (
+                    <div key={`${qs.id}-${qsIdx}`} >
+                      <p>{qs.instruction}</p>
+                      {qs.sub_questions.map((subQs, subQsIdx) => (
+                        <div key={`${subQs.id}-${subQsIdx}`} >
+                          {subQs.title && (
+                            <b>{subQs.title}</b>
+                          )}
+                          <p>{subQs.category}</p>
+                          {!subQs.title && subQs.fields && subQs.fields
+                            .map((f, fIdx) => (
+                              <div key={`${f.id}-${fIdx}`} >
+                                {f.type === 'number' && (
+                                  <Form.Label>{f.label}
+                                    {inputField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
+                                  </Form.Label>
+                                )}
+                              </div>
+                            ))}
+                        </div>
+                      ))}
+                    </div>
+                  )
+
+                })}
               </div>
             ))}
-            <Button variant="contained" type="submit">Tallenna</Button>
-            <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
-        </div>
-      ))}
-    </Form>
+          </div>
+        ))}
+          </div>
+        ))}
+        <Button variant="contained" type="submit">Tallenna</Button>
+        <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
+      </Form>
+    </div>
   )
 }
-/*
-                    (qs.id !== 'management_if_corruption' &&
-                      qs.id !== 'management_corruption_details') && (
- */
 
 
 export default Basic
