@@ -81,6 +81,7 @@
 | 03.03.2026 | 0,75  | Continue editing db's |
 | 04.03.2026 | 7     | Finish editing db's |
 | 05.03.2026 | 6,5   | Name change inclusive -> comprehensive, refactoring db-components, add if_this_q_yes to few booleans in dbs so next time can make better logic |
-| 05.03.2026 | 8     | Add more logic to if_yes fields in db. Try to get if_yes to work still needs to work on it |
-| Total      | 236,5 |
+| 06.03.2026 | 8     | Add more logic to if_yes fields in db. Try to get if_yes to work still needs to work on it |
+| 07.03.2026 | 4,5   | Add logic to sub_questions in db. Fix partially ifYes-Logic in component |
+| Total      | 241   |
 

@@ -7,6 +7,7 @@ import { Form, Button } from 'react-bootstrap';
 import { initializeBasic } from '../reducers/basicReducer'
 import { addAnswer } from '../reducers/answersReducer';
 
+import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
 import Answers from './Answers'
 
 import '../styles.css'
@@ -19,7 +20,7 @@ const Basic = () => {
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldError, setFieldError] = useState({})
-  const [lastControllingQuestionId, setLastControllingQuestionId] = useState(false)
+  const [lastControllingQuestionId, setLastControllingQuestionId] = useState(null)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,30 +58,13 @@ const Basic = () => {
           }
           {...(isNumber && {
             onKeyDown: (e) => {
-              const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
-                'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
-
-              if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey)
-                return
-
-              if (!/^[0-9]$/.test(e.key)) {
-                e.preventDefault()
-                setFieldError({...fieldError, [idForNameAndFieldError]: 'Vain numerot ovat sallittuja'})
-                setTimeout(() => setFieldError({...fieldError, [idForNameAndFieldError]: null}), 3000)
-              }
+              validateNumber(e, idForNameAndFieldError, fieldError, setFieldError)
             }
           })} 
       />
       {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
       </>
     )
-  }
-
-  const getControllingQuestionId= (questionId) => {
-    if (questionId.startsWith('if_prev_yes_'))
-      return questionId.replace('if_prev_yes_', '')
-
-    return null
   }
 
   const handleAnswersChange = (sectionId, questionId, type, value) => {
@@ -233,8 +217,8 @@ const Basic = () => {
                             name={qs.id}
                             checked={answers[qs.id]?.answer === true}
                             onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
-                              if (qs.id.match(/^(.+?)_(if_this_q_yes)_(.+)$/))
-                                setLastControllingQuestionId({...lastControllingQuestionId, [qs.id]: true})
+                              if (qs.id.includes('_if_this_q_yes_'))
+                                setLastControllingQuestionId(qs.id)
                             }}
                           />
                           <Form.Check
@@ -244,77 +228,61 @@ const Basic = () => {
                             checked={answers[qs.id]?.answer === false}
                             onChange={() => {
                               handleAnswersChange(s.section_id, qs.id, qs.type, false)
-                              if (qs.id.match(/^(.+?)_(if_this_q_yes)_(.+)$/))
-                                setLastControllingQuestionId({...lastControllingQuestionId, [qs.id]: false})
+                              if (qs.id.includes('_if_this_q_yes_'))
+                                setLastControllingQuestionId(null)
                             }}
                           />
                         </>
                       )}
                     </div>
                 )}
-                {qs.type === 'group' && (() => {
-                  const controllingId = getControllingQuestionId(qs.id)
-
-                  if (!controllingId) {
-                    return (
-                      <div key={`${qs.id}-${qsIdx}`} >
-                        <p>{qs.instruction}</p>
-                        {qs.sub_questions.map((subQs, subQsIdx) => (
-                          <div key={`${subQs.id}-${subQsIdx}`} >
-                            {subQs.title && (
-                              <b>{subQs.title}</b>
-                            )}
-                            <p>{subQs.category}</p>
-                            {!subQs.title && subQs.fields && subQs.fields
-                              .map((f, fIdx) => (
-                                <div key={`${f.id}-${fIdx}`} >
-                                  {f.type === 'number' && (
-                                    <Form.Label>{f.label}
-                                      {inputField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
-                                    </Form.Label>
-                                  )}
-                                  {f.type === 'text' && (
-                                    <Form.Label>{f.label}
-                                      {inputField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
-                                    </Form.Label>
-                                  )}
-                                </div>
-                              ))}
-                          </div>
-                        ))}
-                      </div>
-                    )
-                  }
-
-                  if (!lastControllingQuestionId[controllingId])
-                    return null
-
-                  {/* if certain booleans was true show more questions */}
-                  return (
-                    <div key={`${qs.id}-${qsIdx}`} >
-                      <p>{qs.instruction}</p>
-                      {qs.sub_questions.map((subQs, subQsIdx) => (
+                {qs.type === 'group' && (
+                  <div key={`group_question-${qsIdx}`} >
+                    {qs.sub_questions
+                      .filter(fi => !fi.id.startsWith('sub_q_if_prev_yes_'))
+                      .map((subQs, subQsIdx) => (
                         <div key={`${subQs.id}-${subQsIdx}`} >
                           {subQs.title && (
                             <b>{subQs.title}</b>
                           )}
-                          <p>{subQs.category}</p>
-                          {!subQs.title && subQs.fields && subQs.fields
-                            .map((f, fIdx) => (
-                              <div key={`${f.id}-${fIdx}`} >
+                          {subQs.fields && subQs.fields.map((f, fIdx) => (
+                            <div key={`${f.id}-${fIdx}`} >
+                              <Form.Label>{f.label}
                                 {f.type === 'number' && (
-                                  <Form.Label>{f.label}
-                                    {inputField(f.id, s.section_id, qs.id, qs.type, f.type, subQs.id)}
-                                  </Form.Label>
+                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
                                 )}
-                              </div>
-                            ))}
+                                {f.type === 'text' && (
+                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                )}
+                              </Form.Label>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  )
-
-                })}
+                    ))}
+                  </div>
+                )}
+                {qs.type === 'group' && qs.id === getMoreQuestionIdIfCtrlQsYes(lastControllingQuestionId) && (
+                  <div key={`group_question-supplementary-qs-${qsIdx}`} >
+                    {qs.sub_questions
+                      .filter(fi => fi.id.startsWith('sub_q_if_prev_yes_'))
+                      .map((subQs, subQsIdx) => (
+                        <div key={`${subQs.id}-${subQsIdx}`} >
+                          {subQs.title && (
+                            <b>{subQs.title}</b>
+                          )}
+                          {subQs.fields && subQs.fields.map((f, fIdx) => (
+                            <div key={`${f.id}-${fIdx}`} >
+                              <Form.Label>{f.label}
+                                {f.type === 'number' && (
+                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                )}
+                              </Form.Label>
+                            </div>
+                          ))}
+                        </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -331,3 +299,14 @@ const Basic = () => {
 
 export default Basic
 
+/*
+                    {qs.id === ifPrevYesId && (
+                      <div key={`${qs.id}-${qsIdx}`} >
+                        <p>{qs.instruction}</p>
+
+                      </div>
+                    )}
+
+
+                {qs.type === 'group' && (!lastControllingQuestionId === null || qs.id !== getMoreQuestionIdIfCtrlQsYes(lastControllingQuestionId)) && (
+ */

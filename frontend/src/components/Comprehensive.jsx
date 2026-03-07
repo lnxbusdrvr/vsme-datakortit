@@ -284,7 +284,7 @@ const Comprehensive = () => {
                                       </Form.Label>
                                     </div>
                                   )}
-                                </laadittuv>
+                                </div>
                               )}
                             </div>
 
