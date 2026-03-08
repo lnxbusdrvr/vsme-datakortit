@@ -5,7 +5,7 @@ const cors = require('cors');
 require('express-async-errors');
 
 const basicQsRouter = require('./routes/basicQsRouter');
-const inclusiveQsRouter = require('./routes/inclusiveQsRouter');
+const comprehensiveQsRouter = require('./routes/comprehensiveQsRouter');
 const usersRouter = require('./routes/usersRouter');
 const loginRouter = require('./routes/loginRouter');
 const answersRouter = require('./routes/answersRouter');
@@ -36,7 +36,7 @@ app.use(middleware.requestLogger);
 app.use(tokenExtractor);
 app.use('/api/basic', basicQsRouter);
 app.use(tokenExtractor);
-app.use('/api/inclusive', inclusiveQsRouter);
+app.use('/api/comprehensive', comprehensiveQsRouter);
 
 app.use(tokenExtractor);
 app.use('/api/users', usersRouter);

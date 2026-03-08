@@ -178,8 +178,8 @@ const Basic = () => {
                 {s.instruction && <p><strong>{s.instruction}</strong></p>}
                 {s.questions.map((qs, qsIdx) => (
                   <div key={`${qs.id}-${qsIdx}`} >
-                    {qs.id === 'basic_or_incl_module' ? (
-                      <div key={`disabled_basic_or_incl_module-${qsIdx}`} >
+                    {qs.id === 'basic_or_comprehensive_module' ? (
+                      <div key={`disabled_basic_or_comprehensive_module-${qsIdx}`} >
                         <p>{qs.question}</p>
                         <Form.Check
                           type="radio"
