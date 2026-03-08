@@ -30,8 +30,8 @@ const BasicModuleSchema = new mongoose.Schema({
   sections: [BasicSectionSchema],
 });
 
-// --- Inclusive Module Schemas ---
-const InclusiveQuestionSchema = new mongoose.Schema(
+// --- Comprehensive Module Schemas ---
+const ComprehensiveQuestionSchema = new mongoose.Schema(
   {
     id: { type: String, required: true },
     question: { type: String, required: true },
@@ -41,26 +41,30 @@ const InclusiveQuestionSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const InclusiveSectionSchema = new mongoose.Schema(
+const ComprehensiveSectionSchema = new mongoose.Schema(
   {
     section_id: { type: String, required: true },
+    header: { type: String },
+    title: { type: String },
+    instruction: { type: String },
     title: { type: String, required: true },
-    questions: [InclusiveQuestionSchema],
+    questions: [ComprehensiveQuestionSchema],
   },
   { _id: false }
 );
 
-const InclusiveModuleSchema = new mongoose.Schema({
+const ComprehensiveModuleSchema = new mongoose.Schema({
   module: { type: String, default: 'Kattava moduuli' },
+  module_id: { type: String, default: 'comprehensive_module' },
   createdAt: { type: Date, default: Date.now },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  sections: [InclusiveSectionSchema],
+  sections: [ComprehensiveSectionSchema],
 });
 
 const BasicModule = mongoose.model('BasicModule', BasicModuleSchema, 'basicModule');
-const InclusiveModule = mongoose.model('InclusiveModule', InclusiveModuleSchema, 'inclusiveModule');
+const ComprehensiveModule = mongoose.model('ComprehensiveModule', ComprehensiveModuleSchema, 'comprehensiveModule');
 
 module.exports = {
   BasicModule,
-  InclusiveModule,
+  ComprehensiveModule,
 };
