@@ -175,10 +175,12 @@ const Basic = () => {
               <div key={`${s.section_id}-${sIdx}`} >
                 {s.header && <h2>{s.header}</h2>}
                 {s.title && <p className="title-box">{s.title}</p>}
-                {s.instruction && <p><strong>{s.instruction}</strong></p>}
+                {s.instruction && (
+                  <p><strong>s.instruction: {s.instruction}</strong></p>
+                )}
                 {s.questions.map((qs, qsIdx) => (
                   <div key={`${qs.id}-${qsIdx}`} >
-                    {qs.id === 'basic_or_comprehensive_module' ? (
+                    {qs.id === 'b1_basic_or_comprehensive_module' ? (
                       <div key={`disabled_basic_or_comprehensive_module-${qsIdx}`} >
                         <p>{qs.question}</p>
                         <Form.Check
@@ -197,6 +199,9 @@ const Basic = () => {
                       </div>
                     ) : (
                       <div key={`other_questions-${qsIdx}`}>
+                        {qs.instruction && (
+                          <p className="instruction">{qs.instruction}</p>
+                        )}
                         {qs.type === 'text' && (
                           <Form.Label>{qs.question}
                             {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
@@ -245,6 +250,9 @@ const Basic = () => {
                           {subQs.title && (
                             <b>{subQs.title}</b>
                           )}
+                          {subQs.category && (
+                            <b>{subQs.category}</b>
+                          )}
                           {subQs.fields && subQs.fields.map((f, fIdx) => (
                             <div key={`${f.id}-${fIdx}`} >
                               <Form.Label>{f.label}
@@ -267,8 +275,8 @@ const Basic = () => {
                       .filter(fi => fi.id.startsWith('sub_q_if_prev_yes_'))
                       .map((subQs, subQsIdx) => (
                         <div key={`${subQs.id}-${subQsIdx}`} >
-                          {subQs.title && (
-                            <b>{subQs.title}</b>
+                          {subQs.category && (
+                            <p><strong>{subQs.category}</strong></p>
                           )}
                           {subQs.fields && subQs.fields.map((f, fIdx) => (
                             <div key={`${f.id}-${fIdx}`} >

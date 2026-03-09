@@ -20,7 +20,7 @@ const Comprehensive = () => {
   const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldError, setFieldError] = useState({})
-  const [lastControllingQuestionId, setLastControllingQuestionId] = useState(null)
+  const [lastControllingQuestionId, setLastControllingQuestionId] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -168,12 +168,18 @@ const Comprehensive = () => {
             <h1>{b.module}</h1>
             {b.sections.map((s, sIdx) => (
               <div key={`${s.section_id}-${sIdx}`} >
-                {s.header && <h2>{s.header}</h2>}
-                {s.title && <p className="title-box">{s.title}</p>}
-                {s.instruction && <p><strong>{s.instruction}</strong></p>}
+                {s.header && (
+                  <h2>{s.header}</h2>
+                )}
+                {s.title && (
+                  <p className="title-box">{s.title}</p>
+                )}
+                {s.instruction && (
+                  <p><strong>{s.instruction}</strong></p>
+                )}
                 {s.questions.map((qs, qsIdx) => (
                   <div key={`${qs.id}-${qsIdx}`} >
-                    {qs.id === 'basic_or_comprehensive_module' ? (
+                    {qs.id === 'b1_basic_or_comprehensive_module' ? (
                       <div key={`disabled_basic_or_comprehensive_module-${qsIdx}`} >
                         <p>{qs.question}</p>
                         <Form.Check
@@ -192,6 +198,9 @@ const Comprehensive = () => {
                       </div>
                     ) : (
                       <div key={`other_questions-${qsIdx}`}>
+                        {qs.instruction && (
+                          <p className="instruction">{qs.instruction}</p>
+                        )}
                         {qs.type === 'text' && (
                           <Form.Label>{qs.question}
                             {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
@@ -204,7 +213,6 @@ const Comprehensive = () => {
                       )}
                       {qs.type === 'boolean' && (
                         <>
-                          {/* checked's value is needed to get clear button to work */}
                           <Form.Label>{qs.question}</Form.Label>
                           <Form.Check
                             label="Kyllä"
@@ -213,7 +221,7 @@ const Comprehensive = () => {
                             checked={answers[qs.id]?.answer === true}
                             onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
                               if (qs.id.includes('_if_this_q_yes_'))
-                                setLastControllingQuestionId(qs.id)
+                                setLastControllingQuestionId(prev => [...prev, qs.id])
                             }}
                           />
                           <Form.Check
@@ -224,7 +232,7 @@ const Comprehensive = () => {
                             onChange={() => {
                               handleAnswersChange(s.section_id, qs.id, qs.type, false)
                               if (qs.id.includes('_if_this_q_yes_'))
-                                setLastControllingQuestionId(null)
+                                setLastControllingQuestionId(prev => prev.filter(id => id !== qs.id))
                             }}
                           />
                         </>
@@ -239,6 +247,9 @@ const Comprehensive = () => {
                         <div key={`${subQs.id}-${subQsIdx}`} >
                           {subQs.title && (
                             <b>{subQs.title}</b>
+                          )}
+                          {subQs.category && (
+                            <b>{subQs.category}</b>
                           )}
                           {subQs.fields && subQs.fields.map((f, fIdx) => (
                             <div key={`${f.id}-${fIdx}`} >
@@ -256,17 +267,15 @@ const Comprehensive = () => {
                     ))}
                   </div>
                 )}
-                {qs.type === 'group' && qs.id === getMoreQuestionIdIfCtrlQsYes(lastControllingQuestionId) && (
+                {qs.type === 'group' && lastControllingQuestionId.some(ctrlId => getMoreQuestionIdIfCtrlQsYes(ctrlId) === qs.id) && (
                   <div key={`group_question-supplementary-qs-${qsIdx}`} >
                     {qs.sub_questions
                       .filter(fi => fi.id.startsWith('sub_q_if_prev_yes_'))
                       .map((subQs, subQsIdx) => (
                         <div key={`${subQs.id}-${subQsIdx}`} >
-                          {subQs.title && (
-                            <b>{subQs.title}</b>
-                          )}
                           {subQs.fields && subQs.fields.map((f, fIdx) => (
                             <div key={`${f.id}-${fIdx}`} >
+                              {<p>{subQs.category}</p>}
                               <Form.Label>{f.label}
                                 {f.type === 'number' && (
                                   inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
@@ -291,5 +300,8 @@ const Comprehensive = () => {
   )
 }
 
+/*
+                {qs.type === 'group' && qs.id === getMoreQuestionIdIfCtrlQsYes(lastControllingQuestionId) && (
+                */
 
 export default Comprehensive 
