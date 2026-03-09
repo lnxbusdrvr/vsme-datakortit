@@ -13,7 +13,7 @@ const Answers = () => {
   const answers = useSelector(state => state.answers)
   const user = useSelector(state => state.user)
   const basic = useSelector(state => state.basic)
-  //const inclusive = useSelector(state => state.inclusive)
+  const comnprehensive = useSelector(state => state.comprehensive)
   const [basicOrInclusive, setBasicOrInclusive] = useState()
 
   useEffect(() => {
