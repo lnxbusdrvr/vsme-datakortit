@@ -924,12 +924,11 @@
         },
         {
           "id": "if_prev_yes_management_if_this_q_yes_corruption",
-          "instruction": "Korruptio/lahjonta -tiedot",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_management_if_this_q_yes_corruption",
-              "category": "Tuomioiden lukumäärä ja aiheutuneet kulut",
+              "category": "Korruptio/lahjonta -tiedot",
               "fields": [
                 {
                   "id": "management_number_of_penalties",

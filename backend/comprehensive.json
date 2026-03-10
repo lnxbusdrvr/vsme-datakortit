@@ -1518,16 +1518,15 @@
         },
         {
           "id": "if_prev_yes_c6_if_this_q_yes_human_rights_else",
-          "instruction": "jos kyllä",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c6_if_this_q_yes_human_rights_else",
-              "category": "(täsmennettävä)",
+              "category": "jos kyllä",
               "fields": [
                 {
                   "id": "else_severe_human_rights_abuses_describe",
-                  "label": "(textiä))",
+                  "label": "(täsmennettävä)",
                   "type": "text"
                 }
               ]
@@ -1584,7 +1583,6 @@
         },
         {
           "id": "if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_else",
-          "instruction": "jos kyllä",
           "type": "group",
           "sub_questions": [
             {
@@ -1612,7 +1610,6 @@
         },
         {
           "id": "if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
-          "instruction": "jos kyllä",
           "type": "group",
           "sub_questions": [
             {
@@ -1731,12 +1728,11 @@
         },
         {
           "id": "if_prev_yes_management_if_this_q_yes_corruption",
-          "instruction": "Korruptio/lahjonta -tiedot",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_management_if_this_q_yes_corruption",
-              "category": "Tuomioiden lukumäärä ja aiheutuneet kulut",
+              "category": "Korruptio/lahjonta -tiedot", 
               "fields": [
                 {
                   "id": "management_number_of_penalties",
@@ -1765,16 +1761,15 @@
         },
         {
           "id": "if_prev_yes_c8_if_this_q_yes_company_operates_in_sector",
-          "instruction": "Jos kyllä,",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c8_if_this_q_yes_company_operates_in_sector",
-              "category": "ilmoita asiaan liittyvä tulot",
+              "category": "Jos kyllä,", 
               "fields": [
                 {
                   "id": "if_company_operates_in_sector_if_yes_income_from_sector",
-                  "label": "€",
+                  "label": "",
                   "type": "number"
                 }
               ]
@@ -1788,16 +1783,15 @@
         },
         {
           "id": "if_prev_yes_c8_if_this_q_yes_paris_agreement",
-          "instruction": "Jos kyllä,",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c8_if_this_q_yes_paris_agreement",
-              "category": "ilmoita asiaan liittyvä tulot",
+              "category": "Jos kyllä,",
               "fields": [
                 {
                   "id": "paris_agreement_if_yes_income_from_sector",
-                  "label": "€",
+                  "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
               ]
@@ -1811,16 +1805,15 @@
         },
         {
           "id": "if_prev_yes_c8_if_this_q_yes_tobacco_production",
-          "instruction": "Jos kyllä,",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c8_if_this_q_yes_tobacco_production",
-              "category": "ilmoita asiaan liittyvä tulot",
+              "category": "Jos kyllä,",
               "fields": [
                 {
                   "id": "tobacco_production_if_yes_income_from_sector",
-                  "label": "€",
+                  "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
               ]
@@ -1834,16 +1827,15 @@
         },
         {
           "id": "if_prev_yes_c8_if_this_q_yes_fossil_fuel_production",
-          "instruction": "Jos kyllä, ilmoita asiaan liittyvä tulot",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c8_if_this_q_yes_fossil_fuel_production",
-              "category": "ilmoita asiaan liittyvä tulot",
+              "category": "Jos kyllä,",
               "fields": [
                 {
                   "id": "fossil_fuel_production_if_yes_income_from_sector",
-                  "label": "€",
+                  "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
               ]
@@ -1857,16 +1849,15 @@
         },
         {
           "id": "if_prev_yes_c8_if_this_q_yes_cemicals_production",
-          "instruction": "Jos kyllä,",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c8_if_this_q_yes_cemicals_production",
-              "category": "ilmoita asiaan liittyvä tulot",
+              "category": "Jos kyllä,",
               "fields": [
                 {
                   "id": "cemicals_production_if_yes_income_from_sector",
-                  "label": "€",
+                  "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
               ]
@@ -1880,16 +1871,15 @@
         },
         {
           "id": "if_prev_yes_c8_if_this_q_yes_paris_agreement",
-          "instruction": "Jos kyllä,",
           "type": "group",
           "sub_questions": [
             {
               "id": "sub_q_if_prev_yes_c8_if_this_q_yes_paris_agreement",
-              "category": "ilmoita asiaan liittyvä tulot",
+              "category": "Jos kyllä",
               "fields": [
                 {
                   "id": "paris_agreement_if_yes_income_from_sector",
-                  "label": "€",
+                  "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
               ]
