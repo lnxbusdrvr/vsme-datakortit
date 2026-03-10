@@ -84,6 +84,7 @@
 | 06.03.2026 | 8     | Add more logic to if_yes fields in db. Try to get if_yes to work still needs to work on it |
 | 07.03.2026 | 4,5   | Add logic to sub_questions in db. Fix partially ifYes-Logic in component |
 | 08.03.2026 | 2     | Create backend for comprehensive questions |
-| 08.03.2026 | 3,5   | Fix "if yes show more questions" -logic. Now show questions completly as thei are supposed to be |
-| Total      | 246,5 |
+| 09.03.2026 | 3,5   | Fix "if yes show more questions" -logic. Now show questions completly as thei are supposed to be |
+| 10.03.2026 | 2,75  | Make porosess on <Answers /> continue tomorrow |
+| Total      | 249,25 |
 

@@ -110,6 +110,8 @@ const Comprehensive = () => {
     
   }
 
+  console.log(`answers: ${JSON.stringify(answers)}`)
+
   const handleSubmit = async (event) => {
     event.preventDefault()
 

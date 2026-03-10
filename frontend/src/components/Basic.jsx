@@ -35,6 +35,8 @@ const Basic = () => {
   if (!user || !basic)
     return <div>Loading...</div>
 
+  console.log(`answers: ${JSON.stringify(answers)}`)
+
   const inputField = (idForNameAndFieldError, sectionId, questionId, type, fieldType, subQuestionId) => {
     const isNumber = type === 'number' || fieldType === 'number'
     // value's value is needed to get clear button to work 
