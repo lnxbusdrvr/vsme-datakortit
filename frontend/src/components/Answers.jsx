@@ -80,14 +80,25 @@ const Answers = () => {
   return ( <div>
       <h2>{user.name} vastaukset:</h2>
 
-      {sortedAnswers.map((a, idx) => {
+      {sortedAnswers.map((a, aIdx) => {
         const question = module
           .flatMap(m => m.sections)
-          .find(q => q.id === a.s)
+          .flatMap(s => s.questions)
+          .find(q => q.id === a.questionId)
+
+        const section = module
+          .flatMap(m => m.sections)
+          .find(s => s.section_id === a.sectionId)
+
+        // Check if this is the first answer in this section
+        const isFirstInSection = aIdx === 0 || 
+          sortedAnswers[aIdx - 1].sectionId !== a.sectionId
 
         return (
-          <div key={`basic-${idx}`}>
-            <p>Osio: {question?.title}</p>
+          <div key={`basic-${aIdx}`}>
+            {isFirstInSection && (
+              <p className="title-box">{section?.title}</p>
+            )}
             <p>Kysymys: <strong>{question?.question || a.questionId}</strong></p>
             {a.type !== 'group' ? (
               <p>Vastaus: {a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei' ) : a.answer}</p>

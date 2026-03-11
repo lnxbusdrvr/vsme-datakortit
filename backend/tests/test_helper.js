@@ -96,63 +96,70 @@ const getAnswers = moduleId => {
   return [
     {
       moduleId,
-      sectionId: 'test1',
-      questionId: 'test1_01_text',
-      type: 'text',
-      answer: 'Vastasin tekstikentään',
-    },
-    {
-      moduleId,
-      sectionId: 'test1',
-      questionId: 'test1_02_number',
-      type: 'number',
-      answer: 123,
-    },
-    {
-      moduleId,
-      sectionId: 'test1',
-      questionId: 'test1_03_boolean',
-      type: 'boolean',
-      answer: true,
-    },
-    {
-      moduleId,
-      sectionId: 'subquestion',
-      questionId: 'softdrinks_use',
-      type: 'group',
-      groupAnswers: [
+      sections: [
         {
-          "subQuestionId": "softdrinks_in_electric_:vehicles",
-          values: {
-            "elactric_softdrinks_w_sugar": {
-              "value": 15,
-              "fieldType": "number"
+          sectionId: 'test1',
+          questions: [
+            {
+              questionId: 'test1_01_text',
+              type: 'text',
+              answer: 'Vastasin tekstikentään',
             },
-            "elactric_softdrinks_no_sugar": {
-              "value": "viisi",
-              "fieldType": "text"
+            {
+              questionId: 'test1_02_number',
+              type: 'number',
+              answer: 123,
             },
-            "elactric_softdrinks_total": {
-              "value": 20,
-              "fieldType": "number"
-            }
-          }
+            {
+              questionId: 'test1_03_boolean',
+              type: 'boolean',
+              answer: true,
+            },
+          ]
         },
         {
-          "subQuestionId": "softdrinks_in_diesel_vehicles",
-          values: {
-            "diesel_softdrinks_w_sugar": {
-              "value": 1,
-              "fieldType": "number"
-            },
-            "diesel_softdrinks_no_sugar": {
-              "value": "kaksikymmentäkolme",
-              "fieldType": "text" },
-            "diesel_softdrinks_total": {
-              "value": 24,
-              "fieldType": "number"
+          sectionId: 'subquestion',
+          questions: [
+            {
+              questionId: 'softdrinks_use',
+              type: 'group',
+              groupAnswers: [
+                {
+                  subQuestionId: "softdrinks_in_electric_vehicles",
+                  values: {
+                    "elactric_softdrinks_w_sugar": {
+                      "value": 15,
+                      "fieldType": "number"
+                    },
+                    "elactric_softdrinks_no_sugar": {
+                      "value": "viisi",
+                      "fieldType": "text"
+                    },
+                    "elactric_softdrinks_total": {
+                      "value": 20,
+                      "fieldType": "number"
+                    }
+                  }
+                },
+                {
+                  "subQuestionId": "softdrinks_in_diesel_vehicles",
+                  values: {
+                    "diesel_softdrinks_w_sugar": {
+                      "value": 1,
+                      "fieldType": "number"
+                    },
+                    "diesel_softdrinks_no_sugar": {
+                      "value": "kaksikymmentäkolme",
+                      "fieldType": "text" },
+                    "diesel_softdrinks_total": {
+                      "value": 24,
+                      "fieldType": "number"
+                    }
+                  }
+                }
+              ]
             }
-          }
+          ]
         }
       ]
     }
