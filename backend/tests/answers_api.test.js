@@ -66,6 +66,7 @@ describe('BasicModule Answers', () => {
 
     test('Question can be answered by user and it return json', async () => {
       const answer = answers[0];
+      console.log(`answers: ${JSON.stringify(answers)}`)
 
       const response = await api
         .post('/api/answers')

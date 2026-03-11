@@ -1,26 +1,13 @@
 const mongoose = require('mongoose');
 
-const answerSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  moduleId: {
-    type: String,
-    required: true,
-  },
-  sectionId: {
-    type: String,
-    required: true,
-  },
+const questionAnswerSchema = new mongoose.Schema({
   questionId: {
     type: String,
     required: true,
   },
   type: {
     type: String,
-    enum: ['text', 'number', 'boolean', 'group' ],
+    enum: ['text', 'number', 'boolean', 'group'],
     required: true,
   },
   answer: {
@@ -54,6 +41,35 @@ const answerSchema = new mongoose.Schema({
       }
     }
   ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+}, { _id: false });
+
+const sectionAnswersSchema = new mongoose.Schema({
+  sectionId: {
+    type: String,
+    required: true,
+  },
+  questions: [questionAnswerSchema],
+}, { _id: false });
+
+const answerSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  moduleId: {
+    type: String,
+    required: true,
+  },
+  sections: [sectionAnswersSchema],
   createdAt: {
     type: Date,
     default: Date.now,

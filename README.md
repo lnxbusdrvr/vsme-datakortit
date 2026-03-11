@@ -86,5 +86,6 @@
 | 08.03.2026 | 2     | Create backend for comprehensive questions |
 | 09.03.2026 | 3,5   | Fix "if yes show more questions" -logic. Now show questions completly as thei are supposed to be |
 | 10.03.2026 | 2,75  | Make porosess on <Answers /> continue tomorrow |
-| Total      | 249,25 |
+| 11.03.2026 | 1,75  | refactor how answers are saved in db |
+| Total      | 251   |
 
