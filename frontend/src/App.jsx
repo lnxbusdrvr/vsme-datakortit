@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm';
 import NewUserForm from './components/NewUserForm';
 import Questions from './components/Questions';
 import Answers from './components/Answers';
+import Users from './components/Users';
 import User from './components/User';
 
 import { initializeUser, clearUser } from './reducers/userReducer';
@@ -27,6 +28,9 @@ const App = () => {
   };
 
 
+  console.log('User:', user); // Debug
+  console.log('User role:', user?.role); // Debug
+
   return (
     <div>
       {!user ? (
@@ -34,16 +38,26 @@ const App = () => {
       ) : (
         <>
           <nav className="nav-expand-1g bg-light">
-             <Link className="navbar-brand" to="/">Kysymykset</Link> <Link className="navbar-brand" to="/Answers">Vastaukset</Link> <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link> <Button onClick={handleLogout}>Kirjaudu ulos</Button>
+            {(user?.role === 'admin' || user?.role === 'viewer') && (
+              <Link className="navbar-brand" to="/users">Käyttäjät</Link>
+            )}
+            <Link className="navbar-brand" to="/">Kysymykset</Link>
+            <Link className="navbar-brand" to="/Answers">Vastaukset</Link>
+            <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link>
+            <Button onClick={handleLogout}>Kirjaudu ulos</Button>
           </nav>
           <h2>VSME-datakoritit</h2>
 
           <Routes>
             <Route path="/" element={<Questions />} />
-            <Route path="/Answers" element={<Answers />} />
+            {(user?.role === 'admin' || user?.role === 'viewer') && (
+              <Route path="/users" element={<Users />} />
+            )}
+            <Route path="/answers" element={<Answers />} />
             <Route path="/users/:id" element={<User />} />
           </Routes>
         </>
+
       )}
       <Notification />
     </div>

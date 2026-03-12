@@ -12,15 +12,15 @@
 | 31.05.2025 | 1     | Add more basic question-data |
 | 31.05.2025 | 0.5   | Add minor changes to perusmoduuli |
 | 06.06.2025 | 1     | Add more questions from perusmoduuli |
-| 07.06.2025 | 1,5   | perusmoduuli ready, next check if valid JSON |
-| 12.06.2025 | 1,5   | validate JSON, it imports in even MongoDB Atlas |
+| 07.06.2025 | 1,5   | Basic module is ready, next check if valid JSON |
+| 12.06.2025 | 1,5   | Validate JSON, it imports in even MongoDB Atlas |
 | 20.06.2025 | 1,25  | 1st implementation |
 | 26.06.2025 | 1,75  | 1st working implementation |
 | 04.07.2025 | 0,5   | Refactor perusmoduuli json-data |
 | 06.07.2025 | 0,5   | Add some json-data from kattava moduuli |
 | 12.07.2025 | 3,75  | Add some more json-data from kattava moduuli |
 | 12.07.2025 | 3     | Add rest of json-data from kattava moduuli |
-| 27.07.2025 | 3,25  | fix minor datafix. Add models, controllers to questions and user collection on backend |
+| 27.07.2025 | 3,25  | Fix minor datafix. Add models, controllers to questions and user collection on backend |
 | 23.08.2025 | 1     | Make tests |
 | 24.08.2025 | 1,5   | Make all user tests |
 | 02.09.2025 | 1,5   | Make userController |
@@ -66,7 +66,7 @@
 | 31.01.2026 | 4     | Fixed basic-module-db. Added some css |
 | 02.02.2026 | 1,5   | Added basic module's b9 and b10. Fixed B9 and B10 answer-fields |
 | 06.02.2026 | 3,75  | Rename few fields in Basic module db. Mad B11 Management -section swhos more field if clicked true/yes/kyllä |
-| 13.02.2026 | 6     | fixed duplicate on db. Add send answer -action to db. Set correct error message in backend middleware |
+| 13.02.2026 | 6     | Fixed duplicate on db. Add send answer -action to db. Set correct error message in backend middleware |
 | 16.02.2026 | 7     | Fixed fields that clear button will work. Refactored sub_qiestions on basic db. |
 | 17.02.2026 | 5,75  | Refactor backend questions tests and frontends form for new basic db. |
 | 18.02.2026 | 7     | Fixed tests on backend, added validation on answering TODO validating also subQs |
@@ -86,6 +86,7 @@
 | 08.03.2026 | 2     | Create backend for comprehensive questions |
 | 09.03.2026 | 3,5   | Fix "if yes show more questions" -logic. Now show questions completly as thei are supposed to be |
 | 10.03.2026 | 2,75  | Make porosess on <Answers /> continue tomorrow |
-| 11.03.2026 | 1,75  | refactor how answers are saved in db |
-| Total      | 251   |
+| 11.03.2026 | 1,75  | Refactor how answers are saved in db |
+| 12.03.2026 | 5     | Went back to old way to save answers-db, make all features done and perhaps then refactor answers-db. Create <Users /> for admin and viewer roles |
+| Total      | 256   |
 
