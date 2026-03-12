@@ -48,11 +48,7 @@ const validateGroupAnswers = (groupAnswers) => {
 const createAnswer = async (req, res) => {
   const { moduleId, sectionId, questionId, type, answer, groupAnswers } = req.body;
 
-
   try {
-
-    if (!moduleId || !sections || !Array.isArray(sections) || sections.length === 0) {
-      return res.status(400).json({ error: 'Missing required fields: moduleId and sections array' });
 
     // Run validations
     const validationError =

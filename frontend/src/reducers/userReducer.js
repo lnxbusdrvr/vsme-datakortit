@@ -31,7 +31,7 @@ export const loginUser = (credentials) => {
       // fetch token and id from login controller
       const loginResponse = await loginService.login(credentials)
 
-      // Save to storage and to userService
+      // Save to storage
       storageService.saveUser(loginResponse)
       // and to userService
       userService.setUser(loginResponse)

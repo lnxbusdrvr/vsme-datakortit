@@ -12,7 +12,7 @@ describe('Questions & Answers', () => {
   });
 
   describe('ComprehensiveModule Questions', () => {
-    test('Inclusive questions are returned as json', async () => {
+    test('Comprehensive questions are returned as json', async () => {
       await api
         .get('/api/comprehensive')
         .expect(200)
