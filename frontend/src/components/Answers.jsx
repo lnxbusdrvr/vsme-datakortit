@@ -1,7 +1,9 @@
 import { useDispatch, useSelector} from 'react-redux'
-//import { Routes, Route, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 //import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+
+import usersService from '../services/usersService';
 
 import { initializeBasic } from '../reducers/basicReducer'
 import { initializeComprehensive} from '../reducers/comprehensiveReducer'
@@ -11,33 +13,39 @@ import Notification from './Notification';
 
 
 const Answers = () => {
+  const id = useParams().id
   const dispatch = useDispatch()
   const answers = useSelector(state => state.answers)
-  const user = useSelector(state => state.user)
   const basic = useSelector(state => state.basic)
   const comprehensive = useSelector(state => state.comprehensive)
-  const [basicOrInclusive, setBasicOrInclusive] = useState(null)
+  const [user, setUser] = useState(null)
+
+  /*
+   * TODO:
+   * Show answer /per user
+   * not all answers by all users
+   * TODO:
+   * fix duplicate answers to
+   * more human readable message
+   ******************************/
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const userData = await usersService.getUserById(id)
+      setUser(userData)
+    }
+    fetchUser()
     dispatch(initializeBasic())
     dispatch(initializeComprehensive())
     dispatch(initializeAnswers())
-  }, [dispatch])
+  }, [dispatch, id])
 
-  useEffect(() => {
-    if (answers && answers.length > 0)
-      setBasicOrInclusive(answers[0].moduleId)
-  }, [dispatch])
-
-  if (!answers)
+  if (!answers || !user)
     return <div>Loading...</div>
 
-  const module = (basicOrInclusive !== null
-    && basicOrInclusive === 'basic_module')
+  const module = (answers[0]?.moduleId === 'basic_module')
     ? basic
     : comprehensive
- // console.log(`module: ${JSON.stringify(module)}`)
-
 
   // Sort answers based on sectionId and questionId
   const sortedAnswers = [...answers].sort((a, b) => {
@@ -74,10 +82,9 @@ const Answers = () => {
     return questionIndexA - questionIndexB
   })
 
-  console.log(`basicOrInclusive: ${basicOrInclusive}`)
 
-
-  return ( <div>
+  return (
+    <div>
       <h2>{user.name} vastaukset:</h2>
 
       {sortedAnswers.map((a, aIdx) => {

@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const Answer = require('../models/answer');
 const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH;
 
 const createUser = async (req, res) => {
@@ -43,7 +44,7 @@ const createUser = async (req, res) => {
 };
 
 const getAllUsers = async (req, res) => {
-  if (req.user && (req.user.role == 'admin' || req.user.role === 'viewer')) {
+  if (req.user && (req.user.role === 'admin' || req.user.role === 'viewer')) {
     const users = await User.find({});
     res.json(users);
   } else {
@@ -52,10 +53,23 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
-  if (req.user.id.toString() == req.params.id) {
-    const user = await User.findById(req.params.id);
-    if (user) res.json(user);
-    else res.status(404).end();
+  if (req.user.id.toString() === req.params.id
+    || req.user.role === 'admin'
+    || req.user.role === 'viewer') {
+
+    const user = await User.findById(req.params.id)
+      .populate('Answers', {
+        moduleId: 1,
+        sectionId: 1,
+        questionId: 1,
+        answer: 1,
+        groupAnswers: 1,
+        type: 1
+      })
+    if (user)
+      res.json(user);
+    else
+      res.status(404).end();
   } else {
     res.status(401).json({ error: 'permission denied' });
   }

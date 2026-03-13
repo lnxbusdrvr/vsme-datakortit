@@ -6,6 +6,7 @@ const app = require('../app');
 const api = supertest(app);
 const mongoose = require('mongoose');
 
+// comprehensive_module has same structure as basic_module
 const initialBasicModules = [
   {
     _id: new mongoose.Types.ObjectId('688639b533545dffe4168751'),
@@ -159,48 +160,9 @@ const getAnswers = moduleId => {
   ]
 };
 
-const initialInclusiveModule = [
-  {
-    module: 'Kattava moduuli',
-    sections: [
-      {
-        section_id: 'frofile',
-        title: 'Frofile',
-        questions: [
-          {
-            id: 'frofile_01',
-            question: 'Kuka. mitä, häh?',
-            type: 'text',
-          },
-          {
-            id: 'frofile_02',
-            question: 'Euroa',
-            type: 'number',
-          },
-          {
-            id: 'frofile_03',
-            question: 'Ollako vai ei?',
-            type: 'boolean',
-          },
-          {
-            id: 'frofile_04',
-            question: 'Mitä kuuluu?',
-            type: 'text',
-          },
-        ],
-      },
-    ],
-  },
-];
-
 const basicModuleInDb = async () => {
   const basicModule = await BasicModule.find({});
   return basicModule.map(b => b.toJSON());
-};
-
-const inclusiveModuleInDb = async () => {
-  const inclusiveModule = await InclusiveModule.find({});
-  return inclusiveModule.map(incl => incl.toJSON());
 };
 
 const seedBasicModule = async () => {
@@ -324,9 +286,7 @@ const loginUser = async (user, currentPassword) => {
 module.exports = {
   initialBasicModules,
   getAnswers,
-  initialInclusiveModule,
   basicModuleInDb,
-  inclusiveModuleInDb,
   seedBasicModule,
   seedAnswersForUser,
   usersInDb,

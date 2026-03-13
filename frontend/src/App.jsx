@@ -41,8 +41,12 @@ const App = () => {
             {(user?.role === 'admin' || user?.role === 'viewer') && (
               <Link className="navbar-brand" to="/users">Käyttäjät</Link>
             )}
-            <Link className="navbar-brand" to="/">Kysymykset</Link>
-            <Link className="navbar-brand" to="/Answers">Vastaukset</Link>
+            {(user?.role === 'user') && (
+              <>
+                <Link className="navbar-brand" to="/">Kysymykset</Link>
+                <Link className="navbar-brand" to={`/useranswers/${user.id}`}>Vastaukset</Link>
+              </>
+            )}
             <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link>
             <Button onClick={handleLogout}>Kirjaudu ulos</Button>
           </nav>
@@ -53,7 +57,7 @@ const App = () => {
             {(user?.role === 'admin' || user?.role === 'viewer') && (
               <Route path="/users" element={<Users />} />
             )}
-            <Route path="/answers" element={<Answers />} />
+            <Route path="/useranswers/:id" element={<Answers />} />
             <Route path="/users/:id" element={<User />} />
           </Routes>
         </>

@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
-
 import usersService from '../services/usersService';
+
+import { initializeUsers } from '../reducers/usersReducer';
 
 const Users = () => {
   const dispatch = useDispatch()
@@ -19,10 +20,12 @@ const Users = () => {
   return (
     <div>
       <h2>Käyttäjät</h2>
-      {users.map(u  => (
+      {users?.map(u  => (
         <div key={u.id}>
           <Link to={`/users/${u.id}`}>{u.name}</Link>
-          <h3>{u.email}</h3>
+          {u.role === 'user' && (
+            <Link to={`/useranswers/${u.id}`}>Vastatut vastaukset</Link>
+          )}
         </div>
       ))}
     </div>

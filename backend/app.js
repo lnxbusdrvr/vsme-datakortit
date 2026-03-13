@@ -35,6 +35,7 @@ app.use(middleware.requestLogger);
 
 app.use(tokenExtractor);
 app.use('/api/basic', basicQsRouter);
+
 app.use(tokenExtractor);
 app.use('/api/comprehensive', comprehensiveQsRouter);
 
