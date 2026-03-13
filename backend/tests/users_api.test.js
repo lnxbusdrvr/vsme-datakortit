@@ -144,6 +144,38 @@ describe('users', () => {
         .expect(200);
     });
 
+    test('Admin can see all users', async () => {
+      const response = await api
+        .get(`/api/users`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .expect(200);
+
+      assert.strictEqual(response.body.length, 4);
+    });
+
+    test('Admin can see user by id', async () => {
+      await api
+        .get(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .expect(200);
+    });
+
+    test('Viewer can see all users', async () => {
+      const response = await api
+        .get(`/api/users`)
+        .set('Authorization', `Bearer ${viewerToken}`)
+        .expect(200);
+
+      assert.strictEqual(response.body.length, 4);
+    });
+
+    test('Viewer can see user by id', async () => {
+      await api
+        .get(`/api/users/${testUser.id}`)
+        .set('Authorization', `Bearer ${viewerToken}`)
+        .expect(200);
+    });
+
     test('Succesfully change password', async () => {
       const newPassword = 'newpassword';
 

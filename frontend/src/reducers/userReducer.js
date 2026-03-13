@@ -26,7 +26,6 @@ export const { set, clear } = slice.actions
 export const loginUser = (credentials) => {
   return async dispatch => {
     try {
-      console.log('Sending login request with:', credentials);
 
       // fetch token and id from login controller
       const loginResponse = await loginService.login(credentials)

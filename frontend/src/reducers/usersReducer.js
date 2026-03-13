@@ -34,7 +34,7 @@ export const createUser = (newUser) => {
       dispatch(notify(`Käyttäjä ${newUser.name} luotu!`, 5, false));
       return true;
     } catch {
-      dispatch(notify('Käyttäjätunnuksen luominen onnistui, ehkä sähköposti, tai/ja Y-tunnus jo käytössä', 10, true));
+      dispatch(notify('Käyttäjätunnuksen luominen epäonnistui, ehkä sähköposti, tai/ja Y-tunnus on jo käytössä', 10, true));
       return false;
     }
   }

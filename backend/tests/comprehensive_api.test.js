@@ -1,7 +1,6 @@
 const { describe, beforeEach, test } = require('node:test');
 const supertest = require('supertest');
 const app = require('../app');
-const helper = require('./test_helper');
 const User = require('../models/user');
 
 const api = supertest(app);

@@ -61,6 +61,12 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  Answers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Answer'
+    }
+  ]
 });
 
 /*

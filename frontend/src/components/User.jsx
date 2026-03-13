@@ -33,7 +33,7 @@ const User = () => {
 
   return (
     <div>
-      <h2>user</h2>
+      <h2>Käyttäjätiedot</h2>
       <h3>Nimi: {user.name}</h3>
       <h3>Rooli: {user.role}</h3>
       <h3>Yhtiön nimi: {user.companyName}</h3>

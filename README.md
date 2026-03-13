@@ -88,5 +88,6 @@
 | 10.03.2026 | 2,75  | Make porosess on <Answers /> continue tomorrow |
 | 11.03.2026 | 1,75  | Refactor how answers are saved in db |
 | 12.03.2026 | 5     | Went back to old way to save answers-db, make all features done and perhaps then refactor answers-db. Create <Users /> for admin and viewer roles |
-| Total      | 256   |
+| 13.03.2026 | 4,25  | Make Users page for admin and viewer -roles and show all users answers |
+| Total      | 260,25 |
 
