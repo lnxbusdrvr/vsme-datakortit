@@ -89,5 +89,6 @@
 | 11.03.2026 | 1,75  | Refactor how answers are saved in db |
 | 12.03.2026 | 5     | Went back to old way to save answers-db, make all features done and perhaps then refactor answers-db. Create <Users /> for admin and viewer roles |
 | 13.03.2026 | 4,25  | Make Users page for admin and viewer -roles and show all users answers |
-| Total      | 260,25 |
+| 16.03.2026 | 4,75  | Fix subqs send answers error. Show only one user on <Answers /> when admin/viewer. Fix basic module answers |
+| Total      | 265   |
 

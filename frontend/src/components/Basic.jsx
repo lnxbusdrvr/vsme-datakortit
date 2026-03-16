@@ -109,7 +109,7 @@ const Basic = () => {
       ...answers,
       [questionId]: {
         sectionId,
-        type,
+        type: 'group',
         groupAnswers: updatedGroupAnswers
       }
     })
@@ -178,7 +178,7 @@ const Basic = () => {
                 {s.header && <h2>{s.header}</h2>}
                 {s.title && <p className="title-box">{s.title}</p>}
                 {s.instruction && (
-                  <p><strong>s.instruction: {s.instruction}</strong></p>
+                  <p><strong>{s.instruction}</strong></p>
                 )}
                 {s.questions.map((qs, qsIdx) => (
                   <div key={`${qs.id}-${qsIdx}`} >
