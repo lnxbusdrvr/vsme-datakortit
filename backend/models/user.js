@@ -57,16 +57,20 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'viewer', 'admin'],
     default: 'user',
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  Answers: [
+  answers: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Answer'
     }
-  ]
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 /*

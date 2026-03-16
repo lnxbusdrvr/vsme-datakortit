@@ -41,13 +41,22 @@ const Answers = () => {
   }, [dispatch, id])
 
   if (!answers || !user)
-    return <div>Loading...</div>
+    return (<div>Loading...</div>)
+
+  if (answers.filter(a => a.user.id === id).length === 0) {
+    return (
+      <div>
+        <h2>{user.name} {user.companyName}:</h2>
+        <p>Käyttäjä ei ole vastaunnut yhteenkään kysymykseen.</p>
+      </div>
+    )
+  }
 
   const module = (answers[0]?.moduleId === 'basic_module')
     ? basic
     : comprehensive
 
-  // Sort answers based on sectionId and questionId
+  // Sort answers like they are in questions
   const sortedAnswers = [...answers].sort((a, b) => {
     const questionA = module
       .flatMap(m => m.sections)
@@ -68,12 +77,12 @@ const Answers = () => {
     const sectionB = module.flatMap(m => m.sections).find(s =>
       s.questions.some(q => q.id === b.questionId))
 
+    // Get section indexes
     const sectionIndexA = module.flatMap(m => m.sections).indexOf(sectionA)
     const sectionIndexB = module.flatMap(m => m.sections).indexOf(sectionB)
 
-    if (sectionIndexA !== sectionIndexB) {
+    if (sectionIndexA !== sectionIndexB)
       return sectionIndexA - sectionIndexB
-    }
 
     // If sections are same, sort by question index
     const questionIndexA = sectionA.questions.indexOf(questionA)
@@ -85,9 +94,9 @@ const Answers = () => {
 
   return (
     <div>
-      <h2>{user.name} vastaukset:</h2>
+      <h2>{user.name} {user.companyName}:</h2>
 
-      {sortedAnswers.map((a, aIdx) => {
+      {sortedAnswers.filter(a => a.user.id === id).map((a, aIdx, filteredAnswers) => {
         const question = module
           .flatMap(m => m.sections)
           .flatMap(s => s.questions)
@@ -97,21 +106,23 @@ const Answers = () => {
           .flatMap(m => m.sections)
           .find(s => s.section_id === a.sectionId)
 
-        // Check if this is the first answer in this section
+        {/* Check if this is the first title,header in this section */}
+        {/* to not show title,header on every iteratration */}
         const isFirstInSection = aIdx === 0 || 
-          sortedAnswers[aIdx - 1].sectionId !== a.sectionId
+          filteredAnswers[aIdx - 1].sectionId !== a.sectionId
 
         return (
           <div key={`basic-${aIdx}`}>
-            {isFirstInSection && (
-              <p className="title-box">{section?.title}</p>
-            )}
-            <p>Kysymys: <strong>{question?.question || a.questionId}</strong></p>
+            {isFirstInSection && section.header && (<h2>{section.header}</h2>)}
+            {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
+            {section?.instruction && (<p>{section.instruction}</p>)}
+            {question?.question && (<p>{question.question}</p>)}
+            {question?.instruction && (<p>{question.instruction}</p>)}
             {a.type !== 'group' ? (
-              <p>Vastaus: {a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei' ) : a.answer}</p>
+              <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei' ) : a.answer}</strong></p>
             ) : (
               <>
-                <p>Alakysymykset:</p>{question?.sub_questions.map((subQs, subQsIdx) => {
+                {question?.sub_questions.map((subQs, subQsIdx) => {
                   const groupAnswer = a.groupAnswers
                     .find(ga => ga.subQuestionId === subQs.id)
 
@@ -120,7 +131,8 @@ const Answers = () => {
 
                   return (
                     <div key={`subQs-${subQsIdx}`}>
-                      <p>Alakysymys: <strong>{subQs.category}</strong></p>
+                      <p>{subQs.title}</p>
+                      <p>{subQs.category}</p>
                       {Object.entries(groupAnswer.values).map(([fieldId, fieldData], fIdx) => {
                         const field = subQs.fields.find(f => f.id === fieldId)
                         if (!field)
@@ -128,7 +140,7 @@ const Answers = () => {
 
                         return (
                           <div key={`subQsField-${fIdx}`}>
-                            <p>{field.label}: {fieldData.value}</p>
+                            <p>{field.label}: <strong>{fieldData.value}</strong></p>
                           </div>
                         )
                       })}

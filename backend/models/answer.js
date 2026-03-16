@@ -61,10 +61,6 @@ const answerSchema = new mongoose.Schema({
   updatedAt: {
     type: Date,
     default: Date.now,
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
   }
 });
 
@@ -81,6 +77,5 @@ answerSchema.set('toJSON', {
   },
 });
 
-const Answer = mongoose.model('Answer', answerSchema);
 
-module.exports = Answer;
+module.exports = mongoose.model('Answer', answerSchema);

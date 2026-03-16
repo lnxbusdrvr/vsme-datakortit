@@ -58,13 +58,15 @@ const getUserById = async (req, res) => {
     || req.user.role === 'viewer') {
 
     const user = await User.findById(req.params.id)
-      .populate('Answers', {
+      .populate('answers', {
         moduleId: 1,
         sectionId: 1,
         questionId: 1,
         answer: 1,
         groupAnswers: 1,
-        type: 1
+        type: 1,
+        createdAt: 1,
+        updatedAt: 1
       })
     if (user)
       res.json(user);

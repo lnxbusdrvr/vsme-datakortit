@@ -1,4 +1,5 @@
 const Answer = require('../models/answer');
+const User = require('../models/user');
 
 // Validation helpers
 const validateRequiredFields = (moduleId, sectionId, questionId, type) => {
@@ -19,6 +20,7 @@ const validateAnswerOrGroupAnswers = (type, answer, groupAnswers) => {
 }
 
 const validateSimpleAnswerType = (type, answer) => {
+  console.log(`answer: ${answer}`)
   if (type === 'number' && (typeof answer !== 'number' || isNaN(answer)))
     return `Answer must be a valid number for type 'number', got ${typeof answer}: ${answer}`;
 
@@ -73,6 +75,12 @@ const createAnswer = async (req, res) => {
     });
 
     const savedAnswer = await newAnswer.save();
+
+    await User.findByIdAndUpdate(
+      req.user.id,
+      { $push: { answers: savedAnswer._id } }
+    );
+
     await savedAnswer.populate('user', { name: 1, companyName: 1 });
     res.status(201).json(savedAnswer);
   } catch (error) {
