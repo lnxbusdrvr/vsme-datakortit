@@ -628,8 +628,12 @@
     {
       "section_id": "b7",
       "title": "B7 -Resurssien käyttö, kiertalous ja jätehuolto",
-      "instruction": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
       "questions": [
+        {
+          "id": "b7_waste_reporting_apply_circular_economy_principles",
+          "questtion": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+          "type": "text"
+        },
         {
           "id": "b7_waste_reporting",
           "instruction": "Yrityksen on ilmoitettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",

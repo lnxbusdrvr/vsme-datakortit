@@ -897,8 +897,12 @@
     {
       "section_id": "b7",
       "title": "B7 -Resurssien käyttö, kiertalous ja jätehuolto",
-      "instruction": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
       "questions": [
+        {
+          "id": "b7_waste_reporting_apply_circular_economy_principles",
+          "questtion": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+          "type": "text"
+        },
         {
           "id": "b7_waste_reporting",
           "instruction": "Yrityksen on ilmoitettava: a)vuosittain syntyvän jätteen kokonaismäärä eriteltynä jätetyypeittäin (vaaraton ja vaarallinen);  b)kierrätykseen tai uudelleenkäyttöön  vuosittain ohjatun jätteen kokonaismäärä; ja c) jos yritys toimii alalla, jolla käytetään merkittäviä materiaalivirtoja (esimerkiksi valmistus, rakentaminen, pakkaaminen tai muut), käytettyjen merkityksellisten materiaalien vuotuinen massavirta.",
@@ -1478,7 +1482,7 @@
         {
           "id": "c6_human_rights_policy",
           "question": "Onko yrityksellä eettistä ohjeistusta tai ihmisoikeuspolitiikkaa omalle työvoimaalleen?",
-          "type": "text"
+          "type": "boolean"
         }
       ]
     },
@@ -1626,9 +1630,26 @@
           ]
         },
         {
-          "id": "c7_severe_human_rights_abuses_confirmed_cases",
+          "id": "c7_if_this_q_yes_severe_human_rights_abuses_confirmed_cases",
           "question": "Onko yrityksen tiedossa vahvistettuja tapauksia, jotka koskevat arvoketjun työntekijöitä, asianomaisia yhteisöjä, kuluttajia ja loppukäyttäjiä? Jos vastasitte myöntävästi, täsmentäkää. (jos kyllä / teksti)",
           "type": "boolean"
+        },
+        {
+          "id": "if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_confirmed_cases",
+          "type": "group",
+          "sub_questions": [
+            {
+              "id": "sub_q_if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_confirmed_cases",
+              "category": "jos kyllä",
+              "fields": [
+                {
+                  "id": "else_severe_human_rights_abuses_confirmed_cases_describe",
+                  "label": "(teksti)",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1640,7 +1661,7 @@
         {
           "id": "employees_with_right_to_family_leave_men",
           "instruction": "Prosenttiosuus työntekijöistä, joilla on oikeus perhevapaaseen",
-          "type": "groups",
+          "type": "group",
           "sub_questions": [
             {
               "id": "employees_with_right_to_family_leave_men",
@@ -1649,17 +1670,10 @@
                 {
                   "id": "employees_with_right_to_family_leave_men_n",
                   "label": "Työntekijät (kokopäiväiset vastaavuudet tai henkilöstömäärä)",
-                  "type": "text"
+                  "type": "number"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "work_n_free_time_employees_with_right_to_family_leave_women",
-          "instruction": "",
-          "type": "groups",
-          "sub_questions": [
+            },
             {
               "id": "employees_with_right_to_family_leave_women",
               "category": "Naiset",
@@ -1667,7 +1681,7 @@
                 {
                   "id": "employees_with_right_to_family_leave_women_n",
                   "label": "Työntekijät (kokopäiväiset vastaavuudet tai henkilöstömäärä)",
-                  "type": "text"
+                  "type": "number"
                 }
               ]
             }
@@ -1676,7 +1690,7 @@
         {
           "id": "work_n_free_time_precentage_who_used_family_leave_men",
           "instruction": "Prosenttiosuus työntekijöistä, jotka ovat käyttäneet perhevapaata",
-          "type": "groups",
+          "type": "group",
           "sub_questions": [
             {
               "id": "precentage_who_used_family_leave_men",
@@ -1685,17 +1699,10 @@
                 {
                   "id": "precentage_who_used_family_leave_men_n",
                   "label": "Työntekijät (kokopäiväiset vastaavuudet tai henkilöstömäärä)",
-                  "type": "text"
+                  "type": "number"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "work_n_free_time_precentage_who_used_family_leave_women",
-          "instruction": "Prosenttiosuus työntekijöistä, jotka ovat käyttäneet perhevapaata",
-          "type": "groups",
-          "sub_questions": [
+            },
             {
               "id": "precentage_who_used_family_leave_women",
               "category": "Naiset",
@@ -1703,7 +1710,7 @@
                 {
                   "id": "precentage_who_used_family_leave_women_n",
                   "label": "Työntekijät (kokopäiväiset vastaavuudet tai henkilöstömäärä)",
-                  "type": "text"
+                  "type": "number"
                 }
               ]
             }
@@ -1777,20 +1784,20 @@
           ]
         },
         {
-          "id": "c8_if_this_q_yes_company_operates_in_sector_arms",
+          "id": "c8_if_this_q_yes_company_operates_in_sector_webons",
           "question": "kiistanalaiset aseet (jalkaväkimiinat, rypäleammukset, kemialliset aseet ja biologiset aseet);",
           "type": "boolean"
         },
         {
-          "id": "if_prev_yes_c8_if_this_q_yes_paris_agreement",
+          "id": "if_prev_yes_c8_if_this_q_yes_company_operates_in_sector_webons",
           "type": "group",
           "sub_questions": [
             {
-              "id": "sub_q_if_prev_yes_c8_if_this_q_yes_paris_agreement",
+              "id": "sub_q_if_prev_yes_c8_if_this_q_yes_company_operates_in_sector_webons",
               "category": "Jos kyllä,",
               "fields": [
                 {
-                  "id": "paris_agreement_if_yes_income_from_sector",
+                  "id": "company_operates_in_sector_wepons_if_yes_income_from_sector",
                   "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
@@ -1868,23 +1875,6 @@
           "id": "c8_if_this_q_yes_paris_agreement",
           "question": "Yrityksen on ilmoitettava, onko se jätetty sellaisten EU:n viitevertailuarvojen ulkopuolelle, jotka on yhdenmukaistettu Pariisin sopimuksen kanssa ohjeiden kohdassa 241 kuvatulla tavalla.",
           "type": "boolean"
-        },
-        {
-          "id": "if_prev_yes_c8_if_this_q_yes_paris_agreement",
-          "type": "group",
-          "sub_questions": [
-            {
-              "id": "sub_q_if_prev_yes_c8_if_this_q_yes_paris_agreement",
-              "category": "Jos kyllä",
-              "fields": [
-                {
-                  "id": "paris_agreement_if_yes_income_from_sector",
-                  "label": "ilmoita asiaan liittyvä tulot",
-                  "type": "number"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
