@@ -17,7 +17,6 @@ const Comprehensive = () => {
   const comprehensive = useSelector(state => state.comprehensive)
   const user = useSelector(state => state.user)
   const [answers, setAnswers] = useState({})
-  const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldError, setFieldError] = useState({})
   const [lastControllingQuestionId, setLastControllingQuestionId] = useState([])
@@ -103,7 +102,7 @@ const Comprehensive = () => {
       ...answers,
       [questionId]: {
         sectionId,
-        type,
+        type: 'group',
         groupAnswers: updatedGroupAnswers
       }
     })
@@ -144,7 +143,7 @@ const Comprehensive = () => {
         await dispatch(addAnswer(payload))
       }
       handleClearAnswers()
-      navigate('/Answers')
+      navigate('/useranswers/${user.id}')
     } catch (error) {
       console.log('Error submitting answers:', error)
     }
@@ -153,7 +152,6 @@ const Comprehensive = () => {
 
   const handleClearAnswers = () => {
     setAnswers({})
-    setCorruption(false)
   }
 
 
@@ -280,6 +278,9 @@ const Comprehensive = () => {
                               {<p>{subQs.category}</p>}
                               <Form.Label>{f.label}
                                 {f.type === 'number' && (
+                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                )}
+                                {f.type === 'text' && (
                                   inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
                                 )}
                               </Form.Label>

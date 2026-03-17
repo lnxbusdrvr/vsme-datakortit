@@ -17,7 +17,6 @@ const Basic = () => {
   const basic = useSelector(state => state.basic)
   const user = useSelector(state => state.user)
   const [answers, setAnswers] = useState({})
-  const [corruption, setCorruption] = useState(false)
   const [moduleId, setModuleId] = useState(false)
   const [fieldError, setFieldError] = useState({})
   const [lastControllingQuestionId, setLastControllingQuestionId] = useState(null)
@@ -149,16 +148,15 @@ const Basic = () => {
         await dispatch(addAnswer(payload))
       }
       handleClearAnswers()
-      navigate('/Answers')
+      navigate('/useranswers/${user.id}')
     } catch (error) {
-      console.log('Error submitting answers:', error)
+      dispatch(notify('Vastauksien lähetys epäonnistui', 15, true))
     }
 
   }
 
   const handleClearAnswers = () => {
     setAnswers({})
-    setCorruption(false)
   }
 
 
