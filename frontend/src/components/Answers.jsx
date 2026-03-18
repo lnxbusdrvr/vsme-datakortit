@@ -22,9 +22,6 @@ const Answers = () => {
 
   /*
    * TODO:
-   * Show answer /per user
-   * not all answers by all users
-   * TODO:
    * fix duplicate answers to
    * more human readable message
    ******************************/
@@ -97,29 +94,53 @@ const Answers = () => {
       <h2>{user.name} {user.companyName}:</h2>
 
       {sortedAnswers.filter(a => a.user.id === id).map((a, aIdx, filteredAnswers) => {
+        const section = module
+          .flatMap(m => m.sections)
+          .find(s => s.section_id === a.sectionId)
+
         const question = module
           .flatMap(m => m.sections)
           .flatMap(s => s.questions)
           .find(q => q.id === a.questionId)
-
-        const section = module
-          .flatMap(m => m.sections)
-          .find(s => s.section_id === a.sectionId)
 
         {/* Check if this is the first title,header in this section */}
         {/* to not show title,header on every iteratration */}
         const isFirstInSection = aIdx === 0 || 
           filteredAnswers[aIdx - 1].sectionId !== a.sectionId
 
+        const isFirstInQuestion = aIdx === 0 ||
+          filteredAnswers[aIdx - 1].questionId !== a.questionId
+
+        {/* Find instruction question in questions */}
+        const questionIndex = section?.questions.findIndex(q => q.id === a.questionId) ?? -1
+        const instructionQuestions = questionIndex > 0
+          ? section?.questions.slice(0, questionIndex)
+            .reverse()
+          .filter((q, idx, arr) => {
+            const nextIdx = section.questions.findIndex(sq => sq.id === q.id) + 1
+            return nextIdx === questionIndex || section.questions[nextIdx]?.type === 'instruction'
+          })
+          : []
+
         return (
-          <div key={`basic-${aIdx}`}>
+          <div key={`module-${aIdx}`}>
             {isFirstInSection && section.header && (<h2>{section.header}</h2>)}
             {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
-            {section?.instruction && (<p>{section.instruction}</p>)}
+            {isFirstInSection && section?.instruction && (<p>{section.instruction}</p>)}
+                {/* show instuction type==='instruction' */}
+                {isFirstInQuestion && instructionQuestions.map((iq, iqIdx) => (
+                  <p key={`instruction-${iqIdx}`}>{iq.instruction}</p>
+                ))}
             {question?.question && (<p>{question.question}</p>)}
             {question?.instruction && (<p>{question.instruction}</p>)}
             {a.type !== 'group' ? (
-              <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei' ) : a.answer}</strong></p>
+              <>
+                <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei') : a.answer}</strong></p>
+                {/* show instuction type==='instruction' */}
+                {isFirstInQuestion && instructionQuestions.map((iq, iqIdx) => (
+                  <p key={`instruction-${iqIdx}`}>{iq.instruction}</p>
+                ))}
+              </>
             ) : (
               <>
                 {question?.sub_questions.map((subQs, subQsIdx) => {
@@ -158,31 +179,5 @@ const Answers = () => {
 
 }
 
-/*
-        const question = module
-          .flatMap(m => m.sections)
-          .flatMap(s => s.questions)
-          .find(q => q.id === a.questionId)
- * p
-                  <p>Alakysymykset:</p>
-                  {a.groupAnswers.map((ga, gaIdx) => (
-                    <div key={`ga-${gaIdx}`}>
-                    {question?.sub_questions.map((subQs, subQsIdx) => (
-                      ga.subQuestionId === subQs.id && (
-                        <div key={`subQs-${subQsIdx}`}>
-                          <p>Alakysymys: <strong>{subQs.category}</strong></p>
-                          {subQs.fields.map((f, fIdx) => {
-                            const fieldValue = ga.values?.[f.id]?.value;
-                            return (
-                              <div key={`subQsField-${fIdx}`}>
-                                <p>{f.label}: {fieldValue}</p>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )))}
-                    </div>
-                  ))}
-                          */
 
 export default Answers
