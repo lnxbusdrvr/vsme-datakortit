@@ -139,7 +139,6 @@
     {
       "section_id": "c2",
       "title": "C2 – Kuvaus käytännöistä, politiikoista ja tulevista aloitteista siirtymiseksi kohti kestävämpää taloutta",
-      "instruction": "Jos yritys on ottanut kestävämpään talouteen siirtymiseksi käyttöön erityisiä käytäntöjä, toimintalinjoja tai tulevia aloitteita, jotka se on jo raportoinut perusmoduulin tietojen B2 yhteydessä, sen on kuvattava ne lyhyesti myös tässä. Yritys voi käyttää tähän tarkoitukseen kappaleessa 213 esitettyä mallia.",
       "questions": [
         {
           "id": "c2_practices_politics_initiative_to_move_towards_more_sustainable_economy",
@@ -1468,13 +1467,11 @@
           "id": "c6_human_rights_policy",
           "question": "Onko yrityksellä eettistä ohjeistusta tai ihmisoikeuspolitiikkaa omalle työvoimaalleen?",
           "type": "boolean"
-        }
-      ]
-    },
-    {
-      "section_id": "c6_pt_2",
-      "instruction": "Jos vastasitte myöntävästi, kattaako tämä",
-      "questions": [
+        },
+        {
+          "id": "c6_human_rights_policy_instruction",
+          "instruction": "Jos vastasitte myöntävästi, kattaako tämä:"
+        },
         {
           "id": "c6_human_rights_child_labour",
           "question": "lapsityövoima",
@@ -1539,12 +1536,12 @@
     {
       "section_id": "c7",
       "title": "C7 – Vakavat kielteiset ihmisoikeusrikkomukset",
-      "instruction": "Yrityksen on julkistettava vastaus seuraaviin kysymyksiin:"
-    },
-    {
-      "section_id": "c7_pt_2",
-      "instruction": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät  :",
+      "instruction": "Yrityksen on julkistettava vastaus seuraaviin kysymyksiin:",
       "questions": [
+        {
+          "id": "c7_severe_human_rights_abuses_instruction",
+          "instruction": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät:"
+        },
         {
           "id": "c7_severe_human_rights_abuses_child_labour",
           "question": "lapsityövoima",
