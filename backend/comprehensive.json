@@ -591,15 +591,16 @@
     {
       "section_id": "b4",
       "title": "B4 Ilman, veden ja maaperän saastuminen",
+      "instruction": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
       "questions": [
         {
           "id": "b4_pollution",
-          "instruction": "Jos sovellettavissa, ilmoita yrityksen toiminnassa ilmaan, veteen ja maaperään päästämät saasteet, jotka lain mukaan on raportoitava toimivaltaisille viranomaisille.",
+          "instruction": "Päästöaine / saaste",
           "type": "group",
           "sub_questions": [
             {
-              "id": "b4_pollution_emission_and_release",
-              "category": "Päästöaine / saaste",
+              "id": "b4_example_kadmium",
+              "category": "esimerkiksi kadmium ja kadmiumyhdisteet",
               "fields": [
                 {
                   "id": "pollution_emission_kg",
@@ -608,22 +609,6 @@
                 },
                 {
                   "id": "pollution_emission_release",
-                  "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
-                  "type": "text"
-                }
-              ]
-            },
-            {
-              "id": "b4_example_kadium",
-              "category": "esimerkiksi kadmium ja kadmiumyhdisteet",
-              "fields": [
-                {
-                  "id": "example_kadium_emission_kg",
-                  "label": "Päästöt (kg)",
-                  "type": "number"
-                },
-                {
-                  "id": "example_kadium_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -900,7 +885,7 @@
       "questions": [
         {
           "id": "b7_waste_reporting_apply_circular_economy_principles",
-          "questtion": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
+          "question": "Yrityksen on ilmoitettava, soveltaako se kiertotalouden periaatteita ja jos soveltaa, miten se soveltaa näitä periaatteita.",
           "type": "text"
         },
         {
@@ -1443,17 +1428,17 @@
         },
         {
           "id": "b10_collective_agreement_wage_between_male_and_female",
-          "question": "Nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031;",
+          "question": "Nais- ja miespuolisten työntekijöiden välinen prosentuaalinen palkkaero. Yritys voi jättää nämä tiedot antamatta, jos sen henkilöstömäärä on alle 150 työntekijää, ottaen huomioon, että tämä raja-arvo alennetaan 100 työntekijään 7 päivästä kesäkuuta 2031; (%)",
           "type": "number"
         },
         {
           "id": "b10_collective_agreement_procentual_share",
-          "question": "Työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus; ja",
+          "question": "Työehtosopimusten piiriin kuuluvien työntekijöiden prosenttiosuus; ja (%)",
           "type": "number"
         },
         {
           "id": "b10_collective_agreement_training_hours",
-          "question": "Keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä.",
+          "question": "Keskimääräinen vuotuinen koulutustuntimäärä työntekijää kohden sukupuolen mukaan eriteltynä. (teksti / luvut)",
           "type": "text"
         }
       ]
@@ -1464,7 +1449,7 @@
       "questions": [
         {
           "id": "c5_gender_balance",
-          "question": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, se voi ilmoittaa naisten ja miesten välisen suhteen johtotasolla raportointikaudelta.",
+          "question": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, se voi ilmoittaa naisten ja miesten välisen suhteen johtotasolla raportointikaudelta. (suhdeluku)",
           "type": "text"
         },
         {
@@ -1597,11 +1582,6 @@
                   "id": "else_severe_human_rights_abuses_describe",
                   "label": "(täsmennettävä)",
                   "type": "text"
-                },
-                {
-                  "id": "else_severe_human_rights_abuses_actions_taken",
-                  "label": "Jos vastasitte myöntävästi, yritys voi kuvailla toimia, joihin on ryhdytty edellä kuvattujen tapausten ratkaisemiseksi.",
-                  "type": "text"
                 }
               ]
             }
@@ -1610,24 +1590,7 @@
         {
           "id": "c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
           "question": "Jos vastasitte myöntävästi, yritys voi kuvailla toimia, joihin on ryhdytty edellä kuvattujen tapausten ratkaisemiseksi.",
-          "type": "boolean"
-        },
-        {
-          "id": "if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
-          "type": "group",
-          "sub_questions": [
-            {
-              "id": "sub_q_if_prev_yes_c7_if_this_q_yes_severe_human_rights_abuses_actions_taken",
-              "category": "jos kyllä",
-              "fields": [
-                {
-                  "id": "else_severe_human_rights_abuses_actions_taken_describe",
-                  "label": "(voi kuvailla)",
-                  "type": "text"
-                }
-              ]
-            }
-          ]
+          "type": "text"
         },
         {
           "id": "c7_if_this_q_yes_severe_human_rights_abuses_confirmed_cases",
