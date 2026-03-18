@@ -143,9 +143,9 @@ const Comprehensive = () => {
         await dispatch(addAnswer(payload))
       }
       handleClearAnswers()
-      navigate('/useranswers/${user.id}')
+      navigate(`/useranswers/${user.id}`)
     } catch (error) {
-      console.log('Error submitting answers:', error)
+      dispatch(notify('Vastauksien lähetys epäonnistui', 15, true))
     }
 
   }

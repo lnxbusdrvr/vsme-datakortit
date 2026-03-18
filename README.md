@@ -91,5 +91,6 @@
 | 13.03.2026 | 4,25  | Make Users page for admin and viewer -roles and show all users answers |
 | 16.03.2026 | 4,75  | Fix subqs send answers error. Show only one user on <Answers /> when admin/viewer. Fix basic module answers |
 | 17.03.2026 | 2     | Fix SubQs if yes questions, fix db data typos |
-| Total      | 267   |
+| 18.03.2026 | 6     | Get instruction-field on answers-page, fix instuction-fields on db |
+| Total      | 273   |
 

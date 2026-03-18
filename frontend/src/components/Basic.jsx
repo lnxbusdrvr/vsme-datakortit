@@ -148,7 +148,7 @@ const Basic = () => {
         await dispatch(addAnswer(payload))
       }
       handleClearAnswers()
-      navigate('/useranswers/${user.id}')
+      navigate(`/useranswers/${user.id}`)
     } catch (error) {
       dispatch(notify('Vastauksien lähetys epäonnistui', 15, true))
     }
