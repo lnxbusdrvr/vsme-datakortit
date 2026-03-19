@@ -13,11 +13,14 @@ const slice = createSlice({
     },
     add(state, { payload }) {
       state.push(payload)
+    },
+    remove(state, { payload }) {
+      return state.filter(a => a.id !== payload)
     }
   }
 });
 
-const { set, add} = slice.actions;
+const { set, add, remove} = slice.actions;
 
 export const initializeAnswers = () => {
   return async dispatch => {
@@ -38,6 +41,19 @@ export const addAnswer = (answer) => {
       const errorMessage = error.response?.data?.error || error.message || 'Vastauksien luominen epäonnistui';
       dispatch(notify(errorMessage, 20, true));
       return false;
+    }
+  }
+};
+
+export const deleteAnswer = (answerId) => {
+  return async dispatch => {
+    try {
+      await answersService.deleteAnswer(answerId)
+      dispatch(remove(answerId))
+      dispatch(notify('Vastauksen poistettu onnistuneesti', 20, false));
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || error.message || 'Vastauksen poistaminen epäonnistui';
+      dispatch(notify(errorMessage, 20, true));
     }
   }
 };
