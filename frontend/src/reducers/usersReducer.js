@@ -10,14 +10,11 @@ const slice = createSlice({
   reducers: {
     setUsers(state, { payload }) {
       return payload
-    },
-    appendUser(state, { payload }) {
-      state.push(payload)
     }
   }
 });
 
-const { setUsers, appendUser } = slice.actions;
+const { setUsers } = slice.actions;
 
 export const initializeUsers = () => {
   return async dispatch => {

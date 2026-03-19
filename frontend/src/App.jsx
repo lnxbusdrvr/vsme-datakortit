@@ -28,9 +28,6 @@ const App = () => {
   };
 
 
-  console.log('User:', user); // Debug
-  console.log('User role:', user?.role); // Debug
-
   return (
     <div>
       {!user ? (

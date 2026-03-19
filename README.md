@@ -92,5 +92,6 @@
 | 16.03.2026 | 4,75  | Fix subqs send answers error. Show only one user on <Answers /> when admin/viewer. Fix basic module answers |
 | 17.03.2026 | 2     | Fix SubQs if yes questions, fix db data typos |
 | 18.03.2026 | 6     | Get instruction-field on answers-page, fix instuction-fields on db |
-| Total      | 273   |
+| 19.03.2026 | 4,25  | Get instruction without type to render once on Answers-component, consistent db id's, add Dropdownmenu to NewUserForm-component, install bootstrap, implement delete boolean answer |
+| Total      | 277,25 |
 

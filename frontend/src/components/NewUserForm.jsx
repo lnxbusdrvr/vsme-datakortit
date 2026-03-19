@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Dropdown } from 'react-bootstrap';
 import validator from 'validator';
 
 import { notify } from '../reducers/notificationReducer';
@@ -124,8 +125,20 @@ const NewUser = ({ onUserCreatedToggle }) => {
           <input type="text" name="city" id="city" value={city} onChange={({ target }) => setCity(target.value)} required />
         </div>
         <div>
-          <label htmlFor="legalFormOfCompany">Yrityksen muoto</label>
-          <input type="text" name="legalFormOfCompany" id="legalFormOfCompany" value={legalFormOfCompany} onChange={({ target }) => setLegalFormOfCompany(target.value)} required />
+          <Dropdown onSelect={(eventKey) => setLegalFormOfCompany(eventKey)}>
+            <label htmlFor="legalFormOfCompany">Yrityksen muoto</label>
+            <Dropdown.Toggle variant="success" id="dropdown-basic" drop="down">
+              {legalFormOfCompany || 'Valitse yrityksen muoto'}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item eventKey="Toiminimi">Toiminimi</Dropdown.Item>
+              <Dropdown.Item eventKey="Osakeyhtiö">Osakeyhtiö</Dropdown.Item>
+              <Dropdown.Item eventKey="Osuuskunta">Osuuskunta</Dropdown.Item>
+              <Dropdown.Item eventKey="Avoin yhtiö">Avoin yhtiö</Dropdown.Item>
+              <Dropdown.Item eventKey="Kommandiittiyhtiö">Kommandiittiyhtiö</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
         <div>
           <label htmlFor="businessIdentityCode">Y-tunnus</label>

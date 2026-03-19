@@ -20,7 +20,25 @@ const getAll = async () => {
   return request.data
 }
 
+const getAnswerById = async (id) => {
+  const request = await axios.get(`${baseUrl}/${id}`, { headers: getHeaders() })
+  return request.data
+}
+
+const updateAnswer = async (id, answer) => {
+  const request = await axios.patch(`${baseUrl}/${id}`, answer, { headers: getHeaders() })
+  return request.data
+}
+
+const deleteAnswer = async (id) => {
+  const request = await axios.delete(`${baseUrl}/${id}`, { headers: getHeaders() })
+  return request.data
+}
+
 export default {
   createAnswer,
-  getAll
+  getAll,
+  getAnswerById,
+  updateAnswer,
+  deleteAnswer
 }

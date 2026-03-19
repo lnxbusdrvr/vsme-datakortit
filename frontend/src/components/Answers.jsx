@@ -1,6 +1,6 @@
 import { useDispatch, useSelector} from 'react-redux'
 import { useParams, Link } from 'react-router-dom';
-//import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
 import usersService from '../services/usersService';
@@ -9,7 +9,8 @@ import { initializeBasic } from '../reducers/basicReducer'
 import { initializeComprehensive} from '../reducers/comprehensiveReducer'
 import { initializeAnswers } from '../reducers/answersReducer'
 
-import Notification from './Notification';
+import { deleteAnswer } from '../reducers/answersReducer'
+import { notify } from '../reducers/notificationReducer'
 
 
 const Answers = () => {
@@ -20,11 +21,6 @@ const Answers = () => {
   const comprehensive = useSelector(state => state.comprehensive)
   const [user, setUser] = useState(null)
 
-  /*
-   * TODO:
-   * fix duplicate answers to
-   * more human readable message
-   ******************************/
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -88,6 +84,15 @@ const Answers = () => {
     return questionIndexA - questionIndexB
   })
 
+  const handleDeleteAnswer = async (answerId) => {
+    try {
+      dispatch(deleteAnswer(answerId))
+      dispatch(initializeAnswers())
+    } catch (error) {
+      throw error
+    }
+  }
+
 
   return (
     <div>
@@ -124,24 +129,27 @@ const Answers = () => {
 
         return (
           <div key={`module-${aIdx}`}>
-            {isFirstInSection && section.header && (<h2>{section.header}</h2>)}
+            {isFirstInSection && section?.header && (<h2>{section?.header}</h2>)}
             {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
-            {isFirstInSection && section?.instruction && (<p>{section.instruction}</p>)}
-                {/* show instuction type==='instruction' */}
-                {isFirstInQuestion && instructionQuestions.map((iq, iqIdx) => (
-                  <p key={`instruction-${iqIdx}`}>{iq.instruction}</p>
-                ))}
-            {question?.question && (<p>{question.question}</p>)}
-            {question?.instruction && (<p>{question.instruction}</p>)}
-            {a.type !== 'group' ? (
-              <>
+            {isFirstInSection && section?.instruction && (<p>{section?.instruction}</p>)}
+            {question?.question && a.type !== 'boolean' && (
+              <p>{question?.question}</p>
+            )}
+            {question?.instruction && (
+              <p>{question?.instruction}</p>
+            )}
+            {/* show instuction with no type */}
+            {isFirstInQuestion  && instructionQuestions.map((iq, iqIdx) => (
+              <p key={`instruction-${iqIdx}`}>{iq.instruction}</p>
+            ))}
+            {a.type === 'boolean' && (
+              <div key={`boolean-answer-${aIdx}`}>
+                <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei') : a.answer}</strong></p>
-                {/* show instuction type==='instruction' */}
-                {isFirstInQuestion && instructionQuestions.map((iq, iqIdx) => (
-                  <p key={`instruction-${iqIdx}`}>{iq.instruction}</p>
-                ))}
-              </>
-            ) : (
+                <Button variant="outlined" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+              </div>
+            )}
+            {a.type === 'group' && (
               <>
                 {question?.sub_questions.map((subQs, subQsIdx) => {
                   const groupAnswer = a.groupAnswers
@@ -161,7 +169,7 @@ const Answers = () => {
 
                         return (
                           <div key={`subQsField-${fIdx}`}>
-                            <p>{field.label}: <strong>{fieldData.value}</strong></p>
+                            <p>{field?.label}: <strong>{fieldData.value}</strong></p>
                           </div>
                         )
                       })}
