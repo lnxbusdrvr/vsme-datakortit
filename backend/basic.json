@@ -119,17 +119,17 @@
               "category": "Sähkö (näkyy sähkölaskutuksessa)",
               "fields": [
                 {
-                  "id": "energy_electricity_renewable",
+                  "id": "b3_energy_electricity_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_electricity_non_renewable",
+                  "id": "b3_energy_electricity_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_electricity_total",
+                  "id": "b3_energy_electricity_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
@@ -140,17 +140,17 @@
               "category": "Polttoaineet",
               "fields": [
                 {
-                  "id": "energy_fuel_renewable",
+                  "id": "b3_energy_fuel_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_fuel_non_renewable",
+                  "id": "b3_energy_fuel_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_fuel_total",
+                  "id": "b3_energy_fuel_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
@@ -161,17 +161,17 @@
               "category": "Yhteensä",
               "fields": [
                 {
-                  "id": "energy_total_renewable",
+                  "id": "b3_energy_total_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_total_non_renewable",
+                  "id": "b3_energy_total_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_total_total",
+                  "id": "b3_energy_total_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
@@ -195,17 +195,17 @@
               "category": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
               "fields": [
                 {
-                  "id": "ghg_scope_1_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_scope_1_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_1_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_scope_1_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_1_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_scope_1_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -216,17 +216,17 @@
               "category": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
               "fields": [
                 {
-                  "id": "ghg_scope_2_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_scope_2_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_2_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_scope_2_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_2_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_scope_2_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -237,17 +237,17 @@
               "category": "Yhteensä",
               "fields": [
                 {
-                  "id": "ghg_total_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_total_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_total_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_total_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_total_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_total_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -258,17 +258,17 @@
               "category": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
               "fields": [
                 {
-                  "id": "ghg_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_turnover_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_turnover_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_turnover_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_turnover_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -279,17 +279,17 @@
               "category": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
               "fields": [
                 {
-                  "id": "ghg_sourca_and_method_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_sourca_and_method_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (teksti)",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_sourca_and_method_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_sourca_and_method_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (teksti)",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_sourca_and_method_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_sourca_and_method_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (teksti)",
                   "type": "text"
                 }
@@ -300,17 +300,17 @@
               "category": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
               "fields": [
                 {
-                  "id": "ghg_uncertainty_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_uncertainty_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (teksti)",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_uncertainty_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_uncertainty_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (teksti)",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_uncertainty_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_uncertainty_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (teksti)",
                   "type": "text"
                 }
@@ -335,12 +335,12 @@
               "category": "esimerkiksi kadmium ja kadmiumyhdisteet",
               "fields": [
                 {
-                  "id": "pollution_emission_kg",
+                  "id": "b4_pollution_emission_kg",
                   "label": "Päästöt (kg)",
                   "type": "number"
                 },
                 {
-                  "id": "pollution_emission_release",
+                  "id": "b4_pollution_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -351,12 +351,12 @@
               "category": "Epäpuhtauden tyyppi 2",
               "fields": [
                 {
-                  "id": "unclean_type_2_emission_kg",
+                  "id": "b4_unclean_type_2_emission_kg",
                   "label": "Päästöt (kg)",
                   "type": "number"
                 },
                 {
-                  "id": "unclean_type_2_emission_release",
+                  "id": "b4_unclean_type_2_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -367,12 +367,12 @@
               "category": "Epäpuhtauden tyyppi 3",
               "fields": [
                 {
-                  "id": "unclean_type_3_emission_kg",
+                  "id": "b4_unclean_type_3_emission_kg",
                   "label": "Päästöt (kg)",
                   "type": "number"
                 },
                 {
-                  "id": "unclean_type_3_emission_release",
+                  "id": "b4_unclean_type_3_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -392,21 +392,21 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_office_1_1",
+              "id": "b5_location_office_1_1",
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
-                  "id": "location_office_1_1_area_ha",
+                  "id": "b5_location_office_1_1_area_ha",
                   "label": "Alue (Hehtaaria)",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_1_biological_polymorph",
+                  "id": "b5_location_office_1_1_biological_polymorph",
                   "label": "Biologiselle monimuotoisuudelle herkkä alue",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_1_breakdown",
+                  "id": "b5_location_office_1_1_breakdown",
                   "label": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)",
                   "type": "number"
                 }
@@ -417,17 +417,17 @@
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
-                  "id": "location_office_1_2_area_ha",
+                  "id": "b5_location_office_1_2_area_ha",
                   "label": "Alue (Hehtaaria)",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_2_biological_polymorph",
+                  "id": "b5_location_office_1_2_biological_polymorph",
                   "label": "Biologiselle monimuotoisuudelle herkkä alue",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_2_breakdown",
+                  "id": "b5_location_office_1_2_breakdown",
                   "label": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)",
                   "type": "number"
                 }
@@ -438,17 +438,17 @@
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
-                  "id": "location_office_1_3_area_ha",
+                  "id": "b5_location_office_1_3_area_ha",
                   "label": "Alue (Hehtaaria)",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_3_biological_polymorph",
+                  "id": "b5_location_office_1_3_biological_polymorph",
                   "label": "Biologiselle monimuotoisuudelle herkkä alue",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_3_breakdown",
+                  "id": "b5_location_office_1_3_breakdown",
                   "label": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)",
                   "type": "number"
                 }
@@ -462,21 +462,21 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_land_use_in_ha",
+              "id": "b5_location_land_use_in_ha",
               "category": "maankäytön kokonaispinta-ala (hehtaareina);",
               "fields": [
                 {
-                  "id": "land_use_in_ha_last_year",
+                  "id": "b5_land_use_in_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "land_use_in_ha_reported_year",
+                  "id": "b5_land_use_in_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "land_use_in_ha_percent_change",
+                  "id": "b5_land_use_in_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -487,17 +487,17 @@
               "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
               "fields": [
                 {
-                  "id": "waterproof_ha_last_year",
+                  "id": "b5_waterproof_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "waterproof_ha_reported_year",
+                  "id": "b5_waterproof_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "waterproof_ha_percent_change",
+                  "id": "b5_waterproof_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -508,17 +508,17 @@
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
               "fields": [
                 {
-                  "id": "nature_c_o_area_ha_last_year",
+                  "id": "b5_nature_c_o_area_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_area_ha_reported_year",
+                  "id": "b5_nature_c_o_area_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_area_ha_percent_change",
+                  "id": "b5_nature_c_o_area_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -529,17 +529,17 @@
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
               "fields": [
                 {
-                  "id": "nature_c_o_oside_of_area_ha_last_year",
+                  "id": "b5_nature_c_o_oside_of_area_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_oside_of_area_ha_reported_year",
+                  "id": "b5_nature_c_o_oside_of_area_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_oside_of_area_ha_percent_change",
+                  "id": "b5_nature_c_o_oside_of_area_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -559,16 +559,16 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_water_use_all_offices",
+              "id": "b6_location_water_use_all_offices",
               "category": "Kaikki toimipisteet",
               "fields": [
                 {
-                  "id": "all_offices_water_take",
+                  "id": "b6_all_offices_water_take",
                   "label": "Vedenotto (esim... m³)",
                   "type": "number"
                 },
                 {
-                  "id": "all_offices_water_used",
+                  "id": "b6_all_offices_water_used",
                   "label": "Vedenkulutus  (esim. m³) (jos sovellettavissa)",
                   "type": "number"
                 }
@@ -579,12 +579,12 @@
               "category": "Kohteet alueilla, joilla on vesistressiä",
               "fields": [
                 {
-                  "id": "area_w_waterstress_water_take",
+                  "id": "b6_area_w_waterstress_water_take",
                   "label": "Vedenotto (esim... m³)",
                   "type": "number"
                 },
                 {
-                  "id": "area_w_waterstress_water_used",
+                  "id": "b6_area_w_waterstress_water_used",
                   "label": "Vedenkulutus  (esim. m³) (jos sovellettavissa)",
                   "type": "number"
                 }
@@ -595,12 +595,12 @@
               "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
               "fields": [
                 {
-                  "id": "water_dropsy_prod_process_water_take",
+                  "id": "b6_water_dropsy_prod_process_water_take",
                   "label": "Vedenotto (esim... m³)",
                   "type": "number"
                 },
                 {
-                  "id": "water_dropsy_prod_process_water_used",
+                  "id": "b6_water_dropsy_prod_process_water_used",
                   "label": "Vedenkulutus  (esim. m³) (jos sovellettavissa)",
                   "type": "number"
                 }
@@ -633,22 +633,22 @@
               "category": "Jätteen tyyppi 1",
               "fields": [
                 {
-                  "id": "waste_type_1_total_waste",
+                  "id": "b7_waste_type_1_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_1_total_recycled_waste",
+                  "id": "b7_waste_type_1_total_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_1_total_recycled_waste_to_energy",
+                  "id": "b7_waste_type_1_total_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_1_total_destroyable_waste",
+                  "id": "b7_waste_type_1_total_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -659,22 +659,22 @@
               "category": "Jätteen tyyppi 2",
               "fields": [
                 {
-                  "id": "waste_type_2_total_waste",
+                  "id": "b7_waste_type_2_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_2_recycled_waste",
+                  "id": "b7_waste_type_2_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_2_recycled_waste_to_energy",
+                  "id": "b7_waste_type_2_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_2_destroyable_waste",
+                  "id": "b7_waste_type_2_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -685,22 +685,22 @@
               "category": "jne.",
               "fields": [
                 {
-                  "id": "etc_total_waste",
+                  "id": "b7_etc_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "etc_recycled_waste",
+                  "id": "b7_etc_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "etc_recycled_waste_to_energy",
+                  "id": "b7_etc_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "etc_destroyable_waste",
+                  "id": "b7_etc_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -715,22 +715,22 @@
               "category": "Jätteen tyyppi 1",
               "fields": [
                 {
-                  "id": "dangerous_waste_type_1_total_waste",
+                  "id": "b7_dangerous_waste_type_1_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_waste_type_1_recycled_waste",
+                  "id": "b7_dangerous_waste_type_1_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_waste_type_1_recycled_waste_to_energy",
+                  "id": "b7_dangerous_waste_type_1_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_waste_type_1_destroyable_waste",
+                  "id": "b7_dangerous_waste_type_1_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -741,22 +741,22 @@
               "category": "jne.",
               "fields": [
                 {
-                  "id": "dangerous_etc_total_waste",
+                  "id": "b7_dangerous_etc_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_etc_recycled_waste",
+                  "id": "b7_dangerous_etc_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_etc_recycled_waste_to_energy",
+                  "id": "b7_dangerous_etc_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_etc_destroyable_waste",
+                  "id": "b7_dangerous_etc_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -781,17 +781,17 @@
               "category": "Työsopimuksen tyyppi - Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "fields": [
                 {
-                  "id": "fixed_contracts",
+                  "id": "b8_fixed_contracts",
                   "label": "Määräaikainen sopimus",
                   "type": "number"
                 },
                 {
-                  "id": "permanent_contracts",
+                  "id": "b8_permanent_contracts",
                   "label": "Vakituinen / toistaiseksi voimassa oleva sopimus",
                   "type": "number"
                 },
                 {
-                  "id": "total_personnel_and_employees",
+                  "id": "b8_total_personnel_and_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä", 
                   "type": "number"
                 }
@@ -802,27 +802,27 @@
               "category": "Sukupuoli",
               "fields": [
                 {
-                  "id": "gender_male",
+                  "id": "b8_gender_male",
                   "label": "Mies",
                   "type": "number"
                 },
                 {
-                  "id": "gender_female",
+                  "id": "b8_gender_female",
                   "label": "Nainen", 
                   "type": "number"
                 },
                 {
-                  "id": "gender_other",
+                  "id": "b8_gender_other",
                   "label": "Muu sukupuoli", 
                   "type": "number"
                 },
                 {
-                  "id": "gender_unreported",
+                  "id": "b8_gender_unreported",
                   "label": "Ei raportoitu", 
                   "type": "number"
                 },
                 {
-                  "id": "gender_total_personnel_employees",
+                  "id": "b8_gender_total_personnel_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä", 
                   "type": "number"
                 }
@@ -833,17 +833,17 @@
               "category": "Maa (jos sovellettavissa)",
               "fields": [
                 {
-                  "id": "country_a_employees",
+                  "id": "b8_country_a_employees",
                   "label": "Maa A",
                   "type": "number"
                 },
                 {
-                  "id": "country_b_employees",
+                  "id": "b8_country_b_employees",
                   "label": "Maa B",
                   "type": "number"
                 },
                 {
-                  "id": "countrys_total_employees",
+                  "id": "b8_countrys_total_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä",
                   "type": "number"
                 }
@@ -907,25 +907,25 @@
       "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
         {
-          "id": "management_if_this_q_yes_corruption",
+          "id": "b11_management_if_this_q_yes_corruption",
           "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
           "type": "boolean"
         },
         {
-          "id": "if_prev_yes_management_if_this_q_yes_corruption",
+          "id": "if_prev_yes_b11_management_if_this_q_yes_corruption",
           "type": "group",
           "sub_questions": [
             {
-              "id": "sub_q_if_prev_yes_management_if_this_q_yes_corruption",
+              "id": "sub_q_if_prev_yes_b11_management_if_this_q_yes_corruption",
               "category": "Korruptio/lahjonta -tiedot",
               "fields": [
                 {
-                  "id": "management_number_of_penalties",
+                  "id": "b11_management_number_of_penalties",
                   "label": "Tuomioiden lukumäärä",
                   "type": "number"
                 },
                 {
-                  "id": "management_total_costs_from_fines",
+                  "id": "b11_management_total_costs_from_fines",
                   "label": "Sakoista aiheutuneet kokonaiskulut",
                   "type": "number"
                 }

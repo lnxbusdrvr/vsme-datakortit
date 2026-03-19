@@ -192,17 +192,17 @@
               "category": "Vesivarat ja merten luonnovarat",
               "fields": [
                 {
-                  "id": "water_sea_resources_short_description",
+                  "id": "c2_water_sea_resources_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "water_sea_resources_supplement",
+                  "id": "c2_water_sea_resources_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "water_sea_resources_implementation",
+                  "id": "c2_water_sea_resources_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -213,17 +213,17 @@
               "category": "Biologinen monimuotoisuuus ja ekosysteemit",
               "fields": [
                 {
-                  "id": "Biodiversity_and_ecosystems_short_description",
+                  "id": "c2_Biodiversity_and_ecosystems_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "Biodiversity_and_ecosystems_supplement",
+                  "id": "c2_Biodiversity_and_ecosystems_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "Biodiversity_and_ecosystems_implementation",
+                  "id": "c2_Biodiversity_and_ecosystems_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -234,17 +234,17 @@
               "category": "Kiertotalous",
               "fields": [
                 {
-                  "id": "circular_economy_short_description",
+                  "id": "c2_circular_economy_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "circular_economy_supplement",
+                  "id": "c2_circular_economy_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "circular_economy_implementation",
+                  "id": "c2_circular_economy_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -255,17 +255,17 @@
               "category": "Oma työvoima",
               "fields": [
                 {
-                  "id": "own_workforce_short_description",
+                  "id": "c2_own_workforce_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "own_workforce_supplement",
+                  "id": "c2_own_workforce_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "own_workforce_implementation",
+                  "id": "c2_own_workforce_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -276,17 +276,17 @@
               "category": "Arvoketjun työntekijät",
               "fields": [
                 {
-                  "id": "value_chain_employees_short_description",
+                  "id": "c2_value_chain_employees_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "value_chain_employees_supplement",
+                  "id": "c2_value_chain_employees_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "value_chain_employees_implementation",
+                  "id": "c2_value_chain_employees_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -297,17 +297,17 @@
               "category": "Vaikutusten kohteena olevat yhteisöt",
               "fields": [
                 {
-                  "id": "affected_communities_short_description",
+                  "id": "c2_affected_communities_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "affected_communities_supplement",
+                  "id": "c2_affected_communities_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "affected_communities_implementation",
+                  "id": "c2_affected_communities_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -318,17 +318,17 @@
               "category": "Kuluttajat ja loppukäyttäjät",
               "fields": [
                 {
-                  "id": "consumers_and_end_users_short_description",
+                  "id": "c2_consumers_and_end_users_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "consumers_and_end_users_supplement",
+                  "id": "c2_consumers_and_end_users_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "consumers_and_end_users_implementation",
+                  "id": "c2_consumers_and_end_users_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -339,17 +339,17 @@
               "category": "Liiketoiminnan harjottaminen",
               "fields": [
                 {
-                  "id": "doing_business_short_description",
+                  "id": "c2_doing_business_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 },
                 {
-                  "id": "doing_business_supplement",
+                  "id": "c2_doing_business_supplement",
                   "label": "Jos vastasit KYLLÄ tuleviin aloitteisiin / tavoitteisiin ilmoituksessa B2 täsmentäkää ne",
                   "type": "text"
                 },
                 {
-                  "id": "doing_business_implementation",
+                  "id": "c2_doing_business_implementation",
                   "label": "Voit ilmoittaa niiden toteuttamiesta / täytäntöönpanosta vastaavan yrityksen korkeimman / ylimmän tason (jos sellainen on) Kohta 49",
                   "type": "text"
                 }
@@ -360,7 +360,7 @@
               "category": "Yritys voi ilmoittaa niiden täytäntöönpanosta vastaavan yrityksen ylimmän tason, jos sellainen on.",
               "fields": [
                 {
-                  "id": "highest_level_corporate_execution_short_description",
+                  "id": "c2_highest_level_corporate_execution_short_description",
                   "label": "Jos vastasit KYLLÄ nykyisiin käytäntöihin / politiikkoihin / tuleviin aloitteisiin ilmoituksessa B2, Kuvailkaa niitä lyhyesti ja niistä aiheutuvia toimia. (Jos käytäntö/ Toimintapolitiikka / tuleva aloite koskee toimittajia tai asiakkaita, yrityksen on mainittava se)",
                   "type": "text"
                 }
@@ -385,17 +385,17 @@
               "category": "Sähkö (näkyy sähkölaskutuksessa)",
               "fields": [
                 {
-                  "id": "energy_electricity_renewable",
+                  "id": "b3_energy_electricity_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_electricity_non_renewable",
+                  "id": "b3_energy_electricity_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_electricity_total",
+                  "id": "b3_energy_electricity_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
@@ -406,17 +406,17 @@
               "category": "Polttoaineet",
               "fields": [
                 {
-                  "id": "energy_fuel_renewable",
+                  "id": "b3_energy_fuel_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_fuel_non_renewable",
+                  "id": "b3_energy_fuel_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_fuel_total",
+                  "id": "b3_energy_fuel_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
@@ -427,17 +427,17 @@
               "category": "Yhteensä",
               "fields": [
                 {
-                  "id": "energy_total_renewable",
+                  "id": "b3_energy_total_renewable",
                   "label": "Uusiutuvan  Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_total_non_renewable",
+                  "id": "b3_energy_total_non_renewable",
                   "label": "Ei Uusiutuvan Energian kulutus (MWh)",
                   "type": "number"
                 },
                 {
-                  "id": "energy_total_total",
+                  "id": "b3_energy_total_total",
                   "label": "Yhteensä 202(x) Energiankulutus (MWh)",
                   "type": "number"
                 }
@@ -461,17 +461,17 @@
               "category": "Scope 1, Suorat päästöt omista tai hallinnoiduista lähteistä (tCO2eq)",
               "fields": [
                 {
-                  "id": "ghg_scope_1_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_scope_1_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_1_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_scope_1_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_1_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_scope_1_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -482,17 +482,17 @@
               "category": "Scope 2, sijaintiin perustuvat, (epäsuorat, eli ostetun energian, kuten sähkön, lämmön, höyryn tai jäähdytyksen, tuotannosta aiheutuvat päästöt).(tCO2eq)",
               "fields": [
                 {
-                  "id": "ghg_scope_2_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_scope_2_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_2_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_scope_2_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_2_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_scope_2_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -503,17 +503,17 @@
               "category": "Scope 3, jos olennainen",
               "fields": [
                 {
-                  "id": "ghg_scope_3_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_scope_3_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_3_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_scope_3_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_scope_3_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_scope_3_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -524,17 +524,17 @@
               "category": "Yhteensä",
               "fields": [
                 {
-                  "id": "ghg_total_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_total_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_total_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_total_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_total_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_total_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -545,17 +545,17 @@
               "category": "Kasvihuonekaasuintensiteetti: kasvihuonekaasujen bruttomäärä / Liikevaihto (euroina)",
               "fields": [
                 {
-                  "id": "ghg_turnover_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_turnover_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (GHG)  (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_turnover_greenhouse_gas_emission_2",
+                  "id": "b3_ghg_turnover_greenhouse_gas_emission_2",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 },
                 {
-                  "id": "ghg_turnover_greenhouse_gas_emission_3",
+                  "id": "b3_ghg_turnover_greenhouse_gas_emission_3",
                   "label": "202(x) GHG emissions (tCO2e)",
                   "type": "number"
                 }
@@ -566,7 +566,7 @@
               "category": "Kuvaa menetelmää, jolla kerätyt tiedot haetaan ja päästökertoimen lähteet",
               "fields": [
                 {
-                  "id": "ghg_sourca_and_method_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_sourca_and_method_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (teksti)",
                   "type": "text"
                 }
@@ -577,7 +577,7 @@
               "category": "Kuvaa kerättyihin tietoihin liittyvät mahdolliset epävarmuustekijät",
               "fields": [
                 {
-                  "id": "ghg_uncertainty_greenhouse_gas_emission_1",
+                  "id": "b3_ghg_uncertainty_greenhouse_gas_emission_1",
                   "label": "202(x) kasvihuonekaasupäästöt (teksti)",
                   "type": "text"
                 }
@@ -602,12 +602,12 @@
               "category": "esimerkiksi kadmium ja kadmiumyhdisteet",
               "fields": [
                 {
-                  "id": "pollution_emission_kg",
+                  "id": "b4_pollution_emission_kg",
                   "label": "Päästöt (kg)",
                   "type": "number"
                 },
                 {
-                  "id": "pollution_emission_release",
+                  "id": "b4_pollution_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -618,12 +618,12 @@
               "category": "Epäpuhtauden tyyppi 2",
               "fields": [
                 {
-                  "id": "unclean_type_2_emission_kg",
+                  "id": "b4_unclean_type_2_emission_kg",
                   "label": "Päästöt (kg)",
                   "type": "number"
                 },
                 {
-                  "id": "unclean_type_2_emission_release",
+                  "id": "b4_unclean_type_2_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -634,12 +634,12 @@
               "category": "Epäpuhtauden tyyppi 3",
               "fields": [
                 {
-                  "id": "unclean_type_3_emission_kg",
+                  "id": "b4_unclean_type_3_emission_kg",
                   "label": "Päästöt (kg)",
                   "type": "number"
                 },
                 {
-                  "id": "unclean_type_3_emission_release",
+                  "id": "b4_unclean_type_3_emission_release",
                   "label": "Päästöjen vapautuminen (ilma, vesi, maaperä)",
                   "type": "text"
                 }
@@ -660,21 +660,21 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_office_1_1",
+              "id": "b5_location_office_1_1",
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
-                  "id": "location_office_1_1_area_ha",
+                  "id": "b5_location_office_1_1_area_ha",
                   "label": "Alue (Hehtaaria)",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_1_biological_polymorph",
+                  "id": "b5_location_office_1_1_biological_polymorph",
                   "label": "Biologiselle monimuotoisuudelle herkkä alue",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_1_breakdown",
+                  "id": "b5_location_office_1_1_breakdown",
                   "label": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)",
                   "type": "number"
                 }
@@ -685,17 +685,17 @@
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
-                  "id": "location_office_1_2_area_ha",
+                  "id": "b5_location_office_1_2_area_ha",
                   "label": "Alue (Hehtaaria)",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_2_biological_polymorph",
+                  "id": "b5_location_office_1_2_biological_polymorph",
                   "label": "Biologiselle monimuotoisuudelle herkkä alue",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_2_breakdown",
+                  "id": "b5_location_office_1_2_breakdown",
                   "label": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)",
                   "type": "number"
                 }
@@ -706,17 +706,17 @@
               "category": "Maa- toimipisteen nimi 1",
               "fields": [
                 {
-                  "id": "location_office_1_3_area_ha",
+                  "id": "b5_location_office_1_3_area_ha",
                   "label": "Alue (Hehtaaria)",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_3_biological_polymorph",
+                  "id": "b5_location_office_1_3_biological_polymorph",
                   "label": "Biologiselle monimuotoisuudelle herkkä alue",
                   "type": "number"
                 },
                 {
-                  "id": "location_office_1_3_breakdown",
+                  "id": "b5_location_office_1_3_breakdown",
                   "label": "Erittely (sijaitsee biologisen monimuotoisuuden kannalta herkillä alueilla tai niiden läheisyydessä)",
                   "type": "number"
                 }
@@ -730,21 +730,21 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_land_use_in_ha",
+              "id": "b5_location_land_use_in_ha",
               "category": "maankäytön kokonaispinta-ala (hehtaareina);",
               "fields": [
                 {
-                  "id": "land_use_in_ha_last_year",
+                  "id": "b5_land_use_in_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "land_use_in_ha_reported_year",
+                  "id": "b5_land_use_in_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "land_use_in_ha_percent_change",
+                  "id": "b5_land_use_in_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -755,17 +755,17 @@
               "category": "vettä läpäisemättömän alueen kokonaispinta-ala",
               "fields": [
                 {
-                  "id": "waterproof_ha_last_year",
+                  "id": "b5_waterproof_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "waterproof_ha_reported_year",
+                  "id": "b5_waterproof_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "waterproof_ha_percent_change",
+                  "id": "b5_waterproof_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -776,17 +776,17 @@
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikassa",
               "fields": [
                 {
-                  "id": "nature_c_o_area_ha_last_year",
+                  "id": "b5_nature_c_o_area_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_area_ha_reported_year",
+                  "id": "b5_nature_c_o_area_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_area_ha_percent_change",
+                  "id": "b5_nature_c_o_area_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -797,17 +797,17 @@
               "category": "luonnonsuojelunsuuntautuneen alueen kokonaispinta-ala toimipaikan ulkopuolella.",
               "fields": [
                 {
-                  "id": "nature_c_o_oside_of_area_ha_last_year",
+                  "id": "b5_nature_c_o_oside_of_area_ha_last_year",
                   "label": "Edellinen vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_oside_of_area_ha_reported_year",
+                  "id": "b5_nature_c_o_oside_of_area_ha_reported_year",
                   "label": "Raportointi vuosi (alue hehtaari m²)",
                   "type": "number"
                 },
                 {
-                  "id": "nature_c_o_oside_of_area_ha_percent_change",
+                  "id": "b5_nature_c_o_oside_of_area_ha_percent_change",
                   "label": "% muutos (alue hehtaari m²)",
                   "type": "number"
                 }
@@ -827,16 +827,16 @@
           "type": "group",
           "sub_questions": [
             {
-              "id": "location_water_use_all_offices",
+              "id": "b6_location_water_use_all_offices",
               "category": "Kaikki toimipisteet",
               "fields": [
                 {
-                  "id": "all_offices_water_take",
+                  "id": "b6_all_offices_water_take",
                   "label": "Vedenotto (esim... m³)",
                   "type": "number"
                 },
                 {
-                  "id": "all_offices_water_used",
+                  "id": "b6_all_offices_water_used",
                   "label": "Vedenkulutus  (esim. m³) (jos sovellettavissa)",
                   "type": "number"
                 }
@@ -847,12 +847,12 @@
               "category": "Kohteet alueilla, joilla on vesistressiä",
               "fields": [
                 {
-                  "id": "area_w_waterstress_water_take",
+                  "id": "b6_area_w_waterstress_water_take",
                   "label": "Vedenotto (esim... m³)",
                   "type": "number"
                 },
                 {
-                  "id": "area_w_waterstress_water_used",
+                  "id": "b6_area_w_waterstress_water_used",
                   "label": "Vedenkulutus  (esim. m³) (jos sovellettavissa)",
                   "type": "number"
                 }
@@ -863,12 +863,12 @@
               "category": "Jos yrityksellä on käytössä tuotantoprosesseja, jotka kuluttavat merkittävästi vettä (esimerkiksi lämpöenergiaprosessit, kuten kuivaus tai sähköntuotanto, tavaroiden tuotanto, maatalouden keinokastelu jne.), sen on ilmoitettava vedenkulutuksensa, joka on laskettu sen vedenoton ja sen tuotantoprosesseista päästetyn veden erotuksen",
               "fields": [
                 {
-                  "id": "water_dropsy_prod_process_water_take",
+                  "id": "b6_water_dropsy_prod_process_water_take",
                   "label": "Vedenotto (esim... m³)",
                   "type": "number"
                 },
                 {
-                  "id": "water_dropsy_prod_process_water_used",
+                  "id": "b6_water_dropsy_prod_process_water_used",
                   "label": "Vedenkulutus  (esim. m³) (jos sovellettavissa)",
                   "type": "number"
                 }
@@ -901,22 +901,22 @@
               "category": "Jätteen tyyppi 1",
               "fields": [
                 {
-                  "id": "waste_type_1_total_waste",
+                  "id": "b7_waste_type_1_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_1_total_recycled_waste",
+                  "id": "b7_waste_type_1_total_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_1_total_recycled_waste_to_energy",
+                  "id": "b7_waste_type_1_total_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_1_total_destroyable_waste",
+                  "id": "b7_waste_type_1_total_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -927,22 +927,22 @@
               "category": "Jätteen tyyppi 2",
               "fields": [
                 {
-                  "id": "waste_type_2_total_waste",
+                  "id": "b7_waste_type_2_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_2_recycled_waste",
+                  "id": "b7_waste_type_2_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_2_recycled_waste_to_energy",
+                  "id": "b7_waste_type_2_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "waste_type_2_destroyable_waste",
+                  "id": "b7_waste_type_2_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -953,22 +953,22 @@
               "category": "jne.",
               "fields": [
                 {
-                  "id": "etc_total_waste",
+                  "id": "b7_etc_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "etc_recycled_waste",
+                  "id": "b7_etc_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "etc_recycled_waste_to_energy",
+                  "id": "b7_etc_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "etc_destroyable_waste",
+                  "id": "b7_etc_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -983,22 +983,22 @@
               "category": "Jätteen tyyppi 1",
               "fields": [
                 {
-                  "id": "dangerous_waste_type_1_total_waste",
+                  "id": "b7_dangerous_waste_type_1_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_waste_type_1_recycled_waste",
+                  "id": "b7_dangerous_waste_type_1_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_waste_type_1_recycled_waste_to_energy",
+                  "id": "b7_dangerous_waste_type_1_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_waste_type_1_destroyable_waste",
+                  "id": "b7_dangerous_waste_type_1_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -1009,22 +1009,22 @@
               "category": "jne.",
               "fields": [
                 {
-                  "id": "dangerous_etc_total_waste",
+                  "id": "b7_dangerous_etc_total_waste",
                   "label":"Syntyneen jätteen kokonaismäärä",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_etc_recycled_waste",
+                  "id": "b7_dangerous_etc_recycled_waste",
                   "label": "Jätteet toimitettaan kierrätykseen tai uudelleenkäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_etc_recycled_waste_to_energy",
+                  "id": "b7_dangerous_etc_recycled_waste_to_energy",
                   "label": "Ei pakollinen:Jätteet toimitetaan energiakäyttöön",
                   "type": "number"
                 },
                 {
-                  "id": "dangerous_etc_destroyable_waste",
+                  "id": "b7_dangerous_etc_destroyable_waste",
                   "label": "Jätteet ohjataan häviteettäväksi",
                   "type": "number"
                 }
@@ -1048,22 +1048,22 @@
               "category": "scope 1 kasvihuonekaasupäästöt",
               "fields": [
                 {
-                  "id": "ghg_scope_1_basic_year_value_unit",
+                  "id": "c3_ghg_scope_1_basic_year_value_unit",
                   "label": "Perusvuosi perusvuoden arvo, mittayksikkö",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_1_target_year_value_unit",
+                  "id": "c3_ghg_scope_1_target_year_value_unit",
                   "label": "Tavoitevuosi ja tavoitevuoden arvo, mittayksikkö",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_1_year_two_thousand_thirty",
+                  "id": "c3_ghg_scope_1_year_two_thousand_thirty",
                   "label": "2030",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_1_year_two_thousand_fifty",
+                  "id": "c3_ghg_scope_1_year_two_thousand_fifty",
                   "label": "2050",
                   "type": "text"
                 }
@@ -1074,22 +1074,22 @@
               "category": "scope 2 kasvihuonekaasupäästöt",
               "fields": [
                 {
-                  "id": "ghg_scope_2_basic_year_value_unit",
+                  "id": "c3_ghg_scope_2_basic_year_value_unit",
                   "label": "Perusvuosi perusvuoden arvo, mittayksikkö",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_2_target_year_value_unit",
+                  "id": "c3_ghg_scope_2_target_year_value_unit",
                   "label": "Tavoitevuosi ja tavoitevuoden arvo, mittayksikkö",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_2_year_two_thousand_thirty",
+                  "id": "c3_ghg_scope_2_year_two_thousand_thirty",
                   "label": "2030",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_2_year_two_thousand_fifty",
+                  "id": "c3_ghg_scope_2_year_two_thousand_fifty",
                   "label": "2050",
                   "type": "text"
                 }
@@ -1100,22 +1100,22 @@
               "category": "scope 3 kasvihuonekaasupäästöt (jos olennainen), jota tavoite koskee",
               "fields": [
                 {
-                  "id": "ghg_scope_3_if_relevant_basic_year_value_unit",
+                  "id": "c3_ghg_scope_3_if_relevant_basic_year_value_unit",
                   "label": "Perusvuosi perusvuoden arvo, mittayksikkö",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_3_if_relevant_target_year_value_unit",
+                  "id": "c3_ghg_scope_3_if_relevant_target_year_value_unit",
                   "label": "Tavoitevuosi ja tavoitevuoden arvo, mittayksikkö",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_3_if_relevant_year_two_thousand_thirty",
+                  "id": "c3_ghg_scope_3_if_relevant_year_two_thousand_thirty",
                   "label": "2030",
                   "type": "text"
                 },
                 {
-                  "id": "ghg_scope_3_if_relevant_year_two_thousand_fifty",
+                  "id": "c3_ghg_scope_3_if_relevant_year_two_thousand_fifty",
                   "label": "2050",
                   "type": "text"
                 }
@@ -1126,7 +1126,7 @@
               "category": "luettelo tärkeimmistä toimista, jotka se aikoo toteuttaa tavoitteidensa saavuttamiseksi.  ",
               "fields": [
                 {
-                  "id": "ghg_list_important_industries_goal_basic_year_value_unit",
+                  "id": "c3_ghg_list_important_industries_goal_basic_year_value_unit",
                   "label": "Perusvuosi perusvuoden arvo, mittayksikkö",
                   "type": "text"
                 }
@@ -1137,7 +1137,7 @@
               "category": "Jos ilmastovaikutuksiltaan merkittävillä aloilla toimiva yritys6 on hyväksynyt siirtymäsuunnitelman ilmastonmuutoksen hillitsemiseksi, se voi antaa siitä tietoja, mukaan lukien selvityksen siitä, miten se edistää kasvihuonekaasupäästöjen vähentämistä.  6\"High climate impact sectors are those listed in NACE Sections A to H and Section L as defined in Annex I to Regulation (EC) No 1893/2006\"",
               "fields": [
                 {
-                  "id": "ghg_transition_plan_high_impact_description_basic_year_value_unit",
+                  "id": "c3_ghg_transition_plan_high_impact_description_basic_year_value_unit",
                   "label": "Perusvuosi perusvuoden arvo, mittayksikkö",
                   "type": "text"
                 }
@@ -1148,7 +1148,7 @@
               "category": "Jos yritys toimii aloilla, joilla ilmastovaikutukset ovat huomattavat, eikä sillä ole siirtymäsuunnitelmaa ilmastonmuutoksen hillitsemiseksi, sen on ilmoitettava, hyväksyykö se tällaisen siirtymäsuunnitelman ja jos hyväksyy, milloin.",
               "fields": [
                 {
-                  "id": "ghg_industry_high_climate_accept_plan_basic_year_value_unit",
+                  "id": "c3_ghg_industry_high_climate_accept_plan_basic_year_value_unit",
                   "label": "Perusvuosi perusvuoden arvo, mittayksikkö",
                   "type": "text"
                 }
@@ -1172,32 +1172,32 @@
               "category": "kuvattava lyhyesti tällaisia ilmastoon liittyviä uhkia ja ilmastoon liittyviä siirtymätapahtumia;",
               "fields": [
                 {
-                  "id": "threats_transition_events_short_time_interval_value",
+                  "id": "c4_threats_transition_events_short_time_interval_value",
                   "label": "Lyhyt aikaväli: arvo",
                   "type": "text"
                 },
                 {
-                  "id": "threats_transition_events_short_time_interval_procentage",
+                  "id": "c4_threats_transition_events_short_time_interval_procentage",
                   "label": "Lyhyt aikaväli: prosenttiosuus",
                   "type": "number"
                 },
                 {
-                  "id": "threats_transition_events_medium_time_interval_value",
+                  "id": "c4_threats_transition_events_medium_time_interval_value",
                   "label": "Keskipitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
-                  "id": "threats_transition_events_medium_time_interval_procentage",
+                  "id": "c4_threats_transition_events_medium_time_interval_procentage",
                   "label": "Keskipitkä aikaväli prosenttiosuus",
                   "type": "number"
                 },
                 {
-                  "id": "threats_transition_events_long_time_interval_value",
+                  "id": "c4_threats_transition_events_long_time_interval_value",
                   "label": "Pitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
-                  "id": "threats_transition_events_long_time_interval_procentage",
+                  "id": "c4_threats_transition_events_long_time_interval_procentage",
                   "label": "Pitkä aikaväli prosenttiosuus",
                   "type": "number"
                 }
@@ -1208,32 +1208,32 @@
               "category": "ilmoitettava, miten se on arvioinut omaisuutensa, toimintojensa ja arvoketjunsa altistumisen ja herkkyyden näille uhille ja siirtymätapahtumille;",
               "fields": [
                 {
-                  "id": "assessed_exposure_to_threats_transition_short_time_interval_value",
+                  "id": "c4_assessed_exposure_to_threats_transition_short_time_interval_value",
                   "label": "Lyhyt aikaväli: arvo",
                   "type": "number"
                 },
                 {
-                  "id": "assessed_exposure_to_threats_transition_short_time_interval_procentage",
+                  "id": "c4_assessed_exposure_to_threats_transition_short_time_interval_procentage",
                   "label": "Lyhyt aikaväli: prosenttiosuus",
                   "type": "number"
                 },
                 {
-                  "id": "assessed_exposure_to_threats_transition_medium_time_interval_value",
+                  "id": "c4_assessed_exposure_to_threats_transition_medium_time_interval_value",
                   "label": "Keskipitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
-                  "id": "assessed_exposure_to_threats_transition_medium_time_interval_procentage",
+                  "id": "c4_assessed_exposure_to_threats_transition_medium_time_interval_procentage",
                   "label": "Keskipitkä aikaväli prosenttiosuus",
                   "type": "number"
                 },
                 {
-                  "id": "assessed_exposure_to_threats_transition_long_time_interval_value",
+                  "id": "c4_assessed_exposure_to_threats_transition_long_time_interval_value",
                   "label": "Pitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
-                  "id": "assessed_exposure_to_threats_transition_long_time_interval_procentage",
+                  "id": "c4_assessed_exposure_to_threats_transition_long_time_interval_procentage",
                   "label": "Pitkä aikaväli prosenttiosuus",
                   "type": "number"
                 }
@@ -1244,7 +1244,7 @@
               "category": "julkistettava tunnistettujen ilmastoon liittyvien uhkien ja siirtymätapahtumien aikahorisontti (lyhyt, keskipitkä, pitkä)",
               "fields": [
                 {
-                  "id": "assessed_exposure_to_threats_transition_time_horizon_short_time_interval_value",
+                  "id": "c4_assessed_exposure_to_threats_transition_time_horizon_short_time_interval_value",
                   "label": "Lyhyt aikaväli: arvo",
                   "type": "text"
                 }
@@ -1255,32 +1255,32 @@
               "category": "ilmoitettava, onko se toteuttanut  toimia ilmastonmuutokseen sopeutumiseksi ilmastoon liittyvien uhkien ja siirtymätapahtumien varalta.",
               "fields": [
                 {
-                  "id": "i_o_c_c_a_c_t_short_time_interval_value",
+                  "id": "c4_i_o_c_c_a_c_t_short_time_interval_value",
                   "label": "Lyhyt aikaväli: arvo",
                   "type": "number"
                 },
                 {
-                  "id": "i_o_c_c_a_c_t_short_time_interval_procentage",
+                  "id": "c4_i_o_c_c_a_c_t_short_time_interval_procentage",
                   "label": "Lyhyt aikaväli: prosenttiosuus",
                   "type": "number"
                 },
                 {
-                  "id": "i_o_c_c_a_c_t_medium_time_interval_value",
+                  "id": "c4_i_o_c_c_a_c_t_medium_time_interval_value",
                   "label": "Keskipitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
-                  "id": "i_o_c_c_a_c_t_medium_time_interval_procentage",
+                  "id": "c4_i_o_c_c_a_c_t_medium_time_interval_procentage",
                   "label": "Keskipitkä aikaväli prosenttiosuus",
                   "type": "number"
                 },
                 {
-                  "id": "i_o_c_c_a_c_t_long_time_interval_value",
+                  "id": "c4_i_o_c_c_a_c_t_long_time_interval_value",
                   "label": "Pitkä aikaväli arvo",
                   "type": "number"
                 },
                 {
-                  "id": "i_o_c_c_a_c_t_long_time_interval_procentage",
+                  "id": "c4_i_o_c_c_a_c_t_long_time_interval_procentage",
                   "label": "Pitkä aikaväli prosenttiosuus",
                   "type": "number"
                 }
@@ -1291,7 +1291,7 @@
               "category": "Yritys voi julkistaa ilmastoriskien mahdolliset haitalliset vaikutukset, jotka voivat vaikuttaa sen taloudelliseen tulokseen tai liiketoimintaan lyhyellä, keskipitkällä tai pitkällä aikavälillä, ja ilmoittaa, arvioiko se riskit suuriksi, keskisuuriksi vai alhaisiksi.",
               "fields": [
                 {
-                  "id": "climate_damage_of_company_short_time_interval_value",
+                  "id": "c4_climate_damage_of_company_short_time_interval_value",
                   "label": "Lyhyt aikaväli: arvo",
                   "type": "text"
                 }
@@ -1316,17 +1316,17 @@
               "category": "Työsopimuksen tyyppi - Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "fields": [
                 {
-                  "id": "fixed_contracts",
+                  "id": "b8_fixed_contracts",
                   "label": "Määräaikainen sopimus",
                   "type": "number"
                 },
                 {
-                  "id": "permanent_contracts",
+                  "id": "b8_permanent_contracts",
                   "label": "Vakituinen / toistaiseksi voimassa oleva sopimus",
                   "type": "number"
                 },
                 {
-                  "id": "total_personnel_and_employees",
+                  "id": "b8_total_personnel_and_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä", 
                   "type": "number"
                 }
@@ -1337,27 +1337,27 @@
               "category": "Sukupuoli - Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "fields": [
                 {
-                  "id": "gender_male",
+                  "id": "b8_gender_male",
                   "label": "Mies",
                   "type": "number"
                 },
                 {
-                  "id": "gender_female",
+                  "id": "b8_gender_female",
                   "label": "Nainen", 
                   "type": "number"
                 },
                 {
-                  "id": "gender_other",
+                  "id": "b8_gender_other",
                   "label": "Muu sukupuoli", 
                   "type": "number"
                 },
                 {
-                  "id": "gender_unreported",
+                  "id": "b8_gender_unreported",
                   "label": "Ei raportoitu", 
                   "type": "number"
                 },
                 {
-                  "id": "gender_total_personnel_employees",
+                  "id": "b8_gender_total_personnel_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä", 
                   "type": "number"
                 }
@@ -1368,22 +1368,22 @@
               "category": "Maa (jos sovellettavissa) - Työntekijöiden lukumäärä ( henkilöstömäärä tai kokoaikaiseksi muutettuna)",
               "fields": [
                 {
-                  "id": "country_a_employees",
+                  "id": "b8_country_a_employees",
                   "label": "Maa A",
                   "type": "number"
                 },
                 {
-                  "id": "country_b_employees",
+                  "id": "b8_country_b_employees",
                   "label": "Maa B",
                   "type": "number"
                 },
                 {
-                  "id": "countrys_total_employees",
+                  "id": "b8_countrys_total_employees",
                   "label": "Henkilöstö / Työntekijät yhteensä",
                   "type": "number"
                 },
                 {
-                  "id": "countrys_over_50_employee_turnover_rate",
+                  "id": "b8_countrys_over_50_employee_turnover_rate",
                   "label": "Jos yrityksen palveluksessa on vähintään 50 työntekijää, sen on ilmoitettava työntekijöiden vaihtuvuus raportointikaudelta.",
                   "type": "number"
                 }
@@ -1470,7 +1470,8 @@
         },
         {
           "id": "c6_human_rights_policy_instruction",
-          "instruction": "Jos vastasitte myöntävästi, kattaako tämä:"
+          "instruction": "Jos vastasitte myöntävästi, kattaako tämä:",
+          "type": "instruction"
         },
         {
           "id": "c6_human_rights_child_labour",
@@ -1511,7 +1512,7 @@
               "category": "jos kyllä",
               "fields": [
                 {
-                  "id": "else_severe_human_rights_abuses_describe",
+                  "id": "c6_else_severe_human_rights_abuses_describe",
                   "label": "(täsmennettävä)",
                   "type": "text"
                 }
@@ -1520,7 +1521,7 @@
           ],
           "fields": [
             {
-              "id": "else_severe_human_rights_abuses_describe",
+              "id": "c6_else_severe_human_rights_abuses_describe",
               "label": "(täsmennettävä)",
               "type": "text"
             }
@@ -1540,7 +1541,8 @@
       "questions": [
         {
           "id": "c7_severe_human_rights_abuses_instruction",
-          "instruction": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät:"
+          "instruction": "Onko yritys vahvistanut omassa työvoimassaan tapahtumia, jotka liittyvät:",
+          "type": "instruction"
         },
         {
           "id": "c7_severe_human_rights_abuses_child_labour",
@@ -1576,7 +1578,7 @@
               "category": "jos kyllä",
               "fields": [
                 {
-                  "id": "else_severe_human_rights_abuses_describe",
+                  "id": "c7_else_severe_human_rights_abuses_describe",
                   "label": "(täsmennettävä)",
                   "type": "text"
                 }
@@ -1603,7 +1605,7 @@
               "category": "jos kyllä",
               "fields": [
                 {
-                  "id": "else_severe_human_rights_abuses_confirmed_cases_describe",
+                  "id": "c7_else_severe_human_rights_abuses_confirmed_cases_describe",
                   "label": "(teksti)",
                   "type": "text"
                 }
@@ -1689,25 +1691,25 @@
       "title": "B11 Korruptiosta ja lahjonnasta annetut tuomiot ja sakot",
       "questions": [
         {
-          "id": "management_if_this_q_yes_corruption",
+          "id": "b11_management_if_this_q_yes_corruption",
           "question": "Jos yrityksellä on ollut korruptioon tai lahjontaan liittyviä tuomioita tai sakkoja raportointijaksolla, sen tulee ilmoittaa:",
           "type": "boolean"
         },
         {
-          "id": "if_prev_yes_management_if_this_q_yes_corruption",
+          "id": "if_prev_yes_b11_management_if_this_q_yes_corruption",
           "type": "group",
           "sub_questions": [
             {
-              "id": "sub_q_if_prev_yes_management_if_this_q_yes_corruption",
+              "id": "sub_q_if_prev_yes_b11_management_if_this_q_yes_corruption",
               "category": "Korruptio/lahjonta -tiedot", 
               "fields": [
                 {
-                  "id": "management_number_of_penalties",
+                  "id": "b11_management_number_of_penalties",
                   "label": "Tuomioiden lukumäärä",
                   "type": "number"
                 },
                 {
-                  "id": "management_total_costs_from_fines",
+                  "id": "b11_management_total_costs_from_fines",
                   "label": "Sakoista aiheutuneet kokonaiskulut",
                   "type": "number"
                 }
@@ -1735,8 +1737,8 @@
               "category": "Jos kyllä,", 
               "fields": [
                 {
-                  "id": "if_company_operates_in_sector_if_yes_income_from_sector",
-                  "label": "",
+                  "id": "c8_if_company_operates_in_sector_if_yes_income_from_sector",
+                  "label": "(tulot)",
                   "type": "number"
                 }
               ]
@@ -1757,7 +1759,7 @@
               "category": "Jos kyllä,",
               "fields": [
                 {
-                  "id": "company_operates_in_sector_wepons_if_yes_income_from_sector",
+                  "id": "c8_company_operates_in_sector_wepons_if_yes_income_from_sector",
                   "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
@@ -1779,7 +1781,7 @@
               "category": "Jos kyllä,",
               "fields": [
                 {
-                  "id": "tobacco_production_if_yes_income_from_sector",
+                  "id": "c8_tobacco_production_if_yes_income_from_sector",
                   "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
@@ -1801,7 +1803,7 @@
               "category": "Jos kyllä,",
               "fields": [
                 {
-                  "id": "fossil_fuel_production_if_yes_income_from_sector",
+                  "id": "c8_fossil_fuel_production_if_yes_income_from_sector",
                   "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
@@ -1823,7 +1825,7 @@
               "category": "Jos kyllä,",
               "fields": [
                 {
-                  "id": "cemicals_production_if_yes_income_from_sector",
+                  "id": "c8_cemicals_production_if_yes_income_from_sector",
                   "label": "ilmoita asiaan liittyvä tulot",
                   "type": "number"
                 }
