@@ -5,7 +5,7 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 import { initializeComprehensive } from '../reducers/comprehensiveReducer'
-import { addAnswer } from '../reducers/answersReducer';
+import { createAnswer } from '../reducers/answersReducer';
 
 import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
 import Answers from './Answers'
@@ -140,9 +140,9 @@ const Comprehensive = () => {
             )
           }))
         }
-        await dispatch(addAnswer(payload))
+        await dispatch(createAnswer(payload))
       }
-      handleClearAnswers()
+      setAnswers({})
       navigate(`/useranswers/${user.id}`)
     } catch (error) {
       dispatch(notify('Vastauksien lähetys epäonnistui', 15, true))
@@ -150,17 +150,13 @@ const Comprehensive = () => {
 
   }
 
-  const handleClearAnswers = () => {
-    setAnswers({})
-  }
-
 
   return (
-    <div key="comprehensive_module-div">
+    <div key="comprehensive_module-div" className="comprehensive-module container">
       <Form onSubmit={handleSubmit}>
         <p>
           Tämä raportti on laadittu VSME 17.12.2024 mukaisesti:
-          <a href="https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf" target="_blank">https:\/\/www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf</a>
+          <a href="https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf" target="_blank">https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf</a>
         </p>
 
         {comprehensive.map((b, bIdx) => (

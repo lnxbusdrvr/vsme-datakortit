@@ -93,5 +93,6 @@
 | 17.03.2026 | 2     | Fix SubQs if yes questions, fix db data typos |
 | 18.03.2026 | 6     | Get instruction-field on answers-page, fix instuction-fields on db |
 | 19.03.2026 | 4,25  | Get instruction without type to render once on Answers-component, consistent db id's, add Dropdownmenu to NewUserForm-component, install bootstrap, implement delete boolean answer |
-| Total      | 277,25 |
+| 20.03.2026 | 2,75  | Added update button to boolean-answer on answers-page, addAnswer -> createAnswer and make it unmutable-version, fix some styling issues |
+| Total      | 280   |
 

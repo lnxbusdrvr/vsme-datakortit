@@ -29,7 +29,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div key="app-div" className="app container">
       {!user ? (
         <LoginForm />
       ) : (

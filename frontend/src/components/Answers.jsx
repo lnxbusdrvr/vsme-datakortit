@@ -9,7 +9,7 @@ import { initializeBasic } from '../reducers/basicReducer'
 import { initializeComprehensive} from '../reducers/comprehensiveReducer'
 import { initializeAnswers } from '../reducers/answersReducer'
 
-import { deleteAnswer } from '../reducers/answersReducer'
+import { deleteAnswer, updateAnswer } from '../reducers/answersReducer'
 import { notify } from '../reducers/notificationReducer'
 
 
@@ -93,9 +93,19 @@ const Answers = () => {
     }
   }
 
+  const handleUpdateAnswer = (answerId) => {
+    try {
+      dispatch(updateAnswer(answerId))
+      dispatch(initializeAnswers())
+    } catch (error) {
+      throw error
+    }
+
+  }
+
 
   return (
-    <div>
+    <div key="answers-div" className="answers">
       <h2>{user.name} {user.companyName}:</h2>
 
       {sortedAnswers.filter(a => a.user.id === id).map((a, aIdx, filteredAnswers) => {
@@ -128,7 +138,7 @@ const Answers = () => {
           : []
 
         return (
-          <div key={`module-${aIdx}`}>
+          <div key={`module-${aIdx}`} >
             {isFirstInSection && section?.header && (<h2>{section?.header}</h2>)}
             {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
             {isFirstInSection && section?.instruction && (<p>{section?.instruction}</p>)}
@@ -146,7 +156,8 @@ const Answers = () => {
               <div key={`boolean-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei') : a.answer}</strong></p>
-                <Button variant="outlined" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                <Button variant="primary" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
               </div>
             )}
             {a.type === 'group' && (
