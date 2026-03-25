@@ -47,7 +47,6 @@ const ComprehensiveSectionSchema = new mongoose.Schema(
     header: { type: String },
     title: { type: String },
     instruction: { type: String },
-    title: { type: String, required: true },
     questions: [ComprehensiveQuestionSchema],
   },
   { _id: false }

@@ -20,7 +20,8 @@ const notificationStyle = {
   zIndex: 1000,
   minWidth: '18.75rem',
   textAlign: 'center',
-  boxShadow: '0 0.25rem 0.375rem rgba(0, 0, 0, 0.1)'
+  boxShadow: '0 0.25rem 0.375rem rgba(0, 0, 0, 0.1)',
+  willChange: 'transform'
 };
 
   return (
