@@ -1,4 +1,4 @@
-const { BasicModule, InclusiveModule } = require('../models/questions');
+const { BasicModule } = require('../models/questions');
 const User = require('../models/user');
 const Answer = require('../models/answer');
 const supertest = require('supertest');

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector} from 'react-redux'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate  } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
@@ -20,6 +20,7 @@ const Answers = () => {
   const basic = useSelector(state => state.basic)
   const comprehensive = useSelector(state => state.comprehensive)
   const [user, setUser] = useState(null)
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -86,8 +87,40 @@ const Answers = () => {
 
   const handleDeleteAnswer = async (answerId) => {
     try {
+      const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
+      if (!confirmDeleteAnswer)
+        return
       dispatch(deleteAnswer(answerId))
       dispatch(initializeAnswers())
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const handleDeleteSubAnswer = async (answerId, subQsId, fieldId) => {
+    try {
+      // find current answer
+      const answer = answers.find(a => a.id === answerId)
+
+      // remove field from inside groupAnswers
+      const deletedGroupAnswers = answer.groupAnswers.map(ga => {
+        if (ga.subQuestionId === subQsId) {
+          const newValues = { ...ga.values }
+          delete newValues[fieldId]
+          return { ...ga, values: newValues }
+        }
+        return ga
+      }).filter(ga => Object.keys(ga.values).length > 0)
+
+      dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
+      dispatch(initializeAnswers())
+      if (deletedGroupAnswers.length === 0) {
+        dispatch(deleteAnswer(answerId))
+        dispatch(initializeAnswers())
+        // TODO: refresh page smoothly
+        return
+      }
+      navigate(`/useranswers/${id}`)
     } catch (error) {
       throw error
     }
@@ -108,7 +141,8 @@ const Answers = () => {
     <div key="answers-div" className="answers">
       <h2>{user.name} {user.companyName}:</h2>
 
-      {sortedAnswers.filter(a => a.user.id === id).map((a, aIdx, filteredAnswers) => {
+      {sortedAnswers.filter(a => a.user.id === id)
+        .map((a, aIdx, filteredAnswers) => {
         const section = module
           .flatMap(m => m.sections)
           .find(s => s.section_id === a.sectionId)
@@ -160,6 +194,22 @@ const Answers = () => {
                 <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
               </div>
             )}
+            {a.type === 'text' && (
+              <div key={`text-answer-${aIdx}`}>
+                <p>{question?.question}</p>
+                <p>Vastaus: <strong>{a.answer}</strong></p>
+                <Button variant="primary" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
+              </div>
+            )}
+            {a.type === 'number' && (
+              <div key={`number-answer-${aIdx}`}>
+                <p>{question?.question}</p>
+                <p>Vastaus: <strong>{a.answer}</strong></p>
+                <Button variant="primary" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
+              </div>
+            )}
             {a.type === 'group' && (
               <>
                 {question?.sub_questions.map((subQs, subQsIdx) => {
@@ -181,6 +231,9 @@ const Answers = () => {
                         return (
                           <div key={`subQsField-${fIdx}`}>
                             <p>{field?.label}: <strong>{fieldData.value}</strong></p>
+                            <Button variant="primary" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
+                              Poista vastaus
+                            </Button>
                           </div>
                         )
                       })}

@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const Answer = require('../models/answer');
 const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH;
 
 const createUser = async (req, res) => {

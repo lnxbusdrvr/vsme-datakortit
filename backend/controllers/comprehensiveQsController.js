@@ -16,4 +16,5 @@ const getComprehensiveQById = async (request, response) => {
 
 module.exports = {
   getAllComprehensiveQs,
+  getComprehensiveQById
 };

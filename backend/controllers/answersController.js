@@ -20,7 +20,6 @@ const validateAnswerOrGroupAnswers = (type, answer, groupAnswers) => {
 }
 
 const validateSimpleAnswerType = (type, answer) => {
-  console.log(`answer: ${answer}`)
   if (type === 'number' && (typeof answer !== 'number' || isNaN(answer)))
     return `Answer must be a valid number for type 'number', got ${typeof answer}: ${answer}`;
 
@@ -38,7 +37,7 @@ const validateGroupAnswers = (groupAnswers) => {
     if (!grpAnswer.values)
       continue;
 
-    for (const [fieldKey, value] of Object.entries(grpAnswer.values) ) {
+    for (const value of Object.values(grpAnswer.values) ) {
       const errorMsg = validateSimpleAnswerType(value.fieldType, value.value);
       if (errorMsg)
         return errorMsg;
@@ -48,44 +47,43 @@ const validateGroupAnswers = (groupAnswers) => {
 }
 
 const createAnswer = async (req, res) => {
-  const { moduleId, sectionId, questionId, type, answer, groupAnswers } = req.body;
+  const { moduleId, sectionId, questionId,
+    type, answer, groupAnswers } = req.body;
 
-  try {
 
-    // Run validations
-    const validationError =
-      validateRequiredFields(moduleId, sectionId, questionId, type) ||
-      validateAnswerOrGroupAnswers(type, answer, groupAnswers) ||
-      (type !== 'group' && validateSimpleAnswerType(type, answer)) ||
-      (type === 'group' && validateGroupAnswers(groupAnswers));
+  // Run validations
+  const validationError =
+    validateRequiredFields(moduleId, sectionId, questionId, type) ||
+    validateAnswerOrGroupAnswers(type, answer, groupAnswers) ||
+    (type !== 'group' && validateSimpleAnswerType(type, answer)) ||
+    (type === 'group' && validateGroupAnswers(groupAnswers));
 
-    if (validationError)
-      return res.status(400).json({ error: validationError });
+  if (validationError)
+    return res.status(400).json({ error: validationError });
 
-    const newAnswer = new Answer({
-      user: req.user.id,
-      moduleId,
-      sectionId,
-      questionId,
-      type,
-      answer: type !== 'group' ? answer : undefined,
-      groupAnswers: type === 'group' ? groupAnswers : undefined,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
+  const user = await User.findById(req.user.id);
 
-    const savedAnswer = await newAnswer.save();
+  const newAnswer = new Answer({
+    user: user.id,
+    moduleId,
+    sectionId,
+    questionId,
+    type,
+    answer: type !== 'group' ? answer : undefined,
+    groupAnswers: type === 'group' ? groupAnswers : undefined,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
 
-    await User.findByIdAndUpdate(
+  const savedAnswer = await newAnswer.save();
+  await User.findByIdAndUpdate(
       req.user.id,
       { $push: { answers: savedAnswer._id } }
     );
+   await savedAnswer.populate('user', { name: 1, companyName: 1 });
+  user.answers.concat(savedAnswer._id);
 
-    await savedAnswer.populate('user', { name: 1, companyName: 1 });
-    res.status(201).json(savedAnswer);
-  } catch (error) {
-    return res.status(400).json({ error: error.message });
-  }
+  res.status(201).json(savedAnswer);
 };
 
 const getAllAnswers = async (req, res) => {
@@ -110,7 +108,8 @@ const getAnswerById = async (req, res) => {
     companyName: 1,
   });
 
-  if (!answer) return res.status(404).end();
+  if (!answer)
+    return res.status(404).end();
 
   const user = req.user;
   const userRole = req.user.role;
@@ -158,19 +157,25 @@ const updateAnswer = async (req, res) => {
 };
 
 const deleteAnswer = async (req, res) => {
-  const answerId = req.params.id;
-  const answerToDelete = await Answer.findById(answerId);
+  const answerToDelete = await Answer.findById(req.params.id);
 
-  if (!answerToDelete) return res.status(404).json({ error: 'Deletable answer not found' });
+  if (!answerToDelete)
+    return res.status(404).json({ error: 'Deletable answer not found' });
 
-  const userIdFromToken = req.user.id;
-  const answerCreatorId = answerToDelete.user.toString();
+  const user = req.user;
+  if (!user)
+    return res.status(401).json({ error: 'Unauthorized' });
 
   // viewer-role should get 403
-  if (userIdFromToken !== answerCreatorId && req.user.role !== 'admin')
+  if (user.id !== answerToDelete.user.toString() && user.role !== 'admin')
     return res.status(403).json({ error: 'Answer deletion permission denied' });
 
-  await Answer.findByIdAndDelete(answerId);
+  await answerToDelete.deleteOne();
+  user.answers = user.answers
+    .filter(a => a.toString() !== answerToDelete.id.toString());
+
+  await user.save();
+
   res.status(204).end();
 };
 
