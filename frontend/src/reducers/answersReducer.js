@@ -27,7 +27,7 @@ const slice = createSlice({
     },
     update(state, { payload }) {
       const updatedAnswer = payload
-      return state.map(u => (u.id === updatedAnswer.id ? u : updatedAnswer))
+      return state.map(u => (u.id === updatedAnswer.id ? updatedAnswer : u))
     },
     remove(state, { payload }) {
       return state.filter(a => a.id !== payload)
@@ -49,12 +49,14 @@ export const createAnswer = (answer) => {
     try {
       const data = await answersService.createAnswer(answer)
       dispatch(create(data))
-      dispatch(notify(`Vastaukset lähetetty onnistuneesti!`, 20, false));
+      dispatch(notify(`Vastaukset tallennettu onnistuneesti!`, 20, false));
+      // action was successful
       return true;
     } catch (error) {
       // Handle backend error responses
       const errorMessage = error.response?.data?.error || error.message || 'Vastauksien luominen epäonnistui';
       dispatch(notify(errorMessage, 20, true));
+      // action was not successful
       return false;
     }
   }

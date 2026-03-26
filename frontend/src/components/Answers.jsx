@@ -99,10 +99,13 @@ const Answers = () => {
 
   const handleDeleteSubAnswer = async (answerId, subQsId, fieldId) => {
     try {
+      const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
+      if (!confirmDeleteAnswer)
+        return
+
       // find current answer
       const answer = answers.find(a => a.id === answerId)
 
-      // remove field from inside groupAnswers
       const deletedGroupAnswers = answer.groupAnswers.map(ga => {
         if (ga.subQuestionId === subQsId) {
           const newValues = { ...ga.values }
@@ -112,15 +115,16 @@ const Answers = () => {
         return ga
       }).filter(ga => Object.keys(ga.values).length > 0)
 
-      dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
-      dispatch(initializeAnswers())
+      // If no groupAnswers left, delete answer
       if (deletedGroupAnswers.length === 0) {
         dispatch(deleteAnswer(answerId))
         dispatch(initializeAnswers())
-        // TODO: refresh page smoothly
         return
       }
-      navigate(`/useranswers/${id}`)
+
+      // Delete field(s) from inside groupAnswers
+      dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
+      dispatch(initializeAnswers())
     } catch (error) {
       throw error
     }
@@ -176,9 +180,6 @@ const Answers = () => {
             {isFirstInSection && section?.header && (<h2>{section?.header}</h2>)}
             {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
             {isFirstInSection && section?.instruction && (<p>{section?.instruction}</p>)}
-            {question?.question && a.type !== 'boolean' && (
-              <p>{question?.question}</p>
-            )}
             {question?.instruction && (
               <p>{question?.instruction}</p>
             )}
