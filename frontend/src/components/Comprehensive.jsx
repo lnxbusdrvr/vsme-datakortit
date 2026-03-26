@@ -142,12 +142,16 @@ const Comprehensive = () => {
         }
         await dispatch(createAnswer(payload))
       }
-      setAnswers({})
+      handleClearAnswers()
       navigate(`/useranswers/${user.id}`)
     } catch (error) {
       dispatch(notify('Vastauksien lähetys epäonnistui', 15, true))
     }
 
+  }
+
+  const handleClearAnswers = () => {
+    setAnswers({})
   }
 
 
@@ -159,10 +163,10 @@ const Comprehensive = () => {
           <a href="https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf" target="_blank">https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf</a>
         </p>
 
-        {comprehensive.map((b, bIdx) => (
-          <div key={b.id || bIdx} >
-            <h1>{b.module}</h1>
-            {b.sections.map((s, sIdx) => (
+        {comprehensive.map((c, cIdx) => (
+          <div key={b.id || cIdx} >
+            <h1>{c.module}</h1>
+            {c.sections.map((s, sIdx) => (
               <div key={`${s.section_id}-${sIdx}`} >
                 {s.header && (
                   <h2>{s.header}</h2>
@@ -187,7 +191,7 @@ const Comprehensive = () => {
                         <Form.Check
                           type="radio"
                           label="Kattava moduuli"
-                          value={b.module_id}
+                          value={c.module_id}
                           checked={true}
                           disabled
                         />
@@ -202,105 +206,97 @@ const Comprehensive = () => {
                             {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
                           </Form.Label>
                         )}
-                      {qs.type === 'number' && (
-                        <Form.Label>{qs.question}
-                          {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
-                        </Form.Label>
-                      )}
-                      {qs.type === 'boolean' && (
-                        <>
-                          <Form.Label>{qs.question}</Form.Label>
-                          <Form.Check
-                            label="Kyllä"
-                            type="radio"
-                            name={qs.id}
-                            checked={answers[qs.id]?.answer === true}
-                            onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
-                              if (qs.id.includes('_if_this_q_yes_'))
-                                setLastControllingQuestionId(prev => [...prev, qs.id])
-                            }}
-                          />
-                          <Form.Check
-                            label="Ei"
-                            type="radio"
-                            name={qs.id}
-                            checked={answers[qs.id]?.answer === false}
-                            onChange={() => {
-                              handleAnswersChange(s.section_id, qs.id, qs.type, false)
-                              if (qs.id.includes('_if_this_q_yes_'))
-                                setLastControllingQuestionId(prev => prev.filter(id => id !== qs.id))
-                            }}
-                          />
-                        </>
-                      )}
-                    </div>
-                )}
-                {qs.type === 'group' && (
-                  <div key={`group_question-${qsIdx}`} >
-                    {qs.sub_questions
-                      .filter(fi => !fi.id.startsWith('sub_q_if_prev_yes_'))
-                      .map((subQs, subQsIdx) => (
-                        <div key={`${subQs.id}-${subQsIdx}`} >
-                          {subQs.title && (
-                            <b>{subQs.title}</b>
-                          )}
-                          {subQs.category && (
-                            <b>{subQs.category}</b>
-                          )}
-                          {subQs.fields && subQs.fields.map((f, fIdx) => (
-                            <div key={`${f.id}-${fIdx}`} >
-                              <Form.Label>{f.label}
-                                {f.type === 'number' && (
-                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
-                                )}
-                                {f.type === 'text' && (
-                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
-                                )}
-                              </Form.Label>
-                            </div>
+                        {qs.type === 'number' && (
+                          <Form.Label>{qs.question}
+                            {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
+                          </Form.Label>
+                        )}
+                        {qs.type === 'boolean' && (
+                          <>
+                            <Form.Label>{qs.question}</Form.Label>
+                            <Form.Check
+                              label="Kyllä"
+                              type="radio"
+                              name={qs.id}
+                              checked={answers[qs.id]?.answer === true}
+                              onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
+                                if (qs.id.includes('_if_this_q_yes_'))
+                                  setLastControllingQuestionId(prev => [...prev, qs.id])
+                              }}
+                            />
+                            <Form.Check
+                              label="Ei"
+                              type="radio"
+                              name={qs.id}
+                              checked={answers[qs.id]?.answer === false}
+                              onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
+                                if (qs.id.includes('_if_this_q_yes_'))
+                                  setLastControllingQuestionId(prev => prev.filter(id => id !== qs.id))
+                              }}
+                            />
+                          </>
+                        )}
+                      </div>
+                    )}
+                    {qs.type === 'group' && (
+                      <div key={`group_question-${qsIdx}`} >
+                        {qs.sub_questions.filter(fi => !fi.id.startsWith('sub_q_if_prev_yes_')).map((subQs, subQsIdx) => (
+                          <div key={`${subQs.id}-${subQsIdx}`} >
+                            {subQs.title && (
+                              <b>{subQs.title}</b>
+                            )}
+                            {subQs.category && (
+                              <b>{subQs.category}</b>
+                            )}
+                            {subQs.fields && subQs.fields.map((f, fIdx) => (
+                              <div key={`${f.id}-${fIdx}`} >
+                                <Form.Label>{f.label}
+                                  {f.type === 'number' && (
+                                    inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                  )}
+                                  {f.type === 'text' && (
+                                    inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                  )}
+                                </Form.Label>
+                              </div>
+                            ))}
+                          </div>
                           ))}
-                        </div>
-                    ))}
+                      </div>
+                    )}
+                    {qs.type === 'group'&& lastControllingQuestionId.some(ctrlId => getMoreQuestionIdIfCtrlQsYes(ctrlId) === qs.id) && (
+                      <div key={`group_question-supplementary-qs-${qsIdx}`} >
+                        {qs.sub_questions.filter(fi => fi.id.startsWith('sub_q_if_prev_yes_')).map((subQs, subQsIdx) => (
+                          <div key={`${subQs.id}-${subQsIdx}`} >
+                            {subQs.fields && subQs.fields.map((f, fIdx) => (
+                              <div key={`${f.id}-${fIdx}`} >
+                                {<p>{subQs.category}</p>}
+                                <Form.Label>{f.label}
+                                  {f.type === 'number' && (
+                                    inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                  )}
+                                  {f.type === 'number' && (
+                                    inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
+                                  )}
+                                </Form.Label>
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-                {qs.type === 'group' && lastControllingQuestionId.some(ctrlId => getMoreQuestionIdIfCtrlQsYes(ctrlId) === qs.id) && (
-                  <div key={`group_question-supplementary-qs-${qsIdx}`} >
-                    {qs.sub_questions
-                      .filter(fi => fi.id.startsWith('sub_q_if_prev_yes_'))
-                      .map((subQs, subQsIdx) => (
-                        <div key={`${subQs.id}-${subQsIdx}`} >
-                          {subQs.fields && subQs.fields.map((f, fIdx) => (
-                            <div key={`${f.id}-${fIdx}`} >
-                              {<p>{subQs.category}</p>}
-                              <Form.Label>{f.label}
-                                {f.type === 'number' && (
-                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
-                                )}
-                                {f.type === 'text' && (
-                                  inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
-                                )}
-                              </Form.Label>
-                            </div>
-                          ))}
-                        </div>
-                    ))}
-                  </div>
-                )}
+                ))}
               </div>
             ))}
           </div>
         ))}
-          </div>
-        ))}
-        <Button variant="contained" type="submit">Tallenna</Button>
-        <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
+        <Button variant="primary" type="submit">Tallenna</Button>
+        <Button variant="secondary" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
       </Form>
     </div>
   )
 }
 
-/*
-                {qs.type === 'group' && qs.id === getMoreQuestionIdIfCtrlQsYes(lastControllingQuestionId) && (
-                */
 
 export default Comprehensive 

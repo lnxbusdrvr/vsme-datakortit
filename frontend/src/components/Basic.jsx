@@ -297,8 +297,8 @@ const Basic = () => {
         ))}
           </div>
         ))}
-        <Button variant="contained" type="submit">Tallenna</Button>
-        <Button variant="outlined" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
+        <Button variant="primary" type="submit">Tallenna</Button>
+        <Button variant="secondary" onClick={() => handleClearAnswers()}>Tyhjennä</Button>
       </Form>
     </div>
   )
@@ -306,15 +306,3 @@ const Basic = () => {
 
 
 export default Basic
-
-/*
-                    {qs.id === ifPrevYesId && (
-                      <div key={`${qs.id}-${qsIdx}`} >
-                        <p>{qs.instruction}</p>
-
-                      </div>
-                    )}
-
-
-                {qs.type === 'group' && (!lastControllingQuestionId === null || qs.id !== getMoreQuestionIdIfCtrlQsYes(lastControllingQuestionId)) && (
- */
