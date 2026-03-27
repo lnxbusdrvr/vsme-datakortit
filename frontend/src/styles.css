@@ -22,3 +22,45 @@
   margin-top: 0.25rem;
   padding: 0.2rem;
 }
+.basic-module, .comprehensive-module {
+  background-color: #e9edff;
+  padding: 1rem;
+  border: 0.05rem solid #337ab7;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+/* Form controls styling for better visibility */
+.form-control {
+  border: 0.1rem solid #6c757d !important;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:hover {
+  border-color: #337ab7 !important;
+}
+
+.form-control:focus {
+  border-color: #337ab7 !important;
+  box-shadow: 0 0 0 0.15rem rgba(51, 122, 183, 0.2);
+}
+
+/* Button spacing */
+.btn {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.15rem solid #337ab7;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+input[type="radio"]:checked {
+  accent-color: #337ab7;
+}

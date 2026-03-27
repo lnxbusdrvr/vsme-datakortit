@@ -96,5 +96,6 @@
 | 20.03.2026 | 2,75  | Added update button to boolean-answer on answers-page, addAnswer -> createAnswer and make it unmutable-version, fix some styling issues |
 | 25.03.2026 | 6,75  | Fixed deleting backend. Implemented delete answers |
 | 26.03.2026 | 4,75  | Fixed more delete action |
-| Total      | 291,5 |
+| 27.03.2026 | 5,75  | Added some css and fixed (partially: removes boolean and supplement-questions, but throws internal error) if-yes-show-more delete that deletes boolean and supplement-questions |
+| Total      | 297,25 |
 
