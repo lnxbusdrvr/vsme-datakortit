@@ -87,11 +87,23 @@ const Answers = () => {
 
   const handleDeleteAnswer = async (answerId) => {
     try {
-      const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
+      const confirmDeleteAnswer = window
+        .confirm('Haluatko varmasti poistaa vastauksen?')
       if (!confirmDeleteAnswer)
         return
+
+      const answer = answers.find(a => a.id === answerId)
+
+      // If question is, if-yes-show-more question(s),
+      // delete next answer(s) too
+      if (answer?.questionId.includes('_if_this_q_yes_')) {
+        const nextQuestionId = answers
+          .find(a => a.questionId
+            .startsWith(`if_prev_yes_${answer.questionId}`))
+        dispatch(deleteAnswer(nextQuestionId.id))
+      }
+
       dispatch(deleteAnswer(answerId))
-      dispatch(initializeAnswers())
     } catch (error) {
       throw error
     }
@@ -103,7 +115,6 @@ const Answers = () => {
       if (!confirmDeleteAnswer)
         return
 
-      // find current answer
       const answer = answers.find(a => a.id === answerId)
 
       const deletedGroupAnswers = answer.groupAnswers.map(ga => {
@@ -118,13 +129,11 @@ const Answers = () => {
       // If no groupAnswers left, delete answer
       if (deletedGroupAnswers.length === 0) {
         dispatch(deleteAnswer(answerId))
-        dispatch(initializeAnswers())
         return
       }
 
-      // Delete field(s) from inside groupAnswers
+      // Delete (update) field(s) from inside groupAnswers
       dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
-      dispatch(initializeAnswers())
     } catch (error) {
       throw error
     }
@@ -147,6 +156,11 @@ const Answers = () => {
 
       {sortedAnswers.filter(a => a.user.id === id)
         .map((a, aIdx, filteredAnswers) => {
+
+        const moduleName = a.moduleId === 'basic_module'
+            ? 'Perusmoduuli'
+            : 'Perusmoduuli + kattava moduuli'
+
         const section = module
           .flatMap(m => m.sections)
           .find(s => s.section_id === a.sectionId)
@@ -177,6 +191,7 @@ const Answers = () => {
 
         return (
           <div key={`module-${aIdx}`} >
+            {isFirstInSection && (<p>{moduleName}</p>)}
             {isFirstInSection && section?.header && (<h2>{section?.header}</h2>)}
             {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
             {isFirstInSection && section?.instruction && (<p>{section?.instruction}</p>)}
@@ -191,24 +206,24 @@ const Answers = () => {
               <div key={`boolean-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei') : a.answer}</strong></p>
-                <Button variant="primary" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
                 <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
+                <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
               </div>
             )}
             {a.type === 'text' && (
               <div key={`text-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.answer}</strong></p>
-                <Button variant="primary" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
                 <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
+                <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
               </div>
             )}
             {a.type === 'number' && (
               <div key={`number-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.answer}</strong></p>
-                <Button variant="primary" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
                 <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
+                <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
               </div>
             )}
             {a.type === 'group' && (
@@ -233,6 +248,9 @@ const Answers = () => {
                           <div key={`subQsField-${fIdx}`}>
                             <p>{field?.label}: <strong>{fieldData.value}</strong></p>
                             <Button variant="primary" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
+                              Muokkaa vastausta
+                            </Button>
+                            <Button variant="danger" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
                               Poista vastaus
                             </Button>
                           </div>

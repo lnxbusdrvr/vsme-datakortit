@@ -164,7 +164,7 @@ const Comprehensive = () => {
         </p>
 
         {comprehensive.map((c, cIdx) => (
-          <div key={b.id || cIdx} >
+          <div key={c.id || cIdx} >
             <h1>{c.module}</h1>
             {c.sections.map((s, sIdx) => (
               <div key={`${s.section_id}-${sIdx}`} >
@@ -190,7 +190,7 @@ const Comprehensive = () => {
                         />
                         <Form.Check
                           type="radio"
-                          label="Kattava moduuli"
+                          label="Perusmoduuli + kattava moduuli"
                           value={c.module_id}
                           checked={true}
                           disabled
@@ -201,12 +201,12 @@ const Comprehensive = () => {
                         {qs.instruction && (
                           <p className="instruction">{qs.instruction}</p>
                         )}
-                        {qs.type === 'text' && (
+                        {qs.type === 'number' && (
                           <Form.Label>{qs.question}
                             {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
                           </Form.Label>
                         )}
-                        {qs.type === 'number' && (
+                        {qs.type === 'text' && (
                           <Form.Label>{qs.question}
                             {inputField(qs.id, s.section_id, qs.id, qs.type, null, null)}
                           </Form.Label>
@@ -229,7 +229,7 @@ const Comprehensive = () => {
                               type="radio"
                               name={qs.id}
                               checked={answers[qs.id]?.answer === false}
-                              onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, true)
+                              onChange={() => {handleAnswersChange(s.section_id, qs.id, qs.type, false)
                                 if (qs.id.includes('_if_this_q_yes_'))
                                   setLastControllingQuestionId(prev => prev.filter(id => id !== qs.id))
                               }}
@@ -243,10 +243,10 @@ const Comprehensive = () => {
                         {qs.sub_questions.filter(fi => !fi.id.startsWith('sub_q_if_prev_yes_')).map((subQs, subQsIdx) => (
                           <div key={`${subQs.id}-${subQsIdx}`} >
                             {subQs.title && (
-                              <b>{subQs.title}</b>
+                              <strong>{subQs.title}</strong>
                             )}
                             {subQs.category && (
-                              <b>{subQs.category}</b>
+                              <strong>{subQs.category}</strong>
                             )}
                             {subQs.fields && subQs.fields.map((f, fIdx) => (
                               <div key={`${f.id}-${fIdx}`} >
@@ -264,7 +264,7 @@ const Comprehensive = () => {
                           ))}
                       </div>
                     )}
-                    {qs.type === 'group'&& lastControllingQuestionId.some(ctrlId => getMoreQuestionIdIfCtrlQsYes(ctrlId) === qs.id) && (
+                    {qs.type === 'group' && lastControllingQuestionId.some(ctrlId => getMoreQuestionIdIfCtrlQsYes(ctrlId) === qs.id) && (
                       <div key={`group_question-supplementary-qs-${qsIdx}`} >
                         {qs.sub_questions.filter(fi => fi.id.startsWith('sub_q_if_prev_yes_')).map((subQs, subQsIdx) => (
                           <div key={`${subQs.id}-${subQsIdx}`} >
@@ -275,7 +275,7 @@ const Comprehensive = () => {
                                   {f.type === 'number' && (
                                     inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
                                   )}
-                                  {f.type === 'number' && (
+                                  {f.type === 'text' && (
                                     inputField(f.id, s.section_id, qs.id, f.type, f.type, subQs.id)
                                   )}
                                 </Form.Label>
