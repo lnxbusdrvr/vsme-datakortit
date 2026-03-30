@@ -19,7 +19,8 @@ const Answers = () => {
   const answers = useSelector(state => state.answers)
   const basic = useSelector(state => state.basic)
   const comprehensive = useSelector(state => state.comprehensive)
-  const [user, setUser] = useState(null)
+  const loggedUser = useSelector(state => state.user)
+  const [user, setUser] = useState(null) // user who's info are we viewing
   const navigate = useNavigate();
 
 
@@ -149,6 +150,12 @@ const Answers = () => {
 
   }
 
+  // Allow only owner and admin to modify answers
+  const canModify = (user?.id === id
+    || loggedUser?.id === id
+    || loggedUser?.role === 'admin')
+    && loggedUser?.role !== 'viewer'
+
 
   return (
     <div key="answers-div" className="answers">
@@ -206,24 +213,48 @@ const Answers = () => {
               <div key={`boolean-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei') : a.answer}</strong></p>
-                <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
-                <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                {canModify && (
+                  <>
+                    <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>
+                      Muokkaa vastausta
+                    </Button>
+                    <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>
+                      Poista vastaus
+                    </Button>
+                  </>
+                )}
               </div>
             )}
             {a.type === 'text' && (
               <div key={`text-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.answer}</strong></p>
-                <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
-                <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                {canModify && (
+                  <>
+                    <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>
+                      Muokkaa vastausta
+                    </Button>
+                    <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>
+                      Poista vastaus
+                    </Button>
+                  </>
+                )}
               </div>
             )}
             {a.type === 'number' && (
               <div key={`number-answer-${aIdx}`}>
                 <p>{question?.question}</p>
                 <p>Vastaus: <strong>{a.answer}</strong></p>
-                <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>Muokkaa vastausta</Button>
-                <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>Poista vastaus</Button>
+                {canModify && (
+                  <>
+                    <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>
+                      Muokkaa vastausta
+                    </Button>
+                    <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>
+                      Poista vastaus
+                    </Button>
+                  </>
+                )}
               </div>
             )}
             {a.type === 'group' && (
@@ -247,12 +278,16 @@ const Answers = () => {
                         return (
                           <div key={`subQsField-${fIdx}`}>
                             <p>{field?.label}: <strong>{fieldData.value}</strong></p>
-                            <Button variant="primary" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
-                              Muokkaa vastausta
-                            </Button>
-                            <Button variant="danger" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
-                              Poista vastaus
-                            </Button>
+                            {canModify && (
+                              <>
+                                <Button variant="primary" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
+                                  Muokaa vastausta
+                                </Button>
+                                <Button variant="danger" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
+                                  Poista vastaus
+                                </Button>
+                              </>
+                            )}
                           </div>
                         )
                       })}
