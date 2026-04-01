@@ -98,5 +98,6 @@
 | 26.03.2026 | 4,75  | Fixed more delete action |
 | 27.03.2026 | 5,75  | Added some css and fixed (partially: removes boolean and supplement-questions, but throws internal error) if-yes-show-more delete that deletes boolean and supplement-questions |
 | 30.03.2026 | 3,75  | Added only owner and admin-role can see editing buttons |
-| Total      | 301   |
+| 01.04.2026 | 7,5   | Iamplement update for answers |
+| Total      | 308,5  |
 
