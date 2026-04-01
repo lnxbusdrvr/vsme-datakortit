@@ -62,8 +62,8 @@ const Basic = () => {
               validateNumber(e, idForNameAndFieldError, fieldError, setFieldError)
             }
           })} 
-      />
-      {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
+        />
+        {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
       </>
     )
   }

@@ -25,9 +25,9 @@ const getAnswerById = async (id) => {
   return request.data
 }
 
-const updateAnswer = async (id, answer) => {
-  const request = await axios.patch(`${baseUrl}/${id}`, answer, { headers: getHeaders() })
-  return request.data
+const updateAnswer = async (id, updatedAnswer) => {
+  const response = await axios.patch(`${baseUrl}/${id}`, updatedAnswer, { headers: getHeaders() })
+  return response.data
 }
 
 const deleteAnswer = async (id) => {

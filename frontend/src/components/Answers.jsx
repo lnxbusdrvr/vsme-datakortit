@@ -1,6 +1,6 @@
 import { useDispatch, useSelector} from 'react-redux'
 import { useParams, Link, useNavigate  } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
 import usersService from '../services/usersService';
@@ -12,6 +12,8 @@ import { initializeAnswers } from '../reducers/answersReducer'
 import { deleteAnswer, updateAnswer } from '../reducers/answersReducer'
 import { notify } from '../reducers/notificationReducer'
 
+import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
+
 
 const Answers = () => {
   const id = useParams().id
@@ -21,6 +23,11 @@ const Answers = () => {
   const comprehensive = useSelector(state => state.comprehensive)
   const loggedUser = useSelector(state => state.user)
   const [user, setUser] = useState(null) // user who's info are we viewing
+  const [editingAnswerId, setEditingAnswerId] = useState('')
+  const [editedValue, setEditedValue] = useState('')
+  const [fieldError, setFieldError] = useState({})
+  const [editingGroupAnswer, setEditingGroupAnswer] = useState(null)
+  const [editedGroupValue, setEditedGroupValue] = useState('')
   const navigate = useNavigate();
 
 
@@ -110,15 +117,100 @@ const Answers = () => {
     }
   }
 
-  const handleDeleteSubAnswer = async (answerId, subQsId, fieldId) => {
+
+  const canModifyButtons = (answer, subQsId, fieldId) => {
+    const isSubQs = subQsId && fieldId
+
+    return (
+      <>
+        <Button
+          variant="primary"
+          {...(!isSubQs
+            ? { onClick: () => startEditing(answer.id, answer.answer)}
+            : {onClick: () => startEditingGroupAnswers(a.id, subQsId, fieldId)}
+          )}
+        >
+          Muokkaa vastausta
+        </Button>
+        <Button
+          variant="danger"
+          {...(!isSubQs
+            ? { onClick: () => handleDeleteAnswer(answer.id)}
+            : {onClick: () => handleDeleteGroupAnswers(a.id, subQsId, fieldId)}
+          )}
+        >
+          Poista vastaus
+        </Button>
+      </>
+    )
+
+  }
+
+  const editingAnswerInputField = (answerId, type, subQsId, fieldId, fieldType) => {
+    const isNumber = type === 'number' || fieldType === 'number'
+    // value's value is needed to get clear button to work
+    // onKeyDown for number validation
+
+    const isSubQs = subQsId && fieldId && fieldType
+
+    return (
+      <>
+        <Form.Control
+          {...(isNumber ? { type: 'number' } : { as: 'textarea' })}
+          value={editedValue}
+          onChange={(e) => setEditedValue(e.target.value)}
+          {...(!isSubQs
+            ? {onChange: (e) => {setEditedValue(e.target.value)}}
+            : {onChange: (e) => {setEditingGroupValue(e.target.value)}}
+          )}
+          {...(isNumber && {
+            onKeyDown: (e) => {
+              validateNumber(e, answerId, fieldError, setFieldError)
+            }
+          })}
+        />
+        {fieldError[answerId] && <span className="field-error">{fieldError[answerId]}</span>}
+      </>
+    )
+  }
+
+  const editingAnswerInputFieldTail = (answerId, type, subQsId, fieldId, fieldType) => {
+    const isSubQs = subQsId && fieldId && fieldType
+
+    return (
+      <>
+        <Button
+          variant="success"
+          {...(!isSubQs
+            ? {onClick: () => {handleUpdateAnswer(answerId)}}
+            : {onClick: () => {startEditingGroupAnswer(answerId, type, subQsId, fieldId, fieldType)}}
+          )}
+        >
+          Tallenna
+        </Button>
+        <Button
+          variant="danger"
+          {...(!isSubQs
+            ? {onClick: () => {clearOrCancelEditing()}}
+            : {onClick: () => {clearOrCancelGroupEditing()}}
+          )}
+        >
+          Peruuta
+        </Button>
+
+      </>
+    )
+  }
+
+  const handleDeleteGroupAnswers = async (answerId, subQsId, fieldId, deleteOrUpdate) => {
     try {
       const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
-      if (!confirmDeleteAnswer)
+      if (deleteOrUpdate === 'delete' && !confirmDeleteAnswer)
         return
 
       const answer = answers.find(a => a.id === answerId)
 
-      const deletedGroupAnswers = answer.groupAnswers.map(ga => {
+      const updatedOrDeletetGroupAnswers = answer.groupAnswers.map(ga => {
         if (ga.subQuestionId === subQsId) {
           const newValues = { ...ga.values }
           delete newValues[fieldId]
@@ -128,26 +220,68 @@ const Answers = () => {
       }).filter(ga => Object.keys(ga.values).length > 0)
 
       // If no groupAnswers left, delete answer
-      if (deletedGroupAnswers.length === 0) {
+      if (updatedOrDeletetGroupAnswers.length === 0) {
         dispatch(deleteAnswer(answerId))
         return
       }
 
-      // Delete (update) field(s) from inside groupAnswers
-      dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
+      // Delete with update field(s) from inside groupAnswers
+      dispatch(updateAnswer(answerId, { ...groupAnswers, groupAnswers: updatedOrDeletetGroupAnswers }))
     } catch (error) {
       throw error
     }
   }
 
-  const handleUpdateAnswer = (answerId) => {
+  const handleUpdateGroupAnswers = async (answerId, subQsId, fieldId) => {
     try {
-      dispatch(updateAnswer(answerId))
-      dispatch(initializeAnswers())
+      const answer = answers.find(a => a.i === answerId)
+      const updatedGroupAnswers = answer.groupAnswers.map(ga => {
+        if (ga.subQuestionId=== subQsId) {
+          return {
+            ...ga,
+            values: {
+              ...ga.values,
+              [fieldId]: { value: editedGroupValue }
+            }
+          }
+        }
+        return ga
+      })
+      await dispatch(updateAnswer(answerId, { groupAnswers, updatedGroupAnswers }))
+      clearOrCancelGroupEditing()
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const handleUpdateAnswer = async (answerId) => {
+    try {
+      await dispatch(updateAnswer(answerId, { answer: editedValue }))
+      clearOrCancelEditing()
     } catch (error) {
       throw error
     }
 
+  }
+
+  const startEditing = (answerId, currentValue) => {
+    setEditingAnswerId(answerId)
+    setEditedValue(currentValue)
+  }
+
+  const startEditingGroupAnswer = (answerId, subQuestionId, fieldId, currentValue) => {
+    setEditingGroupAnswer({ answerId, subQuestionId, fieldId })
+    setEditedGroupValue(currentValue)
+  }
+
+  const clearOrCancelEditing = () => {
+    setEditingAnswerId(null)
+    setEditedValue('')
+  }
+
+  const clearOrCancelGroupEditing = () => {
+    setEditedGroupAnswers('')
+    setEditedGroupValue('')
   }
 
   // Allow only owner and admin to modify answers
@@ -212,15 +346,30 @@ const Answers = () => {
             {a.type === 'boolean' && (
               <div key={`boolean-answer-${aIdx}`}>
                 <p>{question?.question}</p>
-                <p>Vastaus: <strong>{a.type === 'boolean' ? (a.answer ? 'Kyllä' : 'Ei') : a.answer}</strong></p>
-                {canModify && (
+                {editingAnswerId === a.id ? (
                   <>
-                    <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>
-                      Muokkaa vastausta
-                    </Button>
-                    <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>
-                      Poista vastaus
-                    </Button>
+                    <Form.Check
+                      type="radio"
+                      label="Ei"
+                      checked={editedValue === true}
+                      onChange={() => setEditedValue(true)}
+                    />
+                    <Form.Check
+                      type="radio"
+                      label="Ei"
+                      checked={editedValue === false}
+                      onChange={() => setEditedValue(false)}
+                    />
+                    {editingAnswerInputFieldTail(a.id)}
+                  </>
+                ) : (
+                  <>
+                    <p>Vastaus: <strong>{a.type === 'boolean'
+                      ? (a.answer ? 'Kyllä' : 'Ei')
+                      : a.answer}</strong></p>
+                    {canModify && (
+                      canModifyButtons(a)
+                    )}
                   </>
                 )}
               </div>
@@ -228,15 +377,14 @@ const Answers = () => {
             {a.type === 'text' && (
               <div key={`text-answer-${aIdx}`}>
                 <p>{question?.question}</p>
-                <p>Vastaus: <strong>{a.answer}</strong></p>
-                {canModify && (
+                {editingAnswerId === a.id ? (
+                  editingAnswerInputField(a.id, a.type, null, null, null)
+                ) : (
                   <>
-                    <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>
-                      Muokkaa vastausta
-                    </Button>
-                    <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>
-                      Poista vastaus
-                    </Button>
+                    <p>Vastaus: <strong>{a.answer}</strong></p>
+                    {canModify && (
+                      canModifyButtons(a)
+                    )}
                   </>
                 )}
               </div>
@@ -244,22 +392,21 @@ const Answers = () => {
             {a.type === 'number' && (
               <div key={`number-answer-${aIdx}`}>
                 <p>{question?.question}</p>
-                <p>Vastaus: <strong>{a.answer}</strong></p>
-                {canModify && (
+                {editingAnswerId === a.id ? (
+                  editingAnswerInputField(a.id, a.type, null, null, null)
+                ) : (
                   <>
-                    <Button variant="primary" onClick={() => handleUpdateAnswer(a.id)}>
-                      Muokkaa vastausta
-                    </Button>
-                    <Button variant="danger" onClick={() => handleDeleteAnswer(a.id)}>
-                      Poista vastaus
-                    </Button>
+                    <p>Vastaus: <strong>{a.answer}</strong></p>
+                    {canModify && (
+                      canModifyButtons(a)
+                    )}
                   </>
                 )}
               </div>
             )}
             {a.type === 'group' && (
               <>
-                {question?.sub_questions.map((subQs, subQsIdx) => {
+               {question?.sub_questions.map((subQs, subQsIdx) => {
                   const groupAnswer = a.groupAnswers
                     .find(ga => ga.subQuestionId === subQs.id)
 
@@ -277,15 +424,34 @@ const Answers = () => {
 
                         return (
                           <div key={`subQsField-${fIdx}`}>
-                            <p>{field?.label}: <strong>{fieldData.value}</strong></p>
-                            {canModify && (
+                            {editingGroupAnswer?.answerId === a.id
+                              && editingGroupAnswer?.subQuestionId === subQs.id
+                              && editingGroupAnswer?.fieldId === fieldId ? (
+
+                              editingAnswerInputField(a.id, a.type, subQsId, fieldId, fieldType )
+                            ) : (
                               <>
-                                <Button variant="primary" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
-                                  Muokaa vastausta
-                                </Button>
-                                <Button variant="danger" onClick={() => handleDeleteSubAnswer(a.id, subQs.id, fieldId)}>
-                                  Poista vastaus
-                                </Button>
+                                <p>{field?.label}: <strong>{fieldData.value}</strong></p>
+                                {field.type === 'text' && (
+                                  <>
+                                  editingAnswerInputField(a.id, a.type, subQsId, fieldId, fieldType )
+                                  {canModify && (
+                                    <>
+                                    canModifyButtons(a.id, subQsId, field.id)
+                                    </>
+                                  )}
+                                  </>
+                                )}
+                                {field.type === 'number' && (
+                                  <>
+                                  editingAnswerInputField(a.id, a.type, subQsId, fieldId, fieldType )
+                                  {canModify && (
+                                    <>
+                                    canModifyButtons(a.id, subQsId, field.id)
+                                    </>
+                                  )}
+                                  </>
+                                )}
                               </>
                             )}
                           </div>
