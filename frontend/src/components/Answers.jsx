@@ -26,8 +26,8 @@ const Answers = () => {
   const [editingAnswerId, setEditingAnswerId] = useState('')
   const [editedValue, setEditedValue] = useState('')
   const [fieldError, setFieldError] = useState({})
-  const [editingGroupAnswer, setEditingGroupAnswer] = useState(null)
-  const [editedGroupValue, setEditedGroupValue] = useState('')
+  const [editingGroupAnswersIds, setEditingGroupAnswersIds] = useState(null)
+  const [editedGroupAnswersValue, setEditedGroupAnswersValue] = useState('')
   const navigate = useNavigate();
 
 
@@ -93,6 +93,16 @@ const Answers = () => {
     return questionIndexA - questionIndexB
   })
 
+  const startEditing = (answerId, currentValue) => {
+    setEditingAnswerId(answerId)
+    setEditedValue(currentValue)
+  }
+
+  const startEditingGroupAnswers = (answerId, subQuestionId, fieldId, currentValue) => {
+    setEditingGroupAnswersIds({ answerId, subQuestionId, fieldId })
+    setEditedGroupAnswersValue(currentValue)
+  }
+
   const handleDeleteAnswer = async (answerId) => {
     try {
       const confirmDeleteAnswer = window
@@ -117,9 +127,84 @@ const Answers = () => {
     }
   }
 
+  const handleDeleteGroupAnswers = async (answerId, subQsId, fieldId) => {
+    try {
+      const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
+      if (!confirmDeleteAnswer)
+        return
 
-  const canModifyButtons = (answer, subQsId, fieldId) => {
-    const isSubQs = subQsId && fieldId
+      const answer = answers?.find(a => a.id === answerId)
+
+      const deletedGroupAnswers = answer?.groupAnswers?.map(ga => {
+        if (ga.subQuestionId === subQsId) {
+          const newValues = { ...ga.values }
+          delete newValues[fieldId]
+          return { ...ga, values: newValues }
+        }
+        return ga
+      }).filter(ga => Object.keys(ga.values).length > 0)
+
+      // If no groupAnswers left, delete answer
+      if (deletedGroupAnswers?.length === 0) {
+        dispatch(deleteAnswer(answerId))
+        return
+      }
+
+      // Delete trough update field(s) from inside groupAnswers
+      dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const handleUpdateAnswer = async (answerId) => {
+    try {
+      await dispatch(updateAnswer(answerId, { answer: editedValue }))
+      clearOrCancelEditing()
+    } catch (error) {
+      throw error
+    }
+
+  }
+
+  const handleUpdateGroupAnswers = async (answerId, subQsId, fieldId, fieldType) => {
+    try {
+      const answer = answers?.find(a => a.id === answerId)
+      const updatedGroupAnswers = answer?.groupAnswers?.map(ga => {
+        const value = fieldType === 'number'
+          ? Number(editedGroupAnswersValue)
+          : editedGroupAnswersValue
+
+        if (ga.subQuestionId === subQsId) {
+          return {
+            ...ga,
+            values: {
+              ...ga.values,
+              [fieldId]: { value, fieldType }
+            }
+          }
+        }
+        return ga
+      })
+      await dispatch(updateAnswer(answerId, { groupAnswers: updatedGroupAnswers }))
+      clearOrCancelGroupEditing()
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const clearOrCancelEditing = () => {
+    setEditingAnswerId(null)
+    setEditedValue('')
+  }
+
+  const clearOrCancelGroupEditing = () => {
+    setEditingGroupAnswersIds('')
+    setEditedGroupAnswersValue('')
+  }
+
+  const canModifyButtons = (answer, subQsId, fieldId, fieldValue) => {
+    const isSubQs = subQsId && fieldId && fieldValue
 
     return (
       <>
@@ -127,7 +212,7 @@ const Answers = () => {
           variant="primary"
           {...(!isSubQs
             ? { onClick: () => startEditing(answer.id, answer.answer)}
-            : {onClick: () => startEditingGroupAnswers(a.id, subQsId, fieldId)}
+            : { onClick: () => startEditingGroupAnswers(answer.id, subQsId, fieldId, fieldValue)}
           )}
         >
           Muokkaa vastausta
@@ -136,7 +221,7 @@ const Answers = () => {
           variant="danger"
           {...(!isSubQs
             ? { onClick: () => handleDeleteAnswer(answer.id)}
-            : {onClick: () => handleDeleteGroupAnswers(a.id, subQsId, fieldId)}
+            : { onClick: () => handleDeleteGroupAnswers(answer.id, subQsId, fieldId)}
           )}
         >
           Poista vastaus
@@ -157,11 +242,14 @@ const Answers = () => {
       <>
         <Form.Control
           {...(isNumber ? { type: 'number' } : { as: 'textarea' })}
-          value={editedValue}
+          {...(!isSubQs
+            ? { value: editedValue}
+            : { value: editedGroupAnswersValue}
+          )}
           onChange={(e) => setEditedValue(e.target.value)}
           {...(!isSubQs
             ? {onChange: (e) => {setEditedValue(e.target.value)}}
-            : {onChange: (e) => {setEditingGroupValue(e.target.value)}}
+            : {onChange: (e) => {setEditedGroupAnswersValue(e.target.value)}}
           )}
           {...(isNumber && {
             onKeyDown: (e) => {
@@ -170,12 +258,13 @@ const Answers = () => {
           })}
         />
         {fieldError[answerId] && <span className="field-error">{fieldError[answerId]}</span>}
+        {inputFieldSaveAndCancelButtons(answerId, type, subQsId, fieldId, fieldType)}
       </>
     )
   }
 
-  const editingAnswerInputFieldTail = (answerId, type, subQsId, fieldId, fieldType) => {
-    const isSubQs = subQsId && fieldId && fieldType
+  const inputFieldSaveAndCancelButtons = (answerId, type, subQsId, fieldId, fieldType) => {
+    const isSubQs = subQsId && fieldId
 
     return (
       <>
@@ -183,7 +272,7 @@ const Answers = () => {
           variant="success"
           {...(!isSubQs
             ? {onClick: () => {handleUpdateAnswer(answerId)}}
-            : {onClick: () => {startEditingGroupAnswer(answerId, type, subQsId, fieldId, fieldType)}}
+            : {onClick: () => {handleUpdateGroupAnswers(answerId, subQsId, fieldId, fieldType)}}
           )}
         >
           Tallenna
@@ -200,88 +289,6 @@ const Answers = () => {
 
       </>
     )
-  }
-
-  const handleDeleteGroupAnswers = async (answerId, subQsId, fieldId, deleteOrUpdate) => {
-    try {
-      const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
-      if (deleteOrUpdate === 'delete' && !confirmDeleteAnswer)
-        return
-
-      const answer = answers.find(a => a.id === answerId)
-
-      const updatedOrDeletetGroupAnswers = answer.groupAnswers.map(ga => {
-        if (ga.subQuestionId === subQsId) {
-          const newValues = { ...ga.values }
-          delete newValues[fieldId]
-          return { ...ga, values: newValues }
-        }
-        return ga
-      }).filter(ga => Object.keys(ga.values).length > 0)
-
-      // If no groupAnswers left, delete answer
-      if (updatedOrDeletetGroupAnswers.length === 0) {
-        dispatch(deleteAnswer(answerId))
-        return
-      }
-
-      // Delete with update field(s) from inside groupAnswers
-      dispatch(updateAnswer(answerId, { ...groupAnswers, groupAnswers: updatedOrDeletetGroupAnswers }))
-    } catch (error) {
-      throw error
-    }
-  }
-
-  const handleUpdateGroupAnswers = async (answerId, subQsId, fieldId) => {
-    try {
-      const answer = answers.find(a => a.i === answerId)
-      const updatedGroupAnswers = answer.groupAnswers.map(ga => {
-        if (ga.subQuestionId=== subQsId) {
-          return {
-            ...ga,
-            values: {
-              ...ga.values,
-              [fieldId]: { value: editedGroupValue }
-            }
-          }
-        }
-        return ga
-      })
-      await dispatch(updateAnswer(answerId, { groupAnswers, updatedGroupAnswers }))
-      clearOrCancelGroupEditing()
-    } catch (error) {
-      throw error
-    }
-  }
-
-  const handleUpdateAnswer = async (answerId) => {
-    try {
-      await dispatch(updateAnswer(answerId, { answer: editedValue }))
-      clearOrCancelEditing()
-    } catch (error) {
-      throw error
-    }
-
-  }
-
-  const startEditing = (answerId, currentValue) => {
-    setEditingAnswerId(answerId)
-    setEditedValue(currentValue)
-  }
-
-  const startEditingGroupAnswer = (answerId, subQuestionId, fieldId, currentValue) => {
-    setEditingGroupAnswer({ answerId, subQuestionId, fieldId })
-    setEditedGroupValue(currentValue)
-  }
-
-  const clearOrCancelEditing = () => {
-    setEditingAnswerId(null)
-    setEditedValue('')
-  }
-
-  const clearOrCancelGroupEditing = () => {
-    setEditedGroupAnswers('')
-    setEditedGroupValue('')
   }
 
   // Allow only owner and admin to modify answers
@@ -360,7 +367,7 @@ const Answers = () => {
                       checked={editedValue === false}
                       onChange={() => setEditedValue(false)}
                     />
-                    {editingAnswerInputFieldTail(a.id)}
+                    {inputFieldSaveAndCancelButtons(a.id)}
                   </>
                 ) : (
                   <>
@@ -424,35 +431,29 @@ const Answers = () => {
 
                         return (
                           <div key={`subQsField-${fIdx}`}>
-                            {editingGroupAnswer?.answerId === a.id
-                              && editingGroupAnswer?.subQuestionId === subQs.id
-                              && editingGroupAnswer?.fieldId === fieldId ? (
-
-                              editingAnswerInputField(a.id, a.type, subQsId, fieldId, fieldType )
-                            ) : (
-                              <>
-                                <p>{field?.label}: <strong>{fieldData.value}</strong></p>
-                                {field.type === 'text' && (
-                                  <>
-                                  editingAnswerInputField(a.id, a.type, subQsId, fieldId, fieldType )
+                            {field.type === 'text' && (
+                              editingGroupAnswersIds?.subQuestionId === subQs.id && editingGroupAnswersIds?.fieldId === fieldId ? (
+                                editingAnswerInputField(a.id, a.type, subQs.id, fieldId, field.type)
+                              ) : (
+                                <>
+                                  <p>{field?.label}: <strong>{fieldData.value}</strong></p>
                                   {canModify && (
-                                    <>
-                                    canModifyButtons(a.id, subQsId, field.id)
-                                    </>
+                                    canModifyButtons(a, subQs.id, fieldId, fieldData.value)
                                   )}
-                                  </>
-                                )}
-                                {field.type === 'number' && (
-                                  <>
-                                  editingAnswerInputField(a.id, a.type, subQsId, fieldId, fieldType )
+                                </>
+                              )
+                            )}
+                            {field.type === 'number' && (
+                              (editingGroupAnswersIds?.subQuestionId === subQs.id && editingGroupAnswersIds?.fieldId === fieldId) ? (
+                                editingAnswerInputField(a.id, a.type, subQs.id, fieldId, field.type)
+                              ) : (
+                                <>
+                                  <p>{field?.label}: <strong>{fieldData.value}</strong></p>
                                   {canModify && (
-                                    <>
-                                    canModifyButtons(a.id, subQsId, field.id)
-                                    </>
+                                    canModifyButtons(a, subQs.id, fieldId, fieldData.value)
                                   )}
-                                  </>
-                                )}
-                              </>
+                                </>
+                              )
                             )}
                           </div>
                         )
