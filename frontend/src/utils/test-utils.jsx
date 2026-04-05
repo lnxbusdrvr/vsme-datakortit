@@ -1,0 +1,49 @@
+import React from 'react'
+import { render } from '@testing-library/react'
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
+
+import answersReducer from '../reducers/answersReducer'
+import comprehensiveReducer from '../reducers/comprehensiveReducer'
+import basicReducer from '../reducers/basicReducer'
+import userReducer from '../reducers/userReducer'
+
+/**
+ * ui: Component which we test
+ * options: includes preloadedState, store and routes
+ */
+export const renderWithProviders = (
+  ui,
+  {
+    preloadedState = {},
+    store = configureStore({
+      reducer: {
+        answers: answersReducer,
+        comprehensive: comprehensiveReducer,
+        basic: basicReducer,
+        user: userReducer,
+      },
+      preloadedState,
+    }),
+    route = '/',
+    path = '*', // Routemask, eg. '/useranswers/:id'
+    ...renderOptions
+  } = {}
+) => {
+  // Wrapper-component
+  const Wrapper = ({ children }) => (
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[route]}>
+        <Routes>
+          <Route path={path} element={children} />
+        </Routes>
+      </MemoryRouter>
+    </Provider>
+  )
+
+  return {
+    store,
+    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
+  }
+}

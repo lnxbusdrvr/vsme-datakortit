@@ -22,7 +22,7 @@ const Answers = () => {
   const basic = useSelector(state => state.basic)
   const comprehensive = useSelector(state => state.comprehensive)
   const loggedUser = useSelector(state => state.user)
-  const [user, setUser] = useState(null) // user who's info are we viewing
+  const [user, setUser] = useState(null) // user who's info we are viewing
   const [editingAnswerId, setEditingAnswerId] = useState('')
   const [editedValue, setEditedValue] = useState('')
   const [fieldError, setFieldError] = useState({})
@@ -42,7 +42,7 @@ const Answers = () => {
     dispatch(initializeAnswers())
   }, [dispatch, id])
 
-  if (!answers || !user)
+  if (!user || !answers)
     return (<div>Loading...</div>)
 
   if (answers.filter(a => a.user.id === id).length === 0) {
@@ -53,6 +53,7 @@ const Answers = () => {
       </div>
     )
   }
+
 
   const module = (answers[0]?.moduleId === 'basic_module')
     ? basic
