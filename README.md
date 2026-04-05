@@ -100,5 +100,7 @@
 | 30.03.2026 | 3,75  | Added only owner and admin-role can see editing buttons |
 | 01.04.2026 | 7,5   | Iamplement update for answers |
 | 02.04.2026 | 4     | Fix updating sub question answers |
-| Total      | 312,5  |
+| 03.04.2026 | 5,75  | Tried to get test to work with failure |
+| 03.04.2026 | 4,25  | Implement test |
+| Total      | 322,5  |
 
