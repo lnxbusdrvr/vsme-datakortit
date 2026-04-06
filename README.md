@@ -102,5 +102,6 @@
 | 02.04.2026 | 4     | Fix updating sub question answers |
 | 03.04.2026 | 5,75  | Tried to get test to work with failure |
 | 03.04.2026 | 4,25  | Implement test |
-| Total      | 322,5  |
+| 06.04.2026 | 1     | Pass delete test |
+| Total      | 323,5  |
 
