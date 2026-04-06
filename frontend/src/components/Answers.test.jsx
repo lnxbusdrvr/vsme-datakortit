@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import { describe, expect, test, vi} from 'vitest'
+import { describe, expect, it, vi} from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProviders } from '../utils/test-utils'
@@ -47,10 +47,15 @@ const mockAnswer = {
   user: { id: MOCK_ID }
 }
 
+let currentMockAnswers = [mockAnswer]
+
 vi.mock('../services/answersService', () => ({
   default: {
-    getAll: () => Promise.resolve([mockAnswer]),
-    remove: () => Promise.resolve({})
+    getAll: vi.fn(() => Promise.resolve(currentMockAnswers)),
+    deleteAnswer: vi.fn((id) => {
+      currentMockAnswers = currentMockAnswers.filter(a => a.id !== id)
+      return Promise.resolve({})
+    })
   }
 }))
 
@@ -80,7 +85,7 @@ describe('Answers component', () => {
         .toBeInTheDocument()
     }, { timeout: 3000 })
 
-    // Now find the word
+    // Now find the actual words
     const adaTextInPage = await screen.findByText(/Ada Lovelace computer/i)
     expect(adaTextInPage).toBeInTheDocument()
 
@@ -95,7 +100,8 @@ describe('Answers component', () => {
         .toBeInTheDocument()
     }, { timeout: 3000 })
 
-    expect(screen.getTextBy(/Käyttäjä ei ole vastaunnut yhteenkään kysymykseen/i))
+    const finalMessage = screen.getByText(/Käyttäjä ei ole vastaunnut yhteenkään kysymykseen/i)
+    expect(finalMessage).toBeInTheDocument()
 
   })
 })
