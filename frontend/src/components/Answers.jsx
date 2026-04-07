@@ -414,7 +414,7 @@ const Answers = () => {
             )}
             {a.type === 'group' && (
               <>
-               {question?.sub_questions.map((subQs, subQsIdx) => {
+               {question?.sub_questions?.map((subQs, subQsIdx) => {
                   const groupAnswer = a.groupAnswers
                     .find(ga => ga.subQuestionId === subQs.id)
 
@@ -426,7 +426,7 @@ const Answers = () => {
                       <p>{subQs.title}</p>
                       <p>{subQs.category}</p>
                       {Object.entries(groupAnswer.values).map(([fieldId, fieldData], fIdx) => {
-                        const field = subQs.fields.find(f => f.id === fieldId)
+                        const field = subQs?.fields?.find(f => f.id === fieldId)
                         if (!field)
                           return null
 
