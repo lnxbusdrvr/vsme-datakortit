@@ -103,5 +103,6 @@
 | 03.04.2026 | 5,75  | Tried to get test to work with failure |
 | 03.04.2026 | 4,25  | Implement test |
 | 06.04.2026 | 1     | Pass delete test |
-| Total      | 323,5  |
+| 07.04.2026 | 5,75  | Pass delete sub question test |
+Total      | 323,25 |
 
