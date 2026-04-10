@@ -108,7 +108,7 @@ vi.mock('../services/basicService', () => ({
           title: "Babylon Prisoner Nr. One",
           questions: [
             {
-              id: 'question_of_describe_more',
+              id: 'if_prev_yes_q3_if_this_q_yes_describe_more',
               type: 'group',
               sub_questions: [
                 {
@@ -349,10 +349,12 @@ describe('Answers component', () => {
     expect(finalMessage).toBeInTheDocument()
   })
 
-  it('Delete if yes show more -ratio-button with it\'s supplement-questionsa', async () => {
-    /*
-    const mockIfYesShowMoreAnswer = {
-      id: 'answer-03',
+  it('Delete if yes show more answer with it\'s supplement-answers', async () => {
+    const isConfirmButtonTrue = vi
+      .spyOn(window, 'confirm').mockReturnValue(true)
+
+    const mockIfYesShowMoreAnswer = [{
+      id: 'answer-03_if_this_qs_is_yes_show_more_qs',
       moduleId: 'basic_module',
       sectionsId: 'q3',
       questionId: 'q3_if_this_q_yes_describe_more',
@@ -361,10 +363,10 @@ describe('Answers component', () => {
       user: { id: MOCK_ID }
     },
     {
-      id: 'answer-04',
+      id: 'answer-04-show_more_questions_when_prev_was_yes',
       moduleId: 'basic_module',
-      sectionsId: 'q2',
-      questionId: 'question_of_describe_more',
+      sectionsId: 'q3',
+      questionId: 'if_prev_yes_q3_if_this_q_yes_describe_more',
       type: 'group',
       groupAnswers: [{
         subQuestionId: 'sub_q_if_prev_yes_q3_if_this_q_yes_describe_more',
@@ -380,11 +382,9 @@ describe('Answers component', () => {
         }
       }],
       user: { id: MOCK_ID }
-    }
+    }]
 
-    mocks.currentMockAnswers = [mockIfYesShowMoreAnswer]
-    const isConfirmButtonTrue = vi
-      .spyOn(window, 'confirm').mockReturnValue(true)
+    mocks.currentMockAnswers = mockIfYesShowMoreAnswer
 
     const preloadedState = {
       answers: [mockIfYesShowMoreAnswer]
@@ -402,9 +402,32 @@ describe('Answers component', () => {
         .toBeInTheDocument()
     }, { timeout: 3000 })
 
-    const text = await screen.findByText(/Kyll/i)
-    expect(text).toBeInTheDocument()
-    */
+    const yesText = await screen.findByText(/Kyllä/i)
+    expect(yesText).toBeInTheDocument()
+
+    const johnText = await screen.findByText(/John/i)
+    expect(johnText).toBeInTheDocument()
+    const informationText = await screen.findByText(/I want information/i)
+    expect(johnText).toBeInTheDocument()
+
+    const updatedYesText = await screen.findByText(/Kyllä/i)
+
+    const yesContainer = updatedYesText.closest('div')
+    const yesDeleteButton = within(yesContainer).getByRole('button', { name: /Poista vastaus/i })
+
+    await user.click(yesDeleteButton)
+
+    expect(isConfirmButtonTrue).toHaveBeenCalledTimes(1)
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Kyllä/i))
+        .not
+        .toBeInTheDocument()
+    }, { timeout: 3000 })
+
+    const finalMessage = screen.getByText(/Käyttäjä ei ole vastaunnut yhteenkään kysymykseen/i)
+    expect(finalMessage).toBeInTheDocument()
   })
+
 })
 
