@@ -3,106 +3,107 @@
 # Working hours count (the time is an approximation )
 
 | date (dd.mm.yyyy) | hours  | tasks |
-|------------|-------|---------------------------------------------------------------------------------------- |
-| 13.02.2025 | 1     | First meeting with client on teams, figure out is this project legit to fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with with login and register user etc.                                                        |
-| 13.05.2025 | 0,25  | Meeting about how to read/understand data.                                               |
-| 13.05.2025 | 0.75  | Early considerations: how the architecture of this code project would be structured. |
-| 20.05.2025 | 1     | Add some question-data starting to track time on [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376)|
-| 22.05.2025 | 1     | Add more question-data |
-| 31.05.2025 | 1     | Add more basic question-data |
-| 31.05.2025 | 0.5   | Add minor changes to perusmoduuli |
-| 06.06.2025 | 1     | Add more questions from perusmoduuli |
-| 07.06.2025 | 1,5   | Basic module is ready, next check if valid JSON |
-| 12.06.2025 | 1,5   | Validate JSON, it imports in even MongoDB Atlas |
-| 20.06.2025 | 1,25  | 1st implementation |
-| 26.06.2025 | 1,75  | 1st working implementation |
-| 04.07.2025 | 0,5   | Refactor perusmoduuli json-data |
-| 06.07.2025 | 0,5   | Add some json-data from kattava moduuli |
-| 12.07.2025 | 3,75  | Add some more json-data from kattava moduuli |
-| 12.07.2025 | 3     | Add rest of json-data from kattava moduuli |
-| 27.07.2025 | 3,25  | Fix minor datafix. Add models, controllers to questions and user collection on backend |
-| 23.08.2025 | 1     | Make tests |
-| 24.08.2025 | 1,5   | Make all user tests |
-| 02.09.2025 | 1,5   | Make userController |
-| 04.09.2025 | 3,5   | made few user-tests to work |
-| 12.09.2025 | 0,5   | Tried quickly to pass tests, but failed. Try again tommorrow |
-| 15.09.2025 | 3,5   | Make some user-test to passed |
-| 16.09.2025 | 1     | Implemnt little for next user-test |
-| 20.09.2025 | 3     | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
-| 24.09.2025 | 5     | Restructoring code and fix some parts so all user tests and lint went ok |
-| 27.09.2025 | 1,25  | Implement code, so /api/basic &/api/inclusive return json data |
-| 06.10.2025 | 1,25  | 1st Implement of tests for questions |
-| 07.10.2025 | 1,5   | Continue to Implement tests for questions |
-| 12.10.2025 | 2     | Continue to Implement some tests for questions and fix prodiction and dev modes |
-| 13.10.2025 | 6     | Fix basicModule database and fix testdatabse to suit to real data in database |
-| 14.10.2025 | 2     | Implement answerstest |
-| 20.10.2025 | 2,75  | Make more tests for answers |
-| 21.10.2025 | 1,25  | Implement usertest to passed|
-| 24.10.2025 | 7     | Actual answers cat be answered but not in test yet |
-| 25.10.2025 | 3     | Answer test is passed, but problem in usertest |
-| 25.10.2025 | 3     | Fixed all tests |
-| 31.10.2025 | 5     | Add more test and get em passed |
-| 13.11.2025 | 3     | Implement some tests, now theres three roles in testusers |
-| 14.11.2025 | 3     | Add 2nd normal user, add test to see only own answers |
-| 14.11.2025 | 1,25  | Admin and viewer can see all answers |
-| 15.11.2025 | 0,75  | Add test: User can modify own answer |
-| 15.11.2025 | 6     | Implement answers patch & delete, add some security tests |
-| 16.11.2025 | 7     | All are almost done in backend, except inclusive questions |
-| 20.11.2025 | 3,25  | Fix json's on planning_n_stuff -branch |
-| 08.12.2025 | 0,5   | answers_api.test |
-| 08.12.2025 | 2,75  | 1st frontend implementation |
-| 09.12.2025 | 1,5   | Fix login |
-| 12.12.2025 | 2,75  | Make NewUserForm |
-| 18.12.2025 | 3,75  | Can actually make new registered user on page |
-| 19.12.2025 | 3,5   | Remove redundant file, verify email, businessIdCode in use |
-| 23.12.2025 | 1     | Make login logic changesa |
-| 25.12.2025 | 3,5   | Fix NewUserForm user creation w/notify fix on dublicate email and busIdCode, Fixed toggle visibility when successfully create new user |
-| 06.01.2026 | 1,5   | Start questions form user-component and fix backend login to response user.id |
-| 13.01.2026 | 3,5   | Made user un-undefined, but found that frontend needs to been semi-refactored |
-| 19.01.2026 | 2,5   | Fixed login |
-| 20.01.2026 | 5,5   | Fixed errors on site and implemented to show bacic module questions |
-| 26.01.2026 | 3,75  | Fixed basic- or inclusive module changing and added answer field, but no actual answering possible yet |
-| 27.01.2026 | 8,75  | Fixed answering based on what type of answer, changed on MongoDB field types: integer, curency fields to numbers, Simplified basic-module-db no subsubquestions |
-| 31.01.2026 | 4     | Fixed basic-module-db. Added some css |
-| 02.02.2026 | 1,5   | Added basic module's b9 and b10. Fixed B9 and B10 answer-fields |
-| 06.02.2026 | 3,75  | Rename few fields in Basic module db. Mad B11 Management -section swhos more field if clicked true/yes/kyllä |
-| 13.02.2026 | 6     | Fixed duplicate on db. Add send answer -action to db. Set correct error message in backend middleware |
-| 16.02.2026 | 7     | Fixed fields that clear button will work. Refactored sub_qiestions on basic db. |
-| 17.02.2026 | 5,75  | Refactor backend questions tests and frontends form for new basic db. |
-| 18.02.2026 | 7     | Fixed tests on backend, added validation on answering TODO validating also subQs |
-| 19.02.2026 | 4,25  | Validated numbers in front |
-| 20.02.2026 | 5     | validate sub_question numbers and fix backend tests also all questions can be answered and send |
-| 24.02.2026 | 1,5   | Add component Answers to see what answers were submitted |
-| 26.02.2026 | 4,25  | On Answers-page shows answer and question |
-| 26.02.2026 | 1     | Fix input on subQs and mgntSubQs. Fix log out issue, now log out is keeping  userlogged out|
-| 28.02.2026 | 6,5   | When sending subQs label and questions can see on <Answers /> TODO: Show subQs value |
-| 01.03.2026 | 2     | Fix electer > electricity in db. Show subQs values on Answers |
-| 02.03.2026 | 5,75  | Make Inclusive module db and instruction-key to both db, implement chenges to code |
-| 03.03.2026 | 0,75  | Continue editing db's |
-| 04.03.2026 | 7     | Finish editing db's |
-| 05.03.2026 | 6,5   | Name change inclusive -> comprehensive, refactoring db-components, add if_this_q_yes to few booleans in dbs so next time can make better logic |
-| 06.03.2026 | 8     | Add more logic to if_yes fields in db. Try to get if_yes to work still needs to work on it |
-| 07.03.2026 | 4,5   | Add logic to sub_questions in db. Fix partially ifYes-Logic in component |
-| 08.03.2026 | 2     | Create backend for comprehensive questions |
-| 09.03.2026 | 3,5   | Fix "if yes show more questions" -logic. Now show questions completly as thei are supposed to be |
-| 10.03.2026 | 2,75  | Make porosess on <Answers /> continue tomorrow |
-| 11.03.2026 | 1,75  | Refactor how answers are saved in db |
-| 12.03.2026 | 5     | Went back to old way to save answers-db, make all features done and perhaps then refactor answers-db. Create <Users /> for admin and viewer roles |
-| 13.03.2026 | 4,25  | Make Users page for admin and viewer -roles and show all users answers |
-| 16.03.2026 | 4,75  | Fix subqs send answers error. Show only one user on <Answers /> when admin/viewer. Fix basic module answers |
-| 17.03.2026 | 2     | Fix SubQs if yes questions, fix db data typos |
-| 18.03.2026 | 6     | Get instruction-field on answers-page, fix instuction-fields on db |
-| 19.03.2026 | 4,25  | Get instruction without type to render once on Answers-component, consistent db id's, add Dropdownmenu to NewUserForm-component, install bootstrap, implement delete boolean answer |
-| 20.03.2026 | 2,75  | Added update button to boolean-answer on answers-page, addAnswer -> createAnswer and make it unmutable-version, fix some styling issues |
-| 25.03.2026 | 6,75  | Fixed deleting backend. Implemented delete answers |
-| 26.03.2026 | 4,75  | Fixed more delete action |
-| 27.03.2026 | 5,75  | Added some css and fixed (partially: removes boolean and supplement-questions, but throws internal error) if-yes-show-more delete that deletes boolean and supplement-questions |
-| 30.03.2026 | 3,75  | Added only owner and admin-role can see editing buttons |
-| 01.04.2026 | 7,5   | Iamplement update for answers |
-| 02.04.2026 | 4     | Fix updating sub question answers |
-| 03.04.2026 | 5,75  | Tried to get test to work with failure |
-| 03.04.2026 | 4,25  | Implement test |
-| 06.04.2026 | 1     | Pass delete test |
-| 07.04.2026 | 5,75  | Pass delete sub question test |
-Total      | 323,25 |
+|------------|------|---------------------------------------------------------------------------------------- |
+| 13.02.2025 | 1    | First meeting with client on teams, figure out is this project legit to fullstackopen.com -project. Yes it's gonna be CRUD (Create, Read, Update, Delete) with with login and register user etc.                                                        |
+| 13.05.2025 | 0,25 | Meeting about how to read/understand data.                                               |
+| 13.05.2025 | 0.75 | Early considerations: how the architecture of this code project would be structured. |
+| 20.05.2025 | 1    | Add some question-data starting to track time on [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376)|
+| 22.05.2025 | 1    | Add more question-data |
+| 31.05.2025 | 1    | Add more basic question-data |
+| 31.05.2025 | 0.5  | Add minor changes to perusmoduuli |
+| 06.06.2025 | 1    | Add more questions from perusmoduuli |
+| 07.06.2025 | 1,5  | Basic module is ready, next check if valid JSON |
+| 12.06.2025 | 1,5  | Validate JSON, it imports in even MongoDB Atlas |
+| 20.06.2025 | 1,25 | 1st implementation |
+| 26.06.2025 | 1,75 | 1st working implementation |
+| 04.07.2025 | 0,5  | Refactor perusmoduuli json-data |
+| 06.07.2025 | 0,5  | Add some json-data from kattava moduuli |
+| 12.07.2025 | 3,75 | Add some more json-data from kattava moduuli |
+| 12.07.2025 | 3    | Add rest of json-data from kattava moduuli |
+| 27.07.2025 | 3,25 | Fix minor datafix. Add models, controllers to questions and user collection on backend |
+| 23.08.2025 | 1    | Make tests |
+| 24.08.2025 | 1,5  | Make all user tests |
+| 02.09.2025 | 1,5  | Make userController |
+| 04.09.2025 | 3,5  | made few user-tests to work |
+| 12.09.2025 | 0,5  | Tried quickly to pass tests, but failed. Try again tommorrow |
+| 15.09.2025 | 3,5  | Make some user-test to passed |
+| 16.09.2025 | 1    | Implemnt little for next user-test |
+| 20.09.2025 | 3    | test: Adding user with existing email will fail. Got one step forward, got rid of status(500) |
+| 24.09.2025 | 5    | Restructoring code and fix some parts so all user tests and lint went ok |
+| 27.09.2025 | 1,25 | Implement code, so /api/basic &/api/inclusive return json data |
+| 06.10.2025 | 1,25 | 1st Implement of tests for questions |
+| 07.10.2025 | 1,5  | Continue to Implement tests for questions |
+| 12.10.2025 | 2    | Continue to Implement some tests for questions and fix prodiction and dev modes |
+| 13.10.2025 | 6    | Fix basicModule database and fix testdatabse to suit to real data in database |
+| 14.10.2025 | 2    | Implement answerstest |
+| 20.10.2025 | 2,75 | Make more tests for answers |
+| 21.10.2025 | 1,25 | Implement usertest to passed|
+| 24.10.2025 | 7    | Actual answers cat be answered but not in test yet |
+| 25.10.2025 | 3    | Answer test is passed, but problem in usertest |
+| 25.10.2025 | 3    | Fixed all tests |
+| 31.10.2025 | 5    | Add more test and get em passed |
+| 13.11.2025 | 3    | Implement some tests, now theres three roles in testusers |
+| 14.11.2025 | 3    | Add 2nd normal user, add test to see only own answers |
+| 14.11.2025 | 1,25 | Admin and viewer can see all answers |
+| 15.11.2025 | 0,75 | Add test: User can modify own answer |
+| 15.11.2025 | 6    | Implement answers patch & delete, add some security tests |
+| 16.11.2025 | 7    | All are almost done in backend, except inclusive questions |
+| 20.11.2025 | 3,25 | Fix json's on planning_n_stuff -branch |
+| 08.12.2025 | 0,5  | answers_api.test |
+| 08.12.2025 | 2,75 | 1st frontend implementation |
+| 09.12.2025 | 1,5  | Fix login |
+| 12.12.2025 | 2,75 | Make NewUserForm |
+| 18.12.2025 | 3,75 | Can actually make new registered user on page |
+| 19.12.2025 | 3,5  | Remove redundant file, verify email, businessIdCode in use |
+| 23.12.2025 | 1    | Make login logic changesa |
+| 25.12.2025 | 3,5  | Fix NewUserForm user creation w/notify fix on dublicate email and busIdCode, Fixed toggle visibility when successfully create new user |
+| 06.01.2026 | 1,5  | Start questions form user-component and fix backend login to response user.id |
+| 13.01.2026 | 3,5  | Made user un-undefined, but found that frontend needs to been semi-refactored |
+| 19.01.2026 | 2,5  | Fixed login |
+| 20.01.2026 | 5,5  | Fixed errors on site and implemented to show bacic module questions |
+| 26.01.2026 | 3,75 | Fixed basic- or inclusive module changing and added answer field, but no actual answering possible yet |
+| 27.01.2026 | 8,75 | Fixed answering based on what type of answer, changed on MongoDB field types: integer, curency fields to numbers, Simplified basic-module-db no subsubquestions |
+| 31.01.2026 | 4    | Fixed basic-module-db. Added some css |
+| 02.02.2026 | 1,5  | Added basic module's b9 and b10. Fixed B9 and B10 answer-fields |
+| 06.02.2026 | 3,75 | Rename few fields in Basic module db. Mad B11 Management -section swhos more field if clicked true/yes/kyllä |
+| 13.02.2026 | 6    | Fixed duplicate on db. Add send answer -action to db. Set correct error message in backend middleware |
+| 16.02.2026 | 7    | Fixed fields that clear button will work. Refactored sub_qiestions on basic db. |
+| 17.02.2026 | 5,75 | Refactor backend questions tests and frontends form for new basic db. |
+| 18.02.2026 | 7    | Fixed tests on backend, added validation on answering TODO validating also subQs |
+| 19.02.2026 | 4,25 | Validated numbers in front |
+| 20.02.2026 | 5    | validate sub_question numbers and fix backend tests also all questions can be answered and send |
+| 24.02.2026 | 1,5  | Add component Answers to see what answers were submitted |
+| 26.02.2026 | 4,25 | On Answers-page shows answer and question |
+| 26.02.2026 | 1    | Fix input on subQs and mgntSubQs. Fix log out issue, now log out is keeping  userlogged out|
+| 28.02.2026 | 6,5  | When sending subQs label and questions can see on <Answers /> TODO: Show subQs value |
+| 01.03.2026 | 2    | Fix electer > electricity in db. Show subQs values on Answers |
+| 02.03.2026 | 5,75 | Make Inclusive module db and instruction-key to both db, implement chenges to code |
+| 03.03.2026 | 0,75 | Continue editing db's |
+| 04.03.2026 | 7    | Finish editing db's |
+| 05.03.2026 | 6,5  | Name change inclusive -> comprehensive, refactoring db-components, add if_this_q_yes to few booleans in dbs so next time can make better logic |
+| 06.03.2026 | 8    | Add more logic to if_yes fields in db. Try to get if_yes to work still needs to work on it |
+| 07.03.2026 | 4,5  | Add logic to sub_questions in db. Fix partially ifYes-Logic in component |
+| 08.03.2026 | 2    | Create backend for comprehensive questions |
+| 09.03.2026 | 3,5  | Fix "if yes show more questions" -logic. Now show questions completly as thei are supposed to be |
+| 10.03.2026 | 2,75 | Make porosess on <Answers /> continue tomorrow |
+| 11.03.2026 | 1,75 | Refactor how answers are saved in db |
+| 12.03.2026 | 5    | Went back to old way to save answers-db, make all features done and perhaps then refactor answers-db. Create <Users /> for admin and viewer roles |
+| 13.03.2026 | 4,25 | Make Users page for admin and viewer -roles and show all users answers |
+| 16.03.2026 | 4,75 | Fix subqs send answers error. Show only one user on <Answers /> when admin/viewer. Fix basic module answers |
+| 17.03.2026 | 2    | Fix SubQs if yes questions, fix db data typos |
+| 18.03.2026 | 6    | Get instruction-field on answers-page, fix instuction-fields on db |
+| 19.03.2026 | 4,25 | Get instruction without type to render once on Answers-component, consistent db id's, add Dropdownmenu to NewUserForm-component, install bootstrap, implement delete boolean answer |
+| 20.03.2026 | 2,75 | Added update button to boolean-answer on answers-page, addAnswer -> createAnswer and make it unmutable-version, fix some styling issues |
+| 25.03.2026 | 6,75 | Fixed deleting backend. Implemented delete answers |
+| 26.03.2026 | 4,75 | Fixed more delete action |
+| 27.03.2026 | 5,75 | Added some css and fixed (partially: removes boolean and supplement-questions, but throws internal error) if-yes-show-more delete that deletes boolean and supplement-questions |
+| 30.03.2026 | 3,75 | Added only owner and admin-role can see editing buttons |
+| 01.04.2026 | 7,5  | Iamplement update for answers |
+| 02.04.2026 | 4    | Fix updating sub question answers |
+| 03.04.2026 | 5,75 | Tried to get test to work with failure |
+| 03.04.2026 | 4,25 | Implement test |
+| 06.04.2026 | 1    | Pass delete test |
+| 07.04.2026 | 5,75 | Pass delete sub question test |
+| 10.04.2026 | 1    | Pass delete if-yes-show-more-questions/answers test |
+| Total      | 330,25 |
 
