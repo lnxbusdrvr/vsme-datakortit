@@ -11,8 +11,22 @@ const getHeaders = () => ({
 })
 
 const createAnswer = async (answer) => {
-  const request = await axios.post(baseUrl, answer, { headers: getHeaders() })
-  return request.data
+  // First Try to update
+  answer.groupAnswers.map(a => (
+  console.log(`answer.groupAnswers: ${a}`)
+  ))
+  try {
+    const response = await axios
+      .put(`${baseUrl}/${answer.id}`, answer, { headers: getHeaders() })
+  }
+  catch (error) {
+    if (error.response?.status === 404) {
+      // if fails then create new
+      const response = await axios.post(baseUrl, answer, { headers: getHeaders() })
+      return response.data
+    }
+    throw error
+  }
 }
 
 const getAll = async () => {

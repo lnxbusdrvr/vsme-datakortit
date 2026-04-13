@@ -329,7 +329,7 @@ describe('Answers component', () => {
     // Clear spy
     isConfirmButtonTrue.mockClear()
 
-    // Ask again, because page in rerended
+    // Ask again, because page in re-rended
     const updatedVolvoText = await screen.findByText(/Volvo/i)
 
     const volvoContainer = updatedVolvoText.closest('div')
@@ -410,14 +410,120 @@ describe('Answers component', () => {
     const informationText = await screen.findByText(/I want information/i)
     expect(johnText).toBeInTheDocument()
 
-    const updatedYesText = await screen.findByText(/Kyllä/i)
-
-    const yesContainer = updatedYesText.closest('div')
+    const yesContainer = yesText.closest('div')
     const yesDeleteButton = within(yesContainer).getByRole('button', { name: /Poista vastaus/i })
 
     await user.click(yesDeleteButton)
 
     expect(isConfirmButtonTrue).toHaveBeenCalledTimes(1)
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Kyllä/i))
+        .not
+        .toBeInTheDocument()
+    }, { timeout: 3000 })
+
+    const finalMessage = screen.getByText(/Käyttäjä ei ole vastaunnut yhteenkään kysymykseen/i)
+    expect(finalMessage).toBeInTheDocument()
+  })
+
+  it('if yes show more answer can be deleted if suppliment answers were deleted first', async () => {
+    const isConfirmButtonTrue = vi
+      .spyOn(window, 'confirm').mockReturnValue(true)
+
+    const mockIfYesShowMoreAnswer = [{
+      id: 'answer-03_if_this_qs_is_yes_show_more_qs',
+      moduleId: 'basic_module',
+      sectionsId: 'q3',
+      questionId: 'q3_if_this_q_yes_describe_more',
+      type: 'boolean',
+      answer: true,
+      user: { id: MOCK_ID }
+    },
+    {
+      id: 'answer-04-show_more_questions_when_prev_was_yes',
+      moduleId: 'basic_module',
+      sectionsId: 'q3',
+      questionId: 'if_prev_yes_q3_if_this_q_yes_describe_more',
+      type: 'group',
+      groupAnswers: [{
+        subQuestionId: 'sub_q_if_prev_yes_q3_if_this_q_yes_describe_more',
+        values: {
+          'q3_who_are_you': {
+            value: 'John',
+            fieldType: 'text'
+          },
+          'q3_what_you_want': {
+            value: 'I want information',
+            fieldType: 'text'
+          }
+        }
+      }],
+      user: { id: MOCK_ID }
+    }]
+
+    mocks.currentMockAnswers = mockIfYesShowMoreAnswer
+
+    const preloadedState = {
+      answers: [mockIfYesShowMoreAnswer]
+    }
+
+    renderWithProviders(<Answers />, {
+      preloadedState,
+      route: `/useranswers/${MOCK_ID}`,
+      path: '/useranswers/:id'
+    })
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Loading/i))
+        .not
+        .toBeInTheDocument()
+    }, { timeout: 3000 })
+
+    const informationText = await screen.findByText(/I want information/i)
+    expect(informationText).toBeInTheDocument()
+    const johnText = await screen.findByText(/John/i)
+    expect(johnText).toBeInTheDocument()
+
+    const yesText = await screen.findByText(/Kyllä/i)
+    expect(yesText).toBeInTheDocument()
+
+    const informationTextContainer = informationText.closest('div')
+    const informationTextDeleteButton = within(informationTextContainer)
+      .getByRole('button', { name: /Poista vastaus/i })
+
+    await user.click(informationTextDeleteButton)
+    expect(isConfirmButtonTrue).toHaveBeenCalledTimes(1)
+
+    await waitFor(() => {
+      expect(screen.queryByText(/I want information/i))
+        .not
+        .toBeInTheDocument()
+    }, { timeout: 3000 })
+
+    const updatedJohnText = await screen.findByText(/John/i)
+
+    const johnTextContainer = updatedJohnText.closest('div')
+    const johnTextDeleteButton = within(johnTextContainer).getByRole('button', { name: /Poista vastaus/i })
+
+    await user.click(johnTextDeleteButton)
+
+    expect(isConfirmButtonTrue).toHaveBeenCalledTimes(2)
+
+    await waitFor(() => {
+      expect(screen.queryByText(/John/i))
+        .not
+        .toBeInTheDocument()
+    }, { timeout: 3000 })
+
+    const updatedYesText = await screen.findByText(/Kyllä/i)
+
+    const yesTextContainer = updatedYesText.closest('div')
+    const yesTextDeleteButton = within(yesTextContainer).getByRole('button', { name: /Poista vastaus/i })
+
+    await user.click(yesTextDeleteButton)
+
+    expect(isConfirmButtonTrue).toHaveBeenCalledTimes(3)
 
     await waitFor(() => {
       expect(screen.queryByText(/Kyllä/i))
