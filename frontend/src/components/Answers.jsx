@@ -119,7 +119,8 @@ const Answers = () => {
         const nextQuestionId = answers
           .find(a => a.questionId
             .startsWith(`if_prev_yes_${answer.questionId}`))
-        await dispatch(deleteAnswer(nextQuestionId.id))
+        if (nextQuestionId)
+          await dispatch(deleteAnswer(nextQuestionId.id))
       }
 
       await dispatch(deleteAnswer(answerId))
