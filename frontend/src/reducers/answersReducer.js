@@ -12,18 +12,7 @@ const slice = createSlice({
       return payload
     },
     create(state, { payload }) {
-      const id = payload.id
-      const answer = state.find(a => a.id === id) || {}
-      const changedAnswer = {
-        ...answer,
-        answer: answer.answer !== payload.answer
-          ? payload.answer
-          : answer.answer,
-        groupAnswers: !isEqual(answer.groupAnswers, payload.groupAnswers)
-          ? payload.groupAnswers
-          : answer.groupAnswers
-      }
-      return state.map(a => a.id !== id ? a : changedAnswer)
+      return state.concat(payload)
     },
     update(state, { payload }) {
       const updatedAnswer = payload
@@ -42,6 +31,58 @@ export const initializeAnswers = () => {
     const data = await answersService.getAll()
     dispatch(set(data))
   }
+};
+
+export const saveAnswer = (newAnswer) => {
+  return async (dispatch, getState) => {
+    const { user, answers: existingAnswers } = getState();
+
+    // Find if an answer for this question already exists for this user
+    const existingAnswer = existingAnswers.find(a =>
+      a.questionId === newAnswer.questionId &&
+      a.user.id === user.id &&
+      a.moduleId === newAnswer.moduleId
+    );
+
+    try {
+      if (existingAnswer) {
+        // Merge groupAnswers if type is group
+        let mergedAnswer = { ...newAnswer };
+        if (newAnswer.type === 'group' && existingAnswer.groupAnswers) {
+          let mergedGroupAnswers = [...existingAnswer.groupAnswers];
+
+          newAnswer.groupAnswers.forEach(newGA => {
+            const idx = mergedGroupAnswers.findIndex(ga => ga.subQuestionId === newGA.subQuestionId);
+            if (idx >= 0) {
+              // Merge values within the subQuestion
+              mergedGroupAnswers[idx] = {
+                ...mergedGroupAnswers[idx],
+                values: {
+                  ...mergedGroupAnswers[idx].values,
+                  ...newGA.values
+                }
+              };
+            } else {
+              // Immutable way to add a new item
+              mergedGroupAnswers = [...mergedGroupAnswers, newGA];
+            }
+          });
+          mergedAnswer.groupAnswers = mergedGroupAnswers;
+        }
+        const data = await answersService.updateAnswer(existingAnswer.id, mergedAnswer);
+        dispatch(update(data));
+        return true;
+      } else {
+        const data = await answersService.createAnswer(newAnswer);
+        dispatch(create(data));
+        return true;
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || error.message || 'Vastauksen tallentaminen epäonnistui';
+      dispatch(notify(errorMessage, 20, true));
+      return false;
+    }
+  };
 };
 
 export const createAnswer = (answer) => {

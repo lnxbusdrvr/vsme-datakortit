@@ -5,7 +5,8 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 import { initializeComprehensive } from '../reducers/comprehensiveReducer'
-import { createAnswer } from '../reducers/answersReducer';
+import { initializeAnswers, saveAnswer } from '../reducers/answersReducer';
+import { notify } from '../reducers/notificationReducer';
 
 import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
 import Answers from './Answers'
@@ -24,6 +25,7 @@ const Comprehensive = () => {
 
   useEffect(() => {
     dispatch(initializeComprehensive())
+    dispatch(initializeAnswers())
   }, [dispatch])
 
   useEffect(() => {
@@ -140,7 +142,7 @@ const Comprehensive = () => {
             )
           }))
         }
-        await dispatch(createAnswer(payload))
+        await dispatch(saveAnswer(payload))
       }
       handleClearAnswers()
       navigate(`/useranswers/${user.id}`)
