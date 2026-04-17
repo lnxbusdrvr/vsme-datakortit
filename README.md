@@ -106,6 +106,7 @@
 | 07.04.2026 | 5,75 | Pass delete sub question test |
 | 10.04.2026 | 1    | Pass delete if-yes-show-more-questions/answers test |
 | 13.04.2026 | 2,5  | delete if-yes-show-more-questions firstly delete suppliment questions and then Yes or No question test and pass it |
-| 13.04.2026 | 0,75 | Implemented update when grouAnswers are already answered |
-| Total      | 333,5 |
+| 14.04.2026 | 0,75 | Implemented update when grouAnswers are already answered |
+| 17.04.2026 | 5,5  | Implement update users info |
+| Total      | 339  |
 

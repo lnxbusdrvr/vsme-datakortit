@@ -10,11 +10,20 @@ const slice = createSlice({
   reducers: {
     setUsers(state, { payload }) {
       return payload
+    },
+    appendUser(state, { payload }) {
+      return [...state, payload]
+    },
+    update(state, { payload }) {
+      const updatedUserInfo = payload
+      return state.map(u => u.id === updatedUserInfo.id
+        ? updatedUserInfo
+        : u)
     }
   }
 });
 
-const { setUsers } = slice.actions;
+const { setUsers, appendUser, update } = slice.actions;
 
 export const initializeUsers = () => {
   return async dispatch => {
@@ -36,5 +45,20 @@ export const createUser = (newUser) => {
     }
   }
 };
+
+export const updateUser = (id, updatedUserValue) => {
+  return async dispatch => {
+    try {
+      const resUpdatedUserInfo = await usersService.updateUser(id, updatedUserValue)
+      dispatch(update(resUpdatedUserInfo))
+      dispatch(notify(`Käyttäjän ${updatedUserValue.name} tieto päivitetty!`, 5, false));
+      return true;
+    }
+    catch (error){
+      dispatch(notify(`Käyttäjätietojen päivittäminen epäonnistui ${error}`, 10, true));
+      return false;
+    }
+  }
+}
 
 export default slice.reducer;
