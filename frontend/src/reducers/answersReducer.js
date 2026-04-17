@@ -16,7 +16,9 @@ const slice = createSlice({
     },
     update(state, { payload }) {
       const updatedAnswer = payload
-      return state.map(u => (u.id === updatedAnswer.id ? updatedAnswer : u))
+      return state.map(u => (u.id === updatedAnswer.id
+        ? updatedAnswer
+        : u))
     },
     remove(state, { payload }) {
       return state.filter(a => a.id !== payload)

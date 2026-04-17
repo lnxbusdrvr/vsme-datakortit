@@ -233,6 +233,34 @@ const Answers = () => {
 
   }
 
+  const inputFieldSaveAndCancelButtons = (answerId, type, subQsId, fieldId, fieldType) => {
+    const isSubQs = subQsId && fieldId
+
+    return (
+      <>
+        <Button
+          variant="success"
+          {...(!isSubQs
+            ? {onClick: () => {handleUpdateAnswer(answerId)}}
+            : {onClick: () => {handleUpdateGroupAnswers(answerId, subQsId, fieldId, fieldType)}}
+          )}
+        >
+          Tallenna
+        </Button>
+        <Button
+          variant="second"
+          {...(!isSubQs
+            ? {onClick: () => {clearOrCancelEditing()}}
+            : {onClick: () => {clearOrCancelGroupEditing()}}
+          )}
+        >
+          Peruuta
+        </Button>
+
+      </>
+    )
+  }
+
   const editingAnswerInputField = (answerId, type, subQsId, fieldId, fieldType) => {
     const isNumber = type === 'number' || fieldType === 'number'
     // value's value is needed to get clear button to work
@@ -261,34 +289,6 @@ const Answers = () => {
         />
         {fieldError[answerId] && <span className="field-error">{fieldError[answerId]}</span>}
         {inputFieldSaveAndCancelButtons(answerId, type, subQsId, fieldId, fieldType)}
-      </>
-    )
-  }
-
-  const inputFieldSaveAndCancelButtons = (answerId, type, subQsId, fieldId, fieldType) => {
-    const isSubQs = subQsId && fieldId
-
-    return (
-      <>
-        <Button
-          variant="success"
-          {...(!isSubQs
-            ? {onClick: () => {handleUpdateAnswer(answerId)}}
-            : {onClick: () => {handleUpdateGroupAnswers(answerId, subQsId, fieldId, fieldType)}}
-          )}
-        >
-          Tallenna
-        </Button>
-        <Button
-          variant="danger"
-          {...(!isSubQs
-            ? {onClick: () => {clearOrCancelEditing()}}
-            : {onClick: () => {clearOrCancelGroupEditing()}}
-          )}
-        >
-          Peruuta
-        </Button>
-
       </>
     )
   }

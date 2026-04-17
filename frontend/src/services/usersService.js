@@ -27,8 +27,17 @@ const getAll = async () => {
   return request.data;
 };
 
+const updateUser = async (id, updatedUserInfo) => {
+  const config = {
+    headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
+  }
+  const response = await axios.patch(`${baseUrl}/${id}`, updatedUserInfo, config)
+  return response.data
+}
+
 export default {
   createUser,
   getAll,
-  getUserById
-};
+  getUserById,
+  updateUser
+}
