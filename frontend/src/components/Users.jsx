@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import usersService from '../services/usersService';
-
 import { initializeUsers } from '../reducers/usersReducer';
+
+import Togglable from './Togglable';
+import NewUserForm from './NewUserForm';
 
 const Users = () => {
   const dispatch = useDispatch()
   const users = useSelector(state => state.users)
+  const newUserFormRef = useRef();
 
   useEffect(() => {
     dispatch(initializeUsers())
@@ -28,6 +31,9 @@ const Users = () => {
           )}
         </div>
       ))}
+      <Togglable buttonLabel="Rekisteröi" ref={newUserFormRef} >
+        <NewUserForm onUserCreatedToggle={() => newUserFormRef.current.toggleVisibility()} />
+      </Togglable>
     </div>
   )
 }
