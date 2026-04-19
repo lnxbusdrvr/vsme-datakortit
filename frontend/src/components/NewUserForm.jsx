@@ -6,7 +6,7 @@ import validator from 'validator';
 import { notify } from '../reducers/notificationReducer';
 import { createUser } from '../reducers/usersReducer';
 
-const NewUser = ({ onUserCreatedToggle }) => {
+const NewUserForm = ({ onUserCreatedToggle }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [emailConfirm, setEmailConfirm] = useState('');
@@ -150,4 +150,4 @@ const NewUser = ({ onUserCreatedToggle }) => {
   )
 };
 
-export default NewUser;
+export default NewUserForm;

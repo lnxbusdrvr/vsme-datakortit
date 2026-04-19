@@ -77,15 +77,17 @@ const getUserById = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { newName, currentPassword, newPhone, newPassword, newAddress, newPostalCode, newCity } =
+  const { newName, currentPassword, newPhone, newPassword, newAddress, newPostalCode, newCity, newRole } =
     req.body;
 
   const userToUpdate = await User.findById(req.params.id);
 
   if (!userToUpdate) return res.status(404).json({ error: 'User not found' });
 
-  // Only user itself can update it's data
-  if (req.user.id.toString() !== userToUpdate.id.toString())
+  const user = req.user
+  // Only admin or user itself can update it's data
+  if (user.role === 'viewer' ||
+    (user.role !== 'admin' && user.id.toString() !== userToUpdate.id.toString()))
     return res.status(403).json({ error: 'Permission denied' });
 
   if (newPassword) {
@@ -110,6 +112,7 @@ const updateUser = async (req, res) => {
   if (newAddress) userToUpdate.address = newAddress;
   if (newPostalCode) userToUpdate.postalCode = newPostalCode;
   if (newCity) userToUpdate.city = newCity;
+  if (user.role === 'admin' && newRole) userToUpdate.role = newRole;
 
   const updatedUser = await userToUpdate.save();
   res.json(updatedUser);

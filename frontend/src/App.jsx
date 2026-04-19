@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 import { useEffect } from 'react';
 
 import LoginForm from './components/LoginForm';
-import NewUserForm from './components/NewUserForm';
 import Questions from './components/Questions';
 import Answers from './components/Answers';
 import Users from './components/Users';

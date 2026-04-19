@@ -108,5 +108,6 @@
 | 13.04.2026 | 2,5  | delete if-yes-show-more-questions firstly delete suppliment questions and then Yes or No question test and pass it |
 | 14.04.2026 | 0,75 | Implemented update when grouAnswers are already answered |
 | 17.04.2026 | 5,5  | Implement update users info |
-| Total      | 339  |
+| 19.04.2026 | 3    | Implement more updateable users info and admin can add new user and edit existing user role |
+| Total      | 342  |
 
