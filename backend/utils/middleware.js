@@ -23,6 +23,7 @@ const errorHandler = (error, req, res, next) => {
   else if (error.name === 'ValidationError')
     return res.status(400).json({ error: error.message });
   // Duplicate error
+  // Mainly Augment AI Generated
   else if (
     error.name === 'MongoServerError' &&
     error.message.includes('E11000 duplicate key error collection')
@@ -37,7 +38,7 @@ const errorHandler = (error, req, res, next) => {
       error: 'Y-tunnus, tai sähköpostiosoite on jo käytössä',
     });
   } else if (error.name === 'JsonWebTokenError') {
-    return res.status(401).json({ error: 'token missin or invalid' });
+    return res.status(401).json({ error: 'token missing or invalid' });
   } else if (error.name === 'TokenExpiredError') {
     return res.status(401).json({ error: 'token expired' });
   }

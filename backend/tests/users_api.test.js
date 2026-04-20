@@ -7,6 +7,8 @@ const assert = require('assert');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
+const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH || 8;
+
 describe('users', () => {
   beforeEach(async () => {
     await User.deleteMany({});
@@ -198,7 +200,7 @@ describe('users', () => {
         .send({ currentPassword, newPassword: tooShortPasswd })
         .expect(400);
 
-      assert.strictEqual(response.body.error, 'New password is too short');
+      assert.strictEqual(response.body.error, `Uusi salasana on liian lyhyt, vähimmäispituus on ${PASSWD_LEN}`);
     });
 
     test('Current password fails with wrong password', async () => {
@@ -211,7 +213,7 @@ describe('users', () => {
         .send({ currentPassword: incorrectOldPasswd, newPassword })
         .expect(400);
 
-      assert.strictEqual(response.body.error, 'Password or email incorrect');
+      assert.strictEqual(response.body.error, 'Nykyinen salasana on väärä');
     });
 
     test('Fails with given new password as current password', async () => {
@@ -223,7 +225,7 @@ describe('users', () => {
 
       assert.strictEqual(
         response.body.error,
-        'New password must be different than current password'
+        'Uuden salasanan on oltava eri kuin nykyinen salasana'
       );
     });
 

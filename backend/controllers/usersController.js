@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH;
+const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH || 8;
 
 const createUser = async (req, res) => {
   const {
@@ -19,7 +19,8 @@ const createUser = async (req, res) => {
 
   if (!email || !password) return res.status(400).json({ error: 'email or password is missing' });
 
-  if (password.length < PASSWD_LEN) return res.status(400).json({ error: 'password is too short' });
+  if (password.length < PASSWD_LEN)
+    return res.status(400).json({ error: `Salasana on liian lyhyt, vähimmäispituus on ${PASSWD_LEN}` });
 
   const saltRound = 10;
   const passwordHash = await bcrypt.hash(password, saltRound);
@@ -77,8 +78,16 @@ const getUserById = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { newName, currentPassword, newPhone, newPassword, newAddress, newPostalCode, newCity, newRole } =
-    req.body;
+  const {
+    newName,
+    currentPassword,
+    newPhone,
+    newPassword,
+    newAddress,
+    newPostalCode,
+    newCity,
+    newRole
+  } = req.body;
 
   const userToUpdate = await User.findById(req.params.id);
 
@@ -91,19 +100,34 @@ const updateUser = async (req, res) => {
     (user.role !== 'admin' && user.id.toString() !== userToUpdate.id.toString()))
     return res.status(403).json({ error: 'Permission denied' });
 
+  // AI Generated better error messages
   if (newPassword && newPassword.length < PASSWD_LEN)
-    return res.status(400).json({ error: 'New password is too short' });
+    return res.status(400)
+      .json({ error: `Uusi salasana on liian lyhyt, vähimmäispituus on ${PASSWD_LEN}` });
 
   if (newPassword) {
+    const isUpdatingSelf = user.id.toString() === userToUpdate.id.toString();
+    const isAdmin = user.role === 'admin';
 
-    const passwordIsCorrect = await bcrypt.compare(userToUpdate.passwordHash, currentPassword);
-    if (!passwordIsCorrect)
-      return res.status(400).json({ error: 'Password or email incorrect' });
+    // Current password is required if user is updating their own password
+    // Admin can update other users' passwords without current password
+    // AI Generated better error messages
+    if (isUpdatingSelf || !isAdmin) {
+      if (!currentPassword)
+        return res.status(400)
+          .json({ error: 'Nykyinen salasana tarvitaan salasanan vaihtamiseksi' });
 
-    if (currentPassword === newPassword)
-      return res.status(400).json({
-        error: 'New password must be different than current password',
-      });
+      // AI Generated better error messages
+      const passwordIsCorrect = await bcrypt.compare(currentPassword, userToUpdate.passwordHash);
+      if (!passwordIsCorrect)
+        return res.status(400).json({ error: 'Nykyinen salasana on väärä' });
+
+      // AI Generated better error messages
+      if (currentPassword === newPassword)
+        return res.status(400).json({
+          error: 'Uuden salasanan on oltava eri kuin nykyinen salasana',
+        });
+    }
 
     const saltRound = 10;
     userToUpdate.passwordHash = await bcrypt.hash(newPassword, saltRound);

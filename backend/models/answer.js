@@ -29,6 +29,11 @@ const answerSchema = new mongoose.Schema({
       return this.type !== 'group';
     }
   },
+  /*
+   * This part is mainly generated
+   * probably by ChatGPT,
+   * Gemini prompt, or by Augment AI
+   */
   groupAnswers: [
     {
       subQuestionId: {

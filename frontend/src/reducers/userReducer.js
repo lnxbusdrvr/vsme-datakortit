@@ -38,8 +38,8 @@ export const loginUser = (credentials) => {
       dispatch(set(loginResponse))
       dispatch(notify(`Tervetuloa takaisin, ${loginResponse.name}!`, 5, false))
       return loginResponse // return for the component
-    } catch (e) {
-      dispatch(notify( 'Väärä käyttäjätunnus tai salasana', 5, true ));
+    } catch (error) {
+      dispatch(notify( `Väärä käyttäjätunnus tai salasana ${error}`, 5, true ));
     }
   }
 }

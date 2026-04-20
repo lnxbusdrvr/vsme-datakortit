@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
-import usersService from '../services/usersService';
 import { initializeUsers } from '../reducers/usersReducer';
 
 import Togglable from './Togglable';

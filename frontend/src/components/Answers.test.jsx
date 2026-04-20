@@ -1,4 +1,4 @@
-import { render, screen, waitFor, within } from '@testing-library/react'
+import { screen, waitFor, within } from '@testing-library/react'
 import { describe, expect, it, vi} from 'vitest'
 import userEvent from '@testing-library/user-event'
 
@@ -201,7 +201,6 @@ vi.mock('../services/answersService', () => ({
 describe('Answers component', () => {
 
   const user = userEvent.setup()
-  const mockHandler = vi.fn()
 
   afterEach(() => {
     vi.clearAllMocks()
@@ -408,7 +407,7 @@ describe('Answers component', () => {
     const johnText = await screen.findByText(/John/i)
     expect(johnText).toBeInTheDocument()
     const informationText = await screen.findByText(/I want information/i)
-    expect(johnText).toBeInTheDocument()
+    expect(informationText).toBeInTheDocument()
 
     const yesContainer = yesText.closest('div')
     const yesDeleteButton = within(yesContainer).getByRole('button', { name: /Poista vastaus/i })

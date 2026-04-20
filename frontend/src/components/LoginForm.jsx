@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const user = await dispatch(loginUser({ email, password }));
+    await dispatch(loginUser({ email, password }));
     setEmail('');
     setPassword('');
     navigate('/');

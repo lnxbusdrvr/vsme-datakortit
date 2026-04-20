@@ -18,7 +18,7 @@ const Comprehensive = () => {
   const comprehensive = useSelector(state => state.comprehensive)
   const user = useSelector(state => state.user)
   const [answers, setAnswers] = useState({})
-  const [moduleId, setModuleId] = useState(false)
+  const moduleId = 'comprehensive_module'
   const [fieldError, setFieldError] = useState({})
   const [lastControllingQuestionId, setLastControllingQuestionId] = useState([])
   const navigate = useNavigate();
@@ -27,11 +27,6 @@ const Comprehensive = () => {
     dispatch(initializeComprehensive())
     dispatch(initializeAnswers())
   }, [dispatch])
-
-  useEffect(() => {
-    if (comprehensive && comprehensive.length > 0)
-      setModuleId(comprehensive[0].module_id)
-  }, [comprehensive])
 
   if (!user || !comprehensive)
     return <div>Loading...</div>
@@ -147,7 +142,7 @@ const Comprehensive = () => {
       handleClearAnswers()
       navigate(`/useranswers/${user.id}`)
     } catch (error) {
-      dispatch(notify('Vastauksien lähetys epäonnistui', 15, true))
+      dispatch(notify(`Vastauksien lähetys epäonnistui ${error}`, 15, true))
     }
 
   }

@@ -11,6 +11,7 @@ const slice = createSlice({
     setUsers(state, { payload }) {
       return payload
     },
+    /* appendUser and update is certainly Mostly Augment AI Generated */
     appendUser(state, { payload }) {
       return [...state, payload]
     },
@@ -46,6 +47,7 @@ export const createUser = (newUser) => {
   }
 };
 
+/* This Function is certainly Mostly Augment AI Generated */
 export const updateUser = (id, updatedUserValue) => {
   return async dispatch => {
     try {
@@ -55,7 +57,11 @@ export const updateUser = (id, updatedUserValue) => {
       return true;
     }
     catch (error){
-      dispatch(notify(`Käyttäjätietojen päivittäminen epäonnistui ${error}`, 10, true));
+      // errorMessage refactored by Gemini cli AI
+      const errorMessage = error.response && error.response.data && error.response.data.error
+        ? error.response.data.error
+        : error.message;
+      dispatch(notify(`Käyttäjätietojen päivittäminen epäonnistui: ${errorMessage}`, 10, true));
       return false;
     }
   }
