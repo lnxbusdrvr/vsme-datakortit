@@ -82,7 +82,8 @@ const updateUser = async (req, res) => {
 
   const userToUpdate = await User.findById(req.params.id);
 
-  if (!userToUpdate) return res.status(404).json({ error: 'User not found' });
+  if (!userToUpdate)
+    return res.status(404).json({ error: 'User not found' });
 
   const user = req.user
   // Only admin or user itself can update it's data
@@ -90,12 +91,14 @@ const updateUser = async (req, res) => {
     (user.role !== 'admin' && user.id.toString() !== userToUpdate.id.toString()))
     return res.status(403).json({ error: 'Permission denied' });
 
-  if (newPassword) {
-    if (newPassword.length < PASSWD_LEN)
-      return res.status(400).json({ error: 'New password is too short' });
+  if (newPassword && newPassword.length < PASSWD_LEN)
+    return res.status(400).json({ error: 'New password is too short' });
 
-    const passwordIsCorrect = await bcrypt.compare(currentPassword, userToUpdate.passwordHash);
-    if (!passwordIsCorrect) return res.status(400).json({ error: 'Password or email incorrect' });
+  if (newPassword) {
+
+    const passwordIsCorrect = await bcrypt.compare(userToUpdate.passwordHash, currentPassword);
+    if (!passwordIsCorrect)
+      return res.status(400).json({ error: 'Password or email incorrect' });
 
     if (currentPassword === newPassword)
       return res.status(400).json({
