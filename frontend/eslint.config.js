@@ -1,3 +1,6 @@
+/* This eslint is mainly ChatGPT AI Generated
+ * Because fullstackopen.com had older eslint config
+ */
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'

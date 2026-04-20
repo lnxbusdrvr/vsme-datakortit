@@ -1,5 +1,4 @@
 import axios from 'axios'
-import storageService from './storageService'
 
 const baseUrl = '/api/basic'
 

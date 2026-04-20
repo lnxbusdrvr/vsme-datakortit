@@ -1,31 +1,13 @@
-//import { useState, useRef } from 'react';
-//import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
 
 import { Form, Button } from 'react-bootstrap';
 
-//import { notify } from '../reducers/notificationReducer';
-
-//import Notification from './Notification';
 import Basic from './Basic';
 import Comprehensive from './Comprehensive';
 
 
 const Questions = () => {
-  //const dispatch = useDispatch();
-  //const navigate = useNavigate();
   const [basicOrComprehensive, setBasicOrComprehensive] = useState(null);
-
-  /*
-  useEffect(() => {
-  }, []);
-  */
-  const handleQuestions = async (event) => {
-    event.preventDefault();
-
-  };
-
 
   return (
     <>

@@ -4,38 +4,30 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Dropdown } from 'react-bootstrap';
 
 
-import { initializeUsers, updateUser } from '../reducers/usersReducer'
+import { updateUser } from '../reducers/usersReducer'
 import usersService from '../services/usersService';
-import storage from '../services/storageService';
 
 const User = () => {
   const id = useParams().id
-  const users = useSelector(state => state.users)
   const dispatch = useDispatch()
   const loggedUser = useSelector(state => state.user)
   const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
   const [editingInfo, setEditingInfo] = useState('')
   const [editedInfoValue, setEditedInfoValue] = useState('')
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState('')
+  const [fieldError, setFieldError] = useState({})
 
 
   useEffect(() => {
     const fetchUser = async () => {
-      try {
-        const userData = await usersService.getUserById(id)
-        setUser(userData)
-      } catch (error) {
-        throw error
-      } finally {
-        setLoading(false)
-      }
+      const userData = await usersService.getUserById(id)
+      setUser(userData)
     }
     if (id)
       fetchUser()
   }, [id])
-
-  if (loading)
-    return <div>Loading...</div>
 
   if (!user)
     return <div>User not found</div>
@@ -66,9 +58,19 @@ const User = () => {
   const clearOrCancelEditing = () => {
     setEditingInfo('')
     setEditedInfoValue('')
+    setCurrentPassword('')
+    setNewPassword('')
+    setNewPasswordConfirm('')
+    setFieldError({})
   }
 
   const handleUpdateInfo = async () => {
+    if (editingInfo === 'password') {
+      if (newPassword !== newPasswordConfirm) {
+        setFieldError({ newPasswordConfirm: 'Salasanat eivät täsmää' })
+        return
+      }
+    }
 
     const newUserValues = {
       newName: editingInfo === 'name' ? editedInfoValue : user.name,
@@ -77,18 +79,15 @@ const User = () => {
       newPostalCode: editingInfo === 'postalCode' ? editedInfoValue : user.postalCode,
       newCity: editingInfo === 'city' ? editedInfoValue : user.city,
       newRole: loggedUser.role === 'admin' && editingInfo === 'role' ? editedInfoValue : user.role,
+      currentPassword: editingInfo === 'password' ? currentPassword : '',
+      newPassword: editingInfo === 'password' ? newPassword : '',
     }
 
-    try {
-      await dispatch(updateUser(user.id, newUserValues))
-      const userData = await usersService.getUserById(id)
-      setUser(userData)
+    await dispatch(updateUser(user.id, newUserValues))
+    const userData = await usersService.getUserById(id)
+    setUser(userData)
 
-      clearOrCancelEditing()
-    }
-    catch (error) {
-      throw error
-    }
+    clearOrCancelEditing()
   }
 
   const inputFieldSaveAndCancelButtons = () => {
@@ -102,7 +101,7 @@ const User = () => {
           Tallenna
         </Button>
         <Button
-          variant="second"
+          variant="secondary"
           onClick={() => {clearOrCancelEditing()}}
         >
           Peruuta
@@ -128,6 +127,42 @@ const User = () => {
                 <Dropdown.Item eventKey="admin">Pääkäyttäjä</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+            {inputFieldSaveAndCancelButtons()}
+          </>
+        ) : infoToEdit === 'password' ? (
+          <>
+            <Form.Group>
+              <Form.Label>Nykyinen salasana</Form.Label>
+              <Form.Control
+                type="password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Uusi salasana</Form.Label>
+              <Form.Control
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Vahvista uusi salasana</Form.Label>
+              <Form.Control
+                type="password"
+                value={newPasswordConfirm}
+                onChange={(e) => {
+                  setNewPasswordConfirm(e.target.value)
+                  if (fieldError.newPasswordConfirm) setFieldError({})
+                }}
+              />
+              {fieldError.newPasswordConfirm &&
+                <span className="field-error">
+                  {fieldError.newPasswordConfirm}
+                </span>
+              }
+            </Form.Group>
             {inputFieldSaveAndCancelButtons()}
           </>
         ) : (
@@ -159,6 +194,16 @@ const User = () => {
         </>
       )}
       </p>
+      <p>Salasana: <strong>***</strong></p>
+      {editingInfo === 'password' ? (
+        editingInfoInputField('password')
+      ) : (
+        <>
+        {canModify && (
+          canModifyButton('password', '')
+        )}
+        </>
+      )}
       <p>Yhtiön nimi: <strong>{user.companyName}</strong></p>
       <p>Sähköpostiosoite: <strong>{user.email}</strong></p>
       <p>Puhelinnumero: <strong>{user.phone}</strong></p>

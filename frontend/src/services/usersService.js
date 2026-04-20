@@ -1,5 +1,4 @@
 import axios from 'axios';
-import userService from './userService'
 import storageService from './storageService'
 
 
@@ -12,6 +11,7 @@ const createUser = async (newUser) => {
 
 const getUserById = async (id) => {
   // Do not do this globally, token won't be set yet
+  // Adwised above from ChatGPT or Gemini prompt, or Lumo AI
   const config = {
     headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
   }

@@ -1,4 +1,6 @@
-
+/*
+ * This whole file is helped to refactor by Augment AI
+ */
 export const getMoreQuestionIdIfCtrlQsYes = (questionId) => {
   if (!questionId || !questionId.includes('_if_this_q_yes_'))
     return null

@@ -1,3 +1,6 @@
+/* This eslint is mainly ChatGPT AI Generated
+ * Because fullstackopen.com had older eslint config
+ */
 const js = require('@eslint/js');
 const nodePlugin = require('eslint-plugin-n');
 const prettier = require('eslint-config-prettier');

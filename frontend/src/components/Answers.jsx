@@ -1,5 +1,5 @@
 import { useDispatch, useSelector} from 'react-redux'
-import { useParams, Link, useNavigate  } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
@@ -10,9 +10,8 @@ import { initializeComprehensive} from '../reducers/comprehensiveReducer'
 import { initializeAnswers } from '../reducers/answersReducer'
 
 import { deleteAnswer, updateAnswer } from '../reducers/answersReducer'
-import { notify } from '../reducers/notificationReducer'
 
-import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
+import { validateNumber } from '../utils/formHelpers'
 
 
 const Answers = () => {
@@ -28,10 +27,10 @@ const Answers = () => {
   const [fieldError, setFieldError] = useState({})
   const [editingGroupAnswersIds, setEditingGroupAnswersIds] = useState(null)
   const [editedGroupAnswersValue, setEditedGroupAnswersValue] = useState('')
-  const navigate = useNavigate();
 
 
   useEffect(() => {
+    // This is mainly generated with Gemini Prompt AI or Augment AI
     const fetchUser = async () => {
       const userData = await usersService.getUserById(id)
       setUser(userData)
@@ -60,6 +59,7 @@ const Answers = () => {
     : comprehensive
 
   // Sort answers like they are in questions
+  // This function is mainly generated with Gemini Prompt AI or Augment AI
   const sortedAnswers = [...answers].sort((a, b) => {
     const questionA = module
       .flatMap(m => m.sections)
@@ -105,94 +105,79 @@ const Answers = () => {
   }
 
   const handleDeleteAnswer = async (answerId) => {
-    try {
-      const confirmDeleteAnswer = window
+    const confirmDeleteAnswer = window
         .confirm('Haluatko varmasti poistaa vastauksen?')
-      if (!confirmDeleteAnswer)
-        return
+    if (!confirmDeleteAnswer)
+      return
 
-      const answer = answers.find(a => a.id === answerId)
+    const answer = answers.find(a => a.id === answerId)
 
-      // If question is, if-yes-show-more question(s),
-      // delete next answer(s) too
-      if (answer?.questionId.includes('_if_this_q_yes_')) {
-        const nextQuestionId = answers
-          .find(a => a.questionId
-            .startsWith(`if_prev_yes_${answer.questionId}`))
-        if (nextQuestionId)
-          await dispatch(deleteAnswer(nextQuestionId.id))
-      }
-
-      await dispatch(deleteAnswer(answerId))
-    } catch (error) {
-      throw error
+    // If question is, if-yes-show-more question(s),
+    // delete next answer(s) too
+    if (answer?.questionId.includes('_if_this_q_yes_')) {
+      const nextQuestionId = answers
+        .find(a => a.questionId
+          .startsWith(`if_prev_yes_${answer.questionId}`))
+      if (nextQuestionId)
+        await dispatch(deleteAnswer(nextQuestionId.id))
     }
+
+    await dispatch(deleteAnswer(answerId))
   }
 
+  // This function is mainly generated with Gemini Prompt AI or Augment AI
   const handleDeleteGroupAnswers = async (answerId, subQsId, fieldId) => {
-    try {
-      const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
-      if (!confirmDeleteAnswer)
-        return
+    const confirmDeleteAnswer = window.confirm('Haluatko varmasti poistaa vastauksen?')
+    if (!confirmDeleteAnswer)
+      return
 
-      const answer = answers?.find(a => a.id === answerId)
+    const answer = answers?.find(a => a.id === answerId)
 
-      const deletedGroupAnswers = answer?.groupAnswers?.map(ga => {
-        if (ga.subQuestionId === subQsId) {
-          const newValues = { ...ga.values }
-          delete newValues[fieldId]
-          return { ...ga, values: newValues }
-        }
-        return ga
-      }).filter(ga => Object.keys(ga.values).length > 0)
-
-      // If no groupAnswers left, delete answer
-      if (deletedGroupAnswers?.length === 0) {
-        dispatch(deleteAnswer(answerId))
-        return
+    const deletedGroupAnswers = answer?.groupAnswers?.map(ga => {
+      if (ga.subQuestionId === subQsId) {
+        const newValues = { ...ga.values }
+        delete newValues[fieldId]
+        return { ...ga, values: newValues }
       }
+      return ga
+    }).filter(ga => Object.keys(ga.values).length > 0)
 
-      // Delete trough update field(s) from inside groupAnswers
-      dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
-    } catch (error) {
-      throw error
+    // If no groupAnswers left, delete answer
+    if (deletedGroupAnswers?.length === 0) {
+      dispatch(deleteAnswer(answerId))
+      return
     }
+
+    // Delete trough update field(s) from inside groupAnswers
+    dispatch(updateAnswer(answerId, { groupAnswers: deletedGroupAnswers }))
   }
 
   const handleUpdateAnswer = async (answerId) => {
-    try {
-      await dispatch(updateAnswer(answerId, { answer: editedValue }))
-      clearOrCancelEditing()
-    } catch (error) {
-      throw error
-    }
-
+    await dispatch(updateAnswer(answerId, { answer: editedValue }))
+    clearOrCancelEditing()
   }
 
+  // This function is mainly generated with Gemini Prompt AI or Augment AI
   const handleUpdateGroupAnswers = async (answerId, subQsId, fieldId, fieldType) => {
-    try {
-      const answer = answers?.find(a => a.id === answerId)
-      const updatedGroupAnswers = answer?.groupAnswers?.map(ga => {
-        const value = fieldType === 'number'
-          ? Number(editedGroupAnswersValue)
-          : editedGroupAnswersValue
+    const answer = answers?.find(a => a.id === answerId)
+    const updatedGroupAnswers = answer?.groupAnswers?.map(ga => {
+      const value = fieldType === 'number'
+        ? Number(editedGroupAnswersValue)
+        : editedGroupAnswersValue
 
-        if (ga.subQuestionId === subQsId) {
-          return {
-            ...ga,
-            values: {
-              ...ga.values,
-              [fieldId]: { value, fieldType }
-            }
+      if (ga.subQuestionId === subQsId) {
+        return {
+          ...ga,
+          values: {
+            ...ga.values,
+            [fieldId]: { value, fieldType }
           }
         }
-        return ga
-      })
-      await dispatch(updateAnswer(answerId, { groupAnswers: updatedGroupAnswers }))
-      clearOrCancelGroupEditing()
-    } catch (error) {
-      throw error
-    }
+      }
+      return ga
+    })
+    await dispatch(updateAnswer(answerId, { groupAnswers: updatedGroupAnswers }))
+    clearOrCancelGroupEditing()
   }
 
   const clearOrCancelEditing = () => {
@@ -205,6 +190,7 @@ const Answers = () => {
     setEditedGroupAnswersValue('')
   }
 
+  // This function's ifs on <Button are partially generated with Gemini Prompt AI or Augment AI
   const canModifyButtons = (answer, subQsId, fieldId, fieldValue) => {
     const isSubQs = subQsId && fieldId && fieldValue
 
@@ -300,6 +286,7 @@ const Answers = () => {
     && loggedUser?.role !== 'viewer'
 
 
+  // This return is partially generated with help of Gemini Prompt AI or Augment AI
   return (
     <div key="answers-div" className="answers">
       <h2>{user.name} {user.companyName}:</h2>
@@ -311,10 +298,12 @@ const Answers = () => {
             ? 'Perusmoduuli'
             : 'Perusmoduuli + kattava moduuli'
 
+        {/* This Function is certainly Mostly AI Generated */}
         const section = module
           .flatMap(m => m.sections)
           .find(s => s.section_id === a.sectionId)
 
+        {/* This Function is certainly Mostly AI Generated */}
         const question = module
           .flatMap(m => m.sections)
           .flatMap(s => s.questions)
@@ -322,18 +311,21 @@ const Answers = () => {
 
         {/* Check if this is the first title,header in this section */}
         {/* to not show title,header on every iteratration */}
+        {/* This Function is certainly Mostly AI Generated */}
         const isFirstInSection = aIdx === 0 || 
           filteredAnswers[aIdx - 1].sectionId !== a.sectionId
 
+        {/* This Function is certainly mainly AI Generated */}
         const isFirstInQuestion = aIdx === 0 ||
           filteredAnswers[aIdx - 1].questionId !== a.questionId
 
         {/* Find instruction question in questions */}
+        {/* This Function is certainly Mostly AI Generated */}
         const questionIndex = section?.questions.findIndex(q => q.id === a.questionId) ?? -1
         const instructionQuestions = questionIndex > 0
           ? section?.questions.slice(0, questionIndex)
             .reverse()
-          .filter((q, idx, arr) => {
+          .filter((q) => {
             const nextIdx = section.questions.findIndex(sq => sq.id === q.id) + 1
             return nextIdx === questionIndex || section.questions[nextIdx]?.type === 'instruction'
           })

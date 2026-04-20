@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { isEqual } from 'lodash';
 import answersService from '../services/answersService'
 import { notify } from '../reducers/notificationReducer';
 

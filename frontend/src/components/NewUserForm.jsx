@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Dropdown } from 'react-bootstrap';
 import validator from 'validator';
 
@@ -21,7 +21,6 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
   const [businessIdentityCode, setBusinessIdentityCode] = useState('');
 
   const dispatch = useDispatch();
-  const allUsers = useSelector(state => state.users);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
