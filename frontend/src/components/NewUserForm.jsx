@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, Form, Button } from 'react-bootstrap';
 import validator from 'validator';
+// Password eye
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
 import { notify } from '../reducers/notificationReducer';
 import { createUser } from '../reducers/usersReducer';
+
+import '../styles.css'
 
 const NewUserForm = ({ onUserCreatedToggle }) => {
   const [name, setName] = useState('');
@@ -13,13 +17,13 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
   const [companyName, setCompanyName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [eyeIconVisible, setEyeIconVisible] = useState(false)
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [city, setCity] = useState('');
   const [legalFormOfCompany, setLegalFormOfCompany] = useState('');
   const [businessIdentityCode, setBusinessIdentityCode] = useState('');
-
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
@@ -79,6 +83,50 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
     }
   };
 
+  const handlePasswordVisibility = () => {
+    if (type === 'password') {
+      setIcon(eye)
+      setType('text')
+    }
+    else {
+      setType('password')
+      setIcon(eyeOff)
+    }
+  }
+
+  const passwordInputField = (passwordOrConfirm) => {
+    return (
+      <div className="password-div">
+        <Form.Control
+          type={eyeIconVisible ? 'text' : 'password'}
+          name={passwordOrConfirm}
+          id={passwordOrConfirm}
+          value={password}
+          onChange={
+            ({ target }) => passwordOrConfirm === 'password'
+            ? setPassword(target.value)
+            : setPasswordConfirm(target.value)
+          }
+
+          required
+          className="password-input"
+        />
+        <div className="p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
+          {eyeIconVisible
+            ? <EyeOutlined />
+            : <EyeInvisibleOutlined />
+          }
+        </div>
+      </div>
+    )
+    /*
+     *
+      <div className="flex self-center bg-gray-50 mx-8 mb-2 block text-gray-300 dark:text-gray-300">
+          className="bg-gray-500 border-none focus:border-none text-gray-900"
+          className="password-input bg-gray-50 border-none focus:border-none text-gray-900"
+     */
+  }
+
   return (
     <div>
       <h1>Registeröi uusi käyttäjä</h1>
@@ -100,12 +148,12 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
           <input type="text" name="emailConfirm" id="emailConfirm" value={emailConfirm} onChange={({ target }) => setEmailConfirm(target.value)} required />
         </div>
         <div>
-          <label htmlFor="password">Salasana</label>
-          <input type="password" name="password" id="" value={password} onChange={({ target }) => setPassword(target.value)} required />
+          <Form.Label>Salasana</Form.Label>
+          {passwordInputField('password')}
         </div>
         <div>
-          <label htmlFor="passwordConfirmed">Salasana uudestaan</label>
-          <input type="password" name="passwordConfirm" id="passwordConfirm" value={passwordConfirm} onChange={({ target }) => setPasswordConfirm(target.value)} required />
+          <Form.Label>Salasana uudestaan</Form.Label>
+          {passwordInputField('passwordConfirm')}
         </div>
         <div>
           <label htmlFor="phone">Puhelinnumero</label>
