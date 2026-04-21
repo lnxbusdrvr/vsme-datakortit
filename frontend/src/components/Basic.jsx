@@ -1,3 +1,7 @@
+/*
+ * This files some parts
+ * are AI Generated search with AI keyword
+ */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -18,10 +22,10 @@ const Basic = () => {
   const basic = useSelector(state => state.basic)
   const user = useSelector(state => state.user)
   const [answers, setAnswers] = useState({})
-  const moduleId = 'basic_module'
   const [fieldError, setFieldError] = useState({})
   const [lastControllingQuestionId, setLastControllingQuestionId] = useState(null)
   const navigate = useNavigate();
+  const moduleId = 'basic_module'
 
   useEffect(() => {
     dispatch(initializeBasic())
