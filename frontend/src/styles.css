@@ -6,24 +6,44 @@
  * non-AI generated
  */
 .password-div {
-  flex;
-  self-center;
-  bg-gray-50;
-  mx-8;
-  mb-2;
-  block;
-  text-gray-300;
-  dark:text-gray-300;
+  background: white;
+  border: 0.1rem solid gray;
+  width: 20rem;
+  display: flex;
+
 }
 /*
  * non-AI generated
  */
 .password-input {
-  bg-gray-200;
-  text-gray-900;
-  border-none;
-  focus:border-none;
+  /* no effect */
+  background: transparent;
+  border-color: white !important;
+  outline-color: white !important;
+  /* no effect */
+  /*
+  border-color: transparent !important;
+  outline-color: transparent !important;
+  */
+  width: 90%;
 }
+/*
+ * non-AI generated
+ */
+.no-border {
+  border: none;
+  box-shadow: none;
+}
+/*
+ * non-AI generated
+ */
+.password-eye-div {
+  width: 10%;
+}
+/*
+ * Above more or less
+ * Augment AI generated
+ */
 .title-box {
   background-color: #337ab7;
   color: white;
