@@ -2,10 +2,12 @@ import { useParams, Navigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Dropdown } from 'react-bootstrap';
-
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
 import { updateUser } from '../reducers/usersReducer'
 import usersService from '../services/usersService';
+
+import '../styles.css'
 
 const User = () => {
   const id = useParams().id
@@ -17,6 +19,7 @@ const User = () => {
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [newPasswordConfirm, setNewPasswordConfirm] = useState('')
+  const [eyeIconVisible, setEyeIconVisible] = useState(false)
   const [fieldError, setFieldError] = useState({})
 
 

@@ -98,6 +98,7 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
     return (
       <div className="password-div">
         <Form.Control
+          className="password-input no-border border-0"
           type={eyeIconVisible ? 'text' : 'password'}
           name={passwordOrConfirm}
           id={passwordOrConfirm}
@@ -107,11 +108,9 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
             ? setPassword(target.value)
             : setPasswordConfirm(target.value)
           }
-
           required
-          className="password-input"
         />
-        <div className="p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
+        <div className="password-eye-div p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
           {eyeIconVisible
             ? <EyeOutlined />
             : <EyeInvisibleOutlined />
@@ -119,12 +118,6 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
         </div>
       </div>
     )
-    /*
-     *
-      <div className="flex self-center bg-gray-50 mx-8 mb-2 block text-gray-300 dark:text-gray-300">
-          className="bg-gray-500 border-none focus:border-none text-gray-900"
-          className="password-input bg-gray-50 border-none focus:border-none text-gray-900"
-     */
   }
 
   return (
