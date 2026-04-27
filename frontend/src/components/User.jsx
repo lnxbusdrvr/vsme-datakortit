@@ -133,33 +133,55 @@ const User = () => {
             {inputFieldSaveAndCancelButtons()}
           </>
         ) : infoToEdit === 'password' ? (
-          <>
+          <div className="password-div">
             <Form.Group>
               <Form.Label>Nykyinen salasana</Form.Label>
               <Form.Control
-                type="password"
+                className="password-input no-border border-0"
+                type={eyeIconVisible ? 'text' : 'password'}
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
               />
+              <div className="password-eye-div p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
+                {eyeIconVisible
+                  ? <EyeOutlined />
+                  : <EyeInvisibleOutlined />
+                }
+              </div>
             </Form.Group>
             <Form.Group>
               <Form.Label>Uusi salasana</Form.Label>
               <Form.Control
-                type="password"
+                className="password-input no-border border-0"
+                type={eyeIconVisible ? 'text' : 'password'}
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
               />
+              <div className="password-eye-div p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
+                {eyeIconVisible
+                  ? <EyeOutlined />
+                  : <EyeInvisibleOutlined />
+                }
+              </div>
             </Form.Group>
             <Form.Group>
               <Form.Label>Vahvista uusi salasana</Form.Label>
               <Form.Control
-                type="password"
+                className="password-input no-border border-0"
+                type={eyeIconVisible ? 'text' : 'password'}
                 value={newPasswordConfirm}
                 onChange={(e) => {
                   setNewPasswordConfirm(e.target.value)
-                  if (fieldError.newPasswordConfirm) setFieldError({})
+                  if (fieldError.newPasswordConfirm)
+                    setFieldError({})
                 }}
               />
+              <div className="password-eye-div p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
+                {eyeIconVisible
+                  ? <EyeOutlined />
+                  : <EyeInvisibleOutlined />
+                }
+              </div>
               {fieldError.newPasswordConfirm &&
                 <span className="field-error">
                   {fieldError.newPasswordConfirm}
@@ -167,7 +189,7 @@ const User = () => {
               }
             </Form.Group>
             {inputFieldSaveAndCancelButtons()}
-          </>
+          </div>
         ) : (
           <>
             <Form.Control
