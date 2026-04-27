@@ -104,9 +104,9 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
           id={passwordOrConfirm}
           value={password}
           onChange={
-            ({ target }) => passwordOrConfirm === 'password'
-            ? setPassword(target.value)
-            : setPasswordConfirm(target.value)
+            (e) => passwordOrConfirm === 'password'
+            ? setPassword(e.target.value)
+            : setPasswordConfirm(e.target.value)
           }
           required
         />

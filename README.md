@@ -112,5 +112,6 @@
 | 20.04.2026 | 7    | Added change password. Commented AI Generated code, Fix tests, Fix lints |
 | 21.04.2026 | 4    | Added password eye |
 | 23.04.2026 | 2,25 | Fixed styles for passowrd eye |
-| Total      | 345,25 |
+| 27.04.2026 | 0,5  | Add password eye to User-component |
+| Total      | 345,75 |
 
