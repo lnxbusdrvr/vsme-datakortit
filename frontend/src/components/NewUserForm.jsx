@@ -17,7 +17,8 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
   const [companyName, setCompanyName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [eyeIconVisible, setEyeIconVisible] = useState(false)
+  const [passwdEyeIconVisible, setPasswdEyeIconVisible] = useState(false)
+  const [passwdEyeIconVisibleConfirm, setPasswdEyeIconVisibleConfirm] = useState(false)
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [postalCode, setPostalCode] = useState('');
@@ -94,29 +95,50 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
     }
   }
 
-  const passwordInputField = (passwordOrConfirm) => {
+  const passwordInputField = () => {
     return (
-      <div className="password-div">
-        <Form.Control
-          className="password-input no-border border-0"
-          type={eyeIconVisible ? 'text' : 'password'}
-          name={passwordOrConfirm}
-          id={passwordOrConfirm}
-          value={password}
-          onChange={
-            (e) => passwordOrConfirm === 'password'
-            ? setPassword(e.target.value)
-            : setPasswordConfirm(e.target.value)
-          }
-          required
-        />
-        <div className="password-eye-div p-2" onClick={() => setEyeIconVisible(!eyeIconVisible)}>
-          {eyeIconVisible
-            ? <EyeOutlined />
-            : <EyeInvisibleOutlined />
-          }
+      <>
+        <Form.Label>Salasana</Form.Label>
+        <div className="password-div">
+          <Form.Control
+            className="password-input no-border border-0"
+            type={passwdEyeIconVisible ? 'text' : 'password'}
+            name="password"
+            id="password"
+            value={password}
+            onChange={
+              (e) => setPassword(e.target.value)
+            }
+            required
+          />
+          <div className="password-eye-div p-2" onClick={() => setPasswdEyeIconVisible(!passwdEyeIconVisible)}>
+            {passwdEyeIconVisible
+              ? <EyeOutlined />
+              : <EyeInvisibleOutlined />
+            }
         </div>
-      </div>
+        </div>
+        <Form.Label>Salasana uudestaan</Form.Label>
+        <div className="password-div">
+          <Form.Control
+            className="password-input no-border border-0"
+            type={passwdEyeIconVisibleConfirm ? 'text' : 'password'}
+            name="passwordConfirm"
+            id="passwordConfirm"
+            value={passwordConfirm}
+            onChange={
+              (e) => setPasswordConfirm(e.target.value)
+            }
+            required
+          />
+          <div className="password-eye-div p-2" onClick={() => setPasswdEyeIconVisibleConfirm(!passwdEyeIconVisibleConfirm)}>
+            {passwdEyeIconVisibleConfirm
+              ? <EyeOutlined />
+              : <EyeInvisibleOutlined />
+            }
+          </div>
+        </div>
+      </>
     )
   }
 
@@ -141,12 +163,8 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
           <input type="text" name="emailConfirm" id="emailConfirm" value={emailConfirm} onChange={({ target }) => setEmailConfirm(target.value)} required />
         </div>
         <div>
-          <Form.Label>Salasana</Form.Label>
-          {passwordInputField('password')}
-        </div>
-        <div>
-          <Form.Label>Salasana uudestaan</Form.Label>
-          {passwordInputField('passwordConfirm')}
+        {/* Password & password confirm */}
+          {passwordInputField()}
         </div>
         <div>
           <label htmlFor="phone">Puhelinnumero</label>

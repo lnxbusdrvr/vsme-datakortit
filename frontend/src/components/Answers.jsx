@@ -249,7 +249,7 @@ const Answers = () => {
 
   const editingAnswerInputField = (answerId, type, subQsId, fieldId, fieldType) => {
     const isNumber = type === 'number' || fieldType === 'number'
-    // value's value is needed to get clear button to work
+    // value's attributes value is needed to get clear button to work
     // onKeyDown for number validation
 
     const isSubQs = subQsId && fieldId && fieldType
@@ -259,8 +259,8 @@ const Answers = () => {
         <Form.Control
           {...(isNumber ? { type: 'number' } : { as: 'textarea' })}
           {...(!isSubQs
-            ? { value: editedValue}
-            : { value: editedGroupAnswersValue}
+            ? { value: editedValue }
+            : { value: editedGroupAnswersValue }
           )}
           onChange={(e) => setEditedValue(e.target.value)}
           {...(!isSubQs
