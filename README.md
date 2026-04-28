@@ -113,5 +113,6 @@
 | 21.04.2026 | 4    | Added password eye |
 | 23.04.2026 | 2,25 | Fixed styles for passowrd eye |
 | 27.04.2026 | 0,5  | Add password eye to User-component |
-| Total      | 345,75 |
+| 28.04.2026 | 2,2  | Fix password eyes shows now current passwordw field instead of all of them |
+| Total      | 358  |
 
