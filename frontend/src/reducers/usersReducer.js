@@ -53,7 +53,7 @@ export const updateUser = (id, updatedUserValue) => {
     try {
       const resUpdatedUserInfo = await usersService.updateUser(id, updatedUserValue)
       dispatch(update(resUpdatedUserInfo))
-      dispatch(notify(`Käyttäjän ${updatedUserValue.name} tieto päivitetty!`, 5, false));
+      dispatch(notify(`Käyttäjän ${resUpdatedUserInfo.name} tieto päivitetty!`, 5, false));
       return true;
     }
     catch (error){

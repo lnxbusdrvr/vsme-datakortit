@@ -114,5 +114,6 @@
 | 23.04.2026 | 2,25 | Fixed styles for passowrd eye |
 | 27.04.2026 | 0,5  | Add password eye to User-component |
 | 28.04.2026 | 2,25 | Fix password eyes shows now current passwordw field instead of all of them |
-| Total      | 358  |
+| 29.04.2026 | 3    | Add password strength requirements |
+| Total      | 361  |
 

@@ -1,5 +1,10 @@
 /*
- * This whole file is helped to refactor by Augment AI
+ * This file is partially helped to refactor by Augment AI
+ */
+import PasswordCheckList from 'react-password-checklist'
+
+/*
+ * This function is partially AI Generated
  */
 export const getMoreQuestionIdIfCtrlQsYes = (questionId) => {
   if (!questionId || !questionId.includes('_if_this_q_yes_'))
@@ -8,6 +13,9 @@ export const getMoreQuestionIdIfCtrlQsYes = (questionId) => {
   return `if_prev_yes_${questionId}`
 }
 
+/*
+ * This function is partially AI Generated
+ */
 export const validateNumber = (e, fieldId, fieldError, setFieldError) => {
   const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape',
     'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
@@ -22,3 +30,21 @@ export const validateNumber = (e, fieldId, fieldError, setFieldError) => {
   }
 }
 
+export const passwordCheckListRules = (password, passwordConfirm) => {
+  return (
+    <PasswordCheckList
+      rules={["minLength","specialChar","number","capital","match"]}
+      minLength={8}
+      value={password}
+      valueAgain={passwordConfirm}
+      onChange={(isValid) => {}}
+      messages={{
+        minLength: "Salasanassa on vähintään 8 merkkiä.",
+        specialChar: "Salasanassa on erikoismerkki.",
+        number: "Salasanassa on numero.",
+        capital: "Salasanassa on iso kirjain.",
+        match: "Salasanat täsmäävät.",
+      }}
+    />
+  )
+}
