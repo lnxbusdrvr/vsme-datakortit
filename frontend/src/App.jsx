@@ -33,7 +33,7 @@ const App = () => {
         <LoginForm />
       ) : (
         <>
-          <nav className="nav-expand-1g bg-light">
+          <nav className="nav-expand-1g bg-light mt-4 mb-4 p-2">
             {(user?.role === 'admin' || user?.role === 'viewer') && (
               <Link className="navbar-brand" to="/users">Käyttäjät</Link>
             )}

@@ -7,6 +7,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
 import { notify } from '../reducers/notificationReducer';
 import { createUser } from '../reducers/usersReducer';
+import { passwordCheckListRules } from '../utils/formHelpers'
 
 import '../styles.css'
 
@@ -109,14 +110,13 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
             onChange={
               (e) => setPassword(e.target.value)
             }
-            required
           />
           <div className="password-eye-div p-2" onClick={() => setPasswdEyeIconVisible(!passwdEyeIconVisible)}>
             {passwdEyeIconVisible
               ? <EyeOutlined />
               : <EyeInvisibleOutlined />
             }
-        </div>
+          </div>
         </div>
         <Form.Label>Salasana uudestaan</Form.Label>
         <div className="password-div">
@@ -138,6 +138,7 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
             }
           </div>
         </div>
+        {passwordCheckListRules(password, passwordConfirm)}
       </>
     )
   }

@@ -6,6 +6,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
 import { updateUser } from '../reducers/usersReducer'
 import usersService from '../services/usersService';
+import { passwordCheckListRules } from '../utils/formHelpers'
 
 import '../styles.css'
 
@@ -22,7 +23,6 @@ const User = () => {
   const [passwdEyeIconVisible, setPasswdEyeIconVisible] = useState(false)
   const [newPasswdEyeIconVisible, setNewPasswdEyeIconVisible] = useState(false)
   const [newPasswdConfirmEyeIconVisible, setNewPasswdConfirmEyeIconVisible] = useState(false)
-  const [fieldError, setFieldError] = useState({})
 
 
   useEffect(() => {
@@ -66,16 +66,9 @@ const User = () => {
     setCurrentPassword('')
     setNewPassword('')
     setNewPasswordConfirm('')
-    setFieldError({})
   }
 
   const handleUpdateInfo = async () => {
-    if (editingInfo === 'password') {
-      if (newPassword !== newPasswordConfirm) {
-        setFieldError({ newPasswordConfirm: 'Salasanat eivät täsmää' })
-        return
-      }
-    }
 
     const newUserValues = {
       newName: editingInfo === 'name' ? editedInfoValue : user.name,
@@ -136,23 +129,25 @@ const User = () => {
           </>
         ) : infoToEdit === 'password' ? (
           <>
-            <Form.Group>
-              <Form.Label>Nykyinen salasana</Form.Label>
-              <div className="password-div">
-                <Form.Control
-                  className="password-input no-border border-0"
-                  type={passwdEyeIconVisible ? 'text' : 'password'}
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                />
-                <div className="password-eye-div p-2" onClick={() => setPasswdEyeIconVisible(!passwdEyeIconVisible)}>
-                  {passwdEyeIconVisible
-                    ? <EyeOutlined />
-                    : <EyeInvisibleOutlined />
-                  }
+            {loggedUser?.id === id && (
+              <Form.Group>
+                <Form.Label>Nykyinen salasana</Form.Label>
+                <div className="password-div">
+                  <Form.Control
+                    className="password-input no-border border-0"
+                    type={passwdEyeIconVisible ? 'text' : 'password'}
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                  />
+                  <div className="password-eye-div p-2" onClick={() => setPasswdEyeIconVisible(!passwdEyeIconVisible)}>
+                    {passwdEyeIconVisible
+                      ? <EyeOutlined />
+                      : <EyeInvisibleOutlined />
+                    }
+                  </div>
                 </div>
-              </div>
-            </Form.Group>
+              </Form.Group>
+            )}
             <Form.Group>
               <Form.Label>Uusi salasana</Form.Label>
               <div className="password-div">
@@ -179,8 +174,6 @@ const User = () => {
                   value={newPasswordConfirm}
                   onChange={(e) => {
                     setNewPasswordConfirm(e.target.value)
-                    if (fieldError.newPasswordConfirm)
-                      setFieldError({})
                   }}
                 />
                 <div className="password-eye-div p-2" onClick={() => setNewPasswdConfirmEyeIconVisible(!newPasswdConfirmEyeIconVisible)}>
@@ -189,13 +182,9 @@ const User = () => {
                     : <EyeInvisibleOutlined />
                   }
                 </div>
-                {fieldError.newPasswordConfirm &&
-                  <span className="field-error">
-                    {fieldError.newPasswordConfirm}
-                  </span>
-                }
               </div>
             </Form.Group>
+            {passwordCheckListRules(newPassword, newPasswordConfirm)}
             {inputFieldSaveAndCancelButtons()}
           </>
         ) : (
