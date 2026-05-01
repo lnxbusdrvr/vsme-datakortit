@@ -15,6 +15,8 @@ const tokenExtractor = middleware.tokenExtractor;
 const logger = require('./utils/logger');
 const mongoose = require('mongoose');
 
+const { version } = require('./package.json');
+
 mongoose.set('strictQuery', false);
 
 logger.info('connecting to', config.MONGODB_URI);
@@ -32,6 +34,14 @@ app.use(cors());
 app.use(express.static('dist'));
 app.use(express.json());
 app.use(middleware.requestLogger);
+
+app.get('/version', (request, response) => {
+  response.send(`v${version} - build at ${new Date().toISOString()}`);
+});
+
+app.get('/health', (request, response) => {
+  response.send('ok')
+});
 
 app.use(tokenExtractor);
 app.use('/api/basic', basicQsRouter);

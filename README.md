@@ -115,5 +115,6 @@
 | 27.04.2026 | 0,5  | Add password eye to User-component |
 | 28.04.2026 | 2,25 | Fix password eyes shows now current passwordw field instead of all of them |
 | 29.04.2026 | 3    | Add password strength requirements |
-| Total      | 361  |
+| 01.05.2026 | 0,75 | Add build for front and deployment |
+| Total      | 361,75 |
 

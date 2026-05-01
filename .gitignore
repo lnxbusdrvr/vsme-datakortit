@@ -1,6 +1,0 @@
-node_modules
-*.local
-.env
-*.rest
-package-lock.json
-qs24-49.json
