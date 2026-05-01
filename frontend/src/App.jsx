@@ -30,7 +30,10 @@ const App = () => {
   return (
     <div key="app-div" className="app container">
       {!user ? (
-        <LoginForm />
+        <>
+          <LoginForm />
+          <p>VSME, ESG Account Oy <sup>&copy;</sup> {new Date().getFullYear()}</p>
+        </>
       ) : (
         <>
           <nav className="nav-expand-1g bg-light mt-4 mb-4 p-2">
