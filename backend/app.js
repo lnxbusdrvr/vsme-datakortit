@@ -40,10 +40,6 @@ app.get('/version', (request, response) => {
 });
 
 app.get('/health', (request, response) => {
-  /* eslint-disable no-constant-condition */
-  if (true)
-    throw ('Error: Health check failed');
-
   response.send('ok')
 });
 
