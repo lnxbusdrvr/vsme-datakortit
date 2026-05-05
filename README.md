@@ -116,5 +116,6 @@
 | 28.04.2026 | 2,25 | Fix password eyes shows now current passwordw field instead of all of them |
 | 29.04.2026 | 3    | Add password strength requirements |
 | 01.05.2026 | 2    | Add build for front and deployment first e2e-test, add build-script |
-| Total      | 363  |
+| 05.05.2026 | 3,75 | Add more e2e-tests |
+| Total      | 366,75 |
 
