@@ -10,6 +10,8 @@ const globals = require('globals');
 module.exports = [
   js.configs.recommended,
   {
+    ignores: ['node_modules/**', 'dist/**', 'build/**', 'playwright.config.js']},
+  {
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'commonjs',

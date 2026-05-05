@@ -17,10 +17,6 @@ describe('VSME app', () => {
   test('can be login', async ({ page }) => {
     await page.goto(URL)
 
-    console.log()
-    console.log(E2E_TEST_PASSWD)
-    console.log()
-
     await page.getByRole('textbox').first().fill(E2E_TEST_USER)
     await page.getByRole('textbox').last().fill(E2E_TEST_PASSWD)
     await page.getByRole('button', { name: 'Kirjaudu sisään' }).click()
