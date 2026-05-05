@@ -40,6 +40,10 @@ app.get('/version', (request, response) => {
 });
 
 app.get('/health', (request, response) => {
+  // elint-disable-next-line no-unused-vars
+  if (true)
+    throw ('Error: Health check failed');
+
   response.send('ok')
 });
 

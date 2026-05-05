@@ -6,10 +6,14 @@ const MONGODB_URI =
 
 const PASSWD_LENGTH = process.env.PASSWD_LENGTH;
 const SECRET = process.env.SECRET;
+const E2E_TEST_USER = process.env.E2E_TEST_USER;
+const E2E_TEST_PASSWD = process.env.E2E_TEST_PASSWD;
 
 module.exports = {
   PORT,
   MONGODB_URI,
   PASSWD_LENGTH,
   SECRET,
+  E2E_TEST_USER,
+  E2E_TEST_PASSWD
 };

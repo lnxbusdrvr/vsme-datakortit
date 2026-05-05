@@ -28,7 +28,8 @@ const LoginForm = () => {
 
   return (
     <>
-      <h2>Kirjaudu</h2>
+      <h2>VSME Raportointi - ESG Account Oy</h2>
+      <p>Kirjaudu sisään</p>
       <Notification />
       <form onSubmit={handleLogin} >
         <div>
@@ -47,11 +48,12 @@ const LoginForm = () => {
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">Kirjaudu</button>
+        <button type="submit">Kirjaudu sisään</button>
       </form>
       <Togglable buttonLabel="Rekisteröi" ref={newUserFormRef} >
         <NewUserForm onUserCreatedToggle={() => newUserFormRef.current.toggleVisibility()} />
       </Togglable>
+      <p>VSME, ESG Account Oy <sup>&copy;</sup> {new Date().getFullYear()}</p>
     </>
   );
 };
