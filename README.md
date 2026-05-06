@@ -117,5 +117,6 @@
 | 29.04.2026 | 3    | Add password strength requirements |
 | 01.05.2026 | 2    | Add build for front and deployment first e2e-test, add build-script |
 | 05.05.2026 | 5    | Add more e2e-tests, add rended deployment and health check workflow, fix lint, fix playwright run errors, fix /health, 1st deploy to server |
-| Total      | 368  |
+| 06.05.2026 | 1    | Fix login-page title text |
+| Total      | 369  |
 

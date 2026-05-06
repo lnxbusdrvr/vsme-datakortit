@@ -29,7 +29,7 @@ const LoginForm = () => {
   return (
     <>
       <h2>VSME Raportointi - ESG Account Oy</h2>
-      <p>Kirjaudu sisään</p>
+      <p>Kirjautuminen sivulle:</p>
       <Notification />
       <form onSubmit={handleLogin} >
         <div>
