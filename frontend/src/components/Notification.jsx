@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
 const Notification = () => {
-  const notification = useSelector(state => state.notification);
+  const notification = useSelector(state => state.notification)
 
   if (!notification)
-    return null;
+    return null
 
 const notificationStyle = {
   color: notification.isErrorMessage ? 'red' : 'green',
@@ -22,15 +22,15 @@ const notificationStyle = {
   textAlign: 'center',
   boxShadow: '0 0.25rem 0.375rem rgba(0, 0, 0, 0.1)',
   willChange: 'transform'
-};
+}
 
   return (
     <div data-testid='notifier' style={notificationStyle} >
       {notification.note}
     </div>
-  );
+  )
 
-};
+}
 
 
-export default Notification;
+export default Notification

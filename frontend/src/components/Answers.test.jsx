@@ -1,5 +1,5 @@
 import { screen, waitFor, within } from '@testing-library/react'
-import { describe, expect, it, vi} from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProviders } from '../utils/test-utils'
@@ -54,7 +54,7 @@ vi.mock('../services/basicService', () => ({
       sections: [
         {
           section_id: 'q2',
-          title: "Trucks",
+          title: 'Trucks',
           questions: [
             {
               id: 'q2_trucks',
@@ -105,7 +105,7 @@ vi.mock('../services/basicService', () => ({
       sections: [
         {
           section_id: 'q3',
-          title: "Babylon Prisoner Nr. One",
+          title: 'Babylon Prisoner Nr. One',
           questions: [
             {
               id: 'if_prev_yes_q3_if_this_q_yes_describe_more',
@@ -180,7 +180,7 @@ mocks.updateAnswer.mockImplementation((id, data) => {
       return Promise.resolve({})
     }
 
-    // Otherwise delete throught update 
+    // Otherwise delete throught update
     const newAnswers = [...mocks.currentMockAnswers]
     newAnswers[index] = updatedObject
     mocks.currentMockAnswers = newAnswers

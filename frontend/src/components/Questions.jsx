@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap'
 
-import Basic from './Basic';
-import Comprehensive from './Comprehensive';
+import Basic from './Basic'
+import Comprehensive from './Comprehensive'
 
 
 const Questions = () => {
-  const [basicOrComprehensive, setBasicOrComprehensive] = useState(null);
+  const [basicOrComprehensive, setBasicOrComprehensive] = useState(null)
 
   return (
     <>
@@ -39,7 +39,7 @@ const Questions = () => {
         <Comprehensive />
       )}
     </>
-  );
-};
+  )
+}
 
-export default Questions;
+export default Questions

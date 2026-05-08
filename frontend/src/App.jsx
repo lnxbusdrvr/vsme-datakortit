@@ -1,30 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Routes, Route, Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import { useEffect } from 'react'
 
-import LoginForm from './components/LoginForm';
-import Questions from './components/Questions';
-import Answers from './components/Answers';
-import Users from './components/Users';
-import User from './components/User';
+import LoginForm from './components/LoginForm'
+import Questions from './components/Questions'
+import Answers from './components/Answers'
+import Users from './components/Users'
+import User from './components/User'
 
-import { initializeUser, clearUser } from './reducers/userReducer';
+import { initializeUser, clearUser } from './reducers/userReducer'
 
-import Notification from './components/Notification';
+import Notification from './components/Notification'
 
 
 const App = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user)
 
   useEffect(() => {
-    dispatch(initializeUser());
-  }, [dispatch]);
+    dispatch(initializeUser())
+  }, [dispatch])
 
   const handleLogout = () => {
-    dispatch(clearUser());
-  };
+    dispatch(clearUser())
+  }
 
 
   return (
@@ -62,6 +62,6 @@ const App = () => {
       <Notification />
     </div>
   )
-};
+}
 
-export default App;
+export default App

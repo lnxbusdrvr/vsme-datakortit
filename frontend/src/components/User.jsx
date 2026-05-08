@@ -1,11 +1,12 @@
-import { useParams, Navigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Form, Dropdown } from 'react-bootstrap';
+import { Button, Form, Dropdown } from 'react-bootstrap'
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
-import { updateUser } from '../reducers/usersReducer'
-import usersService from '../services/usersService';
+import { updateUser, deleteUser } from '../reducers/usersReducer'
+import { clearUser } from '../reducers/userReducer'
+import usersService from '../services/usersService'
 import { passwordCheckListRules } from '../utils/formHelpers'
 
 import '../styles.css'
@@ -13,6 +14,7 @@ import '../styles.css'
 const User = () => {
   const id = useParams().id
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const loggedUser = useSelector(state => state.user)
   const [user, setUser] = useState(null)
   const [editingInfo, setEditingInfo] = useState('')
@@ -23,6 +25,8 @@ const User = () => {
   const [passwdEyeIconVisible, setPasswdEyeIconVisible] = useState(false)
   const [newPasswdEyeIconVisible, setNewPasswdEyeIconVisible] = useState(false)
   const [newPasswdConfirmEyeIconVisible, setNewPasswdConfirmEyeIconVisible] = useState(false)
+  const [verifiedUserDeleteConfirmText, setVerifiedUserDeleteConfirmText] = useState('')
+  const [fieldError, setFieldError] = useState()
 
 
   useEffect(() => {
@@ -37,10 +41,25 @@ const User = () => {
   if (!user)
     return <div>User not found</div>
 
-  const canModify = (user?.id === id
-    || loggedUser?.id === id
-    || loggedUser?.role === 'admin')
-    && loggedUser?.role !== 'viewer'
+  // Only user itself or admin can modify user info
+  const canModify = (user?.id === id && loggedUser?.id === id)
+    || loggedUser?.role === 'admin'
+
+  const handleDeleteUser = () => {
+    if (verifiedUserDeleteConfirmText !== 'delete') {
+      setFieldError('Vahvistusteksti ei täsmää')
+      setTimeout(() => setFieldError(''), 3000)
+      return
+    }
+
+    clearOrCancelEditing()
+    dispatch(deleteUser(id))
+    if (loggedUser?.role === 'admin') {
+      navigate('/users')
+      return
+    }
+    dispatch(clearUser())
+  }
 
   const startEditing = (infoToEdit, infoToEditValue) => {
     setEditingInfo(infoToEdit)
@@ -48,13 +67,15 @@ const User = () => {
   }
 
   const canModifyButton = (infoToEdit, infoToEditValue) => {
+    const userDelete = infoToEdit === 'delete-user'
 
     return (
+
       <Button
-        variant="primary"
+        {...(!userDelete ? { variant:'primary' } : { variant: 'danger' })}
         onClick={() => startEditing(infoToEdit, infoToEditValue)}
       >
-        Muokkaa
+        {!userDelete ? 'Muokkaa' : 'Poista käyttäjä'}
       </Button>
     )
 
@@ -66,6 +87,7 @@ const User = () => {
     setCurrentPassword('')
     setNewPassword('')
     setNewPasswordConfirm('')
+    setVerifiedUserDeleteConfirmText('')
   }
 
   const handleUpdateInfo = async () => {
@@ -78,7 +100,7 @@ const User = () => {
       newCity: editingInfo === 'city' ? editedInfoValue : user.city,
       newRole: loggedUser.role === 'admin' && editingInfo === 'role' ? editedInfoValue : user.role,
       currentPassword: editingInfo === 'password' ? currentPassword : '',
-      newPassword: editingInfo === 'password' ? newPassword : '',
+      newPassword: editingInfo === 'password' ? newPassword : ''
     }
 
     await dispatch(updateUser(user.id, newUserValues))
@@ -109,6 +131,38 @@ const User = () => {
   }
 
   const editingInfoInputField = (infoToEdit) => {
+    if (infoToEdit === 'delete-user') {
+      return (
+        <div if="delete-user-confirmation">
+          <Form.Group>
+            <Form.Label>Vahvista kirjoittamalla <strong>delete</strong></Form.Label>
+            <Form.Control
+              as='textarea'
+              value={verifiedUserDeleteConfirmText}
+              onChange={(e) => setVerifiedUserDeleteConfirmText(e.target.value)}
+            />
+            {fieldError &&
+              <span className="field-error">
+                {fieldError}
+              </span>
+            }
+          </Form.Group>
+          <Button
+            variant="danger"
+            onClick={() => {handleDeleteUser()}}
+          >
+            Poista käyttäjä
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => {clearOrCancelEditing()}}
+          >
+            Peruuta
+          </Button>
+        </div>
+      )
+    }
+
     return (
       <>
         {loggedUser.role === 'admin' && infoToEdit === 'role' ? (
@@ -275,13 +329,30 @@ const User = () => {
         editingInfoInputField('role')
       ) : (
         <>
-        {loggedUser.role === 'admin' && (
-          canModifyButton('role', user.role)
-        )}
+          {loggedUser.role === 'admin' && (
+            canModifyButton('role', user.role)
+          )}
         </>
       )}
+      {/* Owner and admin can delete owners account */}
+      {/* except admin can't delete it's own account */}
+      <div id="delete-user-div">
+        {editingInfo === 'delete-user' ? (
+          editingInfoInputField('delete-user')
+        ) : (
+          <>
+            {(user?.id === id
+              && loggedUser?.id === id)
+              || (loggedUser?.id !== id
+                && loggedUser?.role === 'admin') && (
+                canModifyButton('delete-user', id)
+            )}
+          </>
+        )}
+      </div>
     </div>
   )
 }
 
-export default User;
+
+export default User

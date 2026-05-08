@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import usersService from '../services/usersService'
-import { notify } from '../reducers/notificationReducer';
+import { notify } from '../reducers/notificationReducer'
 
 
 const slice = createSlice({
@@ -20,32 +20,35 @@ const slice = createSlice({
       return state.map(u => u.id === updatedUserInfo.id
         ? updatedUserInfo
         : u)
+    },
+    remove(state, { payload }) {
+      return state.filter(a => a.id !== payload)
     }
   }
-});
+})
 
-const { setUsers, appendUser, update } = slice.actions;
+const { setUsers, appendUser, update, remove } = slice.actions
 
 export const initializeUsers = () => {
   return async dispatch => {
     const data = await usersService.getAll()
     dispatch(setUsers(data))
   }
-};
+}
 
 export const createUser = (newUser) => {
   return async dispatch => {
     try {
       const resNewUser = await usersService.createUser(newUser)
       dispatch(appendUser(resNewUser))
-      dispatch(notify(`Käyttäjä ${newUser.name} luotu!`, 5, false));
-      return true;
+      dispatch(notify(`Käyttäjä ${newUser.name} luotu!`, 5, false))
+      return true
     } catch {
-      dispatch(notify('Käyttäjätunnuksen luominen epäonnistui, ehkä sähköposti, tai/ja Y-tunnus on jo käytössä', 10, true));
-      return false;
+      dispatch(notify('Käyttäjätunnuksen luominen epäonnistui, ehkä sähköposti, tai/ja Y-tunnus on jo käytössä', 10, true))
+      return false
     }
   }
-};
+}
 
 /* This Function is certainly Mostly Augment AI Generated */
 export const updateUser = (id, updatedUserValue) => {
@@ -53,18 +56,31 @@ export const updateUser = (id, updatedUserValue) => {
     try {
       const resUpdatedUserInfo = await usersService.updateUser(id, updatedUserValue)
       dispatch(update(resUpdatedUserInfo))
-      dispatch(notify(`Käyttäjän ${resUpdatedUserInfo.name} tieto päivitetty!`, 5, false));
-      return true;
+      dispatch(notify(`Käyttäjän ${resUpdatedUserInfo.name} tieto päivitetty!`, 5, false))
+      return true
     }
     catch (error){
       // errorMessage refactored by Gemini cli AI
       const errorMessage = error.response && error.response.data && error.response.data.error
         ? error.response.data.error
-        : error.message;
-      dispatch(notify(`Käyttäjätietojen päivittäminen epäonnistui: ${errorMessage}`, 10, true));
-      return false;
+        : error.message
+      dispatch(notify(`Käyttäjätietojen päivittäminen epäonnistui: ${errorMessage}`, 10, true))
+      return false
     }
   }
 }
 
-export default slice.reducer;
+export const deleteUser = (id) => {
+  return async dispatch => {
+    try {
+      await usersService.deleteUser(id)
+      dispatch(remove(id))
+      dispatch(notify('Käyttäjä poistettu onnistuneesti', 20, false))
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || error.message || 'Vastauksen poistaminen epäonnistui'
+      dispatch(notify(errorMessage, 20, true))
+    }
+  }
+}
+
+export default slice.reducer

@@ -16,13 +16,13 @@ const createAnswer = async (answer) => {
 }
 
 const getAll = async () => {
-  const request = await axios.get(baseUrl, { headers: getHeaders() })
-  return request.data
+  const response = await axios.get(baseUrl, { headers: getHeaders() })
+  return response.data
 }
 
 const getAnswerById = async (id) => {
-  const request = await axios.get(`${baseUrl}/${id}`, { headers: getHeaders() })
-  return request.data
+  const response = await axios.get(`${baseUrl}/${id}`, { headers: getHeaders() })
+  return response.data
 }
 
 const updateAnswer = async (id, updatedAnswer) => {
@@ -31,8 +31,8 @@ const updateAnswer = async (id, updatedAnswer) => {
 }
 
 const deleteAnswer = async (id) => {
-  const request = await axios.delete(`${baseUrl}/${id}`, { headers: getHeaders() })
-  return request.data
+  const response = await axios.delete(`${baseUrl}/${id}`, { headers: getHeaders() })
+  return response.data
 }
 
 export default {

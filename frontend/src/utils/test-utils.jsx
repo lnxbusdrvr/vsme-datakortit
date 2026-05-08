@@ -27,9 +27,9 @@ export const renderWithProviders = (
         answers: answersReducer,
         comprehensive: comprehensiveReducer,
         basic: basicReducer,
-        user: userReducer,
+        user: userReducer
       },
-      preloadedState,
+      preloadedState
     }),
     route = '/',
     path = '*', // Routemask, eg. '/useranswers/:id'
@@ -49,6 +49,6 @@ export const renderWithProviders = (
 
   return {
     store,
-    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
+    ...render(ui, { wrapper: Wrapper, ...renderOptions })
   }
 }

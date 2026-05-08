@@ -1,4 +1,4 @@
-import { useState, useImperativeHandle, forwardRef } from 'react';
+import { useState, useImperativeHandle, forwardRef } from 'react'
 
 const Togglable = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false)
@@ -8,14 +8,14 @@ const Togglable = forwardRef((props, ref) => {
 
   const toggleVisibility = () => {
     setVisible(!visible)
-  };
+  }
 
   // make toggleVisibility visible to eg. LoginForm
   useImperativeHandle(ref, () => {
     return {
       toggleVisibility
     }
-  });
+  })
 
   return (
     <div>
@@ -28,8 +28,8 @@ const Togglable = forwardRef((props, ref) => {
       </div>
     </div>
   )
-});
+})
 
 Togglable.displayName = 'Togglable'
 
-export default Togglable;
+export default Togglable

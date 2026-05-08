@@ -1,4 +1,4 @@
-let token = null;
+let token = null
 
 const setUser = (user) => {
   token = user.token

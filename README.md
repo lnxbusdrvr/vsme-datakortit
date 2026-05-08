@@ -118,5 +118,6 @@
 | 01.05.2026 | 2    | Add build for front and deployment first e2e-test, add build-script |
 | 05.05.2026 | 5    | Add more e2e-tests, add rended deployment and health check workflow, fix lint, fix playwright run errors, fix /health, 1st deploy to server |
 | 06.05.2026 | 1    | Fix login-page title text |
-| Total      | 369  |
+| 08.05.2026 | 9    | Delete user if user were typed 'delete' text as input, add some lint rules and unify code and fix errors when ocurred in running tests, build new dist |
+| Total      | 378  |
 
