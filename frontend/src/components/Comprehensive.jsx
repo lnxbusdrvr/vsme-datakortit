@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap'
 
 import { initializeComprehensive } from '../reducers/comprehensiveReducer'
-import { initializeAnswers, saveAnswer } from '../reducers/answersReducer';
-import { notify } from '../reducers/notificationReducer';
+import { initializeAnswers, saveAnswer } from '../reducers/answersReducer'
+import { notify } from '../reducers/notificationReducer'
 
 import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
 import Answers from './Answers'
@@ -21,7 +21,7 @@ const Comprehensive = () => {
   const moduleId = 'comprehensive_module'
   const [fieldError, setFieldError] = useState({})
   const [lastControllingQuestionId, setLastControllingQuestionId] = useState([])
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(initializeComprehensive())
@@ -47,14 +47,14 @@ const Comprehensive = () => {
           }
           onChange={({ target }) => !fieldType
             ? handleAnswersChange(sectionId, questionId, type, target.value)
-            : handleSubQsAnswersChange(sectionId, questionId, type, subQuestionId, 
+            : handleSubQsAnswersChange(sectionId, questionId, type, subQuestionId,
               idForNameAndFieldError, fieldType, target.value)
           }
           {...(isNumber && {
             onKeyDown: (e) => {
               validateNumber(e, idForNameAndFieldError, fieldError, setFieldError)
             }
-          })} 
+          })}
       />
       {fieldError[idForNameAndFieldError] && <span className="field-error">{fieldError[idForNameAndFieldError]}</span>}
       </>
@@ -103,10 +103,8 @@ const Comprehensive = () => {
         groupAnswers: updatedGroupAnswers
       }
     })
-    
-  }
 
-  console.log(`answers: ${JSON.stringify(answers)}`)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -117,7 +115,7 @@ const Comprehensive = () => {
           moduleId,
           sectionId: data.sectionId,
           questionId,
-          type: data.type || 'text',
+          type: data.type || 'text'
         }
         if (data.type !== 'group') {
           payload.answer = data.type === 'number' ? Number(data.answer) : data.answer
@@ -296,4 +294,4 @@ const Comprehensive = () => {
 }
 
 
-export default Comprehensive 
+export default Comprehensive

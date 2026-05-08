@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const PASSWD_LEN = require('../utils/config').PASSWD_LENGTH || 8;
 
-const createUser = async (req, res) => {
+const createUser = async (request, response) => {
   const {
     name,
     companyName,
@@ -15,12 +15,12 @@ const createUser = async (req, res) => {
     legalFormOfCompany,
     businessIdentityCode,
     role,
-  } = req.body;
+  } = request.body;
 
-  if (!email || !password) return res.status(400).json({ error: 'email or password is missing' });
+  if (!email || !password) return response.status(400).json({ error: 'email or password is missing' });
 
   if (password.length < PASSWD_LEN)
-    return res.status(400).json({ error: `Salasana on liian lyhyt, vähimmäispituus on ${PASSWD_LEN}` });
+    return response.status(400).json({ error: `Salasana on liian lyhyt, vähimmäispituus on ${PASSWD_LEN}` });
 
   const saltRound = 10;
   const passwordHash = await bcrypt.hash(password, saltRound);
@@ -40,24 +40,24 @@ const createUser = async (req, res) => {
   });
 
   const savedNewUser = await user.save();
-  res.status(201).json(savedNewUser);
+  response.status(201).json(savedNewUser);
 };
 
-const getAllUsers = async (req, res) => {
-  if (req.user && (req.user.role === 'admin' || req.user.role === 'viewer')) {
+const getAllUsers = async (request, response) => {
+  if (request.user && (request.user.role === 'admin' || request.user.role === 'viewer')) {
     const users = await User.find({});
-    res.json(users);
+    response.json(users);
   } else {
-    res.status(401).json({ error: 'Unauthorized permission' });
+    response.status(401).json({ error: 'Unauthorized permission' });
   }
 };
 
-const getUserById = async (req, res) => {
-  if (req.user.id.toString() === req.params.id
-    || req.user.role === 'admin'
-    || req.user.role === 'viewer') {
+const getUserById = async (request, response) => {
+  if (request.user.id.toString() === request.params.id
+    || request.user.role === 'admin'
+    || request.user.role === 'viewer') {
 
-    const user = await User.findById(req.params.id)
+    const user = await User.findById(request.params.id)
       .populate('answers', {
         moduleId: 1,
         sectionId: 1,
@@ -69,15 +69,15 @@ const getUserById = async (req, res) => {
         updatedAt: 1
       })
     if (user)
-      res.json(user);
+      response.json(user);
     else
-      res.status(404).end();
+      response.status(404).end();
   } else {
-    res.status(401).json({ error: 'permission denied' });
+    response.status(401).json({ error: 'permission denied' });
   }
 };
 
-const updateUser = async (req, res) => {
+const updateUser = async (request, response) => {
   const {
     newName,
     currentPassword,
@@ -87,22 +87,22 @@ const updateUser = async (req, res) => {
     newPostalCode,
     newCity,
     newRole
-  } = req.body;
+  } = request.body;
 
-  const userToUpdate = await User.findById(req.params.id);
+  const userToUpdate = await User.findById(request.params.id);
 
   if (!userToUpdate)
-    return res.status(404).json({ error: 'User not found' });
+    return response.status(404).json({ error: 'User not found' });
 
-  const user = req.user
+  const user = request.user
   // Only admin or user itself can update it's data
   if (user.role === 'viewer' ||
     (user.role !== 'admin' && user.id.toString() !== userToUpdate.id.toString()))
-    return res.status(403).json({ error: 'Permission denied' });
+    return response.status(403).json({ error: 'Permission denied' });
 
   // AI Generated better error messages
   if (newPassword && newPassword.length < PASSWD_LEN)
-    return res.status(400)
+    return response.status(400)
       .json({ error: `Uusi salasana on liian lyhyt, vähimmäispituus on ${PASSWD_LEN}` });
 
   if (newPassword) {
@@ -114,17 +114,17 @@ const updateUser = async (req, res) => {
     // AI Generated better error messages
     if (isUpdatingSelf || !isAdmin) {
       if (!currentPassword)
-        return res.status(400)
+        return response.status(400)
           .json({ error: 'Nykyinen salasana tarvitaan salasanan vaihtamiseksi' });
 
       // AI Generated better error messages
       const passwordIsCorrect = await bcrypt.compare(currentPassword, userToUpdate.passwordHash);
       if (!passwordIsCorrect)
-        return res.status(400).json({ error: 'Nykyinen salasana on väärä' });
+        return response.status(400).json({ error: 'Nykyinen salasana on väärä' });
 
       // AI Generated better error messages
       if (currentPassword === newPassword)
-        return res.status(400).json({
+        return response.status(400).json({
           error: 'Uuden salasanan on oltava eri kuin nykyinen salasana',
         });
     }
@@ -142,26 +142,26 @@ const updateUser = async (req, res) => {
   if (user.role === 'admin' && newRole) userToUpdate.role = newRole;
 
   const updatedUser = await userToUpdate.save();
-  res.json(updatedUser);
+  response.json(updatedUser);
 };
 
-const deleteUser = async (req, res) => {
-  const userFromParams = req.params.id;
-  const user = req.user;
+const deleteUser = async (request, response) => {
+  const userFromParams = request.params.id;
+  const user = request.user;
   const role = user.role;
 
   const userIsOwner = user.id.toString() === userFromParams;
   const roleIsAdmin = role === 'admin';
 
   // Only user itself or admin can delete
-  if (!userIsOwner && !roleIsAdmin) return res.status(403).json({ error: 'permission denied' });
+  if (!userIsOwner && !roleIsAdmin) return response.status(403).json({ error: 'permission denied' });
 
   // Admin cannot delete itself
   if (userIsOwner && roleIsAdmin)
-    return res.status(403).json({ error: "Admin cannot delete it's own account" });
+    return response.status(403).json({ error: "Admin cannot delete it's own account" });
 
   await User.findByIdAndDelete(userFromParams);
-  return res.status(204).end();
+  return response.status(204).end();
 };
 
 module.exports = {

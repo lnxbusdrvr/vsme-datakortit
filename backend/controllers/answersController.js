@@ -50,9 +50,9 @@ const validateGroupAnswers = (groupAnswers) => {
   return null;
 }
 
-const createAnswer = async (req, res) => {
+const createAnswer = async (request, response) => {
   const { moduleId, sectionId, questionId,
-    type, answer, groupAnswers } = req.body;
+    type, answer, groupAnswers } = request.body;
 
 
   // Run validations
@@ -63,9 +63,9 @@ const createAnswer = async (req, res) => {
     (type === 'group' && validateGroupAnswers(groupAnswers));
 
   if (validationError)
-    return res.status(400).json({ error: validationError });
+    return response.status(400).json({ error: validationError });
 
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(request.user.id);
 
   const newAnswer = new Answer({
     user: user.id,
@@ -86,42 +86,42 @@ const createAnswer = async (req, res) => {
    * by Augment AI
    */
   await User.findByIdAndUpdate(
-      req.user.id,
+      request.user.id,
       { $push: { answers: savedAnswer._id } }
     );
   await savedAnswer.populate('user', { name: 1, companyName: 1 });
   user.answers.concat(savedAnswer._id);
 
-  res.status(201).json(savedAnswer);
+  response.status(201).json(savedAnswer);
 };
 
-const getAllAnswers = async (req, res) => {
+const getAllAnswers = async (request, response) => {
   // Get all users answers
   let answersQuery = {};
 
   // excpect if not admin or vieweer: get own answers
-  if (req.user.role !== 'admin' && req.user.role !== 'viewer')
-    answersQuery = { user: req.user.id };
+  if (request.user.role !== 'admin' && request.user.role !== 'viewer')
+    answersQuery = { user: request.user.id };
 
   const answers = await Answer.find(answersQuery).populate('user', {
     name: 1,
     companyName: 1,
   });
 
-  res.json(answers);
+  response.json(answers);
 };
 
-const getAnswerById = async (req, res) => {
-  const answer = await Answer.findById(req.params.id).populate('user', {
+const getAnswerById = async (request, response) => {
+  const answer = await Answer.findById(request.params.id).populate('user', {
     name: 1,
     companyName: 1,
   });
 
   if (!answer)
-    return res.status(404).end();
+    return response.status(404).end();
 
-  const user = req.user;
-  const userRole = req.user.role;
+  const user = request.user;
+  const userRole = request.user.role;
 
   // Only registered users can see answers
   if (
@@ -129,28 +129,28 @@ const getAnswerById = async (req, res) => {
     userRole !== 'admin' &&
     userRole !== 'viewer'
   ) {
-    return res.status(403).json({ error: 'Permission denied' });
+    return response.status(403).json({ error: 'Permission denied' });
   }
-  res.json(answer);
+  response.json(answer);
 };
 
-const updateAnswer = async (req, res) => {
-  const answerToUpdate = await Answer.findById(req.params.id).populate('user');
+const updateAnswer = async (request, response) => {
+  const answerToUpdate = await Answer.findById(request.params.id).populate('user');
 
   // Only these fields can be updated
-  const { answer, groupAnswers } = req.body;
+  const { answer, groupAnswers } = request.body;
 
   if (!answerToUpdate)
-    return res.status(404).json({ error: 'Updatable answer not found' });
+    return response.status(404).json({ error: 'Updatable answer not found' });
 
-  const user = req.user;
+  const user = request.user;
 
   const isOwner = answerToUpdate.user.id.toString() === user.id.toString();
   // Only owner and admin can update answer
   const canUpdate = isOwner || user.role === 'admin';
 
   if (!canUpdate)
-    return res.status(403).json({ error: 'Updating permission denied' });
+    return response.status(403).json({ error: 'Updating permission denied' });
 
   // To ensure fields are not empty
   if (answerToUpdate.type === 'group' && groupAnswers)
@@ -163,22 +163,22 @@ const updateAnswer = async (req, res) => {
   const updatedAnswer = await answerToUpdate.save();
   await updatedAnswer.populate('user', { name: 1, companyName: 1 });
 
-  res.json(updatedAnswer);
+  response.json(updatedAnswer);
 };
 
-const deleteAnswer = async (req, res) => {
-  const answerToDelete = await Answer.findById(req.params.id);
+const deleteAnswer = async (request, response) => {
+  const answerToDelete = await Answer.findById(request.params.id);
 
   if (!answerToDelete)
-    return res.status(404).json({ error: 'Deletable answer not found' });
+    return response.status(404).json({ error: 'Deletable answer not found' });
 
-  const user = req.user;
+  const user = request.user;
   if (!user)
-    return res.status(401).json({ error: 'Unauthorized' });
+    return response.status(401).json({ error: 'Unauthorized' });
 
   // viewer-role should get 403
   if (user.id !== answerToDelete.user.toString() && user.role !== 'admin')
-    return res.status(403).json({ error: 'Answer deletion permission denied' });
+    return response.status(403).json({ error: 'Answer deletion permission denied' });
 
   await answerToDelete.deleteOne();
   user.answers = user.answers
@@ -186,7 +186,7 @@ const deleteAnswer = async (req, res) => {
 
   await user.save();
 
-  res.status(204).end();
+  response.status(204).end();
 };
 
 module.exports = {

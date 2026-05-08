@@ -1,30 +1,30 @@
-import { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useState, useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap'
 
-import { loginUser } from '../reducers/userReducer';
+import { loginUser } from '../reducers/userReducer'
 
-import Notification from './Notification';
-import Togglable from './Togglable';
-import NewUserForm from './NewUserForm';
+import Notification from './Notification'
+import Togglable from './Togglable'
+import NewUserForm from './NewUserForm'
 
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const newUserFormRef = useRef();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const newUserFormRef = useRef()
 
   const handleLogin = async (event) => {
-    event.preventDefault();
-    await dispatch(loginUser({ email, password }));
-    setEmail('');
-    setPassword('');
-    navigate('/');
-  };
+    event.preventDefault()
+    await dispatch(loginUser({ email, password }))
+    setEmail('')
+    setPassword('')
+    navigate('/')
+  }
 
   return (
     <>
@@ -55,7 +55,7 @@ const LoginForm = () => {
       </Togglable>
       <p>VSME, ESG Account Oy <sup>&copy;</sup> {new Date().getFullYear()}</p>
     </>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

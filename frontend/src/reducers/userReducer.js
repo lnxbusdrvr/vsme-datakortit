@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import loginService from '../services/loginService';
-import userService from '../services/userService';
-import storageService from '../services/storageService';
+import loginService from '../services/loginService'
+import userService from '../services/userService'
+import storageService from '../services/storageService'
 import { notify } from './notificationReducer'
 
 
@@ -18,7 +18,7 @@ const slice = createSlice({
     clear() {
       return initialState
     }
-  },
+  }
 })
 
 export const { set, clear } = slice.actions
@@ -39,7 +39,7 @@ export const loginUser = (credentials) => {
       dispatch(notify(`Tervetuloa takaisin, ${loginResponse.name}!`, 5, false))
       return loginResponse // return for the component
     } catch (error) {
-      dispatch(notify( `Väärä käyttäjätunnus tai salasana ${error}`, 5, true ));
+      dispatch(notify( `Väärä käyttäjätunnus tai salasana ${error}`, 5, true ))
     }
   }
 }

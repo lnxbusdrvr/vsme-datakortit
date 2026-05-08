@@ -1,12 +1,12 @@
-import { useDispatch, useSelector} from 'react-redux'
-import { useParams, Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams, Link } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+import { useEffect, useState } from 'react'
 
-import usersService from '../services/usersService';
+import usersService from '../services/usersService'
 
 import { initializeBasic } from '../reducers/basicReducer'
-import { initializeComprehensive} from '../reducers/comprehensiveReducer'
+import { initializeComprehensive } from '../reducers/comprehensiveReducer'
 import { initializeAnswers } from '../reducers/answersReducer'
 
 import { deleteAnswer, updateAnswer } from '../reducers/answersReducer'
@@ -199,8 +199,8 @@ const Answers = () => {
         <Button
           variant="primary"
           {...(!isSubQs
-            ? { onClick: () => startEditing(answer.id, answer.answer)}
-            : { onClick: () => startEditingGroupAnswers(answer.id, subQsId, fieldId, fieldValue)}
+            ? { onClick: () => startEditing(answer.id, answer.answer) }
+            : { onClick: () => startEditingGroupAnswers(answer.id, subQsId, fieldId, fieldValue) }
           )}
         >
           Muokkaa vastausta
@@ -208,8 +208,8 @@ const Answers = () => {
         <Button
           variant="danger"
           {...(!isSubQs
-            ? { onClick: () => handleDeleteAnswer(answer.id)}
-            : { onClick: () => handleDeleteGroupAnswers(answer.id, subQsId, fieldId)}
+            ? { onClick: () => handleDeleteAnswer(answer.id) }
+            : { onClick: () => handleDeleteGroupAnswers(answer.id, subQsId, fieldId) }
           )}
         >
           Poista vastaus
@@ -227,8 +227,8 @@ const Answers = () => {
         <Button
           variant="success"
           {...(!isSubQs
-            ? {onClick: () => {handleUpdateAnswer(answerId)}}
-            : {onClick: () => {handleUpdateGroupAnswers(answerId, subQsId, fieldId, fieldType)}}
+            ? { onClick: () => {handleUpdateAnswer(answerId)} }
+            : { onClick: () => {handleUpdateGroupAnswers(answerId, subQsId, fieldId, fieldType)} }
           )}
         >
           Tallenna
@@ -236,8 +236,8 @@ const Answers = () => {
         <Button
           variant="second"
           {...(!isSubQs
-            ? {onClick: () => {clearOrCancelEditing()}}
-            : {onClick: () => {clearOrCancelGroupEditing()}}
+            ? { onClick: () => {clearOrCancelEditing()} }
+            : { onClick: () => {clearOrCancelGroupEditing()} }
           )}
         >
           Peruuta
@@ -264,8 +264,8 @@ const Answers = () => {
           )}
           onChange={(e) => setEditedValue(e.target.value)}
           {...(!isSubQs
-            ? {onChange: (e) => {setEditedValue(e.target.value)}}
-            : {onChange: (e) => {setEditedGroupAnswersValue(e.target.value)}}
+            ? { onChange: (e) => {setEditedValue(e.target.value)} }
+            : { onChange: (e) => {setEditedGroupAnswersValue(e.target.value)} }
           )}
           {...(isNumber && {
             onKeyDown: (e) => {
@@ -312,7 +312,7 @@ const Answers = () => {
         {/* Check if this is the first title,header in this section */}
         {/* to not show title,header on every iteratration */}
         {/* This Function is certainly Mostly AI Generated */}
-        const isFirstInSection = aIdx === 0 || 
+        const isFirstInSection = aIdx === 0 ||
           filteredAnswers[aIdx - 1].sectionId !== a.sectionId
 
         {/* This Function is certainly mainly AI Generated */}
@@ -412,7 +412,7 @@ const Answers = () => {
                     .find(ga => ga.subQuestionId === subQs.id)
 
                   if (!groupAnswer)
-                    return null;
+                    return null
 
                   return (
                     <div key={`subQs-${subQsIdx}`}>

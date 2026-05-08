@@ -2,15 +2,15 @@
  * This files some parts
  * are AI Generated search with AI keyword
  */
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap'
 
 import { initializeBasic } from '../reducers/basicReducer'
-import { initializeAnswers, saveAnswer } from '../reducers/answersReducer';
-import { notify } from '../reducers/notificationReducer';
+import { initializeAnswers, saveAnswer } from '../reducers/answersReducer'
+import { notify } from '../reducers/notificationReducer'
 
 import { getMoreQuestionIdIfCtrlQsYes, validateNumber } from '../utils/formHelpers'
 import Answers from './Answers'
@@ -24,7 +24,7 @@ const Basic = () => {
   const [answers, setAnswers] = useState({})
   const [fieldError, setFieldError] = useState({})
   const [lastControllingQuestionId, setLastControllingQuestionId] = useState(null)
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const moduleId = 'basic_module'
 
   useEffect(() => {
@@ -41,8 +41,8 @@ const Basic = () => {
    */
   const inputField = (idForNameAndFieldError, sectionId, questionId, type, fieldType, subQuestionId) => {
     const isNumber = type === 'number' || fieldType === 'number'
-    // value's value is needed to get clear button to work 
-    // onKeyDown for number validation 
+    // value's value is needed to get clear button to work
+    // onKeyDown for number validation
 
     return (
       <>
@@ -57,14 +57,14 @@ const Basic = () => {
           }
           onChange={({ target }) => !fieldType
             ? handleAnswersChange(sectionId, questionId, type, target.value)
-            : handleSubQsAnswersChange(sectionId, questionId, type, subQuestionId, 
+            : handleSubQsAnswersChange(sectionId, questionId, type, subQuestionId,
               idForNameAndFieldError, fieldType, target.value)
           }
           {...(isNumber && {
             onKeyDown: (e) => {
               validateNumber(e, idForNameAndFieldError, fieldError, setFieldError)
             }
-          })} 
+          })}
         />
         {fieldError[idForNameAndFieldError] &&
           <span className="field-error">
@@ -123,7 +123,7 @@ const Basic = () => {
         groupAnswers: updatedGroupAnswers
       }
     })
-    
+
   }
 
   /*
@@ -139,7 +139,7 @@ const Basic = () => {
           moduleId,
           sectionId: data.sectionId,
           questionId,
-          type: data.type || 'text',
+          type: data.type || 'text'
         }
         if (data.type !== 'group') {
           payload.answer = data.type === 'number' ? Number(data.answer) : data.answer

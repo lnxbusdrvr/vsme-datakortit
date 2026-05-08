@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from 'axios'
 import storageService from './storageService'
 
 
-const baseUrl = '/api/users';
+const baseUrl = '/api/users'
 
 const createUser = async (newUser) => {
-  const request = await axios.post(baseUrl, newUser);
-  return request.data;
-};
+  const response = await axios.post(baseUrl, newUser)
+  return response.data
+}
 
 const getUserById = async (id) => {
   // Do not do this globally, token won't be set yet
@@ -15,17 +15,17 @@ const getUserById = async (id) => {
   const config = {
     headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
   }
-  const request = await axios.get(`${baseUrl}/${id}`, config)
-  return request.data
+  const response = await axios.get(`${baseUrl}/${id}`, config)
+  return response.data
 }
 
 const getAll = async () => {
   const config = {
     headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
   }
-  const request = await axios.get(baseUrl, config);
-  return request.data;
-};
+  const response = await axios.get(baseUrl, config)
+  return response.data
+}
 
 const updateUser = async (id, updatedUserInfo) => {
   const config = {
@@ -35,9 +35,18 @@ const updateUser = async (id, updatedUserInfo) => {
   return response.data
 }
 
+const deleteUser = async (id) => {
+  const config = {
+    headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
+  }
+  const response = await axios.delete(`${baseUrl}/${id}`, config)
+  return response.data
+}
+
 export default {
   createUser,
   getAll,
   getUserById,
-  updateUser
+  updateUser,
+  deleteUser
 }

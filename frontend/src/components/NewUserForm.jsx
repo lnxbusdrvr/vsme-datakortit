@@ -1,54 +1,54 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Dropdown, Form, Button } from 'react-bootstrap';
-import validator from 'validator';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Dropdown, Form, Button } from 'react-bootstrap'
+import validator from 'validator'
 // Password eye
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
-import { notify } from '../reducers/notificationReducer';
-import { createUser } from '../reducers/usersReducer';
+import { notify } from '../reducers/notificationReducer'
+import { createUser } from '../reducers/usersReducer'
 import { passwordCheckListRules } from '../utils/formHelpers'
 
 import '../styles.css'
 
 const NewUserForm = ({ onUserCreatedToggle }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [emailConfirm, setEmailConfirm] = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [emailConfirm, setEmailConfirm] = useState('')
+  const [companyName, setCompanyName] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
   const [passwdEyeIconVisible, setPasswdEyeIconVisible] = useState(false)
   const [passwdEyeIconVisibleConfirm, setPasswdEyeIconVisibleConfirm] = useState(false)
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [city, setCity] = useState('');
-  const [legalFormOfCompany, setLegalFormOfCompany] = useState('');
-  const [businessIdentityCode, setBusinessIdentityCode] = useState('');
-  const dispatch = useDispatch();
+  const [phone, setPhone] = useState('')
+  const [address, setAddress] = useState('')
+  const [postalCode, setPostalCode] = useState('')
+  const [city, setCity] = useState('')
+  const [legalFormOfCompany, setLegalFormOfCompany] = useState('')
+  const [businessIdentityCode, setBusinessIdentityCode] = useState('')
+  const dispatch = useDispatch()
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const busIdCodeRegEx = /^[0-9]{7}-[0-9]{1}$/;
+    event.preventDefault()
+    const busIdCodeRegEx = /^[0-9]{7}-[0-9]{1}$/
 
     if (!validator.isEmail(email)) {
-      dispatch(notify('Sähköposti on virheellinen', 10, true));
-      return;
+      dispatch(notify('Sähköposti on virheellinen', 10, true))
+      return
     }
     if (email !== emailConfirm) {
-      dispatch(notify('Söhköpostit eivät täsmää', 5, true));
-      return;
+      dispatch(notify('Söhköpostit eivät täsmää', 5, true))
+      return
     }
 
     if (password !== passwordConfirm) {
-      dispatch(notify('Salasanat eivät täsmää', 5, true));
-      return;
+      dispatch(notify('Salasanat eivät täsmää', 5, true))
+      return
     }
 
     if (!busIdCodeRegEx.test(businessIdentityCode)) {
-      dispatch(notify('Y-tunnus pitää olla muotoa 1234567-8', 10,  true));
-      return;
+      dispatch(notify('Y-tunnus pitää olla muotoa 1234567-8', 10,  true))
+      return
     }
 
     const newUser = {
@@ -65,34 +65,23 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
       role: 'user'
     }
 
-    const isSuccessfullyCreatedUser = await dispatch(createUser(newUser));
+    const isSuccessfullyCreatedUser = await dispatch(createUser(newUser))
 
     if (isSuccessfullyCreatedUser) {
-      setName('');
-      setEmail('');
-      setEmailConfirm('');
-      setCompanyName('');
-      setPassword('');
-      setPasswordConfirm('');
-      setPhone('');
-      setAddress('');
-      setPostalCode('');
-      setCity('');
-      setLegalFormOfCompany('');
-      setBusinessIdentityCode('');
+      setName('')
+      setEmail('')
+      setEmailConfirm('')
+      setCompanyName('')
+      setPassword('')
+      setPasswordConfirm('')
+      setPhone('')
+      setAddress('')
+      setPostalCode('')
+      setCity('')
+      setLegalFormOfCompany('')
+      setBusinessIdentityCode('')
 
-      onUserCreatedToggle();
-    }
-  };
-
-  const handlePasswordVisibility = () => {
-    if (type === 'password') {
-      setIcon(eye)
-      setType('text')
-    }
-    else {
-      setType('password')
-      setIcon(eyeOff)
+      onUserCreatedToggle()
     }
   }
 
@@ -207,6 +196,6 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
       </form>
     </div>
   )
-};
+}
 
-export default NewUserForm;
+export default NewUserForm
