@@ -1,12 +1,14 @@
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
+const config = require('./config')
 
 const User = require('../models/user');
 
 const requestLogger = (request, response, next) => {
   logger.info('Method:', request.method);
   logger.info('Path:  ', request.path);
-  logger.info('Body:  ', request.body);
+  if (config.NODE_ENV === 'development')
+    logger.info('Body:  ', request.body);
   logger.info('---');
   next();
 };
