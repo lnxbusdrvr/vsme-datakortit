@@ -14,10 +14,6 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       deployments: write
-
-    defaults:
-      run:
-        working-directory: backend
       
     env:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
@@ -31,13 +27,13 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: npm install
+        run: cd backend && npm install
 
       - name: Check style
-        run: npm run lint
+        run: cd backend && npm run lint
 
       - name: Test
-        run: npm test
+        run: cd backend && npm test
 
       - name: Deploy to render
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
