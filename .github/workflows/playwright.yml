@@ -37,4 +37,4 @@ jobs:
         path: playwright-report/
         retention-days: 30
     - name: stop server
-      run: SERVER_PID=$! && kill SERVER_PID
+      run: killall node
