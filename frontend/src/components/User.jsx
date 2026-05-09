@@ -341,10 +341,9 @@ const User = () => {
           editingInfoInputField('delete-user')
         ) : (
           <>
-            {(user?.id === id
-              && loggedUser?.id === id)
-              || (loggedUser?.id !== id
-                && loggedUser?.role === 'admin') && (
+            {(user?.id === loggedUser?.id && loggedUser?.role !== 'admin')
+              || (user?.id !== loggedUser?.id && loggedUser?.role === 'admin')
+              && (
                 canModifyButton('delete-user', id)
             )}
           </>
