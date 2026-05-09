@@ -8,6 +8,14 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+      SECRET: ${{ secrets.SECRET }}
+      E2E_TEST_USER:  ${{ secrets.E2E_TEST_USER }}
+      E2E_TEST_PASSWD:  ${{ secrets.E2E_TEST_PASSWD }}
+
     steps:
     - uses: actions/checkout@v5
     - uses: actions/setup-node@v5
