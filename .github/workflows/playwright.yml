@@ -13,6 +13,7 @@ jobs:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
       TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       SECRET: ${{ secrets.SECRET }}
+      PORT:  ${{ secrets.PORT }}
       E2E_TEST_USER:  ${{ secrets.E2E_TEST_USER }}
       E2E_TEST_PASSWD:  ${{ secrets.E2E_TEST_PASSWD }}
 
