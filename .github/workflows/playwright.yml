@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: cd backend && npx playwright install --with-deps
     - name: Run Playwright tests
-      run: cd backend && npx playwright test
+      run: cd backend && npm start & && SERVER_PID=$! && npm run test:e2e && kill SERVER_PID
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
