@@ -17,7 +17,10 @@ jobs:
       
     env:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
-      PORT: 3001      
+      TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+      PORT: 3001
+      PASSWD_LENGTH:  ${{ secrets.PASSWD_LENGTH }}
+      SECRET:  ${{ secrets.SECRET }}
 
     steps:
       - uses: actions/checkout@v4
