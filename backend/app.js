@@ -19,7 +19,7 @@ const { version } = require('./package.json');
 
 mongoose.set('strictQuery', false);
 
-logger.info('connecting to', config.MONGODB_URI);
+logger.info('connecting to');
 
 mongoose
   .connect(config.MONGODB_URI)

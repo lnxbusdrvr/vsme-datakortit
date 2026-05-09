@@ -119,6 +119,6 @@
 | 05.05.2026 | 5    | Add more e2e-tests, add rended deployment and health check workflow, fix lint, fix playwright run errors, fix /health, 1st deploy to server |
 | 06.05.2026 | 1    | Fix login-page title text |
 | 08.05.2026 | 9    | Delete user if user were typed 'delete' text as input, add some lint rules and unify code and fix errors when ocurred in running tests, build new dist |
-| 09.05.2026 | 2    | Fixed owner and admin can delete owners account, but admin can't delete it's admins account, add backend request.body shows only in dev-mode, fix playwright workflow |
+| 09.05.2026 | 3    | Fixed owner and admin can delete owners account, but admin can't delete it's admins account, add backend request.body shows only in dev-mode, fix playwright workflow, remove uri when staring backend for not showing secrets |
 | Total      | 380  |
 
