@@ -21,7 +21,7 @@ describe('VSME app', () => {
     await page.getByRole('textbox').last().fill(E2E_TEST_PASSWD)
     await page.getByRole('button', { name: 'Kirjaudu sisään' }).click()
 
-    await expect(page.getByText('Tervetuloa takaisin, Testi E2E Käyttäjä!')).toBeVisible()
+    await expect(page.getByText('Tervetuloa takaisin, Test E2E User!')).toBeVisible()
   })
 
 })
