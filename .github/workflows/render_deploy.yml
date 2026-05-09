@@ -26,14 +26,14 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Go to backend directory
+        run: cd backend
+
       - name: Install dependencies
         run: npm install
 
       - name: Check style
         run: npm run lint
-
-      - name: Build
-        run: npm run build
 
       - name: Test
         run: npm test
