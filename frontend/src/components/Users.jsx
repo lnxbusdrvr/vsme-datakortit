@@ -25,9 +25,9 @@ const Users = () => {
       {users?.filter(u => u.name !== 'Test E2E User')
         .map(u  => (
         <div key={u.id}>
-          <Link className="navBarLink" to={`/users/${u.id}`}>{u.name}</Link>
+          <Link className="ms-2" to={`/users/${u.id}`}>{u.name}</Link>
           {u.role === 'user' && (
-            <Link className="navBarLink" to={`/useranswers/${u.id}`}>Vastatut vastaukset</Link>
+            <Link className="ms-2" to={`/useranswers/${u.id}`}>Vastatut vastaukset</Link>
           )}
         </div>
       ))}
