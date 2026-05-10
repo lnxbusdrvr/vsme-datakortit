@@ -33,18 +33,18 @@ const App = () => {
         <LoginForm />
       ) : (
         <>
-          <nav className="nav-expand-1g bg-light mt-4 mb-4 p-2">
+          <nav className="nav-expand-1g mt-4 mb-4 p-2 ">
             {(user?.role === 'admin' || user?.role === 'viewer') && (
-              <Link className="navbar-brand" to="/users">Käyttäjät</Link>
+              <Link to="/users">Käyttäjät</Link>
             )}
             {(user?.role === 'user') && (
               <>
-                <Link className="navbar-brand" to="/">Kysymykset</Link>
-                <Link className="navbar-brand" to={`/useranswers/${user.id}`}>Vastaukset</Link>
+                <Link to="/">Kysymykset</Link>
+                <Link className="ms-2" to={`/useranswers/${user.id}`}>Vastaukset</Link>
               </>
             )}
-            <Link className="navbar-brand" to={`/users/${user.id}`}>{user.name}</Link>
-            <Button onClick={handleLogout}>Kirjaudu ulos</Button>
+            <Link className="ms-2" to={`/users/${user.id}`}>{user.name}</Link>
+            <Link className="ms-2" onClick={handleLogout}>Kirjaudu ulos</Link>
           </nav>
           <h2>VSME-datakoritit</h2>
 
