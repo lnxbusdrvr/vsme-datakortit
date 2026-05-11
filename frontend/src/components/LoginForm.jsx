@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { Form, Button } from 'react-bootstrap'
 
+// Log in icon
+import { FaRightToBracket } from 'react-icons/fa6'
+
 import { loginUser } from '../reducers/userReducer'
 
 import Notification from './Notification'
@@ -48,12 +51,11 @@ const LoginForm = () => {
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">Kirjaudu sisään</button>
+        <button type="submit">Kirjaudu sisään<FaRightToBracket className="ms-2" /></button>
       </form>
       <Togglable buttonLabel="Rekisteröi" ref={newUserFormRef} >
         <NewUserForm onUserCreatedToggle={() => newUserFormRef.current.toggleVisibility()} />
       </Togglable>
-      <p>VSME, ESG Account Oy <sup>&copy;</sup> {new Date().getFullYear()}</p>
     </>
   )
 }

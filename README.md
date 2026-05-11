@@ -1,6 +1,23 @@
 # vsme-datakortit
 
-# Working hours count (the time is an approximation )
+Login into [application](https://vsme-datakortit.onrender.com/) can be done using these usernames and passwords:
+
+
+Admin-role:
+Username: `a@a.com`
+
+Viewer role:
+`v@a.com`
+
+user roles:
+`user@one.com`
+`user@two.com`
+`user@four.com`
+`user@five.com`
+
+password for all users: `U~Xc2hPw3$q&X`
+
+## Working hours count (the time is an approximation )
 
 | date (dd.mm.yyyy) | hours  | tasks |
 |------------|------|---------------------------------------------------------------------------------------- |
@@ -120,6 +137,6 @@
 | 06.05.2026 | 1    | Fix login-page title text |
 | 08.05.2026 | 9    | Delete user if user were typed 'delete' text as input, add some lint rules and unify code and fix errors when ocurred in running tests, build new dist |
 | 10.05.2026 | 2    | Add real way to start server before e2e tests. Fix css on links. Add margins to Link's |
-| 11.05.2026 | 1    | Build UI |
+| 11.05.2026 | 3    | Build UI. Add icons to page links. |
 | Total      | 381  |
 
