@@ -294,7 +294,7 @@ const Answers = () => {
       {sortedAnswers.filter(a => a.user.id === id)
         .map((a, aIdx, filteredAnswers) => {
 
-        const moduleName = a.moduleId === 'basic_module'
+          const moduleName = a.moduleId === 'basic_module'
             ? 'Perusmoduuli'
             : 'Perusmoduuli + kattava moduuli'
 
@@ -333,7 +333,9 @@ const Answers = () => {
 
         return (
           <div key={`module-${aIdx}`} >
-            {isFirstInSection && (<p>{moduleName}</p>)}
+            {/* render moduleName only once in page */}
+            {/* AI Augment Chat Generated if, ofc */}
+            {aIdx === 0 && (<p>{moduleName}</p>)}
             {isFirstInSection && section?.header && (<h2>{section?.header}</h2>)}
             {isFirstInSection && (<p className="title-box">{section?.title}</p>)}
             {isFirstInSection && section?.instruction && (<p>{section?.instruction}</p>)}

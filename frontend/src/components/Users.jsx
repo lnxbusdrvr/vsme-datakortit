@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { initializeUsers } from '../reducers/usersReducer'
 
+import { FaCircleUser, FaQuestion, FaCheck } from 'react-icons/fa6'
+
 import Togglable from './Togglable'
 import NewUserForm from './NewUserForm'
 
@@ -25,9 +27,9 @@ const Users = () => {
       {users?.filter(u => u.name !== 'Test E2E User')
         .map(u  => (
         <div key={u.id}>
-          <Link className="ms-2" to={`/users/${u.id}`}>{u.name}</Link>
+          <Link className="ms-2" to={`/users/${u.id}`}>{u.name}<FaCircleUser className="ms-2" /></Link>
           {u.role === 'user' && (
-            <Link className="ms-2" to={`/useranswers/${u.id}`}>Vastatut vastaukset</Link>
+            <Link className="ms-2" to={`/useranswers/${u.id}`}>Vastatut vastaukset<FaQuestion className="ms-2" /><FaCheck /></Link>
           )}
         </div>
       ))}
