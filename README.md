@@ -120,5 +120,6 @@
 | 06.05.2026 | 1    | Fix login-page title text |
 | 08.05.2026 | 9    | Delete user if user were typed 'delete' text as input, add some lint rules and unify code and fix errors when ocurred in running tests, build new dist |
 | 10.05.2026 | 2    | Add real way to start server before e2e tests. Fix css on links. Add margins to Link's |
-| Total      | 380  |
+| 11.05.2026 | 1    | Build UI |
+| Total      | 381  |
 
