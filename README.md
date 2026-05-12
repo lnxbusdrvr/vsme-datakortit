@@ -17,6 +17,11 @@ user roles:
 
 password for all users: `U~Xc2hPw3$q&X`
 
+## Mention of AI Generated code
+
+Some of code are AI Generated. You can find AI Generated code by `AI` keyword. Some of files (eg. styles.css) has `non-AI` keyword.
+I used mostly Augment AI, but there is also ChatGPT, Le chat, Lumo, Gemini and some Gemini CLI agent generatated code.
+
 ## Working hours count (the time is an approximation )
 
 | date (dd.mm.yyyy) | hours  | tasks |
@@ -138,5 +143,6 @@ password for all users: `U~Xc2hPw3$q&X`
 | 08.05.2026 | 9    | Delete user if user were typed 'delete' text as input, add some lint rules and unify code and fix errors when ocurred in running tests, build new dist |
 | 10.05.2026 | 2    | Add real way to start server before e2e tests. Fix css on links. Add margins to Link's |
 | 11.05.2026 | 3    | Build UI. Add icons to page links. |
-| Total      | 381  |
+| 12.05.2026 | 1    | Fix random Axios 401 error when log in |
+| Total      | 384  |
 
