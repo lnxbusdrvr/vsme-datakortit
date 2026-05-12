@@ -22,6 +22,10 @@ password for all users: `U~Xc2hPw3$q&X`
 Some of code are AI Generated. You can find AI Generated code by `AI` keyword. Some of files (eg. styles.css) has `non-AI` keyword.
 I used mostly Augment AI, but there is also ChatGPT, Le chat, Lumo, Gemini and some Gemini CLI agent generatated code.
 
+## minuut.io time tracking
+
+I used [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376) for track my time.
+
 ## Working hours count (the time is an approximation )
 
 | date (dd.mm.yyyy) | hours  | tasks |
