@@ -12,8 +12,9 @@ const createUser = async (newUser) => {
 const getUserById = async (id) => {
   // Do not do this globally, token won't be set yet
   // Adwised above from ChatGPT or Gemini prompt, or Lumo AI
+  // Also put Authorization to strings to avoid random Axios 401 error, when log in,
   const config = {
-    headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
+    headers: { 'Authorization': `Bearer ${storageService.loadUser().token}` }
   }
   const response = await axios.get(`${baseUrl}/${id}`, config)
   return response.data
@@ -21,7 +22,7 @@ const getUserById = async (id) => {
 
 const getAll = async () => {
   const config = {
-    headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
+    headers: { 'Authorization': `Bearer ${storageService.loadUser().token}` }
   }
   const response = await axios.get(baseUrl, config)
   return response.data
@@ -29,7 +30,7 @@ const getAll = async () => {
 
 const updateUser = async (id, updatedUserInfo) => {
   const config = {
-    headers: { Authorization: `Bearer ${storageService.loadUser().token}` }
+    headers: { 'Authorization': `Bearer ${storageService.loadUser().token}` }
   }
   const response = await axios.patch(`${baseUrl}/${id}`, updatedUserInfo, config)
   return response.data

@@ -17,8 +17,14 @@ export default defineConfig({
     globals: true,
     setupFiles: './testSetup.js'
   },
-  // Fix for over 500Kb minify dist-builds. It splits the code into chunks based on the node_modules folder, which can help with caching and load times.
   build: {
+    sourcemap: true,
+    /* Fix for over 500Kb minify dist-builds.
+     * It splits the code into chunks
+     * based on the node_modules folder,
+     * which can help with caching and load times.
+     * https://rollupjs.org/configuration-options/#output-manualchunks/
+     ******************************************************************/
     rollupOptions: {
       output: {
         manualChunks(id) {
