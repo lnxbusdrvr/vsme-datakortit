@@ -46,14 +46,11 @@ app.get('/health', (request, response) => {
 app.use(tokenExtractor);
 app.use('/api/basic', basicQsRouter);
 
-app.use(tokenExtractor);
 app.use('/api/comprehensive', comprehensiveQsRouter);
 
-app.use(tokenExtractor);
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 
-app.use(tokenExtractor);
 app.use('/api/answers', answersRouter);
 
 app.use(middleware.unknownEndpoint);
