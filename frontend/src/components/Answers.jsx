@@ -44,7 +44,7 @@ const Answers = () => {
   if (!user || !answers)
     return (<div>Loading...</div>)
 
-  if (answers.filter(a => a.user.id === id).length === 0) {
+  if (answers.filter(a => a.user?.id === id).length === 0) {
     return (
       <div>
         <h2>{user.name} {user.companyName}:</h2>
