@@ -138,19 +138,19 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Koko nimi</label>
-          <input type="text" name="name" id="name" value={name} onChange={({ target }) => setName(target.value)} required />
+          <input className="ms-2" type="text" name="name" id="name" value={name} onChange={({ target }) => setName(target.value)} required />
         </div>
         <div>
           <label htmlFor="name">Yrityksen nimi</label>
-          <input type="text" name="companyName" id="companyName" value={companyName} onChange={({ target }) => setCompanyName(target.value)} required />
+          <input className="ms-2" type="text" name="companyName" id="companyName" value={companyName} onChange={({ target }) => setCompanyName(target.value)} required />
         </div>
         <div>
           <label htmlFor="email">Sähköposti</label>
-          <input type="text" name="email" id="email" value={email} onChange={({ target }) => setEmail(target.value)} required />
+          <input className="ms-2" type="text" name="email" id="email" value={email} onChange={({ target }) => setEmail(target.value)} required />
         </div>
         <div>
           <label htmlFor="emailConfirm">Sähköposti uudestaan</label>
-          <input type="text" name="emailConfirm" id="emailConfirm" value={emailConfirm} onChange={({ target }) => setEmailConfirm(target.value)} required />
+          <input className="ms-2" type="text" name="emailConfirm" id="emailConfirm" value={emailConfirm} onChange={({ target }) => setEmailConfirm(target.value)} required />
         </div>
         <div>
         {/* Password & password confirm */}
@@ -162,15 +162,15 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
         </div>
         <div>
           <label htmlFor="address">Yrityksen osoite</label>
-          <input type="text" name="address" id="address" value={address} onChange={({ target }) => setAddress(target.value)} required />
+          <input className="ms-2" type="text" name="address" id="address" value={address} onChange={({ target }) => setAddress(target.value)} required />
         </div>
         <div>
           <label htmlFor="postalCode">Yrityksen postinumero</label>
-          <input type="text" name="postalCode" id="postalCode" value={postalCode} onChange={({ target }) => setPostalCode(target.value)} required />
+          <input className="ms-2" type="text" name="postalCode" id="postalCode" value={postalCode} onChange={({ target }) => setPostalCode(target.value)} required />
         </div>
         <div>
           <label htmlFor="city">Yrityksen kaupunki</label>
-          <input type="text" name="city" id="city" value={city} onChange={({ target }) => setCity(target.value)} required />
+          <input className="ms-2" type="text" name="city" id="city" value={city} onChange={({ target }) => setCity(target.value)} required />
         </div>
         <div>
           <Dropdown onSelect={(eventKey) => setLegalFormOfCompany(eventKey)}>
@@ -190,7 +190,7 @@ const NewUserForm = ({ onUserCreatedToggle }) => {
         </div>
         <div>
           <label htmlFor="businessIdentityCode">Y-tunnus</label>
-          <input type="text" name="businessIdentityCode" id="businessIdentityCode" value={businessIdentityCode} onChange={({ target }) => setBusinessIdentityCode(target.value)} required />
+          <input className="ms-2" type="text" name="businessIdentityCode" id="businessIdentityCode" value={businessIdentityCode} onChange={({ target }) => setBusinessIdentityCode(target.value)} required />
         </div>
         <button type="submit">Luo käyttäjä</button>
       </form>
