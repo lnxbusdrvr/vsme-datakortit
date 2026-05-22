@@ -1,5 +1,11 @@
 # vsme-datakortit
 
+## What is this project about?
+
+This project is about creating a full stack application for [VSME raports](https://www.efrag.org/sites/default/files/sites/webpublishing/SiteAssets/VSME%20Standard.pdf). The application is CRUD (create, read, update, delete) application with login and answer VSME's questions. The application is build with React on frontend and Node.js with Express on backend. The database is MongoDB Atlas. The application is deployed on Render.com. 
+
+## Login to application on online
+
 Login into [application](https://vsme-datakortit.onrender.com/) can be done using these usernames and passwords:
 
 
@@ -16,6 +22,107 @@ user roles:
 `user@five.com`
 
 password for all users: `U~Xc2hPw3$q&X`
+
+
+## Build this app locally
+
+### Copy questions data to your mongodb atlas
+
+Create your own MongoDB Atlas cluster and copy questions data:
+
+[Basic module data](https://raw.githubusercontent.com/lnxbusdrvr/vsme-datakortit/refs/heads/planning_n_stuff/backend/basic.json)
+[Comprehensive module data](https://raw.githubusercontent.com/lnxbusdrvr/vsme-datakortit/refs/heads/planning_n_stuff/backend/comprehensive.json)
+
+Other databases (users and answers) are made automatically.
+
+### Put secrets on .env file
+
+Create `backend/.env` file and add these secrets:
+```
+MONGODB_URI=put_here_your_mongodb_uri
+TEST_MONGODB_URI=put_here_your_test_mongodb_uri_propably_same_as_above_w_test_suffix
+SECRET_KEY=put_here_your_secret_key
+PASSWD_LENGTH=some_number_for_password_length_but_this_is_optional
+PORT=put_here_port_number_where_you_want_to_run_the_app_eg_3001
+E2E_TEST_USER=put_here_your_test_e2e_test_user_email
+E2E_TEST_PASSWD=put_here_your_test_e2e_test_user_password_what_you_created
+```
+`SECRET_KEY` is something random string
+`E2E_TEST_USER` when you create E2E test user. It's name must be excactly `Test E2E User`.
+
+### Now build your own version
+
+Clone this repository:
+```bash
+git clone https://github.com/lnxbusdrvr/vsme-datakortit.git
+```
+
+Move to the project directory:
+```bash
+cd vsme-datakortit
+```
+
+Move to the backend directory and install dependencies:
+```bash
+cd backend
+npm install
+```
+
+Move to the frontend directory (from vsme-datakortit) and install dependencies:
+```bash
+cd frontend
+npm install
+```
+#### Run tests on backend
+
+```bash
+npm run test
+```
+
+#### Run E2E tests
+
+First start backend:
+```bash
+npm start
+```
+
+Then run actual E2E test
+```bash
+npm run test:e2e
+```
+
+#### Run tests on frontend
+
+on frontend directory run
+```bash
+npm run test
+```
+
+#### Build UI
+
+on frontend directory run
+```bash
+npm run build:ui
+```
+
+This builds bundled version of frontend to dist/ directory and it also copys dist directory to backend
+
+#### Run the application
+
+
+```bash
+npm run build:ui
+```
+
+#### Browse to the application
+
+Use your browser and go to
+[http://127.0.0.1:3001/](http://127.0.0.1:3001/) or
+[http://localhost:3001/](http://localhost:3001/) depending which port you have set on `.env` file.
+
+NB! If you build this app locally, you need to create your own users on register page.
+And First admins user role needs to modify straight from MongoDB Atlas database. Just set admin user role: `user` to `admin`.
+
 
 ## Mention of AI Generated code
 
@@ -148,5 +255,6 @@ I used [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376) for t
 | 10.05.2026 | 2    | Add real way to start server before e2e tests. Fix css on links. Add margins to Link's |
 | 11.05.2026 | 3    | Build UI. Add icons to page links. |
 | 12.05.2026 | 1    | Fix random Axios 401 error when log in |
-| Total      | 384  |
+| 21.05.2026 | 1    | Fix bug when browsing users answers with viewer user. Remove duplicate tokenExtractors on app.js. Implement better style on register page. Better Documentation for this app. |
+| Total      | 385  |
 
