@@ -258,3 +258,7 @@ I used [minuut.io](https://minuut.io/cb4eb70b-3bff-4fb6-864c-9df5fcccc376) for t
 | 21.05.2026 | 1    | Fix bug when browsing users answers with viewer user. Remove duplicate tokenExtractors on app.js. Implement better style on register page. Better Documentation for this app. |
 | Total      | 385  |
 
+
+I implemented this fullstackopen.com project in: 385 h ≈ 2 months, 2 weeks and 2 days.
+But I implement this when I had time to consecrate to this, mainly during 15 May 2025 - 12 May 2026.
+Final fixes was made in 21 - 22 May 2026.
